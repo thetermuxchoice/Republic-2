@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+Invest with Randi Zuckerberg on Republic
+</title>
+<link href='https://republic.com/@randi-zuckerberg' rel='canonical'>
+<meta content='Techie &amp;amp;amp; Creator of Facebook Live. Radio host, investor, author, speaker, and theater producer. Invested in 50+ startups and sits on the board of The Motley Fool and Life360. Follow Randi Zuckerberg on Republic.' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='Invest with Randi Zuckerberg on Republic' itemprop='name'>
+<meta content='Techie &amp;amp;amp; Creator of Facebook Live. Radio host, investor, author, speaker, and theater producer. Invested in 50+ startups and sits on the board of The Motley Fool and Life360. Follow Randi Zuckerberg on Republic.' itemprop='description'>
+<meta content='https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/share-e8dba8fdbf2628ff8c5eb8849a5f203a65accce583a2fe747a81cf037b1be1b1.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='Invest with Randi Zuckerberg on Republic' name='twitter:title'>
+<meta content='Techie &amp;amp;amp; Creator of Facebook Live. Radio host, investor, author, speaker, and theater producer. Invested in 50+ startups and sits on the board of The Motley Fool and Life360. Follow Randi Zuckerberg on Republic.' name='twitter:description'>
+<meta content='https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/share-e8dba8fdbf2628ff8c5eb8849a5f203a65accce583a2fe747a81cf037b1be1b1.jpg' name='twitter:image'>
+<meta content='https://republic.com/@randi-zuckerberg' property='og:url'>
+<meta content='Invest with Randi Zuckerberg on Republic' property='og:title'>
+<meta content='Techie &amp;amp;amp; Creator of Facebook Live. Radio host, investor, author, speaker, and theater producer. Invested in 50+ startups and sits on the board of The Motley Fool and Life360. Follow Randi Zuckerberg on Republic.' property='og:description'>
+<meta content='https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/share-e8dba8fdbf2628ff8c5eb8849a5f203a65accce583a2fe747a81cf037b1be1b1.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="1v/Z556CBbYYfyWWMnnN4Q=="></script>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="MGwC6HzK-YY81kW61jM34NCsUBT7SEPykm96FXHMKj07ek7AtIhlyLaSkx7UOutvU9oAYmMODLpcxGbU9ii7Fw" />
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+  analytics.page(
+    "influencer_profile",
+    "randi-zuckerberg", {
+      url: "https://republic.com/@randi-zuckerberg"
+    }, {
+      integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+    }
+  );
+</script>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class=" preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="influencer_profiles-randi_zuckerberg__cover layouts-cover" style="background-image: url(https://uploads.republic.com/p/user_profiles/cover_photos/background/000/752/204/752204-1614393664-86e9e67a370b456f7ebdef7586599912f5d683bd.jpg)" data-rc="layouts/cover"><nav class="c-header-nav c-header-nav--transparent  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/white/150x38/logo-7e55c837a02e1508567e4cda9dd9a17c1ecef85df56983abeb2e184e97191f3c.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search c-search--dark-theme layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--transparent" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div><div class="influencer_profiles-shared-header" data-rc="influencer_profiles/shared/header"><div class='s-container s-gridMaxXs24'>
+<div class='s-grid s-paddingTop13 s-paddingBottom2_5 js-display influencer_profiles-shared-header__content'>
+<div class='s-grid-colMd16 s-grid--middle'>
+<div itemscope="itemscope" itemtype="https://schema.org/Person" class="influencer_profiles-shared-header_content" data-rc="influencer_profiles/shared/header_content"><div class='u-displayFlex u-alignItemsCenter u-colorOpaqueWhite8 influencer_profiles-shared-header_content__header_content'>
+<div class="c-avatar c-avatar--large u-borderRadius6 influencer_profiles-shared-header_content__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/large_2x/000/795/253/795253-1612821220-cafc95e9405a071408ba707a81e75d6a13ccc5b8.jpg 2x" src="https://uploads.republic.com/p/users/avatars/large/000/795/253/795253-1612821220-52616daae9b00f4a32fdd8606e531f9da43f6f89.jpg" /></div>
+<div class='u-flexGrow s-marginLeft1_5 influencer_profiles-shared-header_content__profile_info'>
+<h1 class='c-primaryTitle u-colorWhite influencer_profiles-shared-header_content__user_name'>
+<span itemprop='name'>
+<span class='u-verticalAlignMiddle'>
+Randi Zuckerberg
+</span>
+<span class='c-verified-user c-verified-user--small js-tooltip_simple' data-tippy-content='Verified user'></span>
+</span>
+</h1>
+<p class='s-fontSize13'>
+<span class='u-displayInlineBlock u-blockXsOnly u-fontWeight500' itemprop='homeLocation'>
+<i class='icon-location s-fontSize10 u-verticalAlignMiddle'></i>
+<span class='u-verticalAlignMiddle'>
+New York, United States
+<span class='u-hiddenXsOnly'>
+&nbsp;&middot;&nbsp;
+</span>
+</span>
+</span>
+<span class='u-displayInlineBlock u-verticalAlignMiddle u-fontWeight400 u-colorOpaqueWhite6'>
+Member since
+Feb 2021
+</span>
+</p>
+<div class='s-grid'>
+<div class='s-grid-colLg20 s-grid-colSm22'>
+<p class='s-fontSize16 u-lineHeight1_3 u-fontWeight400 s-marginTop0_5' itemprop='description'>
+<span>Techie &amp; Creator of Facebook Live. Radio host, investor, author, speaker, and theater producer. Invested in 50+ startups and sits on the board of The Motley Fool and Life360.</span>
+<a class="c-link c-link--inherit c-link--underline" href="/@randi-zuckerberg#mission-section">More</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-gridMaxSm8 s-grid--middle u-colorWhite s-marginTop0_5 u-textCenter influencer_profiles-shared-header__button_wrapper'>
+<div class="influencer_profiles-shared-follow_button" data-rc="influencer_profiles/shared/follow_button"><div class='s-marginBottom1'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Influencer profile" data-user-id="795253" class="follows-shared-follow_user" data-rc="follows/shared/follow_user"><a class="follows-shared-follow_user__follows-button c-button js-user_follows_register_link c-button--large c-button--white c-button--block influencer_profiles-shared-follow_button__follow-button" data-action="follow" href="/register?after_sign_in=%2Frandi-zuckerberg%3Ffollow%3Dtrue"><span class='js-user_follow_content'>
+Follow Randi
+</span>
+<span class='js-user_followed_content u-hidden'>
+<i class='icon-ok s-marginRight0_5'></i> Following
+</span>
+</a>
+</div>
+</div>
+<div class='s-fontSize14 u-colorOpaqueWhite8 u-hidden js-follow_message'>
+Now you are following Randi.
+</div>
+<div class='s-fontSize14 u-colorOpaqueWhite8 u-hidden js-unfollow_message'>
+You unfollowed Randi.
+</div>
+<div class='js-followers_wrapper'>
+<div class='s-marginBottom1'>
+1632 followers
+</div>
+<div class='s-fontSize14 u-colorOpaqueWhite8'>
+<span class="js-tooltip_ajax c-link c-link--inherit " data-type="user" data-slug="chris-messina">Chris</span>, <span class="js-tooltip_ajax c-link c-link--inherit " data-type="user" data-slug="andrea-mastretta">Andrea</span>, <span class="js-tooltip_ajax c-link c-link--inherit " data-type="user" data-slug="vijayasimha-kadamby">Vijayasimha</span>
+&
+<strong>
+1629 others
+</strong>
+follow Randi
+and are notified when she posts or invests
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div>
+<div class="s-container s-gridMaxXs24 s-marginVert4 influencer_profiles-randi_zuckerberg" data-rc="influencer_profiles/randi_zuckerberg"><section class='s-borderBottom3_5 s-marginBottom2_5 influencer_profiles-randi_zuckerberg__section influencer_profiles-randi_zuckerberg__section--investment-review'>
+<div class="investor_profiles-shared-investment_cards" data-rc="investor_profiles/shared/investment_cards"><header class='s-marginBottom1'>
+<h2 class='c-secondaryTitle u-colorGray6'>
+<span class='u-verticalAlignMiddle'>
+Investments & reservations
+<span class='u-colorGrayB investor_profiles-shared-investment_cards__counter'>
+17
+</span>
+</span>
+<i class='icon-info u-displayInlineBlock s-fontSize14 u-colorGrayB js-tooltip_simple investor_profiles-shared-investment_cards__tooltip-icon' data-tippy-content='Only public investments and reservations are shown'></i>
+</h2>
+</header>
+<div class='js-investor_profile_investments_slider_loader u-hiddenXsOnly'>
+<div class='u-textCenter s-fontSize18 u-fontWeight400 u-colorMuted'>
+<i class='c-spinner'></i>
+Loading...
+</div>
+</div>
+<div class='s-grid js-segment_product_list investor_profiles-shared-investment_cards__slider js-investor_profile_investments_slider' data-segment-list-id='list-profile-invested-deals'>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-456311" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Curastory&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1089,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/089/1089-1640643833-28c0cd8f9626ee5422383030815540e307a09faa.png&quot;,&quot;min_investment_amount&quot;:250,&quot;slug&quot;:&quot;curastory&quot;,&quot;tags&quot;:&quot;latinx-founders,black-founders,women-founders,b2c,crowd-safe,v-companies,video-streaming,tier-1-vc-backing,creator-economy,adtech&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/curastory&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/curastory"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Curastory" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fcurastory%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/089/1089-1640643833-28c0cd8f9626ee5422383030815540e307a09faa.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--curastory"><img alt="Logo of Curastory" title="Curastory" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/089/1089-1632837639-d7945fca2fc55e7c5efb2e8f82bb321005078288.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/089/1089-1632837639-ebc5e76f4fad56b092b5f7cf97803aab092b935b.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Curastory
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+The easiest way creators make, monetize, and distrib...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because the creator economy is booming and tools that put revenue and growth potential in the hands of the creators themselves are more important than ever. Plus, I bet on entrepreneurs and this looks like an awesome team!</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+over 1 year ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-444984" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Axle.ai&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:761,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/761/761-1626276651-731f4cad78fe84cdf6a6c589bc87a65dc014091e.jpeg&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;axle-ai-2021&quot;,&quot;tags&quot;:&quot;notable-angel-backing,ai-machine-learning,media-production-curation,500k-revenue,b2b,saas,v-companies,video-streaming,crowd-safe,republic-alum&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/axle-ai-2021&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/axle-ai-2021"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Axle.ai" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Faxle-ai-2021%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/761/761-1626276651-731f4cad78fe84cdf6a6c589bc87a65dc014091e.jpeg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--axle-ai-2021"><img alt="Logo of Axle.ai" title="Axle.ai" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/761/761-1632836103-8caf02cdcca87f64f4c92895ec64a98c5b2cd554.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/761/761-1632836103-c760880b22aceabe38f5eee7690190d5ecf8294e.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Axle.ai
+<div class='u-flex1 u-displayFlex offerings-shared-company_name__company_name_badges'>
+<div class='c-tag--campaign c-tag s-marginLeft0_5 c-tag--small'>
+2
+<sup>
+nd
+</sup>
+</div>
+</div>
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Making video smarter – Remote media collaboration in...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because this is a fast-growing industry and I'm excited to be a small part of what this team is building!</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+almost 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-444982" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Actipulse Neuroscience&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:992,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/992/992-1626909174-63ca5e3d64b6a05208f40c09df40edaf6845e444.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;actipulse&quot;,&quot;tags&quot;:&quot;v-companies,biotechnology,latinx-founders,b2b,healthcare,healthcare-services,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/actipulse&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/actipulse"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Actipulse Neuroscience" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Factipulse%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/992/992-1626909174-63ca5e3d64b6a05208f40c09df40edaf6845e444.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--actipulse"><img alt="Logo of Actipulse Neuroscience" title="Actipulse Neuroscience" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/992/992-1632835839-0309246445f2d5ee64445560bb4f2d9027d4c4d0.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/992/992-1632835839-665913923c13842f056d85381cf4e5b255a4faba.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Actipulse...
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Bringing neuromodulation treatment for depression, f...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because this is such an underserved and critical industry and this seems like a fantastic team to take on this challenge</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+almost 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-440414" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Inahsi Naturals&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1004,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/004/1004-1623982147-ea1256f538a9f0e730c17444acff9bca26c4affe.jpg&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;inahsi&quot;,&quot;tags&quot;:&quot;black-founders,500k-revenue,v-companies,women-founders,consumer-goods-retail,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/inahsi&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/inahsi"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Inahsi Naturals" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Finahsi%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/004/1004-1623982147-ea1256f538a9f0e730c17444acff9bca26c4affe.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--inahsi"><img alt="Logo of Inahsi Naturals" title="Inahsi Naturals" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/004/1004-1632926775-0f82bc84b5e9c229779df5583d179d2d618fca8d.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/004/1004-1632926775-88b2ed0f66fa4eb903472a0683d81ca20004da01.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Inahsi Naturals
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Quality products for naturally curly hair textures t...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>As a curly haired mom with a curly haired daughter, I can attest this is a completely underserved market! I can't wait to try out these products</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+almost 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-355082" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Upright&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:668,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/668/668-1615571564-299d5ff889be47e531a9c7ef81cc393a919b6535.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;upright&quot;,&quot;tags&quot;:&quot;women-founders,consumer-goods-retail,b2b,b2c,v-companies,green-power,aapi-founders,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/upright&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/upright"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Upright" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fupright%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/668/668-1615571564-299d5ff889be47e531a9c7ef81cc393a919b6535.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--upright"><img alt="Logo of Upright" title="Upright" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/668/668-1614725976-4a3254585066901c4c589208a0218e06817d1a0e.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/668/668-1614725976-31d1dbc619c54828c951c4b4e88dd6488bf0437c.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Upright
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Instant oatmilk as nutritious as dairy—just add water! 
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because of the surging popularity in oat milk, combined with the positive environmental impact of dairy alternatives. I am excited to support a female founder with a big vision!</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-315444" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Popshop&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:560,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/560/560-1602780620-c64729be5ba8c2462388964bd846088673213701.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;popshop&quot;,&quot;tags&quot;:&quot;v-companies,b2b,marketplace,real-estate-tech,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/popshop&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/popshop"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Popshop" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fpopshop%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/560/560-1602780620-c64729be5ba8c2462388964bd846088673213701.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--popshop"><img alt="Logo of Popshop" title="Popshop" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/560/560-1594052958-9b0c3813478b211e984b2e324b19ebe7f64277fa.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/560/560-1594052958-3745b5753ee3723b5a68ce5dbb5aabe45f9b8f76.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Popshop
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Book flexible retail space (Bricks) or launch your e...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because the pandemic has completely changed the needs for flexible retail space and the acceleration of ecommerce and this is an exciting solution for a big opportunity.</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-303400" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Citizens&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:510,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/510/510-1613170836-ff30d7e3317726a7e199c18431f45f7d4189e1ff.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;citizens-coffee&quot;,&quot;tags&quot;:&quot;v-companies,restaurant-bar-services,b2c,1m-revenue,drinks,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/citizens-coffee&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/citizens-coffee"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Citizens" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fcitizens-coffee%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/510/510-1613170836-ff30d7e3317726a7e199c18431f45f7d4189e1ff.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--citizens-coffee"><img alt="Logo of Citizens" title="Citizens" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/510/510-1584797069-611d6688abfbf1b4b88e1dfc903cecca58f2b2e4.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/510/510-1584797069-2fbdf06e98fac27824cda3e51181e7deb5aa850a.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Citizens
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Forbes featured, fast-growing NYC cafe company scali...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because I have been to the Chelsea location in NYC and believe that the team is truly onto something special here. Can’t wait to see this company have the same explosive growth as Bluestone </span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-299632" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Lil Bucks&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:735,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/735/735-1607554680-d9990a3ec9d486111610cbc6fe85a64ad91dfab8.jpg&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;lil-bucks&quot;,&quot;tags&quot;:&quot;women-founders,b2c,100k-revenue,food,v-companies,plant-based,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/lil-bucks&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/lil-bucks"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Lil Bucks" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Flil-bucks%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/735/735-1607554680-d9990a3ec9d486111610cbc6fe85a64ad91dfab8.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--lil-bucks"><img alt="Logo of Lil Bucks" title="Lil Bucks" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/735/735-1607381397-32375b3ec4e6d9c29ed0654c3bf434d03cff51b6.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/735/735-1607381397-6f1920122ea8e868e708026522a99a112f222f75.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Lil Bucks
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Mission-driven brand making functional food from the...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because I am passionate about eco-friendly health foods and supporting female founders. As a mom, I am always looking for the next big thing in snack foods and I truly believe from reading the pitch, that this could be it!</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-297440" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Backstage Capital&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:810,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/810/810-1612213073-1c9c5b46ed180a974a9b1b29b62f379b3d095ff3.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;backstage&quot;,&quot;tags&quot;:&quot;v-companies,women-founders,wealth-management,black-founders,lgbtqia,equity-1,interest-purchase-agreement&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/backstage&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/backstage"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Backstage Capital" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fbackstage%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/810/810-1612213073-1c9c5b46ed180a974a9b1b29b62f379b3d095ff3.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--backstage"><img alt="Logo of Backstage Capital" title="Backstage Capital" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/810/810-1611357582-e8d000247ef1cf6c4728edd808b27bc7050fd138.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/810/810-1611357582-51efa0d764fb7acba3ebd92a5490f3d80e6a403a.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Backstage Capital
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Investment adviser focused on people of color, women...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because Arlan is hands down one of the brightest, innovative and inspiring people I have ever met. No doubt she will change thousands of people’s lives and make a lot of money for her investors in the process</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-289321" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Canopy&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:651,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/651/651-1609357251-59a53862430f4ff59fa18cc88da7c930a76d6678.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;canopy&quot;,&quot;tags&quot;:&quot;b2c,b2b,healthcare-facilities-equipment,v-companies,fight-disease,equity-1,interest-purchase-agreement&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/canopy&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/canopy"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Canopy" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fcanopy%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/651/651-1609357251-59a53862430f4ff59fa18cc88da7c930a76d6678.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--canopy"><img alt="Logo of Canopy" title="Canopy" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/651/651-1612540388-c39050cd13dab58a45f6d329dc3a9f8dd1526465.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/651/651-1612540388-f696bf5c62be8a0182fd3f4092e7615bf1a15e7d.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Canopy
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+The next generation, reusable respirator — for the w...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because we all saw this year that advancements in PPE are absolutely necessary for future healthcare challenges. A reusable N-95 mask would not only help with equipment shortages, but would also provide an eco-friendly solution to a critical problem.</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-278712" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Relay On Demand&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:648,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/648/648-1610494527-3a6949e1b5313c01dc6a18326584d203284ebc0d.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;relay&quot;,&quot;tags&quot;:&quot;v-companies,transportation-construction-services,transportation,black-founders,profitable,bootstrapped,1m-revenue,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/relay&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/relay"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Relay On Demand" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Frelay%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/648/648-1610494527-3a6949e1b5313c01dc6a18326584d203284ebc0d.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--relay"><img alt="Logo of Relay On Demand" title="Relay On Demand" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/648/648-1599244653-7c109b41c30709c90db3d2c7dd72a1870f51d975.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/648/648-1599244653-3ed060b4c513c1a19f29885cb0baa94c57ce8279.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Relay On Demand
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+The new and better way for truck drivers to work
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because this is a huge opportunity. During the pandemic, the supply chain completely broke down. This is an innovative and tech-forward solution towards rebuilding a crucial part of the chain.</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-278685" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Drink Monday Inc.&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:499,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/499/499-1613025248-cd4c90d8c44c3f80755d5ad6ce394e608d50a4f8.jpg&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;drink-monday-2021&quot;,&quot;tags&quot;:&quot;d2c,v-companies,1m-revenue,food,latinx-founders,crowd-safe,republic-alum&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/drink-monday-2021&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/drink-monday-2021"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Drink Monday Inc." data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fdrink-monday-2021%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/499/499-1613025248-cd4c90d8c44c3f80755d5ad6ce394e608d50a4f8.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--drink-monday-2021"><img alt="Logo of Drink Monday Inc." title="Drink Monday Inc." srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/499/499-1585160870-519a18cb8d47cc043b27adef900d78db31466355.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/499/499-1585160870-6d6df9eb59f07a17136788b9f974085f11926f96.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Drink Monday Inc.
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Drink delicious cocktails, socialize without stress,...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because i believe that delicious non-alcoholic cocktails are a tremendous growth category for the beverage industry. There are so many reasons people choose not to drink alcohol, and so little choice right now that is fun, exciting, and delicious. I look forward to watching this company pioneer a new category.</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-272333" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Sunscoop&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:756,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/756/756-1611696637-60b97921b76f150fcef5482d53242a1c3b79c2e3.jpg&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;sunscoop&quot;,&quot;tags&quot;:&quot;v-companies,women-founders,food,b2c,organic-food,1m-raised,tier-1-vc-backing,250k-revenue,plant-based-food,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/sunscoop&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/sunscoop"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Sunscoop" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fsunscoop%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/756/756-1611696637-60b97921b76f150fcef5482d53242a1c3b79c2e3.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--sunscoop"><img alt="Logo of Sunscoop" title="Sunscoop" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/756/756-1607077612-84435edc625b52c5000520b64a6ecc2e61378e10.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/756/756-1607077612-64778a43a4b20a3e5dfa7988dc1234c3db5d46dd.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Sunscoop
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+The most delicious plant-based ice cream made from o...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because plant-based and sustainable food is great business and great for the world. This is the present AND the future! Plus, investing in an intelligent female founder is always a win for me.</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-271047" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;AKUA&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:673,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/673/673-1605638405-ede844bdaeb6b39e082912028859fe9651ceeb3a.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;akua&quot;,&quot;tags&quot;:&quot;women-founders,b2c,food,v-companies,plant-based,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/akua&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/akua"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="AKUA" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fakua%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/673/673-1605638405-ede844bdaeb6b39e082912028859fe9651ceeb3a.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--akua"><img alt="Logo of AKUA" title="AKUA" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/673/673-1601560538-fa0ad240a709cfd5c48faa590225226446ddae59.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/673/673-1601560538-8ed4c0317577cc7331f395d36c648f2855af54aa.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">AKUA
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Meat-alt company making plant-based foods from regen...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because plant-based food is the present and future. Courtney is a true visionary and having worked with her before, she is the real deal. Love supporting a great female entrepreneur and an idea that is good business AND good for the world!</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-271042" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Dope Dog&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:623,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/623/623-1604691299-5ed2433708eb13a97f8626ab51808541b75a563b.png&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;dope-dog&quot;,&quot;tags&quot;:&quot;women-founders,pets,b2c,cannabis-products,bootstrapped,v-companies,household-goods,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/dope-dog&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/dope-dog"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Dope Dog" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fdope-dog%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/623/623-1604691299-5ed2433708eb13a97f8626ab51808541b75a563b.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--dope-dog"><img alt="Logo of Dope Dog" title="Dope Dog" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/623/623-1597647914-ba49a486c6a09976bda9dfaef1d9539fcb7131d3.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/623/623-1597647914-5ae0684ff629abb168222f30fc09d2f16b0bf488.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Dope Dog
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+The future of dog health
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because it’s a great idea, such a fun name (marketing and branding is everything these days!) and a female founder - what could be a better trifecta?! Plus, who doesn’t love our furry friends and want to make their lives better?</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-271030" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;OTIS Dental&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:654,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/654/654-1608724131-5ad4967cf1aacf011852933340bc530ae2155f87.jpg&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;otis&quot;,&quot;tags&quot;:&quot;v-companies,lgbtqia,b2c,bootstrapped,250k-revenue,crowd-safe,diverse-founders,healthcare-services&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/otis&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/otis"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="OTIS Dental" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fotis%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/654/654-1608724131-5ad4967cf1aacf011852933340bc530ae2155f87.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--otis"><img alt="Logo of OTIS Dental" title="OTIS Dental" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/654/654-1599932950-eea2b541699385ba0e32fa582b41622036f03eef.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/654/654-1599932950-38d7b6b0b6c15eda8be82192707ae613ad3afd0e.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">OTIS Dental
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Providing an easy and affordable way to combat life&#39;...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because my father is a dentist and I grew up seeing how technology and innovation can benefit the field of dentistry. This is a great idea, people are always wary of going to the dentist - and especially right now during a pandemic! </span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+<div class='js-investment_card_column s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop investor_profiles-shared-investment_cards__column u-hiddenSmUp'>
+<div id="investment-card-270855" class="investor_profiles-shared-investment_card" data-rc="investor_profiles/shared/investment_card"><div class='s-marginBottom1'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;UpChoose&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:586,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/586/586-1606888711-2e6d0e74db594550495fb460f02487801ddbc061.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;upchoose&quot;,&quot;tags&quot;:&quot;reduce-reuse,v-companies,crowd-safe,subscription,bootstrapped,b2c,kids&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/upchoose&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/upchoose"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="UpChoose" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fupchoose%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/586/586-1606888711-2e6d0e74db594550495fb460f02487801ddbc061.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--upchoose"><img alt="Logo of UpChoose" title="UpChoose" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/586/586-1606189313-019b27ed32c97668d03e3e5268bee7a91865c4bc.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/586/586-1606189313-70e364a084d5f944acab477d5f87c1bc9d1e2b8c.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">UpChoose
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Reimagining consumption, starting at birth
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="s-marginRight0_5" href="/@randi-zuckerberg"><div class="c-avatar c-avatar--small investor_profiles-shared-investment_card__avatar js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+</a><div class='u-flexGrow u-lineHeight1_3 u-fontWeight400'>
+<span class='u-colorMuted investor_profiles-shared-investment_card__username'>
+<a class="c-link c-link--muted" href="/@randi-zuckerberg">Randi</a>
+invested
+</span>
+</div>
+</div>
+<div class='s-marginTop0_5 u-fontWeight400'><span class='investor_profiles-shared-investment_card__reason'>I invested because I am a mother of three (my youngest is 18 months old) so I know well how expensive, wasteful, and non-sustainable baby clothes and products can be. This is a great idea that can be both a successful business and an eco-win!</span><span class='s-fontSize13 u-colorGray9 u-whiteSpaceNowrap'>
+about 2 years ago
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class='s-marginBottom8 influencer_profiles-randi_zuckerberg__section influencer_profiles-randi_zuckerberg__section--angel-investments' id='angel-investments-section'>
+<div class="influencer_profiles-randi_zuckerberg-investments" data-rc="influencer_profiles/randi_zuckerberg/investments"><header class='s-marginBottom1_5'>
+<h2 class='c-secondaryTitle u-colorGray6'>
+Angel investments
+</h2>
+</header>
+<div class='u-displayFlex u-flexWrap u-justifyContentSpaceBetween'>
+<figure class='u-textCenter influencer_profiles-randi_zuckerberg-investments__logo'>
+<img class="u-imageFluid s-marginBottom1" srcset="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/motley-fool@2x-f9fe51259a30e41064288c94fe84eb931790410d71768c869a9bf7b4268ec1ce.png 2x" src="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/motley-fool-08779c67d79e35182e8bb6af433e6566ea50489559740fb63338f357ee618df0.png" />
+</figure>
+<figure class='u-textCenter influencer_profiles-randi_zuckerberg-investments__logo'>
+<img class="u-imageFluid s-marginBottom1" srcset="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/timehop@2x-613e952b54839311b1a78ecd85a75f3f0a362995ccc538082759a85a08d86ff1.png 2x" src="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/timehop-97066377fa3f6d04f55effc0b146ca7536ba8a34f1b8b42e8cb6ae935fed034d.png" />
+</figure>
+<figure class='u-textCenter influencer_profiles-randi_zuckerberg-investments__logo'>
+<img class="u-imageFluid s-marginBottom1" srcset="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/malicious-women@2x-db162e8a785a300804880843da564a551a3c08b5bb3076d5d07c410235a3d491.png 2x" src="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/malicious-women-a3723e9c7347f32dc72b1fb8d8428c2a91eacd16568bb233aadda4b614330c8e.png" />
+</figure>
+<figure class='u-textCenter influencer_profiles-randi_zuckerberg-investments__logo'>
+<img class="u-imageFluid s-marginBottom1" srcset="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/m@2x-5f835e4d38cf545f5596a71bf466a94aa5b0a86b2f0405e3d166efd9747baa6c.png 2x" src="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/m-11fa9c34e483b66524de6615af4950b727b4640138d828281f681592f6281046.png" />
+</figure>
+<figure class='u-textCenter influencer_profiles-randi_zuckerberg-investments__logo'>
+<img class="u-imageFluid s-marginBottom1" srcset="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/broadway-roulette@2x-08e53c1b901ce75ca4b48b35bde60e8b61444c74076f71a621b8d5db64a42e7c.png 2x" src="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/broadway-roulette-30426af371485b265aa1283e67172ae1c699f8265f7e88ea4f4dc25b2bcf0d1c.png" />
+</figure>
+<figure class='u-textCenter influencer_profiles-randi_zuckerberg-investments__logo'>
+<img class="u-imageFluid s-marginBottom1" srcset="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/true-tickets@2x-67cb795e98ce4549f0796a60796da69c13471c640b75b04fd8e051f408bb8cdb.png 2x" src="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/true-tickets-686ebb8153a042114612c5bba93e25aa89b4a261bc2ca1d082a2e6b63b532fbb.png" />
+</figure>
+<figure class='u-textCenter influencer_profiles-randi_zuckerberg-investments__logo'>
+<img class="u-imageFluid s-marginBottom1" srcset="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/riveter@2x-f26b5254016be156d106d5b11fd5e046480082c7f5a4e34e70f9f1833f0ff5e4.png 2x" src="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/riveter-0405d807aee135f7dab3951d62015fb17404eb6e940bbf132fbd96b92ea43fa8.png" />
+</figure>
+<figure class='u-textCenter influencer_profiles-randi_zuckerberg-investments__logo'>
+<img class="u-imageFluid s-marginBottom1" srcset="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/bc@2x-d7491c9be30f33a89c353bbeb3493cf92688af66b7a5d552401886b1f9b2176a.png 2x" src="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/bc-463a9ca09d9cc3ba0ed71142c34bf167e957ed567f3082034a48530265f3ab0f.png" />
+</figure>
+<figure class='u-textCenter influencer_profiles-randi_zuckerberg-investments__logo'>
+<img class="u-imageFluid s-marginBottom1" srcset="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/ruggable@2x-532707b05b425c84597da09a00cff6a7380c5441e902780ba2d7fc7c8727eec9.png 2x" src="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/ruggable-202311ed729b827e0303c820b58a246924695bd580e4d6ce29ee0df3a10c98d6.png" />
+</figure>
+</div>
+<div class='u-textCenter'>
+<div class='s-spacerXs1 s-spacerSm5'></div>
+<h4 class='s-fontSize18 u-fontWeight400 u-colorGray4 s-marginBottom1'>
+Get notified when Randi
+<br>
+invests to invest with her:
+</h4>
+<div class='s-grid'>
+<div class='s-grid-colMd8 s-grid-colSm12'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Influencer profile - investments section" data-user-id="795253" class="follows-shared-follow_user" data-rc="follows/shared/follow_user"><a class="follows-shared-follow_user__follows-button c-button js-user_follows_register_link c-button--large c-button--block" data-action="follow" href="/register?after_sign_in=%2Frandi-zuckerberg%3Ffollow%3Dtrue"><span class='js-user_follow_content'>
+Follow Randi
+</span>
+<span class='js-user_followed_content u-hidden'>
+<i class='icon-ok s-marginRight0_5'></i> Following
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class='s-marginBottom6_5 influencer_profiles-randi_zuckerberg__section' id='goals-section'>
+<div class="influencer_profiles-randi_zuckerberg-goals" data-rc="influencer_profiles/randi_zuckerberg/goals"><blockquote class='c-blockquote'>
+<div class='s-grid'>
+<div class='s-grid-colSm21'>
+<div class='c-formattedContent'>
+<p class='c-subtitle u-colorGray6'>
+I call myself a "professional mom to entrepreneurs" because I'll give you support,
+advice, tough love, money, a shoulder to cry on, and a pep talk to get back out there.
+I'll be your toughest critic and your #1 most loyal fan.
+</p>
+</div>
+</div>
+</div>
+</blockquote>
+<div class='s-spacerXs2 s-spacerSm1_5'></div>
+<div class='u-displayFlex u-displayFlex--responsive u-flexWrap s-fontSize18 u-fontWeight400 influencer_profiles-randi_zuckerberg-goals__quotes-wrapper'>
+<div class='u-flex1'>
+<h3 class='c-secondaryTitle u-colorGray6 s-marginBottom1'>
+What I look for in a startup
+</h3>
+<p>
+"I look for founder passion and enthusiasm, evaluate market size and opportunity, understand
+consumer interest (if there is product-market fit), and gauge the competitive advantage."
+</p>
+</div>
+<div class='s-borderRight2 s-marginRight2 u-hiddenXsOnly'></div>
+<div class='s-borderBottom2 s-marginBottom2 u-hiddenSmUp'></div>
+<div class='u-flex1'>
+<h3 class='c-secondaryTitle u-colorGray6 s-marginBottom1'>
+What I look for in a team
+</h3>
+<p>
+"Founders should be passionate and hungry for success. I'm looking for founders who are so
+passionate about the problem they are solving, that they truly can't imagine waking up and
+doing anything else. At the same time, I want founders who are open to data, feedback, and
+the ever changing world - having a vision that is too focused and not open to change is just
+as dangerous as being unfocused."
+</p>
+</div>
+<div class='s-borderRight2 s-marginRight2 u-hiddenXsOnly'></div>
+<div class='s-borderBottom2 s-marginBottom2 u-hiddenSmUp'></div>
+<div class='u-flex1'>
+<h3 class='c-secondaryTitle u-colorGray6 s-marginBottom1'>
+Best advice for founders
+</h3>
+<p>
+"Most founders think that they raise money based on their idea, their presentation deck,
+their concept - but no. They are able to raise money because of themselves. When I invest in
+a business, it's because I am excited about the founder. All ideas change and pivot so I
+never get too married to an idea. But when I invest in a founder, I am investing in someone
+I want to be in business with for many years to come."
+</p>
+</div>
+</div>
+</div>
+</section>
+<div class='s-gridMaxSm8 s-container u-textCenter s-marginBottom6'>
+<p class='u-colorGray4 s-fontSize18 u-fontWeight400 s-marginBottom1'>
+Get notified when
+Randi
+invests
+<br>
+to invest with her:
+</p>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Influencer profile - investments section" data-user-id="795253" class="follows-shared-follow_user" data-rc="follows/shared/follow_user"><a class="follows-shared-follow_user__follows-button c-button js-user_follows_register_link c-button--large c-button--block" data-action="follow" href="/register?after_sign_in=%2Frandi-zuckerberg%3Ffollow%3Dtrue"><span class='js-user_follow_content'>
+Follow Randi
+</span>
+<span class='js-user_followed_content u-hidden'>
+<i class='icon-ok s-marginRight0_5'></i> Following
+</span>
+</a>
+</div>
+</div>
+<section class='s-marginBottom5 influencer_profiles-randi_zuckerberg__section' id='media-section'>
+<div class="media_cards-shared-cards_section" data-rc="media_cards/shared/cards_section"><header class='media_cards-shared-cards_section__header'>
+<h2 class='c-primaryTitle s-marginBottom2 s-borderBottom2 s-fontSize45 influencer_profiles-randi_zuckerberg__title'>
+Media
+</h2>
+</header>
+<div class='js-media_cards_wrapper'>
+<div class='s-grid u-textCenter'>
+<div class='s-grid-colSm12 u-textLeft s-marginBottom3 js-media_card_wrapper media_cards-shared-cards_section__media_wrapper '>
+<article class="u-fontWeight400 s-fontSize18 media_cards-shared-card" data-media-card-id="49" data-rc="media_cards/shared/card"><div>
+<figure class='js-media_cards_cover_wrapper s-marginBottom1 media_cards-shared-card__cover_wrapper' data-class-for-controls='media_cards-shared-card__cover_wrapper media_cards-shared-card__cover_wrapper--control'>
+<img srcset="https://uploads.republic.com/p/media_cards/cover_photos/default_2x/000/000/049/49-1614385028-38e51d031fcb277772a40ce690f938dca004477d.png 2x" alt="Getting ahead as a woman in tech" class="media_cards-shared-card__cover_image" src="https://uploads.republic.com/p/media_cards/cover_photos/default/000/000/049/49-1614385028-f8c9bc1d247f9fce2a81dedb5fd30195aeafd9b8.png" />
+</figure>
+<h3 class='c-secondaryTitle s-marginBottom0_5'>
+Getting ahead as a woman in tech
+</h3>
+<p>
+Randi Zuckerberg on her new book and how to get ahead as a woman in tech
+<a target="_blank" class="c-link c-link--no-underline u-whiteSpaceNowrap" href="https://www.forbes.com/sites/saraweinreb/2018/05/17/randi-zuckerberg-on-her-new-book-and-how-to-get-ahead-as-a-woman-in-tech/?sh=186cdc3c151b">Read more
+<i class='icon-link-ext s-fontSize14'></i>
+</a>
+</p>
+</div>
+</article>
+</div>
+<div class='s-grid-colSm12 u-textLeft s-marginBottom3 js-media_card_wrapper media_cards-shared-cards_section__media_wrapper '>
+<article class="u-fontWeight400 s-fontSize18 media_cards-shared-card" data-media-card-id="50" data-rc="media_cards/shared/card"><div>
+<figure class='js-media_cards_cover_wrapper s-marginBottom1 media_cards-shared-card__cover_wrapper' data-class-for-controls='media_cards-shared-card__cover_wrapper media_cards-shared-card__cover_wrapper--control'>
+<img srcset="https://uploads.republic.com/p/media_cards/cover_photos/default_2x/000/000/050/50-1614385553-6263e4a771f36e113c634b431966668ff8b81005.jpg 2x" alt="Zuckerberg Media" class="media_cards-shared-card__cover_image" src="https://uploads.republic.com/p/media_cards/cover_photos/default/000/000/050/50-1614385553-09ce296102ae7f7fcac43a8bbfe39700701db326.jpg" />
+</figure>
+<h3 class='c-secondaryTitle s-marginBottom0_5'>
+Zuckerberg Media
+</h3>
+<p>
+Zuckerberg Media is changing the face of innovation one new character, collaboration and company at a time
+<a target="_blank" class="c-link c-link--no-underline u-whiteSpaceNowrap" href="https://www.zuckerbergmedia.com/">Read more
+<i class='icon-link-ext s-fontSize14'></i>
+</a>
+</p>
+</div>
+</article>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class='influencer_profiles-randi_zuckerberg__section' id='mission-section'>
+<div class="influencer_profiles-randi_zuckerberg-about" data-rc="influencer_profiles/randi_zuckerberg/about"><h2 class='c-primaryTitle s-fontSize45 s-marginBottom1_5 s-borderBottom1_5 influencer_profiles-randi_zuckerberg-about__title'>
+About
+</h2>
+<h3 class='c-subtitle s-marginBottom1 influencer_profiles-randi_zuckerberg-about__subtitle'>
+Randi Zuckerberg
+</h3>
+<div class='s-grid'>
+<div class='s-grid-colSm16'>
+<div class='s-paddingRight2 u-fontWeight400 u-colorGray4 influencer_profiles-randi_zuckerberg-about__content'>
+<p class='s-marginBottom1'>
+Randi is a techie and creator of Facebook Live turned radio host, investor, author,
+speaker, and theater producer. She is passionate about helping entrepreneurs and creators
+build the next generation of great businesses. Randi has invested in 50+ startups and sits
+on the board of directors for The Motley Fool and Life360.
+</p>
+<div class='s-grid'>
+<div class='s-grid-colSm12 s-grid-colMd11'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Influencer profile - about section" data-user-id="795253" class="follows-shared-follow_user" data-rc="follows/shared/follow_user"><a class="follows-shared-follow_user__follows-button c-button js-user_follows_register_link c-button--large c-button--block" data-action="follow" href="/register?after_sign_in=%2Frandi-zuckerberg%3Ffollow%3Dtrue"><span class='js-user_follow_content'>
+Follow Randi
+</span>
+<span class='js-user_followed_content u-hidden'>
+<i class='icon-ok s-marginRight0_5'></i> Following
+</span>
+</a>
+</div>
+<p class='s-fontSize13 u-colorGray5 s-marginTop0_5 u-textCenter u-hiddenXsOnly'>
+Get notified when
+Randi
+posts or invests
+</p>
+</div>
+<div class='s-grid-colSm12 s-grid--pushMd1 influencer_profiles-randi_zuckerberg-about__learn-more'>
+<a target="_blank" href="https://en.wikipedia.org/wiki/Randi_Zuckerberg">Learn more about Randi</a>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8'>
+<img class="influencer_profiles-randi_zuckerberg-about__about-image" srcset="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/about@2x-a98ee828270efb16866ec875438512900d446f87021b3c22c997ceec3ce6a3ac.jpg 2x" src="https://assets.republic.com/assets/influencer_profiles/randi_zuckerberg/about-5d70b2a7285a35e4a3b872a76c24f60fbc98aca5620135a0e8121d4858d48722.jpg" />
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-shared-simple_disclaimer" data-rc="layouts/footer/disclaimers/shared/simple_disclaimer"><p class='s-marginBottom1'>
+This site (the "Site") is owned and maintained by OpenDeal Inc., which is not a registered
+broker-dealer. OpenDeal Inc. does not give investment advice, endorsement, analysis or
+recommendations with respect to any securities. All securities listed here are being offered
+by, and all information included on this Site is the responsibility of, the applicable issuer
+of such securities. The intermediary facilitating the offering will be identified in such
+offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC verify information provided
+by companies on this Site and makes no assurance as to the completeness or accuracy of any such
+information. Additional information about companies fundraising on the Site can be found by
+searching the
+<a target="_blank" rel="noopener" class="c-link c-link--underline" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not require an
+EDGAR filing.
+</p>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="1v/Z556CBbYYfyWWMnnN4Q=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="1v/Z556CBbYYfyWWMnnN4Q=="></script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="1v/Z556CBbYYfyWWMnnN4Q==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="1v/Z556CBbYYfyWWMnnN4Q==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+
+</body></html>
+
+

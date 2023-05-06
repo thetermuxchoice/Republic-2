@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="xvmMEYMyzW12ru89II7ERg==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="xvmMEYMyzW12ru89II7ERg==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+Manufacturing &amp; Industrials — Republic
+</title>
+<link href='https://republic.com/tag/manufacturing-industrials' rel='canonical'>
+<meta content='Discover crowdfunding startups, press and more related to manufacturing &amp;amp; industrials' name='description'>
+<meta content='Manufacturing &amp;amp; Industrials, equity crowdfunding Manufacturing &amp;amp; Industrials, equity crowdfunding newsletter, press, investment, Manufacturing &amp;amp; Industrials companies' name='keywords'>
+<meta content='Manufacturing &amp;amp; Industrials' itemprop='name'>
+<meta content='Discover crowdfunding startups, press and more related to manufacturing &amp;amp; industrials' itemprop='description'>
+<meta content='https://assets.republic.com/assets/social_share/cover--default-7359efcea39802f13c954dff5a6153e9ad81f6b303c09d67276d2f7ddd7f3b93.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='Manufacturing &amp;amp; Industrials' name='twitter:title'>
+<meta content='Discover crowdfunding startups, press and more related to manufacturing &amp;amp; industrials' name='twitter:description'>
+<meta content='https://assets.republic.com/assets/social_share/cover--default-7359efcea39802f13c954dff5a6153e9ad81f6b303c09d67276d2f7ddd7f3b93.jpg' name='twitter:image'>
+<meta content='https://republic.com/tag/manufacturing-industrials' property='og:url'>
+<meta content='Manufacturing &amp;amp; Industrials' property='og:title'>
+<meta content='Discover crowdfunding startups, press and more related to manufacturing &amp;amp; industrials' property='og:description'>
+<meta content='https://assets.republic.com/assets/social_share/cover--default-7359efcea39802f13c954dff5a6153e9ad81f6b303c09d67276d2f7ddd7f3b93.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="xvmMEYMyzW12ru89II7ERg=="></script>
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="GByPE0HoIdYUitVI1cBi8rJcguxxA6YS92UdKKIoU6wTCsM7iaq9mJ7OA-zXyb59MSrSmulF6Vo5zgHpJczChg" />
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+  analytics.page(
+    "tag",
+    "manufacturing-industrials", {
+      url: "https://republic.com/tag/manufacturing-industrials"
+    }, {
+      integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+    }
+  );
+</script>
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="xvmMEYMyzW12ru89II7ERg==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class=" preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="xvmMEYMyzW12ru89II7ERg==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="tags-show__cover layouts-cover" style="background: linear-gradient(rgba(0,0,0,0.3) 0px,rgba(0,0,0,0.3) 65px, rgba(0,0,0,0) 65px ), #EEE;" data-rc="layouts/cover"><nav class="c-header-nav c-header-nav--transparent  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/white/150x38/logo-7e55c837a02e1508567e4cda9dd9a17c1ecef85df56983abeb2e184e97191f3c.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search c-search--dark-theme layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--transparent" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div><div data-action-follow="follow" data-action-unfollow="unfollow" class="tags-show-header" data-rc="tags/show/header"><div class='s-container s-gridMaxXs24 s-paddingTop2 s-paddingBottom2 tags-show-header__display_title_wrapper'>
+<h1 class='c-condensedTitle s-fontSize32 u-fontWeight900 tags-show-header__display_full_title'>
+<span class='tags-show-header__category'>
+Category /
+</span>
+<span class='tags-show-header__display_name'>
+Manufacturing &amp; Industrials
+</span>
+</h1>
+<div class='u-floatRightSmUp'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<a class="c-button c-button--outline-transparent-dark js-follow_register_button" data-following="false" data-text="&lt;i class=&quot;icon-ok&quot;&gt;&lt;/i&gt; Following" data-action="follow" href="/register?after_sign_in=%2Ftag%2Fmanufacturing-industrials%3Ffollow%3Dtrue">Follow</a>
+</div>
+</div>
+</div>
+</div>
+</div><div>
+<div class="tags-show" data-rc="tags/show"><div class='s-container s-gridMaxXs24'>
+<div class='s-grid' data-sticky-container>
+<div class='s-grid-colSm6'>
+<div class='js-sticky s-paddingTop3' data-sticky-for='768'>
+<div class="tags-show-navigation" data-rc="tags/show/navigation"><nav class='c-nav'>
+<a class="c-nav__link js-navigation_link" href="#companies">Companies
+<span class='tags-show-navigation__counter'>
+(19)
+</span>
+</a>
+<a class="c-nav__link js-navigation_link" href="#blog-posts">Blog posts
+<span class='tags-show-navigation__counter'>
+(3)
+</span>
+</a>
+<a class="c-nav__link js-navigation_link" href="#press-section">Press
+<span class='tags-show-navigation__counter'>
+(123)
+</span>
+</a>
+<a class="c-nav__link js-navigation_link" href="#followers">Followers
+<span class='tags-show-navigation__counter'>
+(9780)
+</span>
+</a>
+</nav>
+<div class='s-marginTop2'>
+<strong>
+Related categories
+</strong>
+<div class='s-marginTop1 c-tag-container'>
+<a class="c-tag " style="" href="https://republic.com/tag/agriculture">Agriculture</a>
+<a class="c-tag " style="" href="https://republic.com/tag/food">Food</a>
+<a class="c-tag " style="" href="https://republic.com/tag/apps">Apps</a>
+<a class="c-tag " style="" href="https://republic.com/tag/fashion">Fashion</a>
+<a class="c-tag " style="" href="https://republic.com/tag/blockchain">Blockchain</a>
+<a class="c-tag " style="" href="https://republic.com/tag/fundraising">Fundraising</a>
+<a class="c-tag " style="" href="https://republic.com/tag/healthcare">Healthcare</a>
+<a class="c-tag " style="" href="https://republic.com/tag/big-data">Big Data</a>
+<a class="c-tag " style="" href="https://republic.com/tag/green-power">Green Power</a>
+<a class="c-tag " style="" href="https://republic.com/tag/consumer-goods-retail">Consumer Goods &amp; Retail</a>
+<a class="c-tag " style="" href="https://republic.com/tag/food-drinks">Food &amp; Drinks</a>
+<a class="c-tag " style="" href="https://republic.com/tag/apparel-accessories">Apparel &amp; Accessories</a>
+<a class="c-tag " style="" href="https://republic.com/tag/fintech-finance">Fintech &amp; Finance</a>
+<a class="c-tag " style="" href="https://republic.com/tag/waste-management-sanitation">Waste Management &amp; Sanitation</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm16 s-grid--pushSm2'>
+<div class='s-grid'>
+<div class='js-section s-grid-colSm24 s-paddingTop2' id='companies'>
+<div class="tags-show-offering_section" data-rc="tags/show/offering_section"><h3 class='s-fontSize24 u-fontWeight400 u-colorGray2'>
+Companies
+<div class='s-marginLeft0_5 u-colorGray9 u-fontWeight200 u-displayInlineBlock'>
+19
+</div>
+</h3>
+<div class='s-grid js-segment_product_list' data-segment-list-id='list-tags-companies'>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Ally Robotics&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1823,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/823/1823-1660792777-392ca85332d532ecccc6f49a5d07bd71f3e669c1.jpg&quot;,&quot;min_investment_amount&quot;:999,&quot;slug&quot;:&quot;ally&quot;,&quot;tags&quot;:&quot;b2b,industrial-automation,robotics,stock-purchase-agreement,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/ally&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/ally"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Ally Robotics" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fally%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/823/1823-1660792777-392ca85332d532ecccc6f49a5d07bd71f3e669c1.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--ally"><img alt="Logo of Ally Robotics" title="Ally Robotics" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/823/1823-1660178246-1ca8a19b564021d195b732487e1a9f47d205ce81.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/823/1823-1660178246-096c7c13a5399de72b258ce84e5068f345b5519f.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Ally Robotics
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Democratizing robotics with affordable, extensible, ...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Capital R · Reg A+
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Geoship&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1659,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/659/1659-1678397706-471d681962a23949158381df4abd25fddc158f96.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;geoship&quot;,&quot;tags&quot;:&quot;b2c,crowd-safe,v-companies,1m-raised,combat-carbon,city-planning,transportation-construction-services&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/geoship&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/geoship"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Geoship" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fgeoship%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/659/1659-1678397706-471d681962a23949158381df4abd25fddc158f96.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--geoship"><img alt="Logo of Geoship" title="Geoship" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/659/1659-1666592341-704da3e64f3c74c560313322d2a6bdedee0895e2.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/659/1659-1666592341-900abdcd5e80555239253138e1f3e614247cd4a8.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Geoship
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+A natural home-building renaissance | The Bioceramic...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Avivid Water Technology&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1370,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/370/1370-1672006915-1c28f85a76ee512b661d0fe372fd3a1743c78bf6.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;avivid-water&quot;,&quot;tags&quot;:&quot;b2b,crowd-safe,industrial-operations-management,sustainability,v-companies,1m-raised&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/avivid-water&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/avivid-water"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Avivid Water Technology" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Favivid-water%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/370/1370-1672006915-1c28f85a76ee512b661d0fe372fd3a1743c78bf6.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--avivid-water"><img alt="Logo of Avivid Water Technology" title="Avivid Water Technology" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/370/1370-1652716081-8fa4f9941721945efa6d9362bf91f4d1651c2fd7.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/370/1370-1652716081-720ca1b3bea0446efa1ff2afd85d3befa77396eb.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Avivid Water...
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Bringing sustainable water treatment to heavy industry
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #B5F2A2'>
+Sustainability
+</div>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Thomsen&#39;s Inc.&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1839,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/839/1839-1676409750-2318e59960c09469e0fe79b8f5d810dcf96c5abb.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;thomsens&quot;,&quot;tags&quot;:&quot;b2b,v-companies,crowd-safe,women-founders,Industrial-equipment-supplies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/thomsens&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/thomsens"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Thomsen&#39;s Inc." data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fthomsens%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/839/1839-1676409750-2318e59960c09469e0fe79b8f5d810dcf96c5abb.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--thomsens"><img alt="Logo of Thomsen&#39;s Inc." title="Thomsen&#39;s Inc." srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/839/1839-1676332016-1a455f1d8d2934f247630a855005998721ee9de4.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/839/1839-1676332016-7dec021a6cf71fba44e69043cf25acd461cc9ae4.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Thomsen&#39;s Inc.
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+A proven, efficient system for public health &amp;amp; s...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #c2f9f4'>
+Women Founders
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Phuc Labs&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1599,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/599/1599-1665182449-57175186cc307236823d851482e7b969528e29fb.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;phuc-labs&quot;,&quot;tags&quot;:&quot;v-companies,crowd-safe,materials-1,waste-management-sanitation,reduce-reuse&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/phuc-labs&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/phuc-labs"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Phuc Labs" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fphuc-labs%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/599/1599-1665182449-57175186cc307236823d851482e7b969528e29fb.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--phuc-labs"><img alt="Logo of Phuc Labs" title="Phuc Labs" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/599/1599-1657133775-8994d0626bf3fedcab9487b34feb631bc77a67f1.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/599/1599-1657133775-7ca2fba3c481517d8aca127514a9fd64dbaff05d.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Phuc Labs
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Digitally recovering resources from waste, making ec...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Azure Printed Homes&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1459,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/459/1459-1657915246-5fcf38b9b9e101984cf228642987abdbbc6b9fb1.jpg&quot;,&quot;min_investment_amount&quot;:250,&quot;slug&quot;:&quot;azure-2022&quot;,&quot;tags&quot;:&quot;immigrant-founders,b2b,crowd-safe,v-companies,1m-revenue,3d-printing,materials-1,sustainability,transportation-construction-services,10-24-employees&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/azure-2022&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/azure-2022"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Azure Printed Homes" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fazure-2022%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/459/1459-1657915246-5fcf38b9b9e101984cf228642987abdbbc6b9fb1.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--azure-2022"><img alt="Logo of Azure Printed Homes" title="Azure Printed Homes" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/459/1459-1649261481-120299395252738864b9b2bff11932b1f53edd9f.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/459/1459-1649261481-4231bdc5087134491c9289f54a137ec2bd8bf843.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Azure Printed Homes
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+3D printed homes made from recycled materials—fast, ...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFC4A8'>
+Immigrant Founders
+</div>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #B5F2A2'>
+Sustainability
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Boxabl&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:856,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/856/856-1651858757-8431a4512e8b9705b0b25d2d2396255c32bb7f16.jpg&quot;,&quot;min_investment_amount&quot;:1000,&quot;slug&quot;:&quot;boxabl&quot;,&quot;tags&quot;:&quot;transportation-construction-services,stock-purchase-agreement,equity-1,50-199-employees,v-companies,25m-raised&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/boxabl&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/boxabl"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Boxabl" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fboxabl%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/856/856-1651858757-8431a4512e8b9705b0b25d2d2396255c32bb7f16.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--boxabl"><img alt="Logo of Boxabl" title="Boxabl" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/856/856-1651700768-920442747c3bb6739d4ff9fb440104eb07d47ede.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/856/856-1651700768-8c6cb9f210ec3c14099792130bbd3b313b3f210e.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Boxabl
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Housing meets mass production | Low-cost apartments ...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #EAC273'>
+$25M+ raised
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Capital R · Reg A+
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;QuickLoadz&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1092,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/092/1092-1640633663-11c879cc680e5e54745e4148fe2f1f05d5946ca7.png&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;quickloadz&quot;,&quot;tags&quot;:&quot;closing-soon-may-2022,women-founders,b2b,transportation-construction-services,subscription,v-companies,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/quickloadz&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/quickloadz"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="QuickLoadz" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fquickloadz%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/092/1092-1640633663-11c879cc680e5e54745e4148fe2f1f05d5946ca7.png&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--quickloadz"><img alt="Logo of QuickLoadz" title="QuickLoadz" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/092/1092-1627053791-16d5f7025e8c27a2eedf6dd39f3505b0d0460749.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/092/1092-1627053791-2a53c7b4a0ae0a1eba4bf05e898250d3865c4990.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">QuickLoadz
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Smartphone-controlled robotic trailers for faster, s...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #c2f9f4'>
+Women Founders
+</div>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;FreightPal&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1081,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/081/1081-1640645280-6f1bf57680246ac8cbcf6361c09acd3e8f71601a.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;freightpal&quot;,&quot;tags&quot;:&quot;b2b,manufacturing-industrials,closing-soon-may-2022,v-companies,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/freightpal&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/freightpal"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="FreightPal" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Ffreightpal%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/081/1081-1640645280-6f1bf57680246ac8cbcf6361c09acd3e8f71601a.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--freightpal"><img alt="Logo of FreightPal" title="FreightPal" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/081/1081-1627658483-ffe8e6893a62464d97bd736968a1dfe09fbd7c13.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/081/1081-1627658483-89d47a49b944827d150e8968ba9409669723935e.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">FreightPal
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+A fully automated technology solution for shipping
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Recovered Health (formerly Rx Delivered Now)&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1015,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/015/1015-1623827347-835706413c0a32c034e6c69924f2139a6cbdd6d3.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;rx-delivered-now-2021&quot;,&quot;tags&quot;:&quot;v-companies,veteran-founders,b2b,saas,pharmaceuticals-medicine,manufacturing-industrials,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/rx-delivered-now-2021&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/rx-delivered-now-2021"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Recovered Health (formerly Rx Delivered Now)" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Frx-delivered-now-2021%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/015/1015-1623827347-835706413c0a32c034e6c69924f2139a6cbdd6d3.png&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--rx-delivered-now-2021"><img alt="Logo of Recovered Health (formerly Rx Delivered Now)" title="Recovered Health (formerly Rx Delivered Now)" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/015/1015-1621832187-f12d96259a3fa3b3b1f74918d631e01f704ee826.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/015/1015-1621832187-307148fe37e1798ece717ba1dcec7b7aaecfb323.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Recovered Health...
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Automating pharmacy logistics and communications
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #79E1F3'>
+Veteran Founders
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Sentry AI&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:792,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/792/792-1618929894-72702bf0821e4d827b8b22b9bad655a11c4dc15e.jpg&quot;,&quot;min_investment_amount&quot;:200,&quot;slug&quot;:&quot;sentry-ai&quot;,&quot;tags&quot;:&quot;v-companies,b2b,ai-machine-learning,manufacturing-industrials,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/sentry-ai&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/sentry-ai"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Sentry AI" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fsentry-ai%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/792/792-1618929894-72702bf0821e4d827b8b22b9bad655a11c4dc15e.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--sentry-ai"><img alt="Logo of Sentry AI" title="Sentry AI" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/792/792-1608604620-26c369c48d6a232df5a4359ea01561de51a2c4e1.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/792/792-1608604620-ef5d372bd630948d7de26cc59957362c320b57c6.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Sentry AI
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Virtual security guards to make communities secure a...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;BuildStream&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:506,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/506/506-1613073795-6f9d799a1e7be5281b1eb5cd248afe8dc1e4b789.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;buildstream&quot;,&quot;tags&quot;:&quot;v-companies,infrastructure,marketplace,tier-1-vc-backing,transportation-construction-services,renewables,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/buildstream&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/buildstream"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="BuildStream" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fbuildstream%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/506/506-1613073795-6f9d799a1e7be5281b1eb5cd248afe8dc1e4b789.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--buildstream"><img alt="Logo of BuildStream" title="BuildStream" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/506/506-1613060572-3c537bb57f2fce0a3664b7b45965c57797a94cde.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/506/506-1613060572-7444308a844f373387aae7ffd8cb7854488a5a97.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">BuildStream
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Transforming the labor marketplace for supply chain ...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Doorage&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:504,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/504/504-1604082733-1c8ecbd91b50965ee97f49e471cd84b30337f66d.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;doorage&quot;,&quot;tags&quot;:&quot;v-companies,transportation-construction-services,b2c,subscription,250k-revenue,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/doorage&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/doorage"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Doorage" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fdoorage%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/504/504-1604082733-1c8ecbd91b50965ee97f49e471cd84b30337f66d.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--doorage"><img alt="Logo of Doorage" title="Doorage" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/504/504-1612540412-46a052349ea6bd7cf0d175baf31a7be9a87dc066.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/504/504-1612540412-84b296fa4c60c6597b41723c0707f617d8823d02.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Doorage
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+The modern alternative to storage and moving
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Relay On Demand&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:648,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/648/648-1610494527-3a6949e1b5313c01dc6a18326584d203284ebc0d.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;relay&quot;,&quot;tags&quot;:&quot;v-companies,transportation-construction-services,transportation,black-founders,profitable,bootstrapped,1m-revenue,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/relay&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/relay"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Relay On Demand" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Frelay%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/648/648-1610494527-3a6949e1b5313c01dc6a18326584d203284ebc0d.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--relay"><img alt="Logo of Relay On Demand" title="Relay On Demand" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/648/648-1599244653-7c109b41c30709c90db3d2c7dd72a1870f51d975.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/648/648-1599244653-3ed060b4c513c1a19f29885cb0baa94c57ce8279.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Relay On Demand
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+The new and better way for truck drivers to work
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #f4bef1'>
+Black Founders
+</div>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #EAC273'>
+Profitable
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Kangaroo&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:501,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/501/501-1591195483-99ffd40073d818962fb3832fb3ba4dade8978047.jpg&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;kangaroo&quot;,&quot;tags&quot;:&quot;v-companies,security-defense,hardware,apps,b2c,iot,50-199-employees,10m-raised,power-founders,tier-1-vc-backing,500k-revenue,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/kangaroo&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/kangaroo"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Kangaroo" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fkangaroo%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/501/501-1591195483-99ffd40073d818962fb3832fb3ba4dade8978047.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--kangaroo"><img alt="Logo of Kangaroo" title="Kangaroo" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/501/501-1585854084-a5d2bf13302a30d6a9d0dddf94876c5fa8ca4e4f.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/501/501-1585854084-fe87ddd3aef048e66989ca2a5f0a8329be3f6b2e.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Kangaroo
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Smart home security for everyone
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Fleeting&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:421,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/421/421-1586841862-5de8d0b9feacf92ecc6c235194fefd783847aea1.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;fleeting&quot;,&quot;tags&quot;:&quot;v-companies,apps,black-founders,marketplace,leading-vc-backed,250k-revenue,transportation-construction-services,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/fleeting&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/fleeting"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Fleeting" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Ffleeting%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/421/421-1586841862-5de8d0b9feacf92ecc6c235194fefd783847aea1.png&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--fleeting"><img alt="Logo of Fleeting" title="Fleeting" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/421/421-1577722172-17e2a163307e5d3fd338efc1fdda17bd41681bde.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/421/421-1577722172-02929d92df041c62f9a91555d4e9b136ebb0df0b.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Fleeting
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Connecting commercial drivers with on-demand truckin...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #f4bef1'>
+Black Founders
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;R3 Printing&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:312,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/312/312-1586841783-a1529e981cb082939298f821ba1c429aa7672ae0.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;r3-printing&quot;,&quot;tags&quot;:&quot;v-companies,hardware,b2b,3d-printing,industrial-automation,venture-backed,crowd-safe,republic-alum&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/r3-printing&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/r3-printing"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="R3 Printing" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fr3-printing%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/312/312-1586841783-a1529e981cb082939298f821ba1c429aa7672ae0.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--r3-printing"><img alt="Logo of R3 Printing" title="R3 Printing" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/312/312-1557804642-8e6d1c7665a55d794e699a6e76bf865396ba6f2f.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/312/312-1557804642-e219154a9ad8d90cf028f9f8ec8e2624f04224b1.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">R3 Printing
+<div class='u-flex1 u-displayFlex offerings-shared-company_name__company_name_badges'>
+<div class='c-tag--campaign c-tag s-marginLeft0_5 c-tag--small'>
+2
+<sup>
+nd
+</sup>
+</div>
+</div>
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Manufacturing is about to get personal
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Cloudastructure&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:223,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/223/223-1586841745-77d2a83c135a2bf1fb261c8e5699372fe0e3a5c0.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;cloudastructure&quot;,&quot;tags&quot;:&quot;v-companies,b2b,ai-machine-learning,1m-raised,power-founders,venture-backed,cloud-computing,security-defense,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/cloudastructure&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/cloudastructure"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Cloudastructure" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fcloudastructure%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/223/223-1586841745-77d2a83c135a2bf1fb261c8e5699372fe0e3a5c0.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--cloudastructure"><img alt="Logo of Cloudastructure" title="Cloudastructure" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/223/223-1549643639-dc0f5990c62e229e235bc20b6af1daea4c2cb7a2.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/223/223-1549643639-7802c9d3677987e435e60d27b8822a7f11a20a63.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Cloudastructure
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+AI, object detection, and face recognition for enter...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 s-marginTop1_5'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;R3 Printing&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:148,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/148/148-1586841708-1b03eec7c295786098ea0f6adeb1baff482ed1f0.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;r3-printing-july-2018&quot;,&quot;tags&quot;:&quot;v-companies,hardware,b2b,machines,3d-printing,industrial-automation,venture-backed,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/r3-printing-july-2018&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/r3-printing-july-2018"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="R3 Printing" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fr3-printing-july-2018%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/000/148/148-1586841708-1b03eec7c295786098ea0f6adeb1baff482ed1f0.jpg&#39;)'>
+<div class='offerings-shared-offering_card_small__badges-wrapper'>
+<div class="offerings-shared-badges" data-rc="offerings/shared/badges"><div class='u-displayFlex offerings-shared-badges__wrapper offerings-shared-badges__wrapper--one_tag'>
+<div class='c-tag--gray c-tag c-tag--heavy c-tag--small'>
+Funded
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--r3-printing-july-2018"><img alt="Logo of R3 Printing" title="R3 Printing" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/148/148-1562079425-f9e9ebec3cae72006f8cd5ce521675ae2735610e.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/148/148-1562079425-9ebf518c0d4b5d81105d7fccddc5aa869c10af05.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">R3 Printing
+<div class='u-flex1 u-displayFlex offerings-shared-company_name__company_name_badges'>
+<div class='c-tag--campaign c-tag s-marginLeft0_5 c-tag--small'>
+1
+<sup>
+st
+</sup>
+</div>
+</div>
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+ Safe, fast, and efficient: the future of enterprise...
+</p>
+<div class='c-tag-container s-marginTop0_5 offerings-shared-offering_card_small__tags'>
+<div class='c-tag c-tag--small c-tag--no_border' style='background-color: #FFE8E5'>
+Companies
+</div>
+</div>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section s-grid-colSm24 s-paddingTop3' id='events'>
+<div class="tags-show-events_section" data-rc="tags/show/events_section"><h3 class='s-fontSize24 u-fontWeight400 u-colorGray2'>
+Events
+<div class='s-marginLeft0_5 u-colorGray9 u-fontWeight200 u-displayInlineBlock'>
+0
+</div>
+</h3>
+<div class='s-marginTop1_5'>
+</div>
+</div>
+</div>
+<div class='js-section s-grid-colSm24 s-paddingTop3' id='blog-posts'>
+<div class="tags-show-blog_posts_section" data-rc="tags/show/blog_posts_section"><h3 class='s-fontSize24 u-fontWeight400 u-colorGray2'>
+Blog posts
+<div class='s-marginLeft0_5 u-colorGray9 u-fontWeight200 u-displayInlineBlock'>
+3
+</div>
+</h3>
+<div class='s-marginTop1_5 s-marginPullBottom2'>
+<div class="blog-posts-shared-posts_list" data-rc="blog/posts/shared/posts_list"><div class='s-grid u-textCenter'>
+<div class='s-marginBottom2 u-textLeft s-grid-colSm12'>
+<a class="c-link c-link--unstyled u-displayBlock u-borderRadius3 blog-posts-shared-post_card_founder_story" href="/blog/superheroes/altaneve-founder-story-hungry-to-do-something-i-love" data-rc="blog/posts/shared/post_card_founder_story"><article>
+<figure class='blog-posts-shared-post_card_founder_story__cover-photo-wrapper'>
+<img srcset="https://uploads.republic.com/p/blog/posts/cover_photos/founder_profile_retina/000/000/058/58-1545150086-60a4db4190a19e03e56e2ea49473d77dd1ad1f59.jpg 2x" alt="David Noto, Altaneve" class="blog-posts-shared-post_card_founder_story__cover-photo" src="https://uploads.republic.com/p/blog/posts/cover_photos/founder_profile/000/000/058/58-1545150086-6bd90a789de930ffcb0b86c1393e73c392be385c.jpg" />
+</figure>
+<div class='s-paddingTop4 s-padding2 blog-posts-shared-post_card_founder_story__card-story'>
+<h4 class='c-superheroTitle c-superheroTitle--white c-condensedTitle s-fontSize14 u-colorWhite blog-posts-shared-post_card_founder_story__category'>
+Superheroes
+</h4>
+<h3 class='s-fontSize30 u-lineHeight1 u-fontWeight900 u-colorWhite blog-posts-shared-post_card_founder_story__title'>
+David Noto, Altaneve
+</h3>
+<p class='s-paddingRight1 s-fontSize18 u-fontWeight400 u-colorWhite blog-posts-shared-post_card_founder_story__excerpt'>
+Hungry to do something I love
+</p>
+</div>
+</article>
+</a>
+</div>
+<div class='s-marginBottom2 u-textLeft s-grid-colSm12'>
+<a class="c-link c-link--unstyled u-displayBlock u-borderRadius3 blog-posts-shared-post_card_founder_story" href="/blog/superheroes/creating-on-demand-manufacturing-r3-printing-founder-story" data-rc="blog/posts/shared/post_card_founder_story"><article>
+<figure class='blog-posts-shared-post_card_founder_story__cover-photo-wrapper'>
+<img srcset="https://uploads.republic.com/p/blog/posts/cover_photos/founder_profile_retina/000/000/083/83-1545145487-26731276337bedd80df62feaf45560ef592efab9.jpg 2x" alt="Daniel Downs, R3 Printing" class="blog-posts-shared-post_card_founder_story__cover-photo" src="https://uploads.republic.com/p/blog/posts/cover_photos/founder_profile/000/000/083/83-1545145487-b53e57f2ad640a81d968d1216d36c673e92c89f9.jpg" />
+</figure>
+<div class='s-paddingTop4 s-padding2 blog-posts-shared-post_card_founder_story__card-story'>
+<h4 class='c-superheroTitle c-superheroTitle--white c-condensedTitle s-fontSize14 u-colorWhite blog-posts-shared-post_card_founder_story__category'>
+Superheroes
+</h4>
+<h3 class='s-fontSize30 u-lineHeight1 u-fontWeight900 u-colorWhite blog-posts-shared-post_card_founder_story__title'>
+Daniel Downs, R3 Printing
+</h3>
+<p class='s-paddingRight1 s-fontSize18 u-fontWeight400 u-colorWhite blog-posts-shared-post_card_founder_story__excerpt'>
+Creating on-demand manufacturing
+</p>
+</div>
+</article>
+</a>
+</div>
+<div class='s-marginBottom2 u-textLeft s-grid-colSm12'>
+<a class="c-link c-link--unstyled u-displayBlock blog-posts-shared-post_card" href="/blog/industry/investing-in-trucking" data-rc="blog/posts/shared/post_card"><article>
+<figure class='u-borderRadius3 blog-posts-shared-post_card__cover-photo-wrapper'>
+<img srcset="https://uploads.republic.com/p/blog/posts/cover_photos/medium_retina/000/000/468/468-1626204257-fe6d6b7b8fc8afa871693d58fd51d70dcc2f1561.jpg 2x" alt="Investing in trucking " class="blog-posts-shared-post_card__cover-photo" src="https://uploads.republic.com/p/blog/posts/cover_photos/medium/000/000/468/468-1626204257-1eaddc96ecfe9fc6f0e77436133834c22d3656ce.jpg" />
+</figure>
+<h4 class='c-condensedTitle s-fontSize14 u-colorBlack blog-posts-shared-post_card__category'>
+Industry
+</h4>
+<h3 class='s-fontSize30 u-lineHeight1 u-fontWeight900 u-colorBlack blog-posts-shared-post_card__title'>
+Investing in trucking 
+</h3>
+<p class='s-paddingRight1 s-fontSize14 u-fontWeight400 u-colorGray6 blog-posts-shared-post_card__excerpt'>
+Podcasting with Pierre Laguerre, Co-Founder and CEO of Fleeting
+</p>
+</article>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section s-grid-colSm24 s-paddingTop3' id='investor-groups'>
+<div class="tags-show-investor_group_section" data-rc="tags/show/investor_group_section"><h3 class='s-fontSize24 u-fontWeight400 u-colorGray2'>
+Investor Groups
+<div class='s-marginLeft0_5 u-colorGray9 u-fontWeight200 u-displayInlineBlock'>
+0
+</div>
+</h3>
+<div class='s-grid'>
+</div>
+</div>
+</div>
+<div class='js-section s-grid-colSm24 s-paddingTop3' id='press-section'>
+<div class="tags-show-press_section" data-rc="tags/show/press_section"><h3 class='s-fontSize24 u-fontWeight400 u-colorGray2'>
+Press
+<div class='s-marginLeft0_5 u-colorGray9 u-fontWeight200 u-displayInlineBlock'>
+123
+</div>
+</h3>
+<div class="tags-show-press_articles" data-rc="tags/show/press_articles"><div class='s-marginTop2 js-press_container' id='press'>
+<h4 class='s-fontSize14 u-textTransformUppercase u-letterSpacing1 u-colorGray8'>
+Press about Manufacturing &amp; Industrials
+</h4>
+<div class='s-grid js-press_articles'>
+<div class='s-grid-colSm12 s-marginTop2 u-text-left'>
+<a href="https://3dprint.com/250240/3d-printing-news-briefs-7-28-19/" target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article_small" data-rc="press/article_small"><div class='s-marginPull1 s-marginBottom1 press-article_small__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/007/749/7749-1564427633-2e6535962c08555c221037d17f27d62462ef8d32.png);'></div>
+<div class='press-article_small__content'>
+<h3 class='s-fontSize18 u-fontWeight500'>
+3D Printing News: July 29, 2019 - DiLab will support R3 P...
+</h3>
+<div class='s-marginTop0_5 s-fontSize12'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/007/749/7749-1564427492-62e26a851ef8e61fdcb2f1b02759c354dd2b42fe. 2x" height="16px" class="s-marginRight0_5 u-displayInlineBlock u-verticalAlignMiddle" alt="3DPrint.com | The Voice of 3D Printing / Additive Manufacturing" title="3DPrint.com | The Voice of 3D Printing / Additive Manufacturing" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/007/749/7749-1564427492-f6312ed4e67e96b21cfc888bec1c7011161eb354." />
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+3DPrint.com | The Voice of 3D Printing / Additive Manufacturing
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Jul 29, 2019
+</div>
+</div>
+<p class='s-marginTop1 s-marginBottom1 u-fontWeight400 u-colorGray4 s-fontSize14'>
+We&#39;ve got some business to cover in today&#39;s 3D Printing News Briefs. The Engi...
+</p>
+<div class='s-paddingHoriz0_5 s-marginPull1 press-article_small__actions'>
+<div class='press-article_small__action'>
+<span class=''>
+<i class="icon-heart"></i>
+</span>
+0
+</div>
+<div class='press-article_small__action'>
+<i class="icon-comment"></i>
+0
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class='s-grid-colSm12 s-marginTop2 u-text-left'>
+<a href="https://www.thebroadcastbridge.com/content/entry/12404/axle-ai-offers-ai-based-media-management-for-the-masses" target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article_small" data-rc="press/article_small"><div class='s-marginPull1 s-marginBottom1 press-article_small__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/009/419/9419-1583801654-faf65d1e6ec3a9e3b0e040e7450c5cbab0fbab54.);'></div>
+<div class='press-article_small__content'>
+<h3 class='s-fontSize18 u-fontWeight500'>
+axle ai Offers AI-based Media Management for the Masses -...
+</h3>
+<div class='s-marginTop0_5 s-fontSize12'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/009/419/9419-1583801654-c22b2592712065ee2dc5a39e7c186cdc226f54b9. 2x" height="16px" class="s-marginRight0_5 u-displayInlineBlock u-verticalAlignMiddle" alt="Thebroadcastbridge" title="Thebroadcastbridge" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/009/419/9419-1583801654-3f112897c797654cb6fa03517fad4c1c555a1553." />
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+Thebroadcastbridge
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Nov 30, 2018
+</div>
+</div>
+<p class='s-marginTop1 s-marginBottom1 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Sorting through and transcoding the myriad forms of source material into post...
+</p>
+<div class='s-paddingHoriz0_5 s-marginPull1 press-article_small__actions'>
+<div class='press-article_small__action'>
+<span class=''>
+<i class="icon-heart"></i>
+</span>
+0
+</div>
+<div class='press-article_small__action'>
+<i class="icon-comment"></i>
+0
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class='u-textCenter s-marginTop1_5'>
+<a class="c-button js-view_all_press" href="/manufacturing-industrials/show-press">View all 7 articles</a>
+</div>
+</div>
+</div>
+<div class="tags-show-press_offering_articles" data-rc="tags/show/press_offering_articles"><div class='s-marginTop3 js-press_offering_container'>
+<h4 class='s-fontSize14 u-textTransformUppercase u-letterSpacing1 u-colorGray8'>
+Press from companies related to Manufacturing &amp; Industrials
+</h4>
+<div class='s-grid'>
+<div class='s-grid-colSm8 s-marginTop2 u-text-left'>
+<a href="https://podcasts.apple.com/us/podcast/a-big-bet-on-an-ex-trucker-89-fleeting/id1008577710?i=1000473749330" target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article_small" data-rc="press/article_small"><div class='s-marginPull1 s-marginBottom1 press-article_small__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/010/156/10156-1588902297-06929026def946070318b54a4ce77c1117378553.);'></div>
+<div class='press-article_small__content'>
+<h3 class='s-fontSize18 u-fontWeight500'>
+‎The Pitch: A Big Bet on an Ex-Trucker (#89, Fleeting) on...
+</h3>
+<div class='s-marginTop0_5 s-fontSize12'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/010/156/10156-1588902297-45f90a6452aeafb474592b3a1d3573991f55738c. 2x" height="16px" class="s-marginRight0_5 u-displayInlineBlock u-verticalAlignMiddle" alt="Apple Podcasts" title="Apple Podcasts" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/010/156/10156-1588902297-f8736f713d72cca78919726fed8667252faf938e." />
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+Apple Podcasts
+</div>
+</div>
+<p class='s-marginTop1 s-marginBottom1 u-fontWeight400 u-colorGray4 s-fontSize14'>
+‎For years, Pierre Laguerre worked as a truck driver. During those years he s...
+</p>
+<div class='s-paddingHoriz0_5 s-marginPull1 press-article_small__actions'>
+<div class='press-article_small__action'>
+<span class=''>
+<i class="icon-heart"></i>
+</span>
+0
+</div>
+<div class='press-article_small__action'>
+<i class="icon-comment"></i>
+0
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class='s-grid-colSm8 s-marginTop2 u-text-left'>
+<a href="https://www.3plperspectives-digital.com/trim/0419_april_2019/MobilePagedArticle.action?articleId=1472844" target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article_small" data-rc="press/article_small"><div class='s-marginPull1 s-marginBottom1 press-article_small__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/015/884/15884-1628010746-c4f21dc9a5768db8ba9eb8aa1c48b25fd35a19c0.);'></div>
+<div class='press-article_small__content'>
+<h3 class='s-fontSize18 u-fontWeight500'>
+Freight Tech Changing 3PL Landscape
+</h3>
+<div class='s-marginTop0_5 s-fontSize12'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+3plperspectives-digital
+</div>
+</div>
+<p class='s-marginTop1 s-marginBottom1 u-fontWeight400 u-colorGray4 s-fontSize14'>
+AUTOMATED VEHICLES, DRONES flying out of sunroofs, digital booking and dispat...
+</p>
+<div class='s-paddingHoriz0_5 s-marginPull1 press-article_small__actions'>
+<div class='press-article_small__action'>
+<span class=''>
+<i class="icon-heart"></i>
+</span>
+0
+</div>
+<div class='press-article_small__action'>
+<i class="icon-comment"></i>
+0
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class='s-grid-colSm8 s-marginTop2 u-text-left'>
+<a href="https://www.forbes.com/sites/afdhelaziz/2021/08/11/how-boxabl-is-revolutionizing-affordable-housing-with-its-unfolding-house-with-customers-like-elon-musk-and-1-billion-in-pre-orders/" target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article_small" data-rc="press/article_small"><div class='press-article_small__content'>
+<h3 class='s-fontSize18 u-fontWeight500'>
+How Boxabl Is Revolutionizing Affordable Housing With Its...
+</h3>
+<div class='s-marginTop0_5 s-fontSize12'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+Forbes
+</div>
+</div>
+<p class='s-marginTop1 s-marginBottom1 u-fontWeight400 u-colorGray4 s-fontSize14'>
+When I stumbled across housing start-up Boxabl while going down a YouTube rab...
+</p>
+<div class='s-paddingHoriz0_5 s-marginPull1 press-article_small__actions'>
+<div class='press-article_small__action'>
+<span class=''>
+<i class="icon-heart"></i>
+</span>
+0
+</div>
+<div class='press-article_small__action'>
+<i class="icon-comment"></i>
+0
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class='u-textCenter s-marginTop1_5'>
+<a class="c-button js-view_all_press_offering" href="/manufacturing-industrials/show-press-offering">View all 116 articles</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section s-grid-colSm24 s-paddingTop3' id='followers'>
+<div class="tags-show-followers_section" data-rc="tags/show/followers_section"><h3 class='s-fontSize24 u-fontWeight400 u-colorGray2'>
+Followers
+<div class='s-marginLeft0_5 u-colorGray9 u-fontWeight200 u-displayInlineBlock'>
+9780
+</div>
+</h3>
+<div class='s-grid'>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="lixander-rios" href="/@lixander-rios"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Lixander Rios" title="Lixander Rios" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/371/338/1371338-1683025543-0f36df72ac7b73613d1be07b57eafb705215b184.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/371/338/1371338-1683025543-90ce46b8aa135ca9fdec327a5c4c9abd6c6bd173.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Lixander Rios
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="ken-mack" href="/@ken-mack"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Ken Mack" title="Ken Mack" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/365/177/1365177-1682053062-67422ff9a1245c9b01b81a2daa9c0c74fbefaad8.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/365/177/1365177-1682053062-e7d1314f62fa07ccf86777796b9973bd8026bc66.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Ken Mack
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="halo-all-surface-cleaning" href="/@halo-all-surface-cleaning"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Halo All Surface Cleaning" title="Halo All Surface Cleaning" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/583/1359583-1680674623-945a28e349361dfb920a817450e7bdc9251f0098.png 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/583/1359583-1680674623-a92737e188b38a49ce1743831aa936f3bcabdefa.png" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Halo All Surface Cleaning
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="hamlet-laundry" href="/@hamlet-laundry"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Hamlet Laundry" title="Hamlet Laundry" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/572/1359572-1680671539-9f1019cf6e6ce643195b39923ea76a5e17645f24.png 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/572/1359572-1680671539-266cef78ebfda21190a8adec483d8b5e38aab46d.png" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Hamlet Laundry
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="henry-watson" href="/@henry-watson"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Henry Watson" title="Henry Watson" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/562/1359562-1680667199-584e23979aab3f943c7a8fe516f9672d3751ba60.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/562/1359562-1680667199-9aae3b50df505492efba15f230bec685fd6c837d.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Henry Watson
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="shivansh-agarwal" href="/@shivansh-agarwal"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Shivansh Agarwal" title="Shivansh Agarwal" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/556/1359556-1680665600-0712a1bc294a57e4539806d6489e2dfba835f976.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/556/1359556-1680665600-03c596e7414c9b0427d863afeb6f34d2233d5e93.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Shivansh Agarwal
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="jimmy-sum" href="/@jimmy-sum"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Jimmy Sum" title="Jimmy Sum" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/453/1359453-1680625611-66337c4ea4ecf5e5aac767ac5c63a806b150b101.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/453/1359453-1680625611-216885fad14d8bbe2cc6d8e611077e040c91e42f.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Jimmy Sum
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="philip-ammerman" href="/@philip-ammerman"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Philip Ammerman" title="Philip Ammerman" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/444/1359444-1680621540-5a26c1b2fade6307366fff9e2c014d9b38a4ddbf.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/444/1359444-1680621540-964f786f8891e177213886e32858fd5bddb0005e.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Philip Ammerman
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="game-d-i-th-ng-win" href="/@game-d-i-th-ng-win"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Game Đổi Thưởng Win" title="Game Đổi Thưởng Win" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/396/1359396-1680605287-d3d116157499e19b52b566f1ef96d76be6350a40.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/396/1359396-1680605287-6ae1316599187ffc16a44b10561b0187f2a5fc33.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Game Đổi Thưởng Win
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="tyler-william" href="/@tyler-william"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Tyler william" title="Tyler william" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/392/1359392-1680604749-c8b96574947023b6cbc08814cc63f5ef546a98a0.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/392/1359392-1680604749-e9a8dd78507e4d1f1825d01d3c9e73b6b18c0bf4.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Tyler william
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="property-hike" href="/@property-hike"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Property Hike" title="Property Hike" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/370/1359370-1680600535-5487d8a350cfd5f1676e6c97b88126809e04a511.png 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/370/1359370-1680600535-f303f789c1a3783ec9e78404a790f17d53bb175e.png" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Property Hike
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="marcus-giles" href="/@marcus-giles"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Marcus Giles" title="Marcus Giles" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/357/1359357-1680598020-d554314be6e17666c5587fa2c7151ca1a98af4a7.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/357/1359357-1680598020-abd8f9ed2fed81c9d98c87b9daba4c6e2f8dfdd7.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Marcus Giles
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="dwin-game" href="/@dwin-game"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of DWIN Game" title="DWIN Game" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/321/1359321-1680586634-eb92faba188c5b05dcb10bd7031c2667f2bc7f9d.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/321/1359321-1680586634-5aea40d7e9767daa41dbabd6d00854be76f47a5f.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+DWIN Game
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="scm-xpress" href="/@scm-xpress"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of SCM Xpress" title="SCM Xpress" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/317/1359317-1680585344-e4f09af5e174dd7a284f0e6177f55687342c134b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/317/1359317-1680585344-6e26186d0c2a5a09cfcc806ac0abc8ee74dadde6.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+SCM Xpress
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="godfred-yeboah" href="/@godfred-yeboah"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Godfred Yeboah" title="Godfred Yeboah" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/302/1359302-1680666146-189e4147b5a889b5e9586bb2c6123b7185e20065.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/302/1359302-1680666146-f173c8b6d332bde18b0b5fb67324bba7d3e48ef7.jpeg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Godfred Yeboah
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="steven-garrison" href="/@steven-garrison"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Steven Garrison" title="Steven Garrison" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/253/1359253-1680555984-d89ce57e51c6bb39f64f39516f81531e054bc197.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/253/1359253-1680555984-9667c57040058ee3e84bf34117a6d9ebec852cf8.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Steven Garrison
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="weave-cozy-leggings" href="/@weave-cozy-leggings"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Weave Cozy Leggings" title="Weave Cozy Leggings" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/359/219/1359219-1680546424-a6b93000de52f9b0fa17a390fd7327b24c283723.png 2x" src="https://uploads.republic.com/p/users/avatars/small/001/359/219/1359219-1680546424-183e2f5b4377eab3a72c44759ec15b13ce70db3f.png" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Weave Cozy Leggings
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="paul-jones-12" href="/@paul-jones-12"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Paul Jones" title="Paul Jones" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/358/366/1358366-1680533861-310223d7508777705b6b8472e00b74d2a3939430.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/358/366/1358366-1680533861-cdec1529d82dc7c4e12a0f6578e3dd61d07a702a.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Paul Jones
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="unity-realty" href="/@unity-realty"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Unity Realty" title="Unity Realty" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/358/358/1358358-1680532969-c7f9c90c446c70f02019dc110ad571ac7d9a7070.png 2x" src="https://uploads.republic.com/p/users/avatars/small/001/358/358/1358358-1680532969-7f3d25c44693ca30595da7acbd77d6a4e6181105.png" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Unity Realty
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="sieko-college" href="/@sieko-college"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of sieko college" title="sieko college" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/358/319/1358319-1680517379-81adc07b6743fb444efde20088ffca0c5387ca0a.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/358/319/1358319-1680517379-8dddd20c473ff7e3277f6f657c06430a068da9e8.jpeg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+sieko college
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="prihoda-north-america" href="/@prihoda-north-america"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Prihoda North America" title="Prihoda North America" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/358/134/1358134-1680447632-27e59e420b2aa36bb95b5b1aca3dca799b5409c6.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/358/134/1358134-1680447632-75e7b531577ef57925389bdf36e4fdf0965fcaef.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Prihoda North America
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="link-truy-c-p-bong-tam-tam" href="/@link-truy-c-p-bong-tam-tam"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Link truy cập Bong Tam Tam" title="Link truy cập Bong Tam Tam" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/358/091/1358091-1680423434-7c88234ec4c187244e7f21c03b2af57df4837fdf.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/358/091/1358091-1680423434-359e54729a2b08e8d135a5bb68754f55ecaec975.jpg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Link truy cập Bong Tam Tam
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="anjan-dutta" href="/@anjan-dutta"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Anjan Dutta" title="Anjan Dutta" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/358/073/1358073-1680411836-1ec37cbc77ff29ad6a3925777755822fc0a73707.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/001/358/073/1358073-1680411836-fe4fe8d93e7159cb5db68341929b1347571cbd2d.jpeg" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Anjan Dutta
+</div>
+</a></div>
+<div class='s-grid-colLg3 s-grid-colMd4 s-grid-colXs6 u-text-center s-marginTop1_5'>
+<a class="js-tooltip_ajax u-colorGray3 u-displayBlock " data-type="user" data-slug="louis-jennings" href="/@louis-jennings"><div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Louis Jennings" title="Louis Jennings" srcset="https://uploads.republic.com/p/users/avatars/small_2x/001/358/060/1358060-1680404829-032928468509142e8f765680b2ed63f1ed3cff50.png 2x" src="https://uploads.republic.com/p/users/avatars/small/001/358/060/1358060-1680404829-9ebf510e54a42caca78d6f65e5750eb7a812e227.png" /></div>
+<div class='s-marginTop0_5 s-fontSize14 u-fontWeight400'>
+Louis Jennings
+</div>
+</a></div>
+</div>
+<div class='s-marginTop2 u-textCenter'>
+and 9756 more
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-marginTop4 s-borderTop1 s-paddingBottom1'>
+<ol class='u-listUnstyled'>
+<li class='u-displayInlineBlock'>
+<span></span>
+<a href="https://republic.com/categories">Categories</a>
+</li>
+<div class='u-displayInlineBlock u-colorGray8 s-paddingHoriz0_5'>
+›
+</div>
+<li class='u-displayInlineBlock' itemprop='itemListElement' itemscope='' itemtype='http://schema.org/ListItem'>
+<a class='c-link c-link--muted' href='https://republic.com/tag/manufacturing-industrials' itemprop='item' itemscope='' itemtype='http://schema.org/Thing'>
+<span itemprop='name'>
+Manufacturing &amp; Industrials
+</span>
+</a>
+<meta content='2' itemprop='position'>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-full_disclaimer" data-rc="layouts/footer/disclaimers/full_disclaimer"><p class='s-marginBottom1'>
+This site (the "Site") is owned and maintained by OpenDeal Inc., which is not a registered
+broker-dealer. OpenDeal Inc. does not give investment advice, endorsement, analysis or
+recommendations with respect to any securities. All securities listed here are being offered
+by, and all information included on this Site is the responsibility of, the applicable issuer
+of such securities. The intermediary facilitating the offering will be identified in such
+offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+All funding-portal activities are conducted by OpenDeal Portal LLC doing business as Republic,
+a funding portal which is registered with the US Securities and Exchange Commission (SEC) as a
+funding portal (Portal) and is a member of the Financial Industry Regulatory Authority (FINRA).
+OpenDeal Portal LLC is located at 149 E 23rd St #2001, New York, NY 10010, please
+check out background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org/about/funding-portals-we-regulate">Funding Portal page</a>.
+</p>
+<p class='s-marginBottom1'>
+All broker-dealer related securities activity is conducted by OpenDeal Broker LLC, an
+affiliate of OpenDeal Inc. and OpenDeal Portal LLC, and a registered broker-dealer, and member
+of
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org">FINRA</a>
+|
+<a class="c-link c-link--underline" href="https://www.sipc.org/">SiPC</a>,
+located at 1345 Avenue of the Americas, 15th Floor, New York, NY 10105, please check our
+background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://brokercheck.finra.org/firm/summary/291387">BrokerCheck</a>.
+</p>
+<p class='s-marginBottom1'>
+Certain pages discussing the mechanics and providing educational materials regarding
+regulation crowdfunding offerings may refer to OpenDeal Broker LLC and OpenDeal Portal LLC
+collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC make investment
+recommendations and no communication, through this Site or in any other medium should be
+construed as a recommendation for any security offered on or off this investment platform.
+Investment opportunities posted on this Site are private placements of securities that are
+not publicly traded, involve a high degree of risk, may lose value, are subject to holding
+period requirements and are intended for investors who do not need a liquid investment. Past
+performance is not indicative of future results. Investors must be able to afford the loss
+of their entire investment. Only qualified investors, which may be restricted to only
+Accredited Investors or non-U.S. persons, may invest in offerings hosted by OpenDeal Broker.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC, nor any of their
+officers, directors, agents and employees makes any warranty, express or implied, of any
+kind whatsoever related to the adequacy, accuracy or completeness of any information on this
+Site or the use of information on this site. Offers to sell securities can only be made
+through official offering documents that contain important information about the investment
+and the issuers, including risks. Investors should carefully read the offering documents.
+Investors should conduct their own due diligence and are encouraged to consult with their
+tax, legal and financial advisors.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1 s-paddingHoriz1_5 s-paddingVert1 u-text-center u-fontWeight500'>
+Investors should verify any issuer information they consider important before making
+an investment.
+</p>
+<p class='s-marginBottom1'>
+Investments in private companies are particularly risky and may result in total loss of
+invested capital. Past performance of a security or a company does not guarantee future
+results or returns. Only investors who understand the
+<a class="c-link c-link--underline" href="/risks">risks of early stage investment</a>
+and who meet the Republic's
+<a class="c-link c-link--underline" href="/help/can-i-invest">investment criteria</a>
+may invest.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC verify
+information provided by companies on this Site and makes no assurance as to the completeness
+or accuracy of any such information. Additional information about companies fundraising on
+the Site can be found by searching the
+<a target="_blank" rel="noopener" class="c-link c-link--underline" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not require an
+EDGAR filing.
+</p>
+<p class='s-marginBottom1'>
+To help the government fight the funding of terrorism and money laundering activities,
+Federal law requires all financial institutions to obtain, verify, and record information
+that identifies each person who opens an account.
+Therefore, when you use the Services we will ask for your name, address, date of birth,
+and other information that will allow us to identify you.
+We may also ask to see your driver's license, passport or other identifying documents.
+</p>
+<p class='s-marginBottom1'>
+Republic and its affiliates are not and do not operate or act as a bank. Certain banking
+services are provided by BankProv, member FDIC / member DIF. Digital (crypto) assets and
+investment products are not insured by the FDIC, may lose value, and are not deposits or other
+obligations of BankProv and are not guaranteed by BankProv. Terms and conditions apply.
+</p>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="xvmMEYMyzW12ru89II7ERg=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="xvmMEYMyzW12ru89II7ERg=="></script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="xvmMEYMyzW12ru89II7ERg==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="xvmMEYMyzW12ru89II7ERg==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="xvmMEYMyzW12ru89II7ERg==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+
+</body></html>
+
+

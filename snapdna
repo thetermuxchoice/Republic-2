@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+SnapDNA — Republic
+</title>
+<link href='https://republic.com/snapdna' rel='canonical'>
+<meta content='World’s first pathogen test that delivers accurate results in 20 minutes
+' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='SnapDNA' itemprop='name'>
+<meta content='World’s first pathogen test that delivers accurate results in 20 minutes
+' itemprop='description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/675/675-1618169972-9026657e3697edfed746f8ae71fb573f9342f11c.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='SnapDNA' name='twitter:title'>
+<meta content='World’s first pathogen test that delivers accurate results in 20 minutes
+' name='twitter:description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/675/675-1618169972-9026657e3697edfed746f8ae71fb573f9342f11c.jpg' name='twitter:image'>
+<meta content='https://republic.com/snapdna' property='og:url'>
+<meta content='SnapDNA' property='og:title'>
+<meta content='World’s first pathogen test that delivers accurate results in 20 minutes
+' property='og:description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/675/675-1618169972-9026657e3697edfed746f8ae71fb573f9342f11c.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/vendor-node_modules_a-db7c58b4.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Ac-919e95b8.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Table_Table_module_scss-e15798b9-0e96676f.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/MediaSliderPage-66fe9f7a.css" />
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="AHE-3hy-Lc82v-IVGJpnN8IJUX9pxdIAZUHStnjAzs8LZ3L21Pyxgbz7NLEak7u4QX8BCfGDnUir6s53_yRf5Q" />
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  analytics.page(
+    "offering",
+    "snapdna", {
+      url: "https://republic.com/snapdna"
+    }, {
+      integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+    }
+  );
+</script>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class="offerings-show__body preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="layouts-header_footer" data-rc="layouts/header_footer"><nav class="c-header-nav c-header-nav--default  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/black/150x38/logo-211758c2027fc8268186d512a2119520a35358973648789a123d9fb6c3d5a37f.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search  layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--default" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div>
+<div class="layouts-full_width" data-rc="layouts/full_width"><script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  if (dataLayer) {
+    dataLayer.push({"event":"detail","ecommerce":{"currencyCode":"USD","detail":{"products":[{"name":"SnapDNA","id":"snapdna","price":150,"category":"Biotechnology, B2B, $1M+ raised, Companies, Crowd SAFE","quantity":1}]}}});
+  }
+</script>
+<div class="js-segment_product_view s-marginBottom3_5 offerings-show" data-sticky-container="true" data-state="finalized" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;SnapDNA&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:675,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/675/675-1611935033-683b321c199e9f2c90a98d6e8f18ffaca04c0fdc.png&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;snapdna&quot;,&quot;tags&quot;:&quot;biotechnology,b2b,1m-raised,v-companies,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/snapdna&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-rc="offerings/show"><div class='js-router_data' data-root='snapdna'></div>
+<div class="offerings-show-invest_modal" data-rc="offerings/show/invest_modal"><div class='js-remodal remodal offerings-show-invest_modal__invest_modal' data-remodal-id='invest'>
+<a class='remodal-close' data-remodal-action='close'></a>
+<h1 class='c-secondaryTitle offerings-show-invest_modal__invest_title'>
+SnapDNA isn't accepting new investments
+</h1>
+<p class='s-marginTop2 s-fontSize17 u-colorMuted offerings-show-invest_modal__invest_date'>
+SnapDNA’s deadline was
+<span class='u-blockXsOnly'>
+April 28, 2021
+</span>
+</p>
+<p class='s-marginTop2 s-marginHoriz5 s-fontSize17 offerings-show-invest_modal__invest_message'>
+Follow the company to stay updated on their progress,
+including future investment opportunities
+</p>
+<p class='s-marginTop1'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Invest modal" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link" data-action="follow" data-href="/register?after_sign_in=%2Fsnapdna%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5'>
+2740
+</span>
+</button>
+</div>
+</p>
+<hr class='s-marginTop2 s-marginPullHoriz2 offerings-show-invest_modal__invest_divider'>
+<div class='u-displayFlex u-alignItemsCenters-marginTop2 offerings-show-invest_modal__invest_footer'>
+<div class='u-flex1'>
+Explore new investment opportunities:
+</div>
+<div class='u-flex1'>
+<a class="c-button c-button--secondary" href="/#offerings">View companies raising now</a>
+</div>
+</div>
+</div>
+</div>
+<header class="s-container s-gridMaxXs24 s-paddingTop5 s-paddingBottom3 offerings-show-header offerings-show-header--snapdna" data-rc="offerings/show/header"><div class='js-header_content'>
+<div class='s-marginPullTop2'>
+<div class="s-marginBottom2 u-displayFlex u-alignItemsCenter s-fontSize18 u-colorMuted offerings-show-header-message_campaign_ended" data-rc="offerings/show/header/message_campaign_ended"><div class='u-flexGrow s-borderTop0_5 s-marginTop0_5'></div>
+<div class='s-marginHoriz1'>
+<i class='icon-lock'></i>
+Campaign ended
+</div>
+<div class='u-flexGrow s-borderTop0_5 s-marginTop0_5'></div>
+</div>
+</div>
+<div class='s-grid offerings-show-header__top-part'>
+<div class='s-grid-colSm16'>
+<div class="offerings-show-header-title" data-rc="offerings/show/header/title"><div class='u-displayFlex'>
+<div class='u-hiddenPrint offerings-show-header-title__avatar-wrapper'>
+<div class="c-avatar c-avatar--small offerings-show-header-title__avatar c-avatar--border c-avatar--snapdna"><img alt="Logo of SnapDNA" title="SnapDNA" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/675/675-1607361272-e22093b0ebc84ceaf061e2a3d29b0df21ae0fd87.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/675/675-1607361272-d1a3642d07020cb1b71dd4f7ac1303b45db011c9.png" /></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<h1 class='c-primaryTitle offerings-show-header-title__company-name'>
+SnapDNA
+</h1>
+</div>
+</div>
+<div class='c-subtitle s-fontSize20 s-marginTop0_5 offerings-show-header-title__high-concept'>
+Solving the global food safety challenge
+</div>
+<div class='s-marginTop1_5'>
+<div class=''>
+<div class="c-tag-container u-hiddenPrint s-marginTop1 offerings-show-header-title__tags-wrapper offerings-shared-tags" data-rc="offerings/shared/tags"><a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/b2b">B2B</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/biotechnology">Biotechnology</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8 u-hiddenSmDown'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="SnapDNA" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Fsnapdna%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Fsnapdna"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?text=World%E2%80%99s+first+pathogen+test+that+delivers+accurate+results+in+20+minutes%0A&amp;url=https%3A%2F%2Frepublic.com%2Fsnapdna"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?text=World%E2%80%99s+first+pathogen+test+that+delivers+accurate+results+in+20+minutes%0A&amp;url=https%3A%2F%2Frepublic.com%2Fsnapdna"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Fsnapdna"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-displayFlex u-blockXsOnly offerings-show-header__media-react'>
+<div class='s-grid-colSm16'>
+<div class='offerings-show-header__media-react-content'>
+<div class="offerings-show-header-media_react" data-rc="offerings/show/header/media_react"><div data-react-key="MediaSliderPage" data-react-id="5c21a672-f658-4b1c-926a-1412da2cf1ce"><div class="js-react-component--placeholder"><div class='offerings-show-header-media_react__image-wrap'>
+<div class='offerings-show-header-media_react__image'>
+<img srcset="https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/002/113/2113-1636645952-72ec361c3c7d811b0e29691077fd43e713c6d691. 2x" class="u-displayBlock  " alt="Featured image of SnapDNA" title="SnapDNA" src="https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/002/113/2113-1636645952-491453bdaf4a6a4def43f9ebb4da9baa9b3fffdb." />
+</div>
+</div>
+</div><div class="js-react-component--content u-invisible"></div></div><script nonce="9iC8pkzzAceZuRNjRjxpSw==" type="application/json" data-react-key="MediaSliderPage" data-react-id="5c21a672-f658-4b1c-926a-1412da2cf1ce">{"media":{"data":[{"id":"2113","type":"offerings_slider_media_item","attributes":{"content_type":"video","order_num":0,"content_file_name":"2328410080.mp4","content_file_size":37582838,"preview_file_name":"open-uri20210825-507279-if0ms2","preview_file_size":798838,"url":null,"url_preview":null,"content_url":{"original":"https://uploads.republic.com/p/offerings/slider_media_items/contents/original/000/002/113/2113-1636532351-cdfde6cbf23ed4caa72e618572418b26392f7312.mp4"},"preview_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/002/113/2113-1636645952-491453bdaf4a6a4def43f9ebb4da9baa9b3fffdb.","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/002/113/2113-1636645952-72ec361c3c7d811b0e29691077fd43e713c6d691.","small":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small/000/002/113/2113-1636645952-f719ab8a170d78c7cc86731d7a11ced342bcc871.","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small_2x/000/002/113/2113-1636645952-aafd205285bec7564e8f31a7bc6e88af606c53ff."},"youtube_id":null}}]},"editMode":false,"isIssuer":false,"offeringSlug":"snapdna","offeringState":"finalized","missingPreviewUrl":"/previews/small/missing.png"}</script></div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8'>
+<div class="u-displayFlex u-flexDirectionColumn offerings-show-header-sidebar" data-rc="offerings/show/header/sidebar"><div class='u-flexGrow offerings-show-header-sidebar__top-part'>
+<div class="s-grid offerings-show-header-raising_information" data-rc="offerings/show/header/raising_information"><div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 s-borderBottom1 offerings-show-header-raised_amount offerings-show-header-raised_amount--without-divider" data-rc="offerings/show/header/raised_amount"><div class="offerings-show-header-sold_out_badge" data-rc="offerings/show/header/sold_out_badge"><div class='c-tag-container'>
+<div class='c-tag c-tag--small c-tag--success c-tag--heavy'>
+<i class="icon-ok"></i>
+Fully Funded
+</div>
+</div>
+</div>
+<div class='s-fontSize35 c-condensedTitle offerings-show-header-raised_amount__title u-colorGreen'>
+$1,070,000
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-raised_amount__subtitle'>
+Maximum funding goal reached
+</div>
+<i class='icon-info-letter icon--frame u-displayInlineBlock js-tooltip_simple offerings-show-header-raised_amount__icon-info' data-tippy-content='SnapDNA is raising up to $1.07M with a minimum goal of $25K'></i>
+</div>
+<div class='c-progress c-progress--large s-marginTop0_5 c-progress--gray'>
+<div class='c-progress__bar' style='width: 4280%'></div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 offerings-show-header-investors offerings-show-header-investors--closed" data-rc="offerings/show/header/investors"><div class='c-primaryTitle s-fontSize35 offerings-show-header-investors__title u-colorMuted'>
+1,774
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-investors__subtitle'>
+Investors
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-message_successfully_funded" data-rc="offerings/show/header/message_successfully_funded">Successfully funded and closed
+<span class='u-whiteSpaceNowrap'>
+on April 28, 2021.
+</span>
+</div>
+</div>
+<div class='offerings-show-header-sidebar__bottom-part s-marginTop2'>
+<div class="u-bgWhite offerings-show-header-invest_button" data-rc="offerings/show/header/invest_button"><div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button--block c-button--large s-paddingHoriz0_5 c-button--disabled offerings-shared-invest_button__lock_button js-locked_button u-displayFlex u-justifyContentCenter" href="/snapdna#invest"><i class="icon-lock"></i> Invest in SnapDNA
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class='u-bgGray s-paddingTop3 s-paddingBottom2_5 offerings-show__other-offerings'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-displayFlex u-justifyContentSpaceBetween u-flexWrap u-alignItemsCenter'>
+<h2 class='c-secondaryTitle u-colorGray6'>
+Open for investment
+</h2>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7 s-marginVert0_5'>
+Investors in SnapDNA also invested in these companies.
+<a href="/companies">View more</a>
+</div>
+</div>
+<div class='s-marginTop1 s-marginBottom1_5'>
+<div class="offerings-show-cards_slider" data-rc="offerings/show/cards_slider"><div class='s-grid js-offerings_slider js-segment_product_list offerings-show-cards_slider__slider' data-segment-list-id='promo-offering-other-deals'>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Skybound&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1817,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/817/1817-1679605633-18401378bbc24a7a957208dcbb03ec106f11b773.png&quot;,&quot;min_investment_amount&quot;:500,&quot;slug&quot;:&quot;skybound&quot;,&quot;tags&quot;:&quot;equity-1,v-companies,b2c,50-199-employees,arts-entertainment,video-games,5m-revenue,tier-1-vc-backing,25m-raised&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/skybound&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/skybound"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Skybound" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fskybound%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/817/1817-1679605633-18401378bbc24a7a957208dcbb03ec106f11b773.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--skybound"><img alt="Logo of Skybound" title="Skybound" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/817/1817-1665587549-0c5b74a35524056032473c7ae8ba23f7cc85840d.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/817/1817-1665587549-d02609a0c1c72095de383a88bb69f525b305087c.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Skybound
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Global hit entertainment from the company behind The...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Capital R · Reg A+
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:true,&quot;company_name&quot;:&quot;BuyAlerts&quot;,&quot;days_remaining&quot;:6,&quot;id&quot;:2065,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/065/2065-1674503319-fba03242fd891738b3ba7832f451ccaa57058fe3.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;buy-alerts&quot;,&quot;tags&quot;:&quot;fintech,ai-machine-learning,big-data,v-companies,saas,crowd-safe,1m-revenue,bootstrapped&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/buy-alerts&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/buy-alerts"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="BuyAlerts" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fbuy-alerts%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/065/2065-1674503319-fba03242fd891738b3ba7832f451ccaa57058fe3.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--buy-alerts"><img alt="Logo of BuyAlerts" title="BuyAlerts" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/065/2065-1677087602-a39b1e77a9ccadd1a24e6fc331b3762b29c53aba.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/065/2065-1677087602-e464f714d44a1e8bfcd446239c100b19c0d73d8d.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">BuyAlerts
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+AI technology for the markets | Trade alerts, when t...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Soon&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:2063,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/063/2063-1681822375-c6796430f886c8cb9b0dfcbc33f2f577692aab61.jpg&quot;,&quot;min_investment_amount&quot;:200,&quot;slug&quot;:&quot;soon&quot;,&quot;tags&quot;:&quot;b2c,saas,crypto,fintech,ai-machine-learning,blockchain,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/soon&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/soon"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Soon" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fsoon%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/063/2063-1681822375-c6796430f886c8cb9b0dfcbc33f2f577692aab61.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--soon"><img alt="Logo of Soon" title="Soon" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/063/2063-1682341681-9fa57ada670d2262f2c5f3bf579d9faff6531879.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/063/2063-1682341681-92ecb78c78f99b9891853362805db3ac1ef1ea8a.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Soon
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Stress-free, fully-automated crypto investing
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Republic Note&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:2255,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/255/2255-1680893814-4ec63188d26b2a196ff15824d75c89792a3e1fbc.jpg&quot;,&quot;min_investment_amount&quot;:1000,&quot;slug&quot;:&quot;note-2023-reg-d&quot;,&quot;tags&quot;:&quot;marketplace,aapi-founders,fintech-finance,fundraising,blockchain,v-crypto&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/note-2023-reg-d&quot;,&quot;vertical&quot;:&quot;crypto&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/note-2023-reg-d"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Republic Note" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fnote-2023-reg-d%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/255/2255-1680893814-4ec63188d26b2a196ff15824d75c89792a3e1fbc.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--note-2023-reg-d"><img alt="Logo of Republic Note" title="Republic Note" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/255/2255-1680893993-f83f2822386a799323abcf8a2be4d9267799d8de.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/255/2255-1680893993-3e5cba4d1515d4532d6cb9379c2f4f23a4c9a46b.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Republic Note
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Revenue-sharing digital security unlocking access to...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Core · Reg D 506(c)
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;HelloSubs&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1992,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/992/1992-1669649307-439c62431f9209bd2451c61989bdf0b1f12ebcd8.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;hellosubs&quot;,&quot;tags&quot;:&quot;marketplace,edtech,apps,crowd-safe,v-companies,venture-backed,1m-revenue,coming-soon-1,b2b&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/hellosubs&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/hellosubs"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="HelloSubs" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fhellosubs%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/992/1992-1669649307-439c62431f9209bd2451c61989bdf0b1f12ebcd8.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--hellosubs"><img alt="Logo of HelloSubs" title="HelloSubs" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/992/1992-1667880537-5890af22e72e61623c1b11aaa8f79be29bb6d3e8.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/992/1992-1667880537-ba0502b64ed6fc63569b8e7e7339fa6231215641.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">HelloSubs
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Solving the substitute teacher shortage with our on-...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Aptera Motors&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:2007,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/007/2007-1670460146-8f91e7a366bc468aa7d13df7d7770c6461a5d783.jpg&quot;,&quot;min_investment_amount&quot;:210,&quot;slug&quot;:&quot;aptera&quot;,&quot;tags&quot;:&quot;equity-1,combat-carbon,green-power,automotive-1,electric-vehicles,b2b,b2c,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/aptera&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/aptera"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Aptera Motors" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Faptera%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/007/2007-1670460146-8f91e7a366bc468aa7d13df7d7770c6461a5d783.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--aptera"><img alt="Logo of Aptera Motors" title="Aptera Motors" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/007/2007-1668647273-f6b79f04f7f0298b2d0a89daf10b7421b0b4b814.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/007/2007-1668647273-98023563c79661fed0285e182deae92459da94c8.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Aptera Motors
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Grid-independent, solar-charging vehicles | The effi...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Capital R · Reg A+
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Tampa Cityfund&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1908,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/908/1908-1670619657-0adb8a96e14f317bc9cf6bf11d2829a3dbaea5b9.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;tampa-cityfund-a&quot;,&quot;tags&quot;:&quot;residential-real-estate,b2c,cityfund-1,v-real-estate,republic-alum,interest-purchase-agreement&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/tampa-cityfund-a&quot;,&quot;vertical&quot;:&quot;real-estate&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/tampa-cityfund-a"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Tampa Cityfund" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Ftampa-cityfund-a%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/908/1908-1670619657-0adb8a96e14f317bc9cf6bf11d2829a3dbaea5b9.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--tampa-cityfund-a"><img alt="Logo of Tampa Cityfund" title="Tampa Cityfund" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/908/1908-1663945019-385e0667e96d5e04accafa6c760ed807ea9002d7.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/908/1908-1663945019-9905499202857fbbaa31eb1c3e67d78113fa3869.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Tampa Cityfund
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Own a piece of Tampa
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Capital R · Reg A+
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;B.T.R. NATION&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1426,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/426/1426-1672010949-d6a65010231b81eadf43e06fd25f3445c2c59d4e.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;btr-nation&quot;,&quot;tags&quot;:&quot;women-founders,d2c,v-companies,coming-soon-1,nutrition,food,bootstrapped,crowd-safe,500k-revenue&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/btr-nation&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/btr-nation"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="B.T.R. NATION" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fbtr-nation%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/426/1426-1672010949-d6a65010231b81eadf43e06fd25f3445c2c59d4e.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--btr-nation"><img alt="Logo of B.T.R. NATION" title="B.T.R. NATION" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/426/1426-1649169767-0728cd635e8ffb868d2f69456061c0e1e9c7ece5.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/426/1426-1649169767-f8c6d627ab0bd8b6c21b2b4923bc04ddef62b6a6.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">B.T.R. NATION
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+On a mission to end mindless snacking with superfood...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Austin Cityfund&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1906,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/906/1906-1670619412-2ce2166612f35e5bb6b1be64c5fc074120487f0d.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;austin-cityfund-a&quot;,&quot;tags&quot;:&quot;residential-real-estate,b2c,cityfund-1,v-real-estate,republic-alum,interest-purchase-agreement&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/austin-cityfund-a&quot;,&quot;vertical&quot;:&quot;real-estate&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/austin-cityfund-a"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Austin Cityfund" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Faustin-cityfund-a%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/906/1906-1670619412-2ce2166612f35e5bb6b1be64c5fc074120487f0d.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--austin-cityfund-a"><img alt="Logo of Austin Cityfund" title="Austin Cityfund" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/906/1906-1663100917-84c5682ab1fc44a980fbb084e2e75ec942b3bbd9.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/906/1906-1663100917-7dcdabb8fd9e30eccaf6e355dfbaaa593733a1d6.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Austin Cityfund
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Own a piece of Austin
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Capital R · Reg A+
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;PÜL&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1984,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/984/1984-1669242389-8e9d2dfe8e55483497847bc2bf2249bb167e8f95.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;pul-hydration&quot;,&quot;tags&quot;:&quot;b2b,d2c,wellbeing-longevity,reduce-reuse,ai-machine-learning,smart-devices,nutrition,consumer-electronics,v-companies,coming-soon-1,power-founders,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/pul-hydration&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/pul-hydration"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="PÜL" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fpul-hydration%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/984/1984-1669242389-8e9d2dfe8e55483497847bc2bf2249bb167e8f95.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--pul-hydration"><img alt="Logo of PÜL" title="PÜL" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/984/1984-1667276830-5eeb783af723dbce5039050ac96ea223fda67422.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/984/1984-1667276830-fd21cd6d07cfc6af72c4a5170f56aeb6e6a199c5.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">PÜL
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Track, integrate, and train hydration using cognitiv...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:true,&quot;company_name&quot;:&quot;LimeWire&quot;,&quot;days_remaining&quot;:4,&quot;id&quot;:2582,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/582/2582-1682712030-8a2a38f1f21c99587235bcdf756adbf4116ab749.jpg&quot;,&quot;min_investment_amount&quot;:250,&quot;slug&quot;:&quot;limewire-reg-d&quot;,&quot;tags&quot;:&quot;creator-economy,subscription,music,social-meida-networks,ai-machine-learning,blockchain,token-purchase-agreement,v-crypto,leading-vc-backed,10m-raised,power-founders&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/limewire-reg-d&quot;,&quot;vertical&quot;:&quot;crypto&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/limewire-reg-d"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="LimeWire" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Flimewire-reg-d%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/582/2582-1682712030-8a2a38f1f21c99587235bcdf756adbf4116ab749.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--limewire-reg-d"><img alt="Logo of LimeWire" title="LimeWire" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/582/2582-1682705916-01c1bba2a75344c86048f65ffe2df80c9d572a9b.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/582/2582-1682705916-6655d10d64f5c9aabd0740ff370b97468ee32b68.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">LimeWire
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+The Web3 Subscription Platform: Create. Subscribe. O...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Capital R · Reg D 506(c)
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Accredible&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1991,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/991/1991-1668442043-1c058b64b1242d15118d54ed9a5d513a09309c83.PNG&quot;,&quot;min_investment_amount&quot;:3500,&quot;slug&quot;:&quot;accredible&quot;,&quot;tags&quot;:&quot;b2b,saas,5m-revenue,venture-backed,10m-raised,50-199-employees,edtech,stock-purchase-agreement,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/accredible&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/accredible"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Accredible" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Faccredible%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/991/1991-1668442043-1c058b64b1242d15118d54ed9a5d513a09309c83.PNG&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--accredible"><img alt="Logo of Accredible" title="Accredible" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/991/1991-1666982304-3efd6094da1738b49aee90658d9d641027d533a8.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/991/1991-1666982304-49468e899948fbde2e3763dbac2677dac8b33033.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Accredible
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Comprehensive digital badge and certificate platform
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Deal Room Advisor · Reg D 506(c)
+</div>
+</div>
+</a></div>
+</div>
+</div>
+<div class='js-offerings_slider_loader u-hiddenXsOnly s-marginTop7'>
+<div class='u-textCenter s-fontSize18 u-fontWeight400 u-colorMuted'>
+<i class='c-spinner'></i>
+Loading...
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="u-hiddenPrint offerings-show-content_navigation" data-rc="offerings/show/content_navigation"><div class='c-content_nav u-hiddenSmDown'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16 s-grid--middle'>
+<div class='c-content_nav__container'>
+<a class="c-content_nav__link js-content-nav-link active" href="#pitch">Pitch</a>
+<a class="c-content_nav__link js-content-nav-link" href="#updates">Updates
+<span class='c-content_nav__booble'>
+13
+</span>
+</a><a class="c-content_nav__link js-content-nav-link" href="#reviews">Reviews
+<span class='c-content_nav__booble'>
+178
+</span>
+</a></div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 s-grid--middle'>
+<div class='offerings-show-content_navigation__contact-wrapper'>
+<div class='u-displayFlex u-justifyContentSpaceBetween'>
+</div>
+</div>
+<div class='offerings-show-content_navigation__cta-wrapper'>
+<div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button c-button--block s-paddingHoriz0_5 offerings-show-content_navigation__cta-button c-button--disabled offerings-shared-invest_button__lock_button js-locked_button u-displayFlex u-justifyContentCenter" href="/snapdna#invest"><i class="icon-lock"></i> <span class='u-hiddenLgOnly'>
+Invest
+</span>
+<span class='u-hiddenMdDown'>
+Invest in SnapDNA
+</span>
+
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp u-displayFlex u-alignItemsCenter offerings-show-content_navigation__mobile-navigation'>
+<select class='c-input c-input--select c-input--large js-mobile-nav offerings-show-content_navigation__mobile-select'>
+<option selected value='/snapdna/pitch'>
+Pitch
+</option>
+<option value='/snapdna/deal-terms'>
+Deal terms
+</option>
+<option value='/snapdna/documents'>
+Documents
+</option>
+<option value='/snapdna/team'>
+Team
+</option>
+<option value='/snapdna/updates'>
+Updates
+(13)
+</option>
+<option value='/snapdna/reviews'>
+Reviews (178)
+</option>
+</select>
+<div class='s-marginLeft1_5'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="SnapDNA" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Fsnapdna%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Fsnapdna"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?text=World%E2%80%99s+first+pathogen+test+that+delivers+accurate+results+in+20+minutes%0A&amp;url=https%3A%2F%2Frepublic.com%2Fsnapdna"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?text=World%E2%80%99s+first+pathogen+test+that+delivers+accurate+results+in+20+minutes%0A&amp;url=https%3A%2F%2Frepublic.com%2Fsnapdna"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Fsnapdna"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingTop0_5 s-borderBottom0_5 u-textCenter s-fontSize14 offerings-show-content_navigation__disclaimer'>
+<div class='u-colorGray7 u-fontWeight400'>
+<i class='icon-attention u-colorOrange'></i>
+<span class='u-hiddenSmUp'>
+Closed on April 28, 2021.
+Information may not be up-to-date.
+</span>
+<span class='u-hiddenXsOnly'>
+Campaign closed on April 28, 2021.
+Information displayed may not be up-to-date.
+</span>
+</div>
+</div>
+</nav>
+<div class='s-container s-gridMaxXs24 u-hiddenPrint offerings-show__sidebar-navigation-container'>
+<nav class="js-offering_side_navigation u-hidden offerings-show-side_navigation" data-link-active-class="offerings-show-side_navigation__link--active" data-rc="offerings/show/side_navigation"><div class='s-paddingTop2_5'></div>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link offerings-show-side_navigation__link--active" href="/snapdna#problem">Problem</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/snapdna#solution">Solution</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/snapdna#product">Product</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/snapdna#traction">Traction</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/snapdna#customers">Customers</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/snapdna#business-model">Biz. model</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/snapdna#market">Market</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/snapdna#competition">Competition</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/snapdna#vision-and-strategy">Vision and strategy</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/snapdna#funding">Funding</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/snapdna#founders">Founders</a>
+<div class='s-marginVert1 s-marginRight3 offerings-show-side_navigation__divider'></div>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link" href="/snapdna#about">About</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link" href="/snapdna#team">Team</a>
+</nav>
+</div>
+<div class='js-terms u-hidden s-paddingTop6_5'>
+<div class='js-section s-paddingTop2' id='terms'>
+<div class="s-container s-gridMaxXs24 s-paddingTop0_5 offerings-show-terms_section" data-rc="offerings/show/terms_section"><div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16'>
+<div class='c-offeringTermsContent'>
+
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8'>
+<div class='u-hiddenPrint'>
+<div class='s-spacerXs3 s-spacerSm0_5'></div>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic (OpenDeal Portal LLC, CRD #283874) is hosting this Reg CF securities offering by Bio-NEMS Corporation. View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001562529&amp;owner=exclude&amp;action=getcompany&amp;Find=Search"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form C
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+<div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14 s-marginBottom0_5'>
+Company documents
+</div>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="https://uploads.republic.com/p/offerings/security_attachments/original/000/000/675/675-1631602509-08e3b1588251373c8fc75845bb9885f59301fee8.pdf"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+SnapDNA Crowd SAFE
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/385"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+SnapDNA Form C.pdf
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-update u-hidden s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='js-section s-grid-colLg17 s-grid--pushLg4 s-grid-colSm20 s-grid--pushSm3' id='updates'>
+<div class='s-paddingTop2'>
+<div class='js-update_section_placeholder' data-url='/snapdna/show_updates'>
+<div class='u-textCenter u-colorGray9 s-fontSize20 s-marginVert10'>
+<i class='c-spinner'></i>
+Loading
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-reviews u-hidden s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='js-section' id='reviews'>
+<div class='s-paddingTop2'>
+<div class="s-paddingTop1_5 offerings-show-reviews_section" data-rc="offerings/show/reviews_section"><h3 class='s-marginBottom3 c-secondaryTitle u-colorMuted offerings-show-reviews_section__title'>
+Hear from some of the
+<span class='u-whiteSpaceNowrap'>
+1,774
+investors
+</span>
+in SnapDNA
+</h3>
+<div class='js-investment_reasons_loader'>
+<div class="investment_reasons-shared-page_loader" data-rc="investment_reasons/shared/page_loader"><div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<hr class='s-marginVert2'>
+<div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-investment_reasons_wrapper'></div>
+<div class='js-investment_reasons_show_more_wrapper u-hidden'>
+<div class='s-spacerXs2_5 s-spacerSm4'></div>
+<div class='s-grid'>
+<div class='s-grid-colSm16'>
+<a class="js-investment_reasons_show_more c-button c-button--secondary c-button--large c-button--block" data-url="/snapdna/reviews/page/1" href="javascript:void(0)">Show more</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-sections offerings-show__sections s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid js-pitch_grid offerings-show__pitch-grid'>
+<div class='js-section s-grid-colMd17 s-grid-colSm16 s-marginBottom3 offerings-show__pitch' id='pitch'>
+<div class="offerings-show-pitch_section" data-rc="offerings/show/pitch_section"><div class='s-marginRight3 offerings-show-pitch_section__pitch-wrapper'>
+<div class="s-paddingTop3 s-marginBottom2 offerings-show-pitch_highlights" data-rc="offerings/show/pitch_highlights"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-fontWeight800 u-colorGray6 offerings-show-pitch_highlights__title'>
+Highlights
+</h2>
+<hr class='c-deal-page-title-divider'>
+<div class='s-marginBottom2_5'>
+<div class="c-tag-highlight-wrapper offerings-show-pitch_highlight_tags" data-rc="offerings/show/pitch_highlight_tags"><div class='c-tag-highlight js-tooltip_simple' data-tippy-content='The company has raised over $1M in capital prior to Republic.'>
+<div class='c-tag-highlight__content'>
+<div class='c-tag-highlight__title'>
+$1M+ raised
+</div>
+<div class='c-tag-highlight__description'>
+Company has previously raised over $1M in capital
+</div>
+</div>
+<div class='c-tag-highlight__icon'>
+<img src="https://uploads.republic.com/p/tags/icons/original/000/005/915/5915-1646382197-10b2f0cdd05e87b82381ef7ff3b619710bb1a8d1.png" />
+</div>
+
+</div>
+
+</div>
+</div>
+</header>
+<div class="offerings-show-summary" data-rc="offerings/show/summary"></div>
+<div class='c-defaultFormattedContent offerings-show-pitch_highlights__content'>
+<ul><li>Reduces the time for food pathogen testing from 3 days to 20 minutes</li><li>Selected as the preferred food testing platform by the USDA-ARS</li><li>Paid pilots with PepsiCo and Nestle; the world’s largest food companies</li><li>Reduces outbreaks, lowers food costs and allows for fresher, safer food</li><li>Leading the change in the $10 Billion per year food pathogen test market</li><li>Projected ARR of $150M in 2 years</li><li>$3M raised to date</li></ul>
+</div>
+</div>
+<article class="offerings-pitch_sections-sections_list" data-rc="offerings/pitch_sections/sections_list"><section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Problem" id="problem" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Problem
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>Too many food recalls</h2><p>Food recalls for potentially deadly pathogens like Listeria, Salmonella, and E. coli are on the rise. The diagnostic tools for tracing these contaminations rely on outdated 100-year-old technology. Analysis takes 3-7 days in a specialized, off-site lab and cannot distinguish between a raging contamination and a single errant cell. It’s no wonder that it can take a food company months to find and verify the source of an outbreak. The longer it takes, the higher the financial risk. A single outbreak can cripple a large company and bankrupt smaller ones.</p><p>New technologies are needed to reduce the number and severity of outbreaks. Dozens of companies have tried. None have succeeded. Until SnapDNA.</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/030/938/30938-1608167168-9abe3b9232175821bdd1f33ee0e49ef7ec3a52a1.jpg" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Solution" id="solution" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Solution
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>SnapDNA: Faster, Safer, and Fresher</h2><p><img src="https://uploads.republic.co/p/images/attachments/original/000/031/061/31061-1608487656-de71ad29fe7b9b52ecbb842dd545c95abd56379b.jpg" class="fr-fic fr-dib"></p><p>SnapDNA addresses the food industry’s most critical need: reducing the number and the severity of outbreaks, lowering production costs, and allowing fresher, safer food.</p><p>SnapDNA has the first self-contained, on-site analysis designed to replace all food pathogen lab tests. Results are available in 20 minutes and hundreds of samples can be analyzed per day. Unlike lab tests, SnapDNA provides quantitative data to reduce the time to find contaminations from months to days, enabling predictive analytics to help prevent outbreaks.</p><p>SnapDNA test results are available when product is ready to ship enabling fresher, safer food. Food companies save millions of dollars/year in storage costs and reduce exposure to contamination and recalls.</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/030/979/30979-1608227801-b3689c87082870c4b11c4aa1af6c666ebfaec763.jpg" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Product" id="product" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Product
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>The right answers, right now</h2><p>SnapDNA’s customer proven system reduces the time for a pathogen test <u>from 3-7 days to 20 minutes</u>. It works with any size sample, from a tablespoon to a few liters. Analysis is performed in self-contained, single-use cartridges; each acting as a miniature, computer-controlled laboratory. It can be operated almost anywhere, by almost anyone.</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/030/935/30935-1608165193-1eefca54c1ddf90a8e4d8fe35eba444331b4701b.jpg" class="fr-fic fr-dii"></p><p>SnapDNA can be used where food is produced, packaged, or grown. It is as accurate as a lab test and much less susceptible to human error. Test results are uploaded to the cloud so food safety professionals can monitor all of their facilities in real-time and identify potential contamination events before product is shipped.</p><p><strong>Our technology...</strong></p><p><span class="fr-video fr-dvb fr-draggable"><video class="fr-draggable" controls="controls" src="https://uploads.republic.co/p/videos/attachments/original/000/000/243/243-1608593156-a1c5a097fa61768f369ff347162a895a567e4b5b.mp4" style="width: 677px; height: 403px;">Your browser does not support HTML5 video.</video></span></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Traction" id="traction" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Traction
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>Tipping point technology</h2><p><strong>We have key strategic corporate partnerships...</strong></p><p><strong><img src="https://uploads.republic.co/p/images/attachments/original/000/029/907/29907-1607119283-6bf30629af89923bdec6b2a71d406caea6dcecfb.png" class="fr-fic fr-dii" style="width: 447px;"></strong>&nbsp;</p><p>“SnapDNA can save us dollars in an industry that measures margin in pennies. If anyone in my market adopts SnapDNA, we’ll all have to adopt to stay competitive”. – CEO of a protein company</p><p>“SnapDNA is a no-brainer. We spend $2M a year on pathogen tests and $3M on cold storage waiting 3 days for lab results”.<br>– VP Food Safety for a mid-size snack food company</p><p><strong>...and government partnerships</strong></p><p><strong><img src="https://uploads.republic.co/p/images/attachments/original/000/030/284/30284-1607532640-73e43c162a636e07b881b566ccaa6dad7e4cf04a.png" class="fr-fic fr-dib" style="width: 465px;"></strong></p><p>The USDA will certify SnapDNA products for use by all government agencies and food inspection services. This certification is rare and highly advantageous. Food companies prefer to use the same test as regulators and inspectors.</p><p><strong>SnapDNA has been selected by the most the most influential FoodTech accelerators.</strong></p><p><strong><img src="https://uploads.republic.co/p/images/attachments/original/000/029/906/29906-1607119091-87fa90733b2063026afa0fa18c5cc21498657f4f.png" class="fr-fic fr-dii">&nbsp;</strong></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Customers" id="customers" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Customers
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>Paid Pilots with Fortune 50 and Global 100 companies</h2><p>SnapDNA has paid pilots with the world’s largest food companies, Nestle and PepsiCo. We are working closely with corporate R&amp;D and global innovation teams as well as key decision makers in food safety and quality towards company-wide roll out because we solve business-critical problems.</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/030/120/30120-1607370670-65672cedc7d384ea34b49ebe9edb6ab0fcecd797.png" class="fr-fic fr-dib fr-fil" style="width: 405px;"></p><p>SnapDNA has commitments from industry opinion shapers and category leaders in our targeted launch markets; Leafy greens/Produce and Poultry.</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/031/158/31158-1608605816-2ac1af662db08275acaaf294166397bdbf3992cb.png" class="fr-fic fr-dib fr-fil" style="width: 429px;"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Biz. model" id="business-model" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Business model
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>Revenue from each test performed</h2><p>SnapDNA's business model is to sell single-use cartridges for each test performed at prices competitive with lab testing and provide analysis systems for a recurring monthly fee.</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/031/059/31059-1608486396-e8cc4ad6768d3cf85248a999c48f1ce803ea4f3f.jpg" class="fr-fic fr-dib"></p><p>SnapDNA has personal, executive-level relationships with the 16 food companies we are initially targeting. These companies, along with Nestlé and PepsiCo operate over 1000 facilities. SnapDNA projects profitability with systems at just 70 facilities, which we expect to surpass in 2022. In addition, we plan to continually expand our menu of cartridges to detect E. coli, Salmonella and other pathogens.</p><p style="text-align: center;"><img src="https://uploads.republic.co/p/images/attachments/original/000/030/934/30934-1608164845-e17e83b308a1650a3afb906ee9a7ed2c32993ece.jpg" class="fr-fic fr-dib" style="width: 677px;"></p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/031/051/31051-1608330632-2e5c7fee9a430f44bb3f155244c633d4c4f50ca9.jpg" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Market" id="market" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Market
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>Food safety testing is an existing $10B market</h2><p>SnapDNA is addressing a major need in an established, recession-proof, $10 Billion market - Growing to $13 Billion in 3 years.</p><p>With SnapDNA, test results are available when the product is ready to ship. We can save a food company millions of dollars a year in storage cost alone. When contamination occurs, we dramatically reduce the risk and financial exposure from outbreaks and of recalls.</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/030/813/30813-1608062852-46a1730941c1513b3cee4b1ba4a83d0916c9e3ee.png" class="fr-fic fr-dib"><strong><br></strong></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Competition" id="competition" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Competition
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>We listened and we delivered</h2><p>SnapDNA has worked with food companies and solved one of the industry’s biggest technical challenges - <u>on-site, rapid pathogen analysis that meets every requirement to replace lab testing.</u> We know of nothing that comes close. SnapDNA detects only live cells from large, complex industry samples and, unlike lab testing, it can measure the number of pathogen cells in each sample - critical information when trying to determine the cause of a contamination. While the existence proof of SnapDNA could spark new competition, we have a formidable IP barrier including patent applications on fundamental inventions and dozens of trade secret processes.</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/030/927/30927-1608159352-270110de7c98bda78c96f9d0840b1a73a196f391.jpg" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Vision and strategy" id="vision-and-strategy" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Vision and strategy
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>Next generation food testing</h2><p>SnapDNA enables safer and fresher food while reducing cost and risk for food companies. We enable rapid identification and isolation of pathogens before a contamination can become an outbreak. We are incorporating metadata-rich, cloud-based data and predictive analytics to prevent contaminations across the industry. We allow real-time monitoring of pathogen testing for a food company across all of its facilities, delivering the information every food safety professional requires and every food company needs. We have the vision, technology, and products to capitalize on the inevitable change to rapid analysis in the existing, recession-proof, $10B food pathogen testing market.</p><p>We invite you to join us.</p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Funding" id="funding" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Funding
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>Successfully raised $3M+ in seed rounds</h2><p>SnapDNA has raised over $3M in prior rounds of seed funding.</p><p>SnapDNA founders have personally contributed significantly while investing 8 years developing dozens of fundamental technologies required for our success. Our seed investors include thought leaders and key executives instrumental in the success of some of the Silicon Valley’s most successful companies including Intel, Apple and Genentech. With our commercial product designed and the company poised for a 2021 launch, SnapDNA is doing its first, and likely last, crowdfunding round with this Republic offering to enable others to participate in our upcoming success.</p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Founders" id="founders" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Founders
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2>SnapDNA has the leadership to execute our vision</h2><p><img src="https://uploads.republic.co/p/images/attachments/original/000/030/926/30926-1608159206-9e46d1292c42e34dfbf87d1149e35696c1d767ed.jpg" class="fr-fic fr-dib"></p><p>David Medin has 30 years of executive and C-level experience. He’s opened opportunities in emerging multi-billion-dollar businesses and has successfully led large global product development teams.</p><p>Tom Jacobs has 25 years of sales leadership at food processors including 12 years at Tyson Foods. He’s responsible for over $500M in industry sales.</p><p>Veronica De Guzman, Ph. D. is a molecular biologist with 20 years of expertise developing high-sensitivity DNA analysis including a fundamental invention that is used by a $2 billion-dollar DNA sequencing company.</p><p>Gabriel Matus has 18 years of process engineering experience. His designs are used in $11B of semiconductor manufacturing equipment.</p>
+</div>
+</section>
+</article>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 js-deal_page_sidebar'>
+<div class='s-spacerXs3'></div>
+<div class='js-section js-mobile_section s-marginBottom3 offerings-show__deal-terms' id='deal-terms'>
+<div class="offerings-show-deal_terms" data-rc="offerings/show/deal_terms"><div class="s-marginBottom1_5 offerings-show-deal_terms-header" data-rc="offerings/show/deal_terms/header"><h2 class='s-fontSize25 u-fontWeight800 u-colorGray6 c-condensedTitle offerings-show-deal_terms-header__title'>
+Deal terms
+</h2>
+<hr class='c-deal-page-title-divider'>
+</div>
+<div class='terms-block'>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-valuation_cap" data-rc="offerings/show/deal_terms/valuation_cap"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Valuation cap
+</div>
+<p class='c-deal-term__content'>
+$28,000,000
+</p>
+<p class='c-deal-term__helper'>
+The maximum valuation at which your investment converts
+into equity shares or cash.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe#terms">Learn more</a>
+</br>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-discount" data-rc="offerings/show/deal_terms/discount"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Discount
+</div>
+<p class='c-deal-term__content'>
+10%
+</p>
+<p class='c-deal-term__helper'>
+If a trigger event for SnapDNA occurs, the discount provision
+gives investors equity shares (or equal value in cash) at a reduced price.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe#terms">Learn more.</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-min_investment" data-rc="offerings/show/deal_terms/min_investment"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Minimum investment
+</div>
+<p class='c-deal-term__content'>
+$150
+</p>
+<p class='c-deal-term__helper'>
+The smallest investment amount
+that SnapDNA is
+accepting.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#minimum-and-maximum-investment">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-raise_amounts" data-rc="offerings/show/deal_terms/raise_amounts"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Funding goal
+</div>
+<p class='c-deal-term__content'>
+$25K &ndash; $1.07M
+</p>
+<p class='c-deal-term__helper'>
+SnapDNA needs to raise
+$25K before the deadline.
+The maximum amount SnapDNA
+is willing to
+raise
+is $25K &ndash; $1.07M.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#funding-goal">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-deadline" data-rc="offerings/show/deal_terms/deadline"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Deadline
+</div>
+<div class='c-deal-term__content'>
+<span class='js-localtime_year' data-time='2021-04-28T06:59:59Z'></span>
+</div>
+<div class='c-deal-term__helper'>
+SnapDNA needs to reach their minimum funding goal before the deadline
+(
+<span class='js-localtime_year_timezone' data-time='2021-04-28T06:59:59Z'></span>).
+If they don’t, all investments will be refunded.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#campaign-timeline">Learn more</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-securities" data-rc="offerings/show/deal_terms/securities"><div class="offerings-show-deal_terms-securities-security" data-rc="offerings/show/deal_terms/securities/security"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Type of security
+</div>
+<p class='c-deal-term__content'>
+Crowd SAFE
+<span class='s-fontSize16 u-fontWeight400'>
+<p class='c-deal-term__helper'>
+A SAFE allows an investor to make a cash investment in a company, with rights to receive certain company stock at a later date, in connection with a specific event.
+<span class='u-hiddenPrint'>
+&middot;
+</span>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe">Learn more</a>
+</p>
+</span>
+</p>
+</div>
+<div class="offerings-show-deal_terms-securities-security_other" data-rc="offerings/show/deal_terms/securities/security_other"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="offerings-show-deal_terms-footer" data-rc="offerings/show/deal_terms/footer"><footer class='s-paddingTop1 js-deal_terms_footer u-hiddenPrint'>
+<a target="_blank" class="c-button c-button--secondary c-button--block" href="/learn/investors/what-the-deal-terms-mean">How it works</a>
+</footer>
+</div>
+</div>
+</div>
+<div class='js-section js-mobile_section s-marginBottom3 u-hiddenPrint offerings-show__documents' id='documents'>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic (OpenDeal Portal LLC, CRD #283874) is hosting this Reg CF securities offering by Bio-NEMS Corporation. View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001562529&amp;owner=exclude&amp;action=getcompany&amp;Find=Search"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form C
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+<div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14 s-marginBottom0_5'>
+Company documents
+</div>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="https://uploads.republic.com/p/offerings/security_attachments/original/000/000/675/675-1631602509-08e3b1588251373c8fc75845bb9885f59301fee8.pdf"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+SnapDNA Crowd SAFE
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/385"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+SnapDNA Form C.pdf
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='about'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+About SnapDNA
+</h2>
+</div>
+<div class="offerings-show-about_section" data-rc="offerings/show/about_section"><div class='s-grid js-display'>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Legal Name
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+Bio-NEMS Corporation
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Founded
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+Apr 2011
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Form
+</div>
+<div class='s-fontSize18'>
+Delaware
+Corporation
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Employees
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+3
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Website
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+<a target="_blank" href="https://snapdna.com/">snapdna.com</a>
+</div>
+</div>
+<div class='u-hiddenPrint offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Social Media
+</div>
+<div class='s-marginPullLeft1 s-fontSize18'>
+<a target="_blank" title="Twitter" class="s-marginLeft1 c-link c-link--twitter" href="https://twitter.com/SnapDNA"><i class="icon-twitter"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hiddenPrint'>
+<div class='offerings-show-about_section__row offerings-show-about_section__row--map'>
+<div class='u-fontWeight400 u-colorGray7 s-marginBottom0_5'>
+Headquarters
+</div>
+<div class='s-fontSize18 offerings-show-about_section__address'>
+<img alt="Google Map location of of SnapDNA" title="Google Map location of of SnapDNA" src="https://maps.googleapis.com/maps/api/staticmap?center=897%2BIndependence%2BAve%2CMountain%2BView%2CCA&amp;format=png&amp;key=AIzaSyBSAkS8gvhmvxYO9XQOuP1ows6mbvx_jAE&amp;maptype=roadmap&amp;markers=size%3Asmall%7Ccolor%3A0xff0000%7Clabel%3A1%7C897%2BIndependence%2BAve%2CMountain%2BView%2CCA&amp;scale=2&amp;size=360x165&amp;visual_refresh=true&amp;zoom=13&amp;signature=aZWjDY5KuugMnCRvoJ4WYKLBdlU=" />
+<div class='s-fontSize12 offerings-show-about_section__address_text'>
+897 Independence Ave
+#2C
+, Mountain View, CA
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hidden u-blockPrint offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Headquarters
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+897 Independence Ave, #2C, Mountain View, CA, United States 94043
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='team'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='s-marginBottom1 offerings-show__section-title'>
+<div class='c-condensedTitle u-colorGray6'>
+SnapDNA Team
+</div>
+<div class='s-fontSize14 u-colorGray9 s-marginTop1 u-fontWeight400'>
+Everyone helping build SnapDNA, not limited to employees
+</div>
+</h2>
+</div>
+<div class="offerings-show-team_section" data-rc="offerings/show/team_section"><div class='js-sort_data' data-featured-placeholder-klass='offerings-show-team_section__featured_team_member s-marginBottom1 s-border1' data-placeholder-klass='offerings-show-team_section__team_member s-marginBottom1 s-border1'></div>
+<div class='s-grid u-hiddenPrint'>
+<div class='s-grid-colMd24'>
+<div class=' offerings-show-team_section__team_member_container'>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of David Medin" title="David Medin" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/003/848/3848-1608570414-0150f84f0ae887a48ba7af6561684ad4fd9a2430.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/003/848/3848-1608570414-5d81708959877778e023869215630f702ac64df0.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+David Medin
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Founder &amp; CEO
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Tom Jacobs" title="Tom Jacobs" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/003/229/3229-1608570371-9f2bc2178f0005d02ad142d25236588ca3409109.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/003/229/3229-1608570371-8b73d6e754878f00ab9a3fbfbc644faef0b644ed.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Tom Jacobs
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Founder
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Veronica De Guzman" title="Veronica De Guzman" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/003/854/3854-1608601309-799d7a53b77671aa8dda3f81b7135045f3437174.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/003/854/3854-1608601309-8a8d60853b24fb5e659be98fd62cb14587b47800.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Veronica De Guzman
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Founder
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Zeal Panchal" title="Zeal Panchal" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/003/911/3911-1609784772-b97019e82ea71b4a1634970645aa88988b427b02.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/003/911/3911-1609784772-d3a8f6f7040d7572f2f31aa3507e61d02e2afc6f.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Zeal Panchal
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Scientist
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+
+</div>
+</div>
+</div>
+</div>
+<div class='js-hidden_team_members u-hiddenXsOnly'>
+<div class='s-marginTop2_5 offerings-show-team_section__team_member_container'>
+</div>
+</div>
+<div class='u-hiddenSmUp u-text-center'>
+<a class="c-button c-button--secondary js-show_all_team_members" href="#">1 more team member</a>
+</div>
+</div>
+</div>
+<div class='s-grid u-textCenter u-hidden u-blockPrint'>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+David Medin
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Founder &amp; CEO
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Tom Jacobs
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Founder
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Veronica De Guzman
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Founder
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Zeal Panchal
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Scientist
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint s-marginTop6 s-borderTop5 offerings-show__footer'>
+<div class='s-container s-gridMaxXs24'>
+<div class="u-textCenter offerings-show-footer" data-rc="offerings/show/footer"><div class='s-marginBottom1'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)"><div class="c-avatar c-avatar--medium offerings-show-footer__avatar c-avatar--border c-avatar--snapdna"><img alt="Logo of SnapDNA" title="SnapDNA" srcset="https://uploads.republic.com/p/offerings/logos/medium_2x/000/000/675/675-1607361272-12759a217c8928023cd06937d3acffd64add7b72.png 2x" src="https://uploads.republic.com/p/offerings/logos/medium/000/000/675/675-1607361272-01a24d836d904bf5a6ca7ab3b2da1affe7bbb889.png" /></div></a>
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle s-marginHoriz0_5'>
+<h1 class='c-largeTitle offerings-show-footer__company-name'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)">SnapDNA</a>
+</h1>
+</div>
+<div class='u-displayInlineBlock u-blockXsOnly u-verticalAlignMiddle s-paddingTop0_5'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Footer" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link c-button--small c-button--secondary" data-action="follow" data-href="/register?after_sign_in=%2Fsnapdna%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5 u-colorGray2 follows-shared-follow_offering__bubble-counter'>
+2740
+</span>
+</button>
+</div>
+</div>
+</div>
+<div class='s-marginTop1_5 s-fontSize18 u-fontWeight500 u-colorGreen'>
+SnapDNA successfully raised
+$1,070,000
+from 1774 investors
+on April 28, 2021
+</div>
+<div class='s-marginTop2'>
+<div class='s-paddingTop1 u-hiddenXsOnly'></div>
+<div class="offerings-show-footer-investors" data-rc="offerings/show/footer/investors"><div class='u-displayFlex u-justifyContentCenter'>
+<span class="js-tooltip_ajax  " data-type="user" data-slug="william-walters-1"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of William Walters" title="William Walters" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/654/398/654398-1594498793-a203f20fda831f6534995c5e2acbeab3508c31d6.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/654/398/654398-1594498793-a13f2fd1961d8b4841dcb53439b69724b8392499.jpg" /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="abdul-jalal-choudhury"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Abdul J Choudhury" title="Abdul J Choudhury" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/655/278/655278-1591828604-4960a9acda2726d7be9aba872227de7712a286c1.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/655/278/655278-1591828604-8f97a50be2dafed619225e9c631730639fdef40c.jpg" /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="jason-hall-4"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Jason Hall" title="Jason Hall" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/748/259/748259-1606816493-67d5a698e16670e901fb695163d614a88b3ae86b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/748/259/748259-1606816493-f2d606ee7e9706f3e5d457fd04471f166385c914.jpg" /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="david-mboh"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of David Mboh" title="David Mboh" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/347/124/347124-1653155459-0be03164c6ac92ebbe87984c8d6e4925ffadc698.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/347/124/347124-1653155459-292fa7bdb65584bcec1ba47d0f6fa2d1c1232385.jpg" /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="monique-jn-marie"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Monique Jn-Marie" title="Monique Jn-Marie" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/785/317/785317-1630099381-db7b4ce284d1fba53732348258825aab467cf081.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/785/317/785317-1630099381-3b3fee93d6fc358cfb34b8c73576de599426e022.png" /></div>
+</span></div>
+<div class='s-marginTop1 s-fontSize18 u-fontWeight400 u-lineHeight1_3'>
+William, Abdul J, Jason, David, Monique, and 1769 others
+invested.
+<a class="js-scroll_to_section" href="#reviews">178 Reviews</a>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingBottom1_5 u-hiddenXsOnly'></div>
+</div>
+</div>
+<div class="offerings-shared-schema_org" data-rc="offerings/shared/schema_org"><script nonce="9iC8pkzzAceZuRNjRjxpSw==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "https://republic.com/companies",
+      "name": "Companies",
+      "image": "https://assets.republic.com/assets/logo/icon/brand/36x40/logo@3x-af4ee9995fb90fffc2d2d3acf41e91f9ea98718053f604912115ab3fd6877321.png"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "https://republic.com/snapdna",
+      "name": "SnapDNA",
+      "image": "https://uploads.republic.com/p/offerings/logos/medium/000/000/675/675-1607361272-01a24d836d904bf5a6ca7ab3b2da1affe7bbb889.png"
+    }
+  }]
+}
+
+
+//]]>
+</script></div>
+</div>
+</div>
+</div>
+</div>
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-full_disclaimer" data-rc="layouts/footer/disclaimers/full_disclaimer"><p class='s-marginBottom1'>
+This site (the "Site") is owned and maintained by OpenDeal Inc., which is not a registered
+broker-dealer. OpenDeal Inc. does not give investment advice, endorsement, analysis or
+recommendations with respect to any securities. All securities listed here are being offered
+by, and all information included on this Site is the responsibility of, the applicable issuer
+of such securities. The intermediary facilitating the offering will be identified in such
+offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+All funding-portal activities are conducted by OpenDeal Portal LLC doing business as Republic,
+a funding portal which is registered with the US Securities and Exchange Commission (SEC) as a
+funding portal (Portal) and is a member of the Financial Industry Regulatory Authority (FINRA).
+OpenDeal Portal LLC is located at 149 E 23rd St #2001, New York, NY 10010, please
+check out background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org/about/funding-portals-we-regulate">Funding Portal page</a>.
+</p>
+<p class='s-marginBottom1'>
+All broker-dealer related securities activity is conducted by OpenDeal Broker LLC, an
+affiliate of OpenDeal Inc. and OpenDeal Portal LLC, and a registered broker-dealer, and member
+of
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org">FINRA</a>
+|
+<a class="c-link c-link--underline" href="https://www.sipc.org/">SiPC</a>,
+located at 1345 Avenue of the Americas, 15th Floor, New York, NY 10105, please check our
+background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://brokercheck.finra.org/firm/summary/291387">BrokerCheck</a>.
+</p>
+<p class='s-marginBottom1'>
+Certain pages discussing the mechanics and providing educational materials regarding
+regulation crowdfunding offerings may refer to OpenDeal Broker LLC and OpenDeal Portal LLC
+collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC make investment
+recommendations and no communication, through this Site or in any other medium should be
+construed as a recommendation for any security offered on or off this investment platform.
+Investment opportunities posted on this Site are private placements of securities that are
+not publicly traded, involve a high degree of risk, may lose value, are subject to holding
+period requirements and are intended for investors who do not need a liquid investment. Past
+performance is not indicative of future results. Investors must be able to afford the loss
+of their entire investment. Only qualified investors, which may be restricted to only
+Accredited Investors or non-U.S. persons, may invest in offerings hosted by OpenDeal Broker.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC, nor any of their
+officers, directors, agents and employees makes any warranty, express or implied, of any
+kind whatsoever related to the adequacy, accuracy or completeness of any information on this
+Site or the use of information on this site. Offers to sell securities can only be made
+through official offering documents that contain important information about the investment
+and the issuers, including risks. Investors should carefully read the offering documents.
+Investors should conduct their own due diligence and are encouraged to consult with their
+tax, legal and financial advisors.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1 s-paddingHoriz1_5 s-paddingVert1 u-text-center u-fontWeight500'>
+Investors should verify any issuer information they consider important before making
+an investment.
+</p>
+<p class='s-marginBottom1'>
+Investments in private companies are particularly risky and may result in total loss of
+invested capital. Past performance of a security or a company does not guarantee future
+results or returns. Only investors who understand the
+<a class="c-link c-link--underline" href="/risks">risks of early stage investment</a>
+and who meet the Republic's
+<a class="c-link c-link--underline" href="/help/can-i-invest">investment criteria</a>
+may invest.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC verify
+information provided by companies on this Site and makes no assurance as to the completeness
+or accuracy of any such information. Additional information about companies fundraising on
+the Site can be found by searching the
+<a target="_blank" rel="noopener" class="c-link c-link--underline" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not require an
+EDGAR filing.
+</p>
+<p class='s-marginBottom1'>
+To help the government fight the funding of terrorism and money laundering activities,
+Federal law requires all financial institutions to obtain, verify, and record information
+that identifies each person who opens an account.
+Therefore, when you use the Services we will ask for your name, address, date of birth,
+and other information that will allow us to identify you.
+We may also ask to see your driver's license, passport or other identifying documents.
+</p>
+<p class='s-marginBottom1'>
+Republic and its affiliates are not and do not operate or act as a bank. Certain banking
+services are provided by BankProv, member FDIC / member DIF. Digital (crypto) assets and
+investment products are not insured by the FDIC, may lose value, and are not deposits or other
+obligations of BankProv and are not guaranteed by BankProv. Terms and conditions apply.
+</p>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+
+<script src="https://static.zdassets.com/ekr/snippet.js?key=d10adfc1-5afd-478b-b60b-d5f58ec5e520" id="ze-snippet" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==">
+  window.zESettings = {
+    webWidget: {
+      zIndex: 86,
+      offset: {
+        horizontal: '55px',
+        vertical: '2px',
+        mobile: {
+          horizontal: '-4px',
+          vertical: '90px'
+        }
+      },
+      contactForm: {
+        title: {'*': 'How can we help?'},
+        ticketForms: [{ id: 6139814921239 }],
+        fields: [
+          { id: 'subject', prefill: { '*': 'Need help!' } },
+          { id: 'email', prefill: { '*': "" } },
+          { id: 'key:6164328823703', prefill: { '*': "" } },
+        ],
+      },
+      helpCenter: {
+        title: {'*': 'FAQ'},
+        searchPlaceholder: {'*': 'What can we help you with?'},
+        messageButton: {'*': 'Contact Us'},
+        originalArticleButton: false,
+      },
+    },
+  };
+  
+  zE('webWidget', 'setLocale', 'en');
+  zE('webWidget', 'helpCenter:setSuggestions', { search: 'invest' });
+</script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="9iC8pkzzAceZuRNjRjxpSw==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="9iC8pkzzAceZuRNjRjxpSw==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+<script src="https://assets.republic.com/assets/w/runtime~MediaSliderPage-1098888d834bd3762a55.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ae-cda0d3eb09b2571ee24e.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apexcharts_dist_apexcharts_common_js-ba302c83-12acaec747ed98c96c79.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apollo_client_c-752f32f6a5f08b47aee9.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ap-10286ca6eee77e5cfdbe.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ax-87ca8eab84b534ce51a3.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_braze_web-sdk_sh-082bda95cd1f46db675e.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_br-ded297e3061c09e58176.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ca-0192f74a4e598aec7a52.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_core-js_i-f3d9e78f9f53cf58378d.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_crc-8b8be13627dda03b73d8.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_c-cea66e909f36387f5945.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_da-5b72066967e09ff24edf.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_d-83acda350f41f6abdff3.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_el-ea7a9011bec346028733.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_c-22aa4e04a1fbdd3d6e3f.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_common_dist_browser_genesisStates_mainnet_json-97430531-83fe7f595f064e0385b1.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethersproject_a-8765651a2f1bdccf9a56.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_et-b31cc9258c2c1d07cac5.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_e-d4fab84d8ab34150ad30.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_fontkit_dist_module_mjs-3528d02d-ecc0f4556eda5102b2d3.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_froala_editor_min_js-b1fc3988-ced20c2300f6c9f40897.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_plugins_pkgd_min_js-adc83e4b-33e97225bf9033164d2d.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_grapesjs_dist_grapes_min_js-a826bfc4-cadb07d673643a51118e.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_g-9055b0297f7ac6f017f0.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_i-b77e6ab09fad9dae77d3.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_l-b1a7deddd04fdb5d9a33.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_n-a907fa203947450ef394.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pb-cab37a002985eca657b7.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pd-cf393d506219ee5b112a.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pl-4c6fabe429fda4071dbb.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_p-27f2b800da9d84d8e2bf.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_rc-o-80e5f70e3d9925c8cdb0.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reach-857404c519977edb5b66.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-l-0c79a438a779449c0b1d.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-r-3c1ef064934605ec254d.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reac-dd43f7d7d874a68c99e5.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_r-b902bc774bc3ff333672.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_sc-0f32c01226134eda1296.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_se-74d4cf204c9d98a015aa.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_s-884ee524820f17ecd6cb.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_A-8cf01848e62c80ff23d7.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_I-5990a0d8dde19f6e04bd.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_A-c0356acbaf9d3c64d8d4.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_C-81436052b30a8eba6374.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_F-445b408fa8bf17d5aa78.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_I-662a93905a6a15b4f741.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_P-69d60a2c449dc7cb6600.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_T-e09f8036fafdc3c6afe0.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_ad-a41070ea11aea6a6ef6a.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+<script src="https://assets.republic.com/assets/w/MediaSliderPage-9d07a76fbcff98a1daf3.js" nonce="9iC8pkzzAceZuRNjRjxpSw=="></script>
+</body></html>
+
+
+

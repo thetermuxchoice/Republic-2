@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+Light — Republic
+</title>
+<link href='https://republic.com/light' rel='canonical'>
+<meta content='Invest in Light – the maker of the Light Phone, a beautiful second phone designed to be used as little as possible.' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='Light' itemprop='name'>
+<meta content='Invest in Light – the maker of the Light Phone, a beautiful second phone designed to be used as little as possible.' itemprop='description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/054/54-1526921715-cdbeac40096df4666ac746d736ddbc5e9a4399e4.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='Light' name='twitter:title'>
+<meta content='Invest in Light – the maker of the Light Phone, a beautiful second phone designed to be used as little as possible.' name='twitter:description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/054/54-1526921715-cdbeac40096df4666ac746d736ddbc5e9a4399e4.jpg' name='twitter:image'>
+<meta content='https://republic.com/light' property='og:url'>
+<meta content='Light' property='og:title'>
+<meta content='Invest in Light – the maker of the Light Phone, a beautiful second phone designed to be used as little as possible.' property='og:description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/054/54-1526921715-cdbeac40096df4666ac746d736ddbc5e9a4399e4.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/vendor-node_modules_a-db7c58b4.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Ac-919e95b8.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Table_Table_module_scss-e15798b9-0e96676f.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/MediaSliderPage-66fe9f7a.css" />
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="D2aNzXREoq6cwjc5mDcPng0jg8eh19vgHjWrt6bruy8EcMHlvAY-4BaG4Z2aPtMRjlXTsTmRlKjQnrd2IQ8qBQ" />
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  analytics.page(
+    "offering",
+    "light", {
+      url: "https://republic.com/light"
+    }, {
+      integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+    }
+  );
+</script>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class="offerings-show__body preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="layouts-header_footer" data-rc="layouts/header_footer"><nav class="c-header-nav c-header-nav--default  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/black/150x38/logo-211758c2027fc8268186d512a2119520a35358973648789a123d9fb6c3d5a37f.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search  layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--default" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div>
+<div class="layouts-full_width" data-rc="layouts/full_width"><script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  if (dataLayer) {
+    dataLayer.push({"event":"detail","ecommerce":{"currencyCode":"USD","detail":{"products":[{"name":"Light","id":"light","price":100,"category":"Companies, Cloud Computing, Hardware, Immigrant Founders, B2C, $1M+ raised, Leading VC-backed, Consumer Electronics, Crowd SAFE, Republic alum","quantity":1}]}}});
+  }
+</script>
+<div class="js-segment_product_view s-marginBottom3_5 offerings-show" data-sticky-container="true" data-state="finalized" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Light&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:54,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/054/54-1586841676-64d5cab3e693b4f217530deb3c399b400ca87976.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;light&quot;,&quot;tags&quot;:&quot;v-companies,cloud-computing,hardware,immigrant-founders,b2c,1m-raised,leading-vc-backed,consumer-electronics,crowd-safe,republic-alum&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/light&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-rc="offerings/show"><div class='js-router_data' data-root='light'></div>
+<div class="offerings-show-invest_modal" data-rc="offerings/show/invest_modal"><div class='js-remodal remodal offerings-show-invest_modal__invest_modal' data-remodal-id='invest'>
+<a class='remodal-close' data-remodal-action='close'></a>
+<h1 class='c-secondaryTitle offerings-show-invest_modal__invest_title'>
+Light isn't accepting new investments
+</h1>
+<p class='s-marginTop2 s-fontSize17 u-colorMuted offerings-show-invest_modal__invest_date'>
+Light’s deadline was
+<span class='u-blockXsOnly'>
+September 21, 2017
+</span>
+</p>
+<p class='s-marginTop2 s-marginHoriz5 s-fontSize17 offerings-show-invest_modal__invest_message'>
+Follow the company to stay updated on their progress,
+including future investment opportunities
+</p>
+<p class='s-marginTop1'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Invest modal" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link" data-action="follow" data-href="/register?after_sign_in=%2Flight%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5'>
+292
+</span>
+</button>
+</div>
+</p>
+<hr class='s-marginTop2 s-marginPullHoriz2 offerings-show-invest_modal__invest_divider'>
+<div class='u-displayFlex u-alignItemsCenters-marginTop2 offerings-show-invest_modal__invest_footer'>
+<div class='u-flex1'>
+Explore new investment opportunities:
+</div>
+<div class='u-flex1'>
+<a class="c-button c-button--secondary" href="/#offerings">View companies raising now</a>
+</div>
+</div>
+</div>
+</div>
+<header class="s-container s-gridMaxXs24 s-paddingTop5 s-paddingBottom3 offerings-show-header offerings-show-header--light" data-rc="offerings/show/header"><div class='js-header_content'>
+<div class='s-marginPullTop2'>
+<div class="s-marginBottom2 u-displayFlex u-alignItemsCenter s-fontSize18 u-colorMuted offerings-show-header-message_campaign_ended" data-rc="offerings/show/header/message_campaign_ended"><div class='u-flexGrow s-borderTop0_5 s-marginTop0_5'></div>
+<div class='s-marginHoriz1'>
+<i class='icon-lock'></i>
+Campaign ended
+</div>
+<div class='u-flexGrow s-borderTop0_5 s-marginTop0_5'></div>
+</div>
+</div>
+<div class='s-grid offerings-show-header__top-part'>
+<div class='s-grid-colSm16'>
+<div class="offerings-show-header-title" data-rc="offerings/show/header/title"><div class='s-marginBottom1_5'>
+<div class="u-colorGray9 offerings-shared-other_offerings_navigation" data-rc="offerings/shared/other_offerings_navigation"><span class='s-fontSize16'>
+Newest campaign
+</span>
+<span class='s-fontSize12 js-tooltip_simple offerings-shared-other_offerings_navigation__tooltip-icon' data-tippy-content='&lt;a class=&quot;offerings-shared-other_offerings_navigation__tooltip-item offerings-shared-other_offerings_navigation__tooltip-item--active_item&quot; href=&quot;/light&quot;&gt;&lt;div class=&#39;u-displayFlex u-alignItemsCenter u-justifyContentSpaceBetween u-fontSize16&#39;&gt;
+Newest campaign
+&lt;div class=&#39;u-fontSize14 u-floatRight s-marginLeft1 offerings-shared-other_offerings_navigation__state u-colorGreen&#39;&gt;
+Funded
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/a&gt;&lt;a class=&quot;offerings-shared-other_offerings_navigation__tooltip-item &quot; href=&quot;/light-july-2017&quot;&gt;&lt;div class=&#39;u-displayFlex u-alignItemsCenter u-justifyContentSpaceBetween u-fontSize16&#39;&gt;
+1st campaign
+&lt;div class=&#39;u-fontSize14 u-floatRight s-marginLeft1 offerings-shared-other_offerings_navigation__state u-colorGreen&#39;&gt;
+Funded
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/a&gt;' data-tippy-interactive='true' data-tippy-maxWidth='250' data-tippy-theme='dropdown-with-padding'>
+<span class='s-fontSize16 u-colorGreen'>
+Funded
+</span>
+<i class="icon-chevron-down"></i>
+</span>
+</div>
+</div>
+<div class='u-displayFlex'>
+<div class='u-hiddenPrint offerings-show-header-title__avatar-wrapper'>
+<div class="c-avatar c-avatar--small offerings-show-header-title__avatar c-avatar--border c-avatar--light"><img alt="Logo of Light" title="Light" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/054/54-1526918843-926c1e723099e17485a5648dcc1b7ceb8e5edcd1.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/054/54-1526918843-fa72d642f8cec5ed03c17d892fa0b2c391e503b7.png" /></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<h1 class='c-primaryTitle offerings-show-header-title__company-name'>
+Light
+</h1>
+</div>
+</div>
+<div class='c-subtitle s-fontSize20 s-marginTop0_5 offerings-show-header-title__high-concept'>
+Phone designed to be used as little as possible
+</div>
+<div class='s-marginTop1_5'>
+<div class=''>
+<div class="c-tag-container u-hiddenPrint s-marginTop1 offerings-show-header-title__tags-wrapper offerings-shared-tags" data-rc="offerings/shared/tags"><a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/cloud-computing">Cloud Computing</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/hardware">Hardware</a>
+<a class="c-tag c-tag--small c-tag--flat c-tag--no_border " style="background-color: #FFC4A8" href="/tag/immigrant-founders">Immigrant Founders</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/b2c">B2C</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/consumer-electronics">Consumer Electronics</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8 u-hiddenSmDown'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Light" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Flight%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Flight"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?text=Invest+in+Light+%E2%80%93+the+maker+of+the+Light+Phone%2C+a+beautiful+second+phone+designed+to+be+used+as+little+as+possible.&amp;url=https%3A%2F%2Frepublic.com%2Flight"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?text=Invest+in+Light+%E2%80%93+the+maker+of+the+Light+Phone%2C+a+beautiful+second+phone+designed+to+be+used+as+little+as+possible.&amp;url=https%3A%2F%2Frepublic.com%2Flight"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Flight"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-displayFlex u-blockXsOnly offerings-show-header__media-react'>
+<div class='s-grid-colSm16'>
+<div class='offerings-show-header__media-react-content'>
+<div class="offerings-show-header-media_react" data-rc="offerings/show/header/media_react"><div data-react-key="MediaSliderPage" data-react-id="7b83f2c3-44cd-45a3-83a2-0c8288a262de"><div class="js-react-component--placeholder"><div class='offerings-show-header-media_react__image-wrap'>
+<div class='offerings-show-header-media_react__image'>
+<img srcset="https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/001/754/1754-1636530880-7570c3f2c2c4ad641611df4bfa617544232eae75.jpg 2x" class="u-displayBlock  " alt="Featured image of Light" title="Light" src="https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/001/754/1754-1636530880-bc459275704b1711a77e9d178015cdc1628c9848.jpg" />
+</div>
+</div>
+</div><div class="js-react-component--content u-invisible"></div></div><script nonce="LwsrTIL9XHc7/DHEEL//vQ==" type="application/json" data-react-key="MediaSliderPage" data-react-id="7b83f2c3-44cd-45a3-83a2-0c8288a262de">{"media":{"data":[{"id":"1754","type":"offerings_slider_media_item","attributes":{"content_type":"video","order_num":0,"content_file_name":"Light_Phone_on_Republic_high.mp4","content_file_size":41245161,"preview_file_name":"54-1526921066-771b2a2d8f000e4824454782169f94e6333c7385.jpg","preview_file_size":443727,"url":null,"url_preview":null,"content_url":{"original":"https://uploads.republic.com/p/offerings/slider_media_items/contents/original/000/001/754/1754-1636530882-b256b3475116b6e0030a1406e0a8527f11f2e4c9.mp4"},"preview_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/001/754/1754-1636530880-bc459275704b1711a77e9d178015cdc1628c9848.jpg","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/001/754/1754-1636530880-7570c3f2c2c4ad641611df4bfa617544232eae75.jpg","small":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small/000/001/754/1754-1636530880-638217ffddee3e000b3a2816582b8c8680644646.jpg","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small_2x/000/001/754/1754-1636530880-b00d6c55dc3f4773e4bb6764898770e395e5a7de.jpg"},"youtube_id":null}}]},"editMode":false,"isIssuer":false,"offeringSlug":"light","offeringState":"finalized","missingPreviewUrl":"/previews/small/missing.png"}</script></div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8'>
+<div class="u-displayFlex u-flexDirectionColumn offerings-show-header-sidebar" data-rc="offerings/show/header/sidebar"><div class='u-flexGrow offerings-show-header-sidebar__top-part'>
+<div class="s-grid offerings-show-header-raising_information" data-rc="offerings/show/header/raising_information"><div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 s-borderBottom1 offerings-show-header-raised_amount offerings-show-header-raised_amount--without-divider" data-rc="offerings/show/header/raised_amount"><div class='u-colorGreen s-fontSize35 c-condensedTitle offerings-show-header-raised_amount__title'>
+$156,439
+</div>
+<div class='s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-raised_amount__subtitle'>
+Total raised in 2 campaigns
+</div>
+<div class='c-progress c-progress--large c-progress--gray s-marginTop0_5'>
+<div class='c-progress__bar' style='width: 100%'></div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 offerings-show-header-investors offerings-show-header-investors--closed" data-rc="offerings/show/header/investors"><div class='c-primaryTitle s-fontSize35 offerings-show-header-investors__title u-colorMuted'>
+302
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-investors__subtitle'>
+Investors in 2 campaigns
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-message_successfully_funded" data-rc="offerings/show/header/message_successfully_funded">Successfully funded and closed
+<span class='u-whiteSpaceNowrap'>
+on September 21, 2017.
+</span>
+</div>
+</div>
+<div class='offerings-show-header-sidebar__bottom-part s-marginTop2'>
+<div class="u-bgWhite offerings-show-header-invest_button" data-rc="offerings/show/header/invest_button"><div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button--block c-button--large s-paddingHoriz0_5 c-button--disabled offerings-shared-invest_button__lock_button js-locked_button u-displayFlex u-justifyContentCenter" href="/light#invest"><i class="icon-lock"></i> Invest in Light
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class='u-bgGray s-paddingTop3 s-paddingBottom2_5 offerings-show__other-offerings'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-displayFlex u-justifyContentSpaceBetween u-flexWrap u-alignItemsCenter'>
+<h2 class='c-secondaryTitle u-colorGray6'>
+Open for investment
+</h2>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7 s-marginVert0_5'>
+Investors in Light also invested in these companies.
+<a href="/companies">View more</a>
+</div>
+</div>
+<div class='s-marginTop1 s-marginBottom1_5'>
+<div class="offerings-show-cards_slider" data-rc="offerings/show/cards_slider"><div class='s-grid js-offerings_slider js-segment_product_list offerings-show-cards_slider__slider' data-segment-list-id='promo-offering-other-deals'>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Soon&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:2063,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/063/2063-1681822375-c6796430f886c8cb9b0dfcbc33f2f577692aab61.jpg&quot;,&quot;min_investment_amount&quot;:200,&quot;slug&quot;:&quot;soon&quot;,&quot;tags&quot;:&quot;b2c,saas,crypto,fintech,ai-machine-learning,blockchain,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/soon&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/soon"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Soon" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fsoon%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/063/2063-1681822375-c6796430f886c8cb9b0dfcbc33f2f577692aab61.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--soon"><img alt="Logo of Soon" title="Soon" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/063/2063-1682341681-9fa57ada670d2262f2c5f3bf579d9faff6531879.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/063/2063-1682341681-92ecb78c78f99b9891853362805db3ac1ef1ea8a.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Soon
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Stress-free, fully-automated crypto investing
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+</div>
+<div class='js-offerings_slider_loader u-hiddenXsOnly s-marginTop7'>
+<div class='u-textCenter s-fontSize18 u-fontWeight400 u-colorMuted'>
+<i class='c-spinner'></i>
+Loading...
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="u-hiddenPrint offerings-show-content_navigation" data-rc="offerings/show/content_navigation"><div class='c-content_nav u-hiddenSmDown'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16 s-grid--middle'>
+<div class='c-content_nav__container'>
+<a class="c-content_nav__link js-content-nav-link active" href="#pitch">Pitch</a>
+<a class="c-content_nav__link js-content-nav-link" href="#updates">Updates
+<span class='c-content_nav__booble'>
+2
+</span>
+</a><a class="c-content_nav__link js-content-nav-link" href="#reviews">Reviews
+<span class='c-content_nav__booble'>
+33
+</span>
+</a></div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 s-grid--middle'>
+<div class='offerings-show-content_navigation__contact-wrapper'>
+<div class='u-displayFlex u-justifyContentSpaceBetween'>
+</div>
+</div>
+<div class='offerings-show-content_navigation__cta-wrapper'>
+<div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button c-button--block s-paddingHoriz0_5 offerings-show-content_navigation__cta-button c-button--disabled offerings-shared-invest_button__lock_button js-locked_button u-displayFlex u-justifyContentCenter" href="/light#invest"><i class="icon-lock"></i> <span class='u-hiddenLgOnly'>
+Invest
+</span>
+<span class='u-hiddenMdDown'>
+Invest in Light
+</span>
+
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp u-displayFlex u-alignItemsCenter offerings-show-content_navigation__mobile-navigation'>
+<select class='c-input c-input--select c-input--large js-mobile-nav offerings-show-content_navigation__mobile-select'>
+<option selected value='/light/pitch'>
+Pitch
+</option>
+<option value='/light/deal-terms'>
+Deal terms
+</option>
+<option value='/light/documents'>
+Documents
+</option>
+<option value='/light/team'>
+Team
+</option>
+<option value='/light/press'>
+Press
+</option>
+<option value='/light/updates'>
+Updates
+(2)
+</option>
+<option value='/light/reviews'>
+Reviews (33)
+</option>
+</select>
+<div class='s-marginLeft1_5'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Light" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Flight%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Flight"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?text=Invest+in+Light+%E2%80%93+the+maker+of+the+Light+Phone%2C+a+beautiful+second+phone+designed+to+be+used+as+little+as+possible.&amp;url=https%3A%2F%2Frepublic.com%2Flight"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?text=Invest+in+Light+%E2%80%93+the+maker+of+the+Light+Phone%2C+a+beautiful+second+phone+designed+to+be+used+as+little+as+possible.&amp;url=https%3A%2F%2Frepublic.com%2Flight"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Flight"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingTop0_5 s-borderBottom0_5 u-textCenter s-fontSize14 offerings-show-content_navigation__disclaimer'>
+<div class='u-colorGray7 u-fontWeight400'>
+<i class='icon-attention u-colorOrange'></i>
+<span class='u-hiddenSmUp'>
+Closed on September 21, 2017.
+Information may not be up-to-date.
+</span>
+<span class='u-hiddenXsOnly'>
+Campaign closed on September 21, 2017.
+Information displayed may not be up-to-date.
+</span>
+</div>
+</div>
+</nav>
+<div class='js-terms u-hidden s-paddingTop6_5'>
+<div class='js-section s-paddingTop2' id='terms'>
+<div class="s-container s-gridMaxXs24 s-paddingTop0_5 offerings-show-terms_section" data-rc="offerings/show/terms_section"><div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16'>
+<div class='c-offeringTermsContent'>
+
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8'>
+<div class='u-hiddenPrint'>
+<div class='s-spacerXs3 s-spacerSm0_5'></div>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic (OpenDeal Portal LLC, CRD #283874) is hosting this Reg CF securities offering by . View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/Archives/edgar/data/1710903/000171090317000004/0001710903-17-000004-index.htm"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form C
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-update u-hidden s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='js-section s-grid-colLg17 s-grid--pushLg4 s-grid-colSm20 s-grid--pushSm3' id='updates'>
+<div class='s-paddingTop2'>
+<div class='js-update_section_placeholder' data-url='/light/show_updates'>
+<div class='u-textCenter u-colorGray9 s-fontSize20 s-marginVert10'>
+<i class='c-spinner'></i>
+Loading
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-reviews u-hidden s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='js-section' id='reviews'>
+<div class='s-paddingTop2'>
+<div class="s-paddingTop1_5 offerings-show-reviews_section" data-rc="offerings/show/reviews_section"><h3 class='s-marginBottom3 c-secondaryTitle u-colorMuted offerings-show-reviews_section__title'>
+Hear from some of the
+<span class='u-whiteSpaceNowrap'>
+113
+investors
+</span>
+in Light
+</h3>
+<div class='js-investment_reasons_loader'>
+<div class="investment_reasons-shared-page_loader" data-rc="investment_reasons/shared/page_loader"><div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<hr class='s-marginVert2'>
+<div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-investment_reasons_wrapper'></div>
+<div class='js-investment_reasons_show_more_wrapper u-hidden'>
+<div class='s-spacerXs2_5 s-spacerSm4'></div>
+<div class='s-grid'>
+<div class='s-grid-colSm16'>
+<a class="js-investment_reasons_show_more c-button c-button--secondary c-button--large c-button--block" data-url="/light/reviews/page/1" href="javascript:void(0)">Show more</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-sections offerings-show__sections s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid js-pitch_grid offerings-show__pitch-grid'>
+<div class='js-section s-grid-colMd17 s-grid-colSm16 s-marginBottom3 offerings-show__pitch' id='pitch'>
+<div class="offerings-show-pitch_section" data-rc="offerings/show/pitch_section"><div class='s-marginRight3 offerings-show-pitch_section__pitch-wrapper'>
+<div class="js-pitch_section s-paddingTop3 offerings-show-pitch_non_modular" data-rc="offerings/show/pitch_non_modular"><div class='js-pitch_content c-offeringPitchContent offerings-show-pitch_non_modular__pitch-content offerings-show-pitch_non_modular__pitch-content--Light pitch-content--no-margin'>
+<h3 class="u-text-center">Light's first campaign was maxed out, so we decided to launch another one. We are humbled by your support and are excited to offer a second opportunity to invest in Light.<br><br></h3><hr><h3>Deal highlights</h3><ul><li class="u-wysiwygMedium">Launched on Kickstarter in 2015, raising $400K+ and pre-selling 3.4K phones.<br>Previously raised $3.2M.</li><li class="u-wysiwygMedium">Manufactured by partner &amp; investor, Foxconn (the factory that produces the iPhone).</li><li class="u-wysiwygMedium">Proprietary IP / cloud platform allowing to use it with the same phone number.</li><li class="u-wysiwygMedium">Covered by most major U.S. publications, including NY Times, Time, WSJ.</li><li class="u-wysiwygMedium">First Republic campaign raised $107,000 in less than 30 days.</li></ul><hr><p><br></p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/001/163/1163-1499697530-b9de11c4167e5167c41ec2e16f806fb2c1193b11.png" class="fr-fic fr-dii"></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/001/162/1162-1499697519-553a630125d274c633e6cd23719cd972e7b309f9.png" class="fr-fic fr-dii"><span class="fr-video fr-fvc fr-dvb fr-draggable"><iframe src="//player.vimeo.com/video/213611582" allowfullscreen="" frameborder="0"></iframe></span></figure><figure><span class="fr-video fr-dvb fr-draggable"><video autoplay="autoplay" class="fr-draggable" loop="loop" muted="true" playsinline="true" src="https://uploads.republic.co/p/videos/attachments/original/000/000/059/59-1585911845-5a08ea227db7110872bd7fbdeac5861cf0671434.mp4" style="width: 679px; height: 410px;">Your browser does not support HTML5 video.</video></span><img src="https://uploads.republic.co/p/images/attachments/original/000/001/166/1166-1499698373-545df6a134f53da6f7be8f444f9a590f9a28a1d5.png" class="fr-fic fr-dii" style="width: 674px;"><span class="fr-video fr-fvc fr-dvb fr-draggable"><iframe src="//player.vimeo.com/video/194380275" allowfullscreen="" frameborder="0"></iframe></span></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/001/619/1619-1503700625-88f3e70d07e2a49fdeb752f1e893df13418faee0.png" class="fr-fic fr-dii"></figure><p><span class="fr-video fr-fvc fr-dvb fr-draggable"><iframe src="//player.vimeo.com/video/167754423" allowfullscreen="" frameborder="0"></iframe></span></p><p class="s-fontSize14 u-text-center">A behind the scenes video of the manufacturing of the Light Phone.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/001/620/1620-1503700662-745dba73ca0eced542a11da9b0b7dea39271fa58.png" class="fr-fic fr-dii"></figure><figure><span class="fr-video fr-dvb fr-draggable"><video autoplay="autoplay" class="fr-draggable" loop="loop" muted="true" playsinline="true" src="https://uploads.republic.co/p/videos/attachments/original/000/000/060/60-1585911946-7ee59bee0054512d77361490e47447018573786b.mp4" style="width: 680px; height: 373px;">Your browser does not support HTML5 video.</video></span></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/001/172/1172-1499715541-d30ef71ae4560025a323391c5a4660bf25f14034.png" class="fr-fic fr-dii"></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/001/173/1173-1499715569-618beb915dd0f7f295ba25090fd20446710d917b.gif" class="fr-fic fr-dii"></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 js-deal_page_sidebar'>
+<div class='s-spacerXs3'></div>
+<div class='js-section js-mobile_section s-marginBottom3 offerings-show__deal-terms' id='deal-terms'>
+<div class="offerings-show-deal_terms" data-rc="offerings/show/deal_terms"><div class="s-marginBottom1_5 offerings-show-deal_terms-header" data-rc="offerings/show/deal_terms/header"><h2 class='s-fontSize25 u-fontWeight800 u-colorGray6 c-condensedTitle offerings-show-deal_terms-header__title'>
+Deal terms
+</h2>
+<hr class='c-deal-page-title-divider'>
+</div>
+<div class='terms-block'>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-valuation_cap" data-rc="offerings/show/deal_terms/valuation_cap"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Valuation cap
+</div>
+<p class='c-deal-term__content'>
+$12,000,000
+</p>
+<p class='c-deal-term__helper'>
+The maximum valuation at which your investment converts
+into equity shares or cash.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe#terms">Learn more</a>
+</br>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-discount" data-rc="offerings/show/deal_terms/discount"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Discount
+</div>
+<p class='c-deal-term__content'>
+20%
+</p>
+<p class='c-deal-term__helper'>
+If a trigger event for Light occurs, the discount provision
+gives investors equity shares (or equal value in cash) at a reduced price.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe#terms">Learn more.</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-min_investment" data-rc="offerings/show/deal_terms/min_investment"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Minimum investment
+</div>
+<p class='c-deal-term__content'>
+$100
+</p>
+<p class='c-deal-term__helper'>
+The smallest investment amount
+that Light is
+accepting.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#minimum-and-maximum-investment">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-raise_amounts" data-rc="offerings/show/deal_terms/raise_amounts"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Funding goal
+</div>
+<p class='c-deal-term__content'>
+$25K &ndash; $428K
+</p>
+<p class='c-deal-term__helper'>
+Light needs to raise
+$25K before the deadline.
+The maximum amount Light
+is willing to
+raise
+is $25K &ndash; $428K.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#funding-goal">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-deadline" data-rc="offerings/show/deal_terms/deadline"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Deadline
+</div>
+<div class='c-deal-term__content'>
+<span class='js-localtime_year' data-time='2017-09-23T03:59:59Z'></span>
+</div>
+<div class='c-deal-term__helper'>
+Light needs to reach their minimum funding goal before the deadline
+(
+<span class='js-localtime_year_timezone' data-time='2017-09-23T03:59:59Z'></span>).
+If they don’t, all investments will be refunded.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#campaign-timeline">Learn more</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-securities" data-rc="offerings/show/deal_terms/securities"><div class="offerings-show-deal_terms-securities-security" data-rc="offerings/show/deal_terms/securities/security"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Type of security
+</div>
+<p class='c-deal-term__content'>
+Crowd SAFE
+<span class='s-fontSize16 u-fontWeight400'>
+<p class='c-deal-term__helper'>
+A SAFE allows an investor to make a cash investment in a company, with rights to receive certain company stock at a later date, in connection with a specific event.
+<span class='u-hiddenPrint'>
+&middot;
+</span>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe">Learn more</a>
+</p>
+</span>
+</p>
+</div>
+<div class="offerings-show-deal_terms-securities-security_other" data-rc="offerings/show/deal_terms/securities/security_other"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="offerings-show-deal_terms-footer" data-rc="offerings/show/deal_terms/footer"><footer class='s-paddingTop1 js-deal_terms_footer u-hiddenPrint'>
+<a target="_blank" class="c-button c-button--secondary c-button--block" href="/learn/investors/what-the-deal-terms-mean">How it works</a>
+</footer>
+</div>
+</div>
+</div>
+<div class='js-section js-mobile_section s-marginBottom3 u-hiddenPrint offerings-show__documents' id='documents'>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic (OpenDeal Portal LLC, CRD #283874) is hosting this Reg CF securities offering by . View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/Archives/edgar/data/1710903/000171090317000004/0001710903-17-000004-index.htm"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form C
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-marginTop2 s-marginPullBottom1 s-paddingBottom5 u-bgWhite offerings-show__featured-investment-reasons' id='featured-investment-reasons'>
+<div class='s-container s-gridMaxXs24'>
+<div class="offerings-show-featured_investments_section" data-rc="offerings/show/featured_investments_section"><header class='u-displayFlex s-borderBottom1 s-marginBottom1 u-alignItemsCenter offerings-show-featured_investments_section__header'>
+<h3 class='u-flexGrow c-condensedTitle s-fontSize25 u-fontWeight800 u-colorGray6'>
+Why others invested
+</h3>
+<a class="js-view_reviews_section" href="/light/reviews"><span class='u-hiddenXsOnly s-fontSize18'>
+See all reviews (0)
+</span>
+<span class='u-hiddenSmUp s-fontSize16'>
+See all (0)
+</span>
+</a>
+</header>
+<div class="u-displayFlex s-paddingVert1 investment_reasons-shared-featured_investments" data-rc="investment_reasons/shared/featured_investments"><div class='u-flex1 investment_reasons-shared-featured_investments__reason-wrapper'>
+<div class="s-fontSize18 u-fontWeight400 investment_reasons-shared-featured_investment" data-rc="investment_reasons/shared/featured_investment"><p class='s-marginBottom1_5 u-colorGray6'>
+I invested because I believe in this mission, and have watched early adopters confirm that this is a needed market for human flourishing. 
+</p>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of John Jay Alvaro" title="John Jay Alvaro" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/032/409/32409-1504331571-98e4efc8501dc2790a65314ea26d964060640404. 2x" src="https://uploads.republic.com/p/users/avatars/small/000/032/409/32409-1504331571-1f85ae72d0afa363e282a1ed4554c334a7454c6d." /></div>
+<div class='s-marginLeft1'>
+<div class='c-condensedTitle s-fontSize18'>
+<span class="js-tooltip_ajax c-link c-link--unstyled u-colorBlack " data-type="user" data-slug="john-jay-alvaro">John Jay Alvaro</span>
+</div>
+<div class='u-colorGray6 s-fontSize12 investment_reasons-shared-featured_investment__date'>
+over 5 years ago
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderLeft2_5 s-marginLeft2_5 investment_reasons-shared-featured_investments__vertical-divider'></div>
+<div class='u-flex1 investment_reasons-shared-featured_investments__reason-wrapper'>
+<div class="s-fontSize18 u-fontWeight400 investment_reasons-shared-featured_investment" data-rc="investment_reasons/shared/featured_investment"><p class='s-marginBottom1_5 u-colorGray6'>
+I see this product as a perfect fit for the aging population, ease and convenience of use even for young people, keeping the same number as well as the founders and team. 
+</p>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Andrew Feinberg" title="Andrew Feinberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/001/483/1483-1501169601-90d97434334cadad5a20817040ff7156f49ef980. 2x" src="https://uploads.republic.com/p/users/avatars/small/000/001/483/1483-1501169601-4133dbb0ebab01740419bae7b0504220ad198525." /></div>
+<div class='s-marginLeft1'>
+<div class='c-condensedTitle s-fontSize18'>
+<span class="js-tooltip_ajax c-link c-link--unstyled u-colorBlack " data-type="user" data-slug="d-f">Andrew Feinberg</span>
+</div>
+<div class="c-tag js-tooltip_simple c-tag--investor c-tag--extra_small c-tag--thick badges-shared-list_item" data-tippy-content="<div class='s-padding0_5'>
+Andrew is an investor on Republic
+</div>
+" data-tippy-interactive="true" data-rc="badges/shared/list_item">Investor
+</div>
+<div class='u-colorGray6 s-fontSize12 investment_reasons-shared-featured_investment__date'>
+over 5 years ago
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderLeft2_5 s-marginLeft2_5 investment_reasons-shared-featured_investments__vertical-divider'></div>
+<div class='u-flex1 investment_reasons-shared-featured_investments__reason-wrapper'>
+<div class="s-fontSize18 u-fontWeight400 investment_reasons-shared-featured_investment" data-rc="investment_reasons/shared/featured_investment"><p class='s-marginBottom1_5 u-colorGray6'>
+I have one of their black light phones from launch and it has worked reliably for a year.  I paid $100 and I pay $12 a month for service.  If I could have invested $5000, I certainly would have.  Thank you Joel and Kaiwei, keep up the important work.
+</p>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Brian Becsi" title="Brian Becsi" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/032/236/32236-1648538805-87391d3e0a25440e9bc156edfe3f609738e54987.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/032/236/32236-1648538805-4bf832cfb0a7392b302e9ee8f5620d9943219602.jpg" /></div>
+<div class='s-marginLeft1'>
+<div class='c-condensedTitle s-fontSize18'>
+<span class="js-tooltip_ajax c-link c-link--unstyled u-colorBlack " data-type="user" data-slug="brian-becsi">Brian Becsi</span>
+</div>
+<div class="c-tag js-tooltip_simple c-tag--investor c-tag--extra_small c-tag--thick badges-shared-list_item" data-tippy-content="<div class='s-padding0_5'>
+Brian is an investor on Republic
+</div>
+" data-tippy-interactive="true" data-rc="badges/shared/list_item">Investor
+</div>
+<div class='u-colorGray6 s-fontSize12 investment_reasons-shared-featured_investment__date'>
+about 5 years ago
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='about'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+About Light
+</h2>
+</div>
+<div class="offerings-show-about_section" data-rc="offerings/show/about_section"><div class='s-grid js-display'>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Founded
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+Feb 2015
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Form
+</div>
+<div class='s-fontSize18'>
+Delaware
+Corporation
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Employees
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+4
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Website
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+<a target="_blank" href="https://www.thelightphone.com/">thelightphone.com</a>
+</div>
+</div>
+<div class='u-hiddenPrint offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Social Media
+</div>
+<div class='s-marginPullLeft1 s-fontSize18'>
+<a target="_blank" title="Twitter" class="s-marginLeft1 c-link c-link--twitter" href="https://twitter.com/thelightphone"><i class="icon-twitter"></i></a>
+<a target="_blank" title="Facebook" class="s-marginLeft1 c-link c-link--facebook" href="https://www.facebook.com/thelightphone"><i class="icon-facebook"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hiddenPrint'>
+<div class='offerings-show-about_section__row offerings-show-about_section__row--map'>
+<div class='u-fontWeight400 u-colorGray7 s-marginBottom0_5'>
+Headquarters
+</div>
+<div class='s-fontSize18 offerings-show-about_section__address'>
+<img alt="Google Map location of of Light" title="Google Map location of of Light" src="https://maps.googleapis.com/maps/api/staticmap?center=63%2BFlushing%2BAvenue%2CBrooklyn%2CNY&amp;format=png&amp;key=AIzaSyBSAkS8gvhmvxYO9XQOuP1ows6mbvx_jAE&amp;maptype=roadmap&amp;markers=size%3Asmall%7Ccolor%3A0xff0000%7Clabel%3A1%7C63%2BFlushing%2BAvenue%2CBrooklyn%2CNY&amp;scale=2&amp;size=360x165&amp;visual_refresh=true&amp;zoom=13&amp;signature=cugB13aknJrwfFcwNcymdQwvUG4=" />
+<div class='s-fontSize12 offerings-show-about_section__address_text'>
+63 Flushing Avenue
+#44
+, Brooklyn, NY
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hidden u-blockPrint offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Headquarters
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+63 Flushing Avenue, #44, Brooklyn, NY, United States 11205
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='team'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='s-marginBottom1 offerings-show__section-title'>
+<div class='c-condensedTitle u-colorGray6'>
+Light Team
+</div>
+<div class='s-fontSize14 u-colorGray9 s-marginTop1 u-fontWeight400'>
+Everyone helping build Light, not limited to employees
+</div>
+</h2>
+</div>
+<div class="offerings-show-team_section" data-rc="offerings/show/team_section"><div class='js-sort_data' data-featured-placeholder-klass='offerings-show-team_section__featured_team_member s-marginBottom1 s-border1' data-placeholder-klass='offerings-show-team_section__team_member s-marginBottom1 s-border1'></div>
+<div class='s-grid u-hiddenPrint'>
+<div class='s-grid-colMd24'>
+<div class=' offerings-show-team_section__team_member_container'>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Joe Hollier" title="Joe Hollier" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/184/184-1501095534-a7d1d559788c3c07e1bab99e84454379df8db63c.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/184/184-1501095534-c4111147a9e1752bdf5e6b5ea94122aebe48aa48.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Joe Hollier
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Co-Founder
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Joe graduated valedictorian of the School of Visual Arts. He ran a studio and worked as an animator, film maker, illustrator and fine artist. He was recognized as a top 20 under 30 visual artist by Print Magazine in 2014 and an ADC Young gun in 2016.
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Kaiwei Tang" title="Kaiwei Tang" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/185/185-1501095551-8acf6f678e62e26bdf1d59d82aeacab3833da869.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/185/185-1501095551-a31f7d4220fae70a481f7d7cbd4b4ca9ca7a1da6.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Kaiwei Tang
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Co-Founder
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Kaiwei has 10 years experience in product development. He has brought 12 mobile devices to life by leading multi-national teams from design stage through mass production. He has masters degrees in design and business from I.I.T. Chicago.
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of David Simmons" title="David Simmons" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/192/192-1501095577-a853eab62211c4b0ab178c55243f368e06457ac7.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/192/192-1501095577-89d3bf7ca675063deb0077aca10b7921f77f4f4f.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+David Simmons
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+C.T.O.
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+David brings 35+ years of experience in both hardware and software engineering. From Window’s Phone Power Performance, hi-performance Apple engines, and Javascript Architecture for Microsoft, his expertise is one-of-a-kind.
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Eileen Bayers" title="Eileen Bayers" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/193/193-1501095579-58f92bda58f3b5adabc09813820bcd2007a099d1.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/193/193-1501095579-ffec81d0c5b66d43e40354792307454dc9a44924.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Eileen Bayers
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Sales and Operation
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Eileen served as VP of operations at Working Assets/CREDO Mobile, a direct marketing driven, $140 million, privately-held mobile and long distance phone company. She managed operations and customer care within the mobile phone business. 
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Boon Lin" title="Boon Lin" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/194/194-1501095581-512e5486b9202db3c8e95b7b2bc57cae0bc77789.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/194/194-1501095581-34be0742d96944ebbaceb34e450e65d5aa8f9f3b.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Boon Lin
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Hardware
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Boon worked for Foxconn as a hardware product manager in China for over 10 years. He has extensive experience with Chinese suppliers and factories and has a track record of successfully launching products on time. 
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Ben Wolff" title="Ben Wolff" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/195/195-1501095585-720e11d81ec75f7b1d46182d7a05adb79c6534db.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/195/195-1501095585-6931997307cab14ccee86f045136a3ea8c811596.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Ben Wolff
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Telecommunications Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Ben was the co-founder, Chairman and CEO of Clearwire, the first 4G carrier in the US and Europe.  He served as President of Eagle River Investments and also served on the Board of Directors of the Cellular Telecommunications Industry Association.  
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Peter Strugatz" title="Peter Strugatz" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/196/196-1501095587-1e7a8d29f116e5f8c5923146346a4054ee477d21.gif 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/196/196-1501095587-61c3907406ab48b05d19b395c91bb9e3621c23eb.gif" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Peter Strugatz
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Business Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+A member of the mission-driven business community as a social entrepreneur and investor. He's spent 16 years as CEO in manufacturing, 8 years as an angel investor, and 4 advising mission-aligned capital strategy, deal sourcing and due diligence. 
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of John Bruce" title="John Bruce" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/197/197-1501095596-5a098bd6ce8a9c7427f7335925bd859421739ad8.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/197/197-1501095596-11aa310bced48439c302b744e17bc45221a24c3d.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+John Bruce
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Brand Strategy Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+John co-founded the design, strategy, and architecture firm Super-Interesting! He is the Director of the Strategic Design program and Assistant Professor of Strategic Design + Management, at Parsons School of Design. He also teaches at S.V.A. 
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Joe  Marianek" title="Joe  Marianek" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/198/198-1501095613-2ead4035110337191bbdfa2d5339b44845939df3.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/198/198-1501095613-0d6616c6ef3fff5ede6545e3c4ac531ef9d37e7d.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Joe  Marianek
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Design Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Joe is a designer, educator and partner at Small Stuff.  He has over 10 years experience working with Pentagram, Landor and Apple for a variety of clients and organizations.
+</div>
+</div>
+</div>
+</div>
+<div class='js-hidden_team_members u-hiddenXsOnly'>
+<div class='s-marginTop2_5 offerings-show-team_section__team_member_container'>
+<div class='js-team_member s-marginBottom1 u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--medium "><img alt="Profile picture of Henry Ng" title="Henry Ng" srcset="https://uploads.republic.com/p/roles/team_members/avatars/medium_2x/000/000/205/205-1501095684-ffbf818fd38af8e0c6b6853947665138420d7a41.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/medium/000/000/205/205-1501095684-23d76084f03764ba85671dec1b10ba00c3b2fed7.jpg" /></div>
+<div class='s-marginTop1 s-fontSize18'>
+Henry Ng
+</div>
+<div class='s-fontSize16 u-fontWeight400 u-colorGray9'>
+Mechanical Engineer Lead
+</div>
+</div>
+</div>
+<div class='js-team_member s-marginBottom1 u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--medium "><img alt="Profile picture of Matt Gou" title="Matt Gou" srcset="https://uploads.republic.com/p/roles/team_members/avatars/medium_2x/000/000/207/207-1501095720-2d5fbfddc28a5af7bc6d0fdbfef477f589f7d520.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/medium/000/000/207/207-1501095720-3f1d94df69e8b4d127950fd32037d24f732e4add.jpg" /></div>
+<div class='s-marginTop1 s-fontSize18'>
+Matt Gou
+</div>
+<div class='s-fontSize16 u-fontWeight400 u-colorGray9'>
+Electrical Engineer Lead
+</div>
+</div>
+</div>
+<div class='js-team_member s-marginBottom1 u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--medium "><img alt="Profile picture of Wolfrey Wu" title="Wolfrey Wu" srcset="https://uploads.republic.com/p/roles/team_members/avatars/medium_2x/000/000/206/206-1501095704-95f7b12e2e8a2b63226279c1bf215ebdef167466.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/medium/000/000/206/206-1501095704-8913ed85a8f53815f5580857f7817679cc1de416.jpg" /></div>
+<div class='s-marginTop1 s-fontSize18'>
+Wolfrey Wu
+</div>
+<div class='s-fontSize16 u-fontWeight400 u-colorGray9'>
+Radio Frequency Lead
+</div>
+</div>
+</div>
+<div class='js-team_member s-marginBottom1 u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--medium "><img alt="Profile picture of Alans Shih" title="Alans Shih" srcset="https://uploads.republic.com/p/roles/team_members/avatars/medium_2x/000/000/204/204-1501095673-2edda83eafbb91993a90ace8d783fc2df382b7f3.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/medium/000/000/204/204-1501095673-62606d53dd9d75bb6f2f46d3c6cddc5af41d8d22.jpg" /></div>
+<div class='s-marginTop1 s-fontSize18'>
+Alans Shih
+</div>
+<div class='s-fontSize16 u-fontWeight400 u-colorGray9'>
+PCB Layout Lead
+</div>
+</div>
+</div>
+<div class='js-team_member s-marginBottom1 u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--medium "><img alt="Profile picture of Jerry Chen" title="Jerry Chen" srcset="https://uploads.republic.com/p/roles/team_members/avatars/medium_2x/000/000/201/201-1501095620-0ae1306c69123dac7a838bc84f29b97b5bc597ca.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/medium/000/000/201/201-1501095620-d5b607f48597a749b7b15481bd1a3585abd44429.jpg" /></div>
+<div class='s-marginTop1 s-fontSize18'>
+Jerry Chen
+</div>
+<div class='s-fontSize16 u-fontWeight400 u-colorGray9'>
+Software Lead
+</div>
+</div>
+</div>
+<div class='js-team_member s-marginBottom1 u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--medium "><img alt="Profile picture of Amina Suleimanagich" title="Amina Suleimanagich" srcset="https://uploads.republic.com/p/roles/team_members/avatars/medium_2x/000/000/199/199-1501095614-b3e5d3293b6d27c077f4967aab642de5c6a00904.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/medium/000/000/199/199-1501095614-b3e3ecdf5a6b0e226e9d15ccc8607f327ea89845.jpg" /></div>
+<div class='s-marginTop1 s-fontSize18'>
+Amina Suleimanagich
+</div>
+<div class='s-fontSize16 u-fontWeight400 u-colorGray9'>
+User Happiness
+</div>
+</div>
+</div>
+<div class='js-team_member s-marginBottom1 u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--medium "><img alt="Profile picture of Mikhail Zalesky" title="Mikhail Zalesky" srcset="https://uploads.republic.com/p/roles/team_members/avatars/medium_2x/000/000/200/200-1501095616-e3b507028be03c5fb50b49e84114bd8dc405cd59.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/medium/000/000/200/200-1501095616-d44366e621b36eaf531108a74b7ed95efabd257b.jpg" /></div>
+<div class='s-marginTop1 s-fontSize18'>
+Mikhail Zalesky
+</div>
+<div class='s-fontSize16 u-fontWeight400 u-colorGray9'>
+Communications
+</div>
+</div>
+</div>
+<div class='js-team_member s-marginBottom1 u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--medium "><img alt="Profile picture of Brian Kelley" title="Brian Kelley" srcset="https://uploads.republic.com/p/roles/team_members/avatars/medium_2x/000/000/202/202-1501095621-e576ac23c1997be8eee89feec38b8fc4033a50f5.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/medium/000/000/202/202-1501095621-eae85cfdd1366e7808b45928e70fd240abf3c701.jpg" /></div>
+<div class='s-marginTop1 s-fontSize18'>
+Brian Kelley
+</div>
+<div class='s-fontSize16 u-fontWeight400 u-colorGray9'>
+Photography
+</div>
+</div>
+</div>
+<div class='js-team_member s-marginBottom1 u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--medium "><img alt="Profile picture of Santiago Carrasquilla" title="Santiago Carrasquilla" srcset="https://uploads.republic.com/p/roles/team_members/avatars/medium_2x/000/000/203/203-1501095632-92a721e580f54dc43c11ed8460e09f9d3574f9d5.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/medium/000/000/203/203-1501095632-030c1efb5aca172cbd66538000f67197882fe80e.png" /></div>
+<div class='s-marginTop1 s-fontSize18'>
+Santiago Carrasquilla
+</div>
+<div class='s-fontSize16 u-fontWeight400 u-colorGray9'>
+Video Production
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenSmUp u-text-center'>
+<a class="c-button c-button--secondary js-show_all_team_members" href="#">15 more team members</a>
+</div>
+</div>
+</div>
+<div class='s-grid u-textCenter u-hidden u-blockPrint'>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Henry Ng
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Mechanical Engineer Lead
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Joe Hollier
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Co-Founder
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Kaiwei Tang
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Co-Founder
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Matt Gou
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Electrical Engineer Lead
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Wolfrey Wu
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Radio Frequency Lead
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+David Simmons
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+C.T.O.
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Alans Shih
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+PCB Layout Lead
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Eileen Bayers
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Sales and Operation
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Jerry Chen
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Software Lead
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Boon Lin
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Hardware
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Amina Suleimanagich
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+User Happiness
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Ben Wolff
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Telecommunications Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Mikhail Zalesky
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Communications
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Peter Strugatz
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Business Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+John Bruce
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Brand Strategy Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Brian Kelley
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Photography
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Joe  Marianek
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Design Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Santiago Carrasquilla
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Video Production
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint js-section offerings-show__section' id='press'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+Press
+</h2>
+</div>
+<div class="offerings-show-press_section" data-rc="offerings/show/press_section"><div class='s-grid js-press_container u-text-center'>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://www.coolhunting.com/tech/testing-the-light-phone"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/003/973/3973-1518818438-b34baab77a8105e1e5a510e60b7d3e9c03132132.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Putting Light Phone to the Test
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/003/973/3973-1518821599-ddc90aac05c4706a2f3113b26d7345c4c65ed616. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Cool Hunting" title="Cool Hunting" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/003/973/3973-1518821599-6ac80948fc8729a60d921d0cca54b22fedf5c070." />
+Cool Hunting
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+May 31, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+When it was announced in 2015, the concept behind the Kickstarter-funded Light Phone felt much like a breath of fresh air...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://journal.thriveglobal.com/these-phones-want-to-help-you-disconnect-c913700e5a68?gi=5c2bb3aad206"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/003/983/3983-1518818444-069c95bc048ecfbdeb9dfa4287c7c6597fb0a925.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+These Phones Want to Help You Disconnect - Thrive Global
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/003/983/3983-1518821725-7ed1af46e39269d0e6bf8dba8277d83f907272bb. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Thrive Global" title="Thrive Global" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/003/983/3983-1518821725-b822e049384f05e8d7990aab5cbfdf5e93617078." />
+Thrive Global
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+May 10, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Dumbphone. Throwback Phone. Barebones Phone. Y2K-Makes-a-Comeback-Phone. Call them what you will, the anti-smartphone mar...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.theverge.com/2017/5/6/15569624/the-light-phone-cell-minimal-gadget"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/004/231/4231-1518820152-5dec3cdeed49a1b083cbc2213a0cfda542fcd1ac.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+This minimalist cellphone is designed to be as basic as p...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/004/231/4231-1518823835-1c3f563f911ceac15dbca3277e0e4addfde62e23. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="The Verge" title="The Verge" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/004/231/4231-1518823835-c96d6292daf4bc77974359a69add2ae66038200f." />
+The Verge
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+May  6, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Smartphones are ubiquitous in our lives: we rely on them to navigate unfamiliar surroundings, look up information, and st...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.dezeen.com/2017/05/06/minimalist-light-phone-design-used-little-as-possible-mobile-technology/"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/003/971/3971-1518818437-be23246d1ca36c0afcaf27c6101472c09632053a.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Minimalist Light Phone is designed to be used as little a...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/003/971/3971-1518821599-8346d1cbbec9428219fa7586f7672811203ee60c. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Dezeen" title="Dezeen" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/003/971/3971-1518821599-a6c34749e5cba213bcfe1339084f53910d76a505." />
+Dezeen
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+May  6, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Designers Joe Hollier and Kaiwei Tang have designed a mobile phone that intentionally lacks features, in hopes of encoura...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://www.menshealth.com/guy-wisdom/light-phone-end-tech-addiction"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/003/970/3970-1518818436-ba8145f8ca529096a1dae707a976cc9e1295faf2.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+This Phone Could End Your Tech Addiction
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/003/970/3970-1518821599-2446a0e70256ce979f2186bc9eefc681b6fe2e2c. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Men&#39;s Health" title="Men&#39;s Health" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/003/970/3970-1518821599-6ccc6b0d5ceb2af751879613f5405c25ad20ef52." />
+Men&#39;s Health
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Apr 26, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Tech addiction in this day and age sometimes feels like it consumes all of us. (Even worse, it&#39;s causing you stress.) Loo...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://mashable.com/2017/04/26/disconnect-with-this-phone/"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/003/977/3977-1518818440-4e6d35c02d6ae7574b7e74caa39e79c2f91b9af7.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Break free from social media with this minimal phone
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/003/977/3977-1518821658-5aac974be2a674f03a06025e05864700e65cd342. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Mashable" title="Mashable" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/003/977/3977-1518821658-b08d0b3211c64b5d8f3fbe01ca07396dd469b462." />
+Mashable
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Apr 26, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+&quot;My other phone is just a phone.&quot;
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article u-hidden'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://www.essentialjournal.co.uk/bring-back-boredom/"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/003/981/3981-1518727642-617189231c0e1044b8bd52c885e6b146f4b3fdd8.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+BRING BACK BOREDOM! | Essential Journal
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/003/981/3981-1518727642-620fc28a30fcf44520593c0e65b72ed8d305fd39. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Essential Journal" title="Essential Journal" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/003/981/3981-1518727642-6c74bb7342c5379dfa2d883651cf74c85990548f." />
+Essential Journal
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Nov 15, 2016
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+I walk up to the men&#39;s room and pull on the door, someone is in there already. Not even five seconds go by and I&#39;ve pulle...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article u-hidden'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://uncrate.com/article/light-phone/"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/003/978/3978-1518818441-ab30ed6d191d796075a3c183686b9bac88c573a3.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Light Phone
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/003/978/3978-1518821658-fccea0176f44334dbc28301da69347db6070a8d1. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Uncrate" title="Uncrate" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/003/978/3978-1518821658-8f1695d9977549b92013490338dee03cc8bde133." />
+Uncrate
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+We&#39;re all guilty of mindlessly staring at our smartphones instead of taking the time to view the real world in front of u...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article u-hidden'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://www.businessinsider.com/light-phone-review-photos-2017-3"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/003/968/3968-1518818430-bfbde3afd56e9047a236dbb3d19c3ad265614d7f.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+This credit-card-sized &#39;dumb phone&#39; helped me de-stress a...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/003/968/3968-1518821554-bc5393c4547ad48984ab42a5e0d5e3a0868bcc4e. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Business Insider" title="Business Insider" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/003/968/3968-1518821554-5f988b9aa9dc3eec23f5171a19da7087e00fecb6." />
+Business Insider
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Here&#39;s an experiment: Try to remember the last time you purposely left the house without your smartphone. If you&#39;re havin...
+</p>
+</div>
+</a></div>
+</div>
+</div>
+<div class='s-marginTop1 u-text-center'>
+<a class="c-button c-button--secondary js-show_all_articles" href="javascript:void(0)">Show all</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint s-marginTop6 s-borderTop5 offerings-show__footer'>
+<div class='s-container s-gridMaxXs24'>
+<div class="u-textCenter offerings-show-footer" data-rc="offerings/show/footer"><div class='s-marginBottom1'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)"><div class="c-avatar c-avatar--medium offerings-show-footer__avatar c-avatar--border c-avatar--light"><img alt="Logo of Light" title="Light" srcset="https://uploads.republic.com/p/offerings/logos/medium_2x/000/000/054/54-1526918843-cf127e411c20cce138713d80028cb61132fee5cb.png 2x" src="https://uploads.republic.com/p/offerings/logos/medium/000/000/054/54-1526918843-7a99fe41ce3e2479162cde426426b116ad035cc0.png" /></div></a>
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle s-marginHoriz0_5'>
+<h1 class='c-largeTitle offerings-show-footer__company-name'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)">Light</a>
+</h1>
+</div>
+<div class='u-displayInlineBlock u-blockXsOnly u-verticalAlignMiddle s-paddingTop0_5'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Footer" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link c-button--small c-button--secondary" data-action="follow" data-href="/register?after_sign_in=%2Flight%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5 u-colorGray2 follows-shared-follow_offering__bubble-counter'>
+292
+</span>
+</button>
+</div>
+</div>
+</div>
+<div class='s-marginTop1_5 s-fontSize18 u-fontWeight500 u-colorGreen'>
+Light successfully raised
+$50,236
+from 113 investors
+on September 21, 2017
+</div>
+<div class='s-marginTop2'>
+<div class='s-paddingTop1 u-hiddenXsOnly'></div>
+<div class="offerings-show-footer-investors" data-rc="offerings/show/footer/investors"><div class='u-displayFlex u-justifyContentCenter'>
+<span class="js-tooltip_ajax  " data-type="user" data-slug="aniekeme-umoh"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Aniekeme Umoh" title="Aniekeme Umoh" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/030/672/30672-1591304075-7d47fd3dd91af953606a10b598eea354d1db5022.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/030/672/30672-1591304075-6381055b1c76e0c4c0a13f2c10c873d423a7a869.png" /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="paul-dariye"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Paul Dariye" title="Paul Dariye" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/030/881/30881-1502489004-11900b38884e8e06299355b1fb1f247ee9f9a60b. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/030/881/30881-1502489004-8ba3d5f17875090390df0cd068b43fe0e0bc89fa." /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="alex-kelly"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Alex Kelly" title="Alex Kelly" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/032/673/32673-1504823301-4a8eedcf69a73622cf0774da9d876aeb90a31e1f. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/032/673/32673-1504823301-3ca0335556a1d88c4e8c67a0e4cafd2d5824218c." /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="fredrick-christian"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Fredrick  Christian " title="Fredrick  Christian " srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/031/872/31872-1541108699-b1a9273d6d197901a0bd45ea755420b6dd6fac29.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/031/872/31872-1541108699-72a4a4819762ba2d97df1ba57b14d8f2d1dbbe31.jpeg" /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="ken-guest"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Ken  Guest" title="Ken  Guest" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/007/824/7824-1501179202-9497c351ba44ce677f5a57e49398f37808390f05. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/007/824/7824-1501179202-d1b7f9ecebe249fb4fd5734278e85d949ef11a2b." /></div>
+</span></div>
+<div class='s-marginTop1 s-fontSize18 u-fontWeight400 u-lineHeight1_3'>
+Aniekeme, Paul, Alex, Fredrick , Ken , and 108 others
+invested.
+<a class="js-scroll_to_section" href="#reviews">33 Reviews</a>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingBottom1_5 u-hiddenXsOnly'></div>
+</div>
+</div>
+<div class="offerings-shared-schema_org" data-rc="offerings/shared/schema_org"><script nonce="LwsrTIL9XHc7/DHEEL//vQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "https://republic.com/companies",
+      "name": "Companies",
+      "image": "https://assets.republic.com/assets/logo/icon/brand/36x40/logo@3x-af4ee9995fb90fffc2d2d3acf41e91f9ea98718053f604912115ab3fd6877321.png"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "https://republic.com/light",
+      "name": "Light",
+      "image": "https://uploads.republic.com/p/offerings/logos/medium/000/000/054/54-1526918843-7a99fe41ce3e2479162cde426426b116ad035cc0.png"
+    }
+  }]
+}
+
+
+//]]>
+</script></div>
+</div>
+</div>
+</div>
+</div>
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-full_disclaimer" data-rc="layouts/footer/disclaimers/full_disclaimer"><p class='s-marginBottom1'>
+This site (the "Site") is owned and maintained by OpenDeal Inc., which is not a registered
+broker-dealer. OpenDeal Inc. does not give investment advice, endorsement, analysis or
+recommendations with respect to any securities. All securities listed here are being offered
+by, and all information included on this Site is the responsibility of, the applicable issuer
+of such securities. The intermediary facilitating the offering will be identified in such
+offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+All funding-portal activities are conducted by OpenDeal Portal LLC doing business as Republic,
+a funding portal which is registered with the US Securities and Exchange Commission (SEC) as a
+funding portal (Portal) and is a member of the Financial Industry Regulatory Authority (FINRA).
+OpenDeal Portal LLC is located at 149 E 23rd St #2001, New York, NY 10010, please
+check out background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org/about/funding-portals-we-regulate">Funding Portal page</a>.
+</p>
+<p class='s-marginBottom1'>
+All broker-dealer related securities activity is conducted by OpenDeal Broker LLC, an
+affiliate of OpenDeal Inc. and OpenDeal Portal LLC, and a registered broker-dealer, and member
+of
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org">FINRA</a>
+|
+<a class="c-link c-link--underline" href="https://www.sipc.org/">SiPC</a>,
+located at 1345 Avenue of the Americas, 15th Floor, New York, NY 10105, please check our
+background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://brokercheck.finra.org/firm/summary/291387">BrokerCheck</a>.
+</p>
+<p class='s-marginBottom1'>
+Certain pages discussing the mechanics and providing educational materials regarding
+regulation crowdfunding offerings may refer to OpenDeal Broker LLC and OpenDeal Portal LLC
+collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC make investment
+recommendations and no communication, through this Site or in any other medium should be
+construed as a recommendation for any security offered on or off this investment platform.
+Investment opportunities posted on this Site are private placements of securities that are
+not publicly traded, involve a high degree of risk, may lose value, are subject to holding
+period requirements and are intended for investors who do not need a liquid investment. Past
+performance is not indicative of future results. Investors must be able to afford the loss
+of their entire investment. Only qualified investors, which may be restricted to only
+Accredited Investors or non-U.S. persons, may invest in offerings hosted by OpenDeal Broker.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC, nor any of their
+officers, directors, agents and employees makes any warranty, express or implied, of any
+kind whatsoever related to the adequacy, accuracy or completeness of any information on this
+Site or the use of information on this site. Offers to sell securities can only be made
+through official offering documents that contain important information about the investment
+and the issuers, including risks. Investors should carefully read the offering documents.
+Investors should conduct their own due diligence and are encouraged to consult with their
+tax, legal and financial advisors.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1 s-paddingHoriz1_5 s-paddingVert1 u-text-center u-fontWeight500'>
+Investors should verify any issuer information they consider important before making
+an investment.
+</p>
+<p class='s-marginBottom1'>
+Investments in private companies are particularly risky and may result in total loss of
+invested capital. Past performance of a security or a company does not guarantee future
+results or returns. Only investors who understand the
+<a class="c-link c-link--underline" href="/risks">risks of early stage investment</a>
+and who meet the Republic's
+<a class="c-link c-link--underline" href="/help/can-i-invest">investment criteria</a>
+may invest.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC verify
+information provided by companies on this Site and makes no assurance as to the completeness
+or accuracy of any such information. Additional information about companies fundraising on
+the Site can be found by searching the
+<a target="_blank" rel="noopener" class="c-link c-link--underline" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not require an
+EDGAR filing.
+</p>
+<p class='s-marginBottom1'>
+To help the government fight the funding of terrorism and money laundering activities,
+Federal law requires all financial institutions to obtain, verify, and record information
+that identifies each person who opens an account.
+Therefore, when you use the Services we will ask for your name, address, date of birth,
+and other information that will allow us to identify you.
+We may also ask to see your driver's license, passport or other identifying documents.
+</p>
+<p class='s-marginBottom1'>
+Republic and its affiliates are not and do not operate or act as a bank. Certain banking
+services are provided by BankProv, member FDIC / member DIF. Digital (crypto) assets and
+investment products are not insured by the FDIC, may lose value, and are not deposits or other
+obligations of BankProv and are not guaranteed by BankProv. Terms and conditions apply.
+</p>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+
+<script src="https://static.zdassets.com/ekr/snippet.js?key=d10adfc1-5afd-478b-b60b-d5f58ec5e520" id="ze-snippet" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==">
+  window.zESettings = {
+    webWidget: {
+      zIndex: 86,
+      offset: {
+        horizontal: '55px',
+        vertical: '2px',
+        mobile: {
+          horizontal: '-4px',
+          vertical: '90px'
+        }
+      },
+      contactForm: {
+        title: {'*': 'How can we help?'},
+        ticketForms: [{ id: 6139814921239 }],
+        fields: [
+          { id: 'subject', prefill: { '*': 'Need help!' } },
+          { id: 'email', prefill: { '*': "" } },
+          { id: 'key:6164328823703', prefill: { '*': "" } },
+        ],
+      },
+      helpCenter: {
+        title: {'*': 'FAQ'},
+        searchPlaceholder: {'*': 'What can we help you with?'},
+        messageButton: {'*': 'Contact Us'},
+        originalArticleButton: false,
+      },
+    },
+  };
+  
+  zE('webWidget', 'setLocale', 'en');
+  zE('webWidget', 'helpCenter:setSuggestions', { search: 'invest' });
+</script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="LwsrTIL9XHc7/DHEEL//vQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="LwsrTIL9XHc7/DHEEL//vQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+<script src="https://assets.republic.com/assets/w/runtime~MediaSliderPage-1098888d834bd3762a55.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ae-cda0d3eb09b2571ee24e.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apexcharts_dist_apexcharts_common_js-ba302c83-12acaec747ed98c96c79.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apollo_client_c-752f32f6a5f08b47aee9.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ap-10286ca6eee77e5cfdbe.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ax-87ca8eab84b534ce51a3.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_braze_web-sdk_sh-082bda95cd1f46db675e.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_br-ded297e3061c09e58176.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ca-0192f74a4e598aec7a52.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_core-js_i-f3d9e78f9f53cf58378d.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_crc-8b8be13627dda03b73d8.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_c-cea66e909f36387f5945.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_da-5b72066967e09ff24edf.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_d-83acda350f41f6abdff3.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_el-ea7a9011bec346028733.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_c-22aa4e04a1fbdd3d6e3f.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_common_dist_browser_genesisStates_mainnet_json-97430531-83fe7f595f064e0385b1.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethersproject_a-8765651a2f1bdccf9a56.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_et-b31cc9258c2c1d07cac5.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_e-d4fab84d8ab34150ad30.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_fontkit_dist_module_mjs-3528d02d-ecc0f4556eda5102b2d3.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_froala_editor_min_js-b1fc3988-ced20c2300f6c9f40897.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_plugins_pkgd_min_js-adc83e4b-33e97225bf9033164d2d.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_grapesjs_dist_grapes_min_js-a826bfc4-cadb07d673643a51118e.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_g-9055b0297f7ac6f017f0.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_i-b77e6ab09fad9dae77d3.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_l-b1a7deddd04fdb5d9a33.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_n-a907fa203947450ef394.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pb-cab37a002985eca657b7.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pd-cf393d506219ee5b112a.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pl-4c6fabe429fda4071dbb.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_p-27f2b800da9d84d8e2bf.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_rc-o-80e5f70e3d9925c8cdb0.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reach-857404c519977edb5b66.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-l-0c79a438a779449c0b1d.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-r-3c1ef064934605ec254d.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reac-dd43f7d7d874a68c99e5.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_r-b902bc774bc3ff333672.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_sc-0f32c01226134eda1296.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_se-74d4cf204c9d98a015aa.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_s-884ee524820f17ecd6cb.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_A-8cf01848e62c80ff23d7.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_I-5990a0d8dde19f6e04bd.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_A-c0356acbaf9d3c64d8d4.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_C-81436052b30a8eba6374.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_F-445b408fa8bf17d5aa78.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_I-662a93905a6a15b4f741.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_P-69d60a2c449dc7cb6600.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_T-e09f8036fafdc3c6afe0.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_ad-a41070ea11aea6a6ef6a.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+<script src="https://assets.republic.com/assets/w/MediaSliderPage-9d07a76fbcff98a1daf3.js" nonce="LwsrTIL9XHc7/DHEEL//vQ=="></script>
+</body></html>
+
+
+

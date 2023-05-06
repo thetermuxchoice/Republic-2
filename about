@@ -1,0 +1,2409 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+About — Republic
+</title>
+<link href='https://republic.com/about' rel='canonical'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='About — Republic' itemprop='name'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' itemprop='description'>
+<meta content='https://assets.republic.com/assets/static_pages/about/share_image-3379fa8a531c629af603d02f5e719c10597ae2f310540856a80c3a8dec98886f.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='About — Republic' name='twitter:title'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' name='twitter:description'>
+<meta content='https://assets.republic.com/assets/static_pages/about/share_image-3379fa8a531c629af603d02f5e719c10597ae2f310540856a80c3a8dec98886f.jpg' name='twitter:image'>
+<meta content='https://republic.com/about' property='og:url'>
+<meta content='About — Republic' property='og:title'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' property='og:description'>
+<meta content='https://assets.republic.com/assets/static_pages/about/share_image-3379fa8a531c629af603d02f5e719c10597ae2f310540856a80c3a8dec98886f.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="+qFCvMZckLPBBhRUOXQ2og=="></script>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="HzDj-yqe6wCi3Vigr4iuBD-Tq1tXDjZIxnAPqk2htTUUJq_T4tx3TiiZjgStgXKLvOX7Lc9IeQAI2xNrykUkHw" />
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+  analytics.page({
+    url: "https://republic.com/about"
+  }, {
+    integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+  });
+</script>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="+qFCvMZckLPBBhRUOXQ2og==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class=" preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="layouts-header_footer" data-rc="layouts/header_footer"><nav class="c-header-nav c-header-nav--default  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/black/150x38/logo-211758c2027fc8268186d512a2119520a35358973648789a123d9fb6c3d5a37f.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" class="active" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search  layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link active" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--default" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div>
+<div class="layouts-full_width" data-rc="layouts/full_width"><div class="static_pages-about" data-rc="static_pages/about"><div class='s-spacerSm3 s-spacerXs1'></div>
+<div class='static_pages-about__header'>
+<div>
+<img height="715" class="u-imageFluid u-hiddenMdDown" src="https://assets.republic.com/assets/static_pages/about/header-7057ac9c7dd120bb837716349600370fd1962c557a0102ec0af980dedec484cb.svg" />
+<img height="630" class="u-imageFluid u-hiddenLgOnly u-hiddenSmDown" src="https://assets.republic.com/assets/static_pages/about/header-mobile-0ec6f37ef5d5a36e6cfa6e8604032fbce3683871c60648a70bc92bfc7a8f2dd3.png" />
+<img height="488" class="u-imageFluid u-hiddenMdUp" src="https://assets.republic.com/assets/static_pages/about/header-mobile-0ec6f37ef5d5a36e6cfa6e8604032fbce3683871c60648a70bc92bfc7a8f2dd3.png" />
+<div class='static_pages-about__header_logo_container'>
+<img width="54" height="61" class="static_pages-about__header_logo" src="https://assets.republic.com/assets/static_pages/about/logo-96648e8f0646fc48e28319cd6a65bfdeeb88da6294092752e10d67cc531ebdac.svg" />
+</div>
+</div>
+<div class='s-container s-gridMaxXs24 static_pages-about__header_text'>
+<h1 class='c-largeTitle'>
+The future of
+<br>
+private investing
+</h1>
+<div class='s-spacerSm2 s-spacerXs1_5'></div>
+<p class='u-fontWeight400 s-fontSize25 u-colorGray5'>
+Republic is the private
+<br class='u-hiddenSmUp'>
+investing platform
+<br>
+for investors seeking
+<br class='u-hiddenSmUp'>
+high growth potential.
+</p>
+</div>
+</div>
+<div class='s-spacerSm5 s-spacerXs2'></div>
+<div class='s-container s-gridMaxXs24 u-text-center' id='invest-with-best'>
+<div>
+<div class='s-container s-container--no-padding s-gridMaxSm18'>
+<h2 class='s-marginBottom1_5 c-primaryTitle static_pages-about__title'>
+Invest with the best
+</h2>
+<p class='c-subtitle static_pages-about__subtitle'>
+Republic curates private investing opportunities with high-growth potential across
+<a href="/companies">startups</a>,
+<a href="/fig">gaming</a>,
+<a href="/real-estate">real estate</a>, and
+<a href="/crypto/for-investors">crypto</a>.
+</p>
+</div>
+<div class='s-spacerSm4 s-spacerXs2'></div>
+<div>
+<div class='u-displayFlex u-justifyContentSpaceEvenly u-flexWrap static_pages-about__portfolio_deals_container'>
+<div class="u-borderRadius8 u-displayFlex u-alignItemsCenter u-flexDirectionColumn s-margin1 s-padding1 u-text-center static_pages-about-portfolio_deal_card" data-rc="static_pages/about/portfolio_deal_card"><div class='c-tag-container s-marginBottom0_5'>
+<div class='c-tag c-tag--flat c-tag--small'>
+startup
+</div>
+</div>
+<a href='https://www.spacex.com/' target='_blank'>
+<img class="static_pages-about-portfolio_deal_card__image" src="https://assets.republic.com/assets/static_pages/about/portfolio_deals/spacex-345442ae04c5cc3d7d1d610b466c5faac315b71d61d56aaaedcfa656e115f63a.png" />
+</a>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 static_pages-about-portfolio_deal_card__description'>
+The aerospace company pioneering space transportation founded by&nbsp;Elon&nbsp;Musk.
+</div>
+<div class='static_pages-about-portfolio_deal_card__hr'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25 u-colorGray1 s-marginTop1 static_pages-about-portfolio_deal_card__amount'>
+$2,350,000
+</div>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 s-paddingHoriz1_5 static_pages-about-portfolio_deal_card__mention'>
+Purchased with <br class="u-hiddenSmUp">Republic
+<i class='icon-info-letter icon--frame js-tooltip_simple u-verticalAlignBottom static_pages-about-portfolio_deal_card__icon' data-tippy-content='Purchased on Republic Private platform'></i>
+</div>
+</div>
+<div class="u-borderRadius8 u-displayFlex u-alignItemsCenter u-flexDirectionColumn s-margin1 s-padding1 u-text-center static_pages-about-portfolio_deal_card" data-rc="static_pages/about/portfolio_deal_card"><div class='c-tag-container s-marginBottom0_5'>
+<div class='c-tag c-tag--flat c-tag--small'>
+startup
+</div>
+</div>
+<a href='https://robinhood.com/' target='_blank'>
+<img class="static_pages-about-portfolio_deal_card__image" src="https://assets.republic.com/assets/static_pages/about/portfolio_deals/robinhood-4764e123d7b8de54d53d8f16ceb3e71301ff1083b235ce766507371c1e018ab2.png" />
+</a>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 static_pages-about-portfolio_deal_card__description'>
+Commission-free trading and investing app. Backed by Sequoia and DST.
+</div>
+<div class='static_pages-about-portfolio_deal_card__hr'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25 u-colorGray1 s-marginTop1 static_pages-about-portfolio_deal_card__amount'>
+$11,200,000
+</div>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 s-paddingHoriz1_5 static_pages-about-portfolio_deal_card__mention'>
+Raised and purchased <br class="u-hiddenSmUp">with Republic
+<i class='icon-info-letter icon--frame js-tooltip_simple u-verticalAlignBottom static_pages-about-portfolio_deal_card__icon' data-tippy-content='Raised on Republic Private platform'></i>
+</div>
+</div>
+<div class="u-borderRadius8 u-displayFlex u-alignItemsCenter u-flexDirectionColumn s-margin1 s-padding1 u-text-center static_pages-about-portfolio_deal_card" data-rc="static_pages/about/portfolio_deal_card"><div class='c-tag-container s-marginBottom0_5'>
+<div class='c-tag c-tag--flat c-tag--small'>
+startup
+</div>
+</div>
+<a href='https://carta.com/' target='_blank'>
+<img class="static_pages-about-portfolio_deal_card__image" src="https://assets.republic.com/assets/static_pages/about/portfolio_deals/carta-ff373a8b715f113c8df52acdadb4079ac3666c230c9652b668c4a225c17c9905.png" />
+</a>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 static_pages-about-portfolio_deal_card__description'>
+Leading cap table management and valuation software. Backed by Andreessen Horowitz.
+</div>
+<div class='static_pages-about-portfolio_deal_card__hr'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25 u-colorGray1 s-marginTop1 static_pages-about-portfolio_deal_card__amount'>
+$13,700,000
+</div>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 s-paddingHoriz1_5 static_pages-about-portfolio_deal_card__mention'>
+Purchased with <br class="u-hiddenSmUp">Republic
+<i class='icon-info-letter icon--frame js-tooltip_simple u-verticalAlignBottom static_pages-about-portfolio_deal_card__icon' data-tippy-content='Purchased on Republic Private platform'></i>
+</div>
+</div>
+<div class="u-borderRadius8 u-displayFlex u-alignItemsCenter u-flexDirectionColumn s-margin1 s-padding1 u-text-center static_pages-about-portfolio_deal_card" data-rc="static_pages/about/portfolio_deal_card"><div class='c-tag-container s-marginBottom0_5'>
+<div class='c-tag c-tag--flat c-tag--small'>
+startup
+</div>
+</div>
+<a href='https://www.axiomspace.com/' target='_blank'>
+<img class="static_pages-about-portfolio_deal_card__image" src="https://assets.republic.com/assets/static_pages/about/portfolio_deals/axiom-ec35de44f20ea34374c09dcf6c62b37a43cf2f702a303b50fd92b794b76d1dc7.png" />
+</a>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 static_pages-about-portfolio_deal_card__description'>
+Developer of the worlds first commercial space station. Backed by Moelis & Company.
+</div>
+<div class='static_pages-about-portfolio_deal_card__hr'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25 u-colorGray1 s-marginTop1 static_pages-about-portfolio_deal_card__amount'>
+$11,000,000
+</div>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 s-paddingHoriz1_5 static_pages-about-portfolio_deal_card__mention'>
+Purchased with <br class="u-hiddenSmUp">Republic
+<i class='icon-info-letter icon--frame js-tooltip_simple u-verticalAlignBottom static_pages-about-portfolio_deal_card__icon' data-tippy-content='Purchased on Republic Private platform'></i>
+</div>
+</div>
+<div class="u-borderRadius8 u-displayFlex u-alignItemsCenter u-flexDirectionColumn s-margin1 s-padding1 u-text-center static_pages-about-portfolio_deal_card" data-rc="static_pages/about/portfolio_deal_card"><div class='c-tag-container s-marginBottom0_5'>
+<div class='c-tag c-tag--flat c-tag--small'>
+startup
+</div>
+</div>
+<a href='https://www.amplemeal.com/' target='_blank'>
+<img class="static_pages-about-portfolio_deal_card__image" src="https://assets.republic.com/assets/static_pages/about/portfolio_deals/ample-9d4c861fc57337640410e436874ec180408da02a7bf98de23bafe187f07a5f39.png" />
+</a>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 static_pages-about-portfolio_deal_card__description'>
+Optimal nutrition through premium meal replacements. Backed by&nbsp;Slow&nbsp;Ventures.
+</div>
+<div class='static_pages-about-portfolio_deal_card__hr'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25 u-colorGray1 s-marginTop1 static_pages-about-portfolio_deal_card__amount'>
+$1,460,000
+</div>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 s-paddingHoriz1_5 static_pages-about-portfolio_deal_card__mention'>
+Raised with Republic
+<i class='icon-info-letter icon--frame js-tooltip_simple u-verticalAlignBottom static_pages-about-portfolio_deal_card__icon' data-tippy-content='Raised on Republic Public platform'></i>
+</div>
+</div>
+<div class="u-borderRadius8 u-displayFlex u-alignItemsCenter u-flexDirectionColumn s-margin1 s-padding1 u-text-center static_pages-about-portfolio_deal_card" data-rc="static_pages/about/portfolio_deal_card"><div class='c-tag-container s-marginBottom0_5'>
+<div class='c-tag c-tag--flat c-tag--small'>
+gaming
+</div>
+</div>
+<a href='https://store.steampowered.com/app/560130/Pillars_of_Eternity_II_Deadfire/' target='_blank'>
+<img class="static_pages-about-portfolio_deal_card__image" src="https://assets.republic.com/assets/static_pages/about/portfolio_deals/pillars-521afd3138d5516331e1dbf550ec0a89da450e2a09458f1fd84779ebc6a20e44.png" />
+</a>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 static_pages-about-portfolio_deal_card__description'>
+PC game that surpassed its original funding goal of $1.1M in <24 hours. RPG of the Year, 2018
+</div>
+<div class='static_pages-about-portfolio_deal_card__hr'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25 u-colorGray1 s-marginTop1 static_pages-about-portfolio_deal_card__amount'>
+$4,407,000
+</div>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 s-paddingHoriz1_5 static_pages-about-portfolio_deal_card__mention'>
+Raised with Republic
+<i class='icon-info-letter icon--frame js-tooltip_simple u-verticalAlignBottom static_pages-about-portfolio_deal_card__icon' data-tippy-content='Raised on Fig'></i>
+</div>
+</div>
+<div class="u-borderRadius8 u-displayFlex u-alignItemsCenter u-flexDirectionColumn s-margin1 s-padding1 u-text-center static_pages-about-portfolio_deal_card" data-rc="static_pages/about/portfolio_deal_card"><div class='c-tag-container s-marginBottom0_5'>
+<div class='c-tag c-tag--flat c-tag--small'>
+real estate
+</div>
+</div>
+<a href='https://brickellflatiron.com/' target='_blank'>
+<img class="static_pages-about-portfolio_deal_card__image" src="https://assets.republic.com/assets/static_pages/about/portfolio_deals/flatiron_miami-bc59650118bf11ad3338b7d6ffe612f5dd822d9b7c8f0f679c5cfa33acadf7b1.png" />
+</a>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 static_pages-about-portfolio_deal_card__description'>
+Flatiron Miami — Iconic condos in downtown Miami’s architectural hub.
+</div>
+<div class='static_pages-about-portfolio_deal_card__hr'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25 u-colorGray1 s-marginTop1 static_pages-about-portfolio_deal_card__amount'>
+$300,000+
+</div>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 s-paddingHoriz1_5 static_pages-about-portfolio_deal_card__mention'>
+Raised with Republic
+<i class='icon-info-letter icon--frame js-tooltip_simple u-verticalAlignBottom static_pages-about-portfolio_deal_card__icon' data-tippy-content='Raised on Republic Real Estate'></i>
+</div>
+</div>
+<div class="u-borderRadius8 u-displayFlex u-alignItemsCenter u-flexDirectionColumn s-margin1 s-padding1 u-text-center static_pages-about-portfolio_deal_card" data-rc="static_pages/about/portfolio_deal_card"><div class='c-tag-container s-marginBottom0_5'>
+<div class='c-tag c-tag--flat c-tag--small'>
+crypto
+</div>
+</div>
+<a href='https://www.props.xyz/' target='_blank'>
+<img class="static_pages-about-portfolio_deal_card__image" src="https://assets.republic.com/assets/static_pages/about/portfolio_deals/props-1b3689b510a554c03c53fec2875151efe3bafbf2e8ec030abf8356e3410b2cdb.png" />
+</a>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 static_pages-about-portfolio_deal_card__description'>
+Decentralized ecosystem of video applications. Backed by Union Square&nbsp;Ventures.
+</div>
+<div class='static_pages-about-portfolio_deal_card__hr'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25 u-colorGray1 s-marginTop1 static_pages-about-portfolio_deal_card__amount'>
+$1,070,000
+</div>
+<div class='u-fontWeight400 s-fontSize13 u-colorGray7 s-marginTop0_5 s-paddingHoriz1_5 static_pages-about-portfolio_deal_card__mention'>
+Raised with Republic
+<i class='icon-info-letter icon--frame js-tooltip_simple u-verticalAlignBottom static_pages-about-portfolio_deal_card__icon' data-tippy-content='Raised on Republic Public platform'></i>
+</div>
+</div>
+</div>
+<div class='s-spacerSm2 s-spacerXs1'></div>
+<div class='u-fontWeight400 s-fontSize16'>
+And over
+<a href="/companies">500 other companies</a>
+raised with Republic’s Private and Public platforms.
+</div>
+</div>
+</div>
+<div class='s-spacerSm5 s-spacerXs3'></div>
+<hr class='s-grid-colXs6'>
+<div class='s-spacerSm5 s-spacerXs3'></div>
+<div>
+<div class='s-container s-container--no-padding s-gridMaxSm18'>
+<p class='c-subtitle'>
+The best venture capital firms, family offices, and high net worth
+individuals&nbsp;already invest in Republic companies.
+</p>
+</div>
+<div class='s-spacerSm5 s-spacerXs3'></div>
+<div>
+<img class="u-imageFluid u-hiddenXsOnly" src="https://assets.republic.com/assets/static_pages/about/co-investors-87a34cd6a346addc51d036b8a552a02b8e8cafe463e00fb5bde70af006de5e73.png" />
+<img class="u-imageFluid u-hiddenSmUp" src="https://assets.republic.com/assets/static_pages/about/co-investors-mobile-65d2e744779376148e53ce2b14d47f6d89f4b1d9fcfb3981e9de3902f489d97b.png" />
+</div>
+</div>
+<div class='s-spacerSm5 s-spacerXs3'></div>
+<hr>
+<div class='s-spacerSm5 s-spacerXs3'></div>
+<div>
+<div class='s-container s-container--no-padding s-gridMaxSm18'>
+<p class='c-subtitle'>
+We partner and work closely&nbsp;with
+</p>
+</div>
+<div class='s-spacerSm5 s-spacerXs3'></div>
+<div>
+<div class='s-grid'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs12 static_pages-about__partner_container'>
+<div class='u-bgGray u-borderRadius6 u-displayFlex u-justifyContentCenter u-flexDirectionColumn u-alignItemsCenter s-marginBottom2 static_pages-about__partner_card'>
+<a href='https://angel.co/' target='_blank'>
+<img class="static_pages-about__partner_logo" src="https://assets.republic.com/assets/static_pages/about/partners/angellist-1341501241d3413e83458d21142765347e2b7680ed287f02d2fb191c80318379.png" />
+</a>
+</div>
+</div>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs12 static_pages-about__partner_container'>
+<div class='u-bgGray u-borderRadius6 u-displayFlex u-justifyContentCenter u-flexDirectionColumn u-alignItemsCenter s-marginBottom2 static_pages-about__partner_card'>
+<a href='https://www.binance.com/' target='_blank'>
+<img class="static_pages-about__partner_logo" src="https://assets.republic.com/assets/static_pages/about/partners/binance-0c47d37b24e0af8055da6ae10c9d65e7333dd6c71f36ff64998f45969bd58e64.png" />
+</a>
+</div>
+</div>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs12 static_pages-about__partner_container'>
+<div class='u-bgGray u-borderRadius6 u-displayFlex u-justifyContentCenter u-flexDirectionColumn u-alignItemsCenter s-marginBottom2 static_pages-about__partner_card'>
+<a href='https://www.stripe.com/' target='_blank'>
+<img class="static_pages-about__partner_logo" src="https://assets.republic.com/assets/static_pages/about/partners/stripe-1219499b6eaa3d59ed2c9149ec1e525dc3898e01cc33d60bad0a50cc2fc0fcdd.png" />
+</a>
+</div>
+</div>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs12 static_pages-about__partner_container'>
+<div class='u-bgGray u-borderRadius6 u-displayFlex u-justifyContentCenter u-flexDirectionColumn u-alignItemsCenter s-marginBottom2 static_pages-about__partner_card'>
+<a href='https://www.algorand.com/' target='_blank'>
+<img class="static_pages-about__partner_logo" src="https://assets.republic.com/assets/static_pages/about/partners/algorand-0845ac55072ba648876d57ca14d55ee508396ecc47e82198d3091de655bc064e.png" />
+</a>
+</div>
+</div>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs12 static_pages-about__partner_container'>
+<div class='u-bgGray u-borderRadius6 u-displayFlex u-justifyContentCenter u-flexDirectionColumn u-alignItemsCenter s-marginBottom2 static_pages-about__partner_card'>
+<a href='https://www.passportcapital.com/' target='_blank'>
+<img class="static_pages-about__partner_logo" src="https://assets.republic.com/assets/static_pages/about/partners/passport_capital-08a5d3bfd2d6447cfe8799f01ef58f4a62a277631f0e9ba36d3bd9a683373b29.png" />
+</a>
+</div>
+</div>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs12 static_pages-about__partner_container'>
+<div class='u-bgGray u-borderRadius6 u-displayFlex u-justifyContentCenter u-flexDirectionColumn u-alignItemsCenter s-marginBottom2 static_pages-about__partner_card'>
+<a href='https://www.techstars.com/' target='_blank'>
+<img class="static_pages-about__partner_logo" src="https://assets.republic.com/assets/static_pages/about/partners/techstars-c4e44678d2aa64b779f8a571412258e4f2616e8a631b25b5c4d8516767a434d6.png" />
+</a>
+</div>
+</div>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs12 static_pages-about__partner_container'>
+<div class='u-bgGray u-borderRadius6 u-displayFlex u-justifyContentCenter u-flexDirectionColumn u-alignItemsCenter s-marginBottom2 static_pages-about__partner_card'>
+<a href='https://www.iamsogal.com/' target='_blank'>
+<img class="static_pages-about__partner_logo" src="https://assets.republic.com/assets/static_pages/about/partners/sogal-7028977f1ac95a2967f7fce6a2c10225b746fc8787ae1d43f67c77c3e5a6fbb6.png" />
+</a>
+</div>
+</div>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs12 static_pages-about__partner_container'>
+<div class='u-bgGray u-borderRadius6 u-displayFlex u-justifyContentCenter u-flexDirectionColumn u-alignItemsCenter s-marginBottom2 static_pages-about__partner_card'>
+<a href='https://www.amazon.com/' target='_blank'>
+<img class="static_pages-about__partner_logo" src="https://assets.republic.com/assets/static_pages/about/partners/amazon-a6f8e89d54b20650b839a3b9996690c4258ffacacb6e3d0779d31568471fb010.png" />
+</a>
+</div>
+</div>
+</div>
+<div class='s-spacerSm2_5'></div>
+<div class='s-grid'>
+<div class="s-grid-colXs12 s-grid-colSm6 static_pages-about-advisor_card" data-rc="static_pages/about/advisor_card"><div class='s-paddingHoriz1 s-marginTop1_5'>
+<div class='js-tooltip_ajax' data-slug='randi-zuckerberg' data-type='user'>
+<img class="static_pages-about-advisor_card__avatar" src="https://assets.republic.com/assets/static_pages/about/advisors/randi-zuckerberg-ecdd647a3d9daa8faea9b558a97f66387acf35057a033609a9fb823b398786ac.png" />
+</div>
+<div class='u-fontWeight600 u-colorBlack s-fontSize18 s-marginTop1 static_pages-about-advisor_card__name'>
+Randi Zuckerberg
+</div>
+<div class='u-fontWeight400 s-fontSize14 static_pages-about-advisor_card__role'>
+Republic advisor
+</div>
+<div class='s-spacerSm1 s-spacerXs0_5'></div>
+<div class='u-fontWeight400 s-fontSize14 u-colorGray7 static_pages-about-advisor_card__description'>
+Techie &amp; Creator of Facebook Live. Radio host, investor, author, speaker, and theater producer. Invested in 50+ startups and sits on the board of The Motley Fool and Life360.
+</div>
+</div>
+</div>
+<div class="s-grid-colXs12 s-grid-colSm6 static_pages-about-advisor_card" data-rc="static_pages/about/advisor_card"><div class='s-paddingHoriz1 s-marginTop1_5'>
+<div class='js-tooltip_ajax' data-slug='chamillionaire' data-type='user'>
+<img class="static_pages-about-advisor_card__avatar" src="https://assets.republic.com/assets/static_pages/about/advisors/cham-bbdf861700009382bed94ab207eed815a0d91e02142f2911f4ab17fb0144e2be.png" />
+</div>
+<div class='u-fontWeight600 u-colorBlack s-fontSize18 s-marginTop1 static_pages-about-advisor_card__name'>
+Chamillionaire
+</div>
+<div class='u-fontWeight400 s-fontSize14 static_pages-about-advisor_card__role'>
+Republic advisor
+</div>
+<div class='s-spacerSm1 s-spacerXs0_5'></div>
+<div class='u-fontWeight400 s-fontSize14 u-colorGray7 static_pages-about-advisor_card__description'>
+Platinum and grammy award-winning artist. Founder, Convoz. Entrepreneur in Residence, Upfront Ventures. Angel investor.
+</div>
+</div>
+</div>
+<div class="s-grid-colXs12 s-grid-colSm6 static_pages-about-advisor_card" data-rc="static_pages/about/advisor_card"><div class='s-paddingHoriz1 s-marginTop1_5'>
+<div class='js-tooltip_ajax' data-slug='timothy-draper' data-type='user'>
+<img class="static_pages-about-advisor_card__avatar" src="https://assets.republic.com/assets/static_pages/about/advisors/tim-draper-2aadadaf47f74109b3dea20c0907bac0cc34dbb6a713cc37f2bdd3e9239c7f97.png" />
+</div>
+<div class='u-fontWeight600 u-colorBlack s-fontSize18 s-marginTop1 static_pages-about-advisor_card__name'>
+Tim Draper
+</div>
+<div class='u-fontWeight400 s-fontSize14 static_pages-about-advisor_card__role'>
+Republic advisor
+</div>
+<div class='s-spacerSm1 s-spacerXs0_5'></div>
+<div class='u-fontWeight400 s-fontSize14 u-colorGray7 static_pages-about-advisor_card__description'>
+Founder of DFJ Venture Capital, Draper Associates, Draper University, and Innovate Your State.
+</div>
+</div>
+</div>
+<div class="s-grid-colXs12 s-grid-colSm6 static_pages-about-advisor_card" data-rc="static_pages/about/advisor_card"><div class='s-paddingHoriz1 s-marginTop1_5'>
+<div class='js-tooltip_ajax' data-slug='naval-ravikant' data-type='user'>
+<img class="static_pages-about-advisor_card__avatar" src="https://assets.republic.com/assets/static_pages/about/advisors/naval-ravikant-3b4b0fda788028da1adc684e23d620804b4de36517df55452333ead2f901ffdb.png" />
+</div>
+<div class='u-fontWeight600 u-colorBlack s-fontSize18 s-marginTop1 static_pages-about-advisor_card__name'>
+Naval Ravikant
+</div>
+<div class='u-fontWeight400 s-fontSize14 static_pages-about-advisor_card__role'>
+Republic advisor
+</div>
+<div class='s-spacerSm1 s-spacerXs0_5'></div>
+<div class='u-fontWeight400 s-fontSize14 u-colorGray7 static_pages-about-advisor_card__description'>
+Co-founder and former CEO of AngelList. Co-founder at Genoa Corp, Vast.com, Epinions.com. Entrepreneur and angel investor.
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-spacerSm5 s-spacerXs3'></div>
+<hr>
+<div class='s-spacerSm5 s-spacerXs3'></div>
+<div>
+<div class='s-container s-container--no-padding s-gridMaxSm18'>
+<h2 class='s-marginBottom1_5 c-primaryTitle static_pages-about__title'>
+High-growth platform
+</h2>
+<p class='c-subtitle static_pages-about__subtitle'>
+$500,000,000+ invested by 1M+ people in over 500 completed deals.
+</p>
+</div>
+<div class='s-spacerSm4 s-spacerXs2'></div>
+<div class='s-grid--pullSm2 s-grid-colSm20 s-grid-colXs24'>
+<img class="u-imageFluid u-hiddenXsOnly" src="https://assets.republic.com/assets/static_pages/about/investments_graph-fae14f6782a433bf8cd4177e2223c250e007d598a710561a2bfe51ce8d89673d.png" />
+<img class="u-imageFluid u-hiddenSmUp" src="https://assets.republic.com/assets/static_pages/about/investments_graph_mobile-224d75afc04b1d61a1bb11fdfd1b7cb30b6dccacdda9224c11d79862ce5777a1.png" />
+<div class='u-fontWeight400 s-fontSize13 s-marginTop2 u-colorGray9 u-text-right'>
+*as of January 2021
+</div>
+</div>
+</div>
+<div class='s-spacerSm5 s-spacerXs3'></div>
+<hr class='-normal' separator-hint='Featured in'>
+<div class='s-marginTop2_5'>
+<img class="u-imageFluid u-hiddenXsOnly" src="https://assets.republic.com/assets/static_pages/about/press-624ce85b9f87ed6b34bb04788646e8ecbc48e6cae2983c6782c34b7d54bbfff1.png" />
+<img class="u-imageFluid u-hiddenSmUp" src="https://assets.republic.com/assets/static_pages/about/press-mobile-20a2b9cd312773dc7455d9897e766c2663f9cd9391cea5bdd3a9fc7896d43f1c.png" />
+</div>
+<div class='s-spacerSm5 s-spacerXs3'></div>
+</div>
+<div class='u-bgGray'>
+<div class='s-spacerSm6 s-spacerXs3'></div>
+<div class='s-container s-gridMaxXs24 u-text-center'>
+<div>
+<div class='s-container s-container--no-padding s-gridMaxSm18'>
+<h2 class='u-hiddenXsOnly s-marginBottom1_5 c-primaryTitle static_pages-about__title'>
+Growth opportunities for all sides of&nbsp;the&nbsp;investment market
+</h2>
+<h2 class='u-hiddenSmUp s-marginBottom1_5 c-primaryTitle static_pages-about__title'>
+Growth opportunities for all sides of the investment market
+</h2>
+<p class='c-subtitle static_pages-about__subtitle'>
+Republic is where both accredited and non-accredited investors meet entrepreneurs
+and access high-growth potential deals across a range of&nbsp;private&nbsp;markets.
+</p>
+</div>
+<div>
+<div class='s-spacerSm3'></div>
+<div class='u-displayFlex u-displayFlex--responsive u-justifyContentSpaceEvenly u-alignItemsCenter u-flexWrap static_pages-about__growth_container'>
+<span class='u-hiddenXsOnly u-bgGray static_pages-about__plug'></span>
+<div class="static_pages-about-growth_card" data-rc="static_pages/about/growth_card"><div class='static_pages-about-growth_card__image_container'>
+<img class="static_pages-about-growth_card__image" src="https://assets.republic.com/assets/static_pages/about/growth_opportunities/individual_investors-0e85dfd02359a24ac4b232be008c7168fc57d3437a2f526f5d5889b874b20221.png" />
+</div>
+<div class='s-spacerSm1_5 s-spacerXs1'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25'>
+Individual investors
+</div>
+<div class='u-fontWeight400 s-fontSize18 s-marginTop1 static_pages-about-growth_card__description'>
+Republic’s success has been built off our hundreds of sourced private deals, all available for investment from you with as little as $10 or as much as $124,000.
+</div>
+<a class="c-button s-marginTop1_5" href="/register">Explore opportunities</a>
+</div>
+<div class="static_pages-about-growth_card" data-rc="static_pages/about/growth_card"><div class='static_pages-about-growth_card__image_container'>
+<img class="static_pages-about-growth_card__image" src="https://assets.republic.com/assets/static_pages/about/growth_opportunities/accredited_investors-42d6aa046861adb7f0648f26ca3f798b07f3b13bf7024f7dc17c17acb78fdf2c.png" />
+</div>
+<div class='s-spacerSm1_5 s-spacerXs1'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25'>
+Accredited investors
+</div>
+<div class='u-fontWeight400 s-fontSize18 s-marginTop1 static_pages-about-growth_card__description'>
+The benefits of the Republic platform, optimized for accredited investors. Access a curated investor portal for unique private investment opportunities.
+</div>
+<a class="c-button s-marginTop1_5" href="/dealroom">Learn more</a>
+</div>
+<div class="static_pages-about-growth_card" data-rc="static_pages/about/growth_card"><div class='static_pages-about-growth_card__image_container'>
+<img class="static_pages-about-growth_card__image" src="https://assets.republic.com/assets/static_pages/about/growth_opportunities/entrepreneurs-a0ff450c2f3ba0cea82e2c55cd9265ad5612455c79ec831adaa2c94d09a0e617.png" />
+</div>
+<div class='s-spacerSm1_5 s-spacerXs1'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25'>
+Entrepreneurs
+</div>
+<div class='u-fontWeight400 s-fontSize18 s-marginTop1 static_pages-about-growth_card__description'>
+Seek funding from a wider base of diverse investors while simultaneously growing a loyal base and leveraging Republic’s private investment network.
+</div>
+<a class="c-button s-marginTop1_5" href="/raise">Raise money</a>
+</div>
+<div class="static_pages-about-growth_card" data-rc="static_pages/about/growth_card"><div class='static_pages-about-growth_card__image_container'>
+<img class="static_pages-about-growth_card__image" src="https://assets.republic.com/assets/static_pages/about/growth_opportunities/republic_note-ef9f4249178cbeceb8872e046529f9a5fe7cb6072abc838ff509e95e42873deb.png" />
+</div>
+<div class='s-spacerSm1_5 s-spacerXs1'></div>
+<div class='c-condensedTitle u-fontWeight800 s-fontSize25'>
+Republic Note
+</div>
+<div class='u-fontWeight400 s-fontSize18 s-marginTop1 static_pages-about-growth_card__description'>
+The first ever profit-sharing token that pays out when certain startups and private equities that raise with Republic sell or go public.
+</div>
+<a class="c-button s-marginTop1_5" href="/note">Learn more</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-spacerSm5 s-spacerXs1'></div>
+</div>
+<div class='s-spacerSm6 s-spacerXs3'></div>
+<div class='s-container s-gridMaxXs24' id='team'>
+<div class='u-text-center'>
+<div class='s-container s-container--no-padding s-gridMaxSm18'>
+<h2 class='s-marginBottom1_5 c-primaryTitle static_pages-about__title'>
+Built by a diverse team with deep expertise in private investing
+</h2>
+<p class='c-subtitle static_pages-about__subtitle'>
+Republic was founded by alumni from AngelList, the largest online platform
+for&nbsp;private investing. Since then, we have built a team and a network of the top
+people from the startup, venture capital, and investment worlds.
+</p>
+</div>
+<div class='s-marginTop2'>
+<img class="u-imageFluid u-hiddenXsOnly" src="https://assets.republic.com/assets/static_pages/about/team-9c15c9b910a2c95e42fa7aea715cb2a1fed676953f51da313d615d3898ee8ae2.png" />
+<img class="u-imageFluid u-hiddenSmUp" src="https://assets.republic.com/assets/static_pages/about/team-mobile-8885e07d88b2eb31ccba8026a675e1f444da0dd3e8d375472b73fc2cceac7949.png" />
+</div>
+</div>
+<div class='u-hiddenXsOnly s-marginTop2_5 js-team_members'>
+<div class='s-grid'>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="abhi-shah-1" href="/@abhi-shah-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Abhi Shah" title="Abhi Shah" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/041/342/1041342-1625586336-a854112ea46f8f394c17da58ef8f361c8b821b0a.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/041/342/1041342-1625586336-ae91e1019785497d2ccbea854f45bf7a78968a7e.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Abhi Shah
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Diligence Manager, Investment Team. Previously, Associate at FastPay and Co-Founder of Huntington Angels Network, B.S. in Finance from Northeastern University.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/abhi-shah-682934bb/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="alex-sukhanov" href="/@alex-sukhanov"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Alex Sukhanov" title="Alex Sukhanov" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/132/522/132522-1552476598-1b5a7612112275003259c7a8ff3639e6f19a4ed0.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/132/522/132522-1552476598-7bc680d5286937e74aedc6a1cdd1f6232edaab91.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Alex Sukhanov
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Tech
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Senior Engineering Manager. Founder &amp; CEO at Hoodies company. Co-founder of Checky, a health startup. 
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/alexander-sukhanov-73b86b39/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/Alex_Sukhanov"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="alex-ye-1" href="/@alex-ye-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Alex Ye" title="Alex Ye" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/121/777/121777-1562707488-ea73f95e8f083e6d4725a5412d815175b70ea284.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/121/777/121777-1562707488-eead283bbdb968608cfe43d070a9aadfb33f672a.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Alex Ye
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Crypto
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Partner, Economist. Previously at ZZ Ventures, UChicago Investment Office, and Top Tier Capital Partners. UChicago Economics.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/alexander-ye-960a61b7/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/laoganbaba"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="andrew-durgee" href="/@andrew-durgee"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Andrew Durgee" title="Andrew Durgee" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/144/356/144356-1557957955-8917eb5da17223b914a113b7e8d188c1bd483fa7.JPG 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/144/356/144356-1557957955-7c762e2a6b2973fa897f2cfdd191b753d4c2d8d8.JPG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Andrew Durgee
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Crypto
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Managing Director. Pioneered early blockchain technology plays including an industry first multi signature wallet. Studied Management Engineering at Worcester Polytechnic Institute. Was a Partner at a leading blockchain advisory group, TLDR Capital.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="anteneh-moges" href="/@anteneh-moges"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Anteneh Moges" title="Anteneh Moges" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/161/613/1161613-1636409933-b57c36ca7c398d6c179308a4660894faf68ba8fb.PNG 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/161/613/1161613-1636409933-af78ad94fdc7614f2e2be4efc36e3c6c79a035e9.PNG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Anteneh Moges
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Tech
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+PM, Product Support. Previously Service Desk Manager at NYU Tisch School of the Arts, leading technical support for 4+ years. BA in Computer Science and MS in Management of Technology from NYU.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="anwaar-almahmeed" href="/@anwaar-almahmeed"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Anwaar AlMahmeed" title="Anwaar AlMahmeed" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/069/022/69022-1603962127-a9f7b20a946a14f68bdf30b96d4743234ea0ecc8.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/069/022/69022-1603962127-001ec6dc220a15a9ea7ffd7bfdaa61af61bb1573.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Anwaar AlMahmeed
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Managing Director, MENA. Co-founder of the East Chain Co. Lead organizer of The East Chain Open Hub (ECOH). Previously, product development at Boursa Kuwait during its initial privatization phase and Kuwait Investment Authority.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="ash-republic" href="/@ash-republic"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Ash Leavenworth" title="Ash Leavenworth" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/600/879/600879-1599170650-c799914d0c283bec6e1b9da2924551137be2be9f.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/600/879/600879-1599170650-7d4e3803524fe86bdc35c822d440968e1216ceb4.png" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Ash Leavenworth
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Campaign Manager of Games at Fig, co-founder of Stumpt Gamers, interested in helping fund awesome video-games
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/ash-leavenworth/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="artem-pishchelev" href="/@artem-pishchelev"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Artem Pishchelev" title="Artem Pishchelev" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/561/569/561569-1606123996-eb1159361597da4f6318b8f53ee977d4ee3b5c0d.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/561/569/561569-1606123996-f5a9d349c8280018b4f9a3dbb37ec134069cb2eb.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Artem Pishchelev
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Tech
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Product manager. Previously PM at Yandex Taxi and Alfa-Bank. Formerly an orchestra musician. MA in International Economy at MESI.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--facebook s-marginRight0_5" target="_blank" href="https://www.facebook.com/pischelev/"><i class="icon-facebook"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="brian-johnson-3" href="/@brian-johnson-3"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Brian Johnson" title="Brian Johnson" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/157/956/157956-1661786946-16f355c78cdc8fb24b3720d3f6febaca6a837989.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/157/956/157956-1661786946-8c4e616243ba7f7befc592aea65d8262a4e1c2b6.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Brian Johnson
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Capital
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Director at Republic Labs. Previously worked at UniCredit Bank AG. Studied finance at Whitman School of Management, Syracuse University.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/iambrianjohnson/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/brian-johnson-82"><i class="icon-angellist"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="britany-jet-bacawat" href="/@britany-jet-bacawat"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Britany Jet Bacawat" title="Britany Jet Bacawat" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/182/659/182659-1554835807-c4b380394cfd218bb6dd1e63d5c2e4a284b06bb9.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/182/659/182659-1554835807-7ee191f5b81a73687b3547ab3594d0562d382365.png" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Britany Jet Bacawat
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Investor Relations. 10 years of experience in Customer Service for Student Loan and Freelance companies. BS in Financial and Managerial Accounting.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="britt-cambas" href="/@britt-cambas"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Britt Cambas" title="Britt Cambas" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/036/645/1036645-1625700769-2769bf4c363a1d56fa2b1a625dd1698ffc907237.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/036/645/1036645-1625700769-f029a01e684a4c1e615483f913d225e636aa1bc0.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Britt Cambas
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Capital
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Director, Republic Capital. Previously strategy at Orchard, venture investor at Elsewhere Partners and US Buyout fund management at The Carlyle Group. Wharton MBA, LSU.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="bryan-myint" href="/@bryan-myint"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Bryan Myint" title="Bryan Myint" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/056/418/56418-1520036007-6a35a9effbf48ccdfbead1a0ca864e5fe9ac72c0.JPG 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/056/418/56418-1520036007-93d540c086a12ae9ea545114b8048b65a025de98.JPG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Bryan Myint
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Crypto
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Partner. Founding Partner at Taureon Capital. Previously Strategy Consultant at Enterey, Ops Manager at Breeze &amp; Medical Device Engineer at Abbott. Studied engineering at UCLA.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/bryanmyint/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/bryan-myint"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/@bryanmyint"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="bryan-scordino" href="/@bryan-scordino"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Bryan Scordino" title="Bryan Scordino" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/194/158/1194158-1640113869-0fee0c36dfc577038aadfb25bb98ff03ba8012d0.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/194/158/1194158-1640113869-25dc74aa9831d9110728ca8cc352e954c2353ee2.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Bryan Scordino
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Capital
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Portfolio and Distribution Analyst. Previously, Senior Analyst in Private Wealth at Wilmington Trust. B.A. in Political Science from Boston College.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="caitlin-szikszai" href="/@caitlin-szikszai"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Caitlin Szikszai" title="Caitlin Szikszai" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/629/367/629367-1590169724-441664397c30e5b3d00692df7785a49601d71059.JPG 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/629/367/629367-1590169724-146bb4454243a2f37b51ecb24ad466727190e81f.JPG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Caitlin Szikszai
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Senior Associate, Investment Team. Former Associate at University Growth Fund. BA in International Business, emphasis in Chinese &amp; Asia Pacific, from San Diego State University.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/caitlinszikszai/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="caroline-keller" href="/@caroline-keller"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Caroline Keller" title="Caroline Keller" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/813/179/813179-1615573913-3ae27b25aa197350d7bb32f3f0c374038484c205.JPG 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/813/179/813179-1615573913-5cca62569d2cb4078181d56dd2dbdcd5860c3ff0.JPG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Caroline Keller
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Legal &amp; Compliance
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Legal Operations Manager. Previously worked for the SEC and DOJ in Washington, DC. International Finance at Regent&#39;s University London.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="christian-sullivan" href="/@christian-sullivan"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Christian Sullivan" title="Christian Sullivan" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/000/588/588-1594507551-3f65c3e481a0596c8287916f74321c3cff69a40b.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/000/588/588-1594507551-54f048a0919ceec1ca042751c6d054117735cd15.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Christian Sullivan
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Capital
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Managing Partner. Angel investor in Yandex, Cruise, and other notable tech and social impact startups.  I believe everyone should be able to invest in startups.  Access and Inclusion is the new AI.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/cbsullivan"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/cbsunis"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="chuck-pettid" href="/@chuck-pettid"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Chuck Pettid" title="Chuck Pettid" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/016/162/16162-1546278504-e40a32d6ae02b4ff72b1c3b011fdf52cbb9a181c.JPG 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/016/162/16162-1546278504-b417e3fc39c3ed2c47b59f0771182cccc5cac817.JPG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Chuck Pettid
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+EVP, Republic. Worked at Merrill, Pinnacle. Repeat founder. Active investor. Studied business at Nebraska and Fordham.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/chuckpettid"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/chucksterolove"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/chucksterolove"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="darren-sandler-1" href="/@darren-sandler-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Darren Sandler" title="Darren Sandler" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/752/852/752852-1614199985-e7faea9afeb8bc417b570cc4abf2be336a1bf055.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/752/852/752852-1614199985-1bd4bcb61a97f3e8df9ef72f4ff0a599a09661cc.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Darren Sandler
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Legal &amp; Compliance
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Legal Counsel. Previously head of legal at two fintech/blockchain startups. Kirkland and Ellis, Schulte Roth and Zabel alumni. JD from University of Pennsylvania Law School.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="dmitry-chernyshev" href="/@dmitry-chernyshev"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Dmitry Chernyshev" title="Dmitry Chernyshev" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/023/774/23774-1598864528-ae9ab06dc1b3e8d7ad782ddda979638a55f5a1b5.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/023/774/23774-1598864528-389abc961e4c6ec3257de854ec735ad5679029ce.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Dmitry Chernyshev
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Tech
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Designer. Previously at Sweatcoin, COUB, Theory&amp;Practice and Trends&amp;Brands. Created Identity and
+design for web version of Andy Warhol Interview Russia magazine.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/dmitry-chernyshev-20009567/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="emily-bruins" href="/@emily-bruins"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Emily Pollack" title="Emily Pollack" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/176/168/176168-1623001160-66fc91c8a19ce92a3e5951934854f459db11ecbb.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/176/168/176168-1623001160-aa7bb5afdc88d12a2c38e9a09c72253c5932c80e.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Emily Pollack
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Deputy Managing Director, US Retail Operations. Previously at Otis, Keurig Dr Pepper, YieldStreet and BofA Private Bank. CPA and accounting at PwC. 
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="erik-hanzlick-2" href="/@erik-hanzlick-2"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Erik Hanzlick" title="Erik Hanzlick" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/968/255/968255-1621356299-adf7a55a86be7478f235aa5b8442dfad9a542c10.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/968/255/968255-1621356299-171a9239de607ba443b188a75aba693ab6106788.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Erik Hanzlick
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Crypto
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Project Manager, Crypto. Previously product at IBM. Studies economics and international business at UCSD.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="graham-friedman" href="/@graham-friedman"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Graham Friedman" title="Graham Friedman" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/158/105/158105-1554513204-11fb0ea14b4e09cc688dacdfe5d92ef3617edea6. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/158/105/158105-1554513204-afe80eb6f96d230c883ae40a6cbcda9e039908a0." /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Graham Friedman
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Crypto
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Director, Blockchain. Previously co-founder of TLDR Global and led the camera department at Vayner Media. Passionate for good teams and strong learning curves.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/graham-friedman-92581314/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="ingrid-wong-1" href="/@ingrid-wong-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Ingrid Wong" title="Ingrid Wong" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/769/222/769222-1610392721-ef066c01b1571c60f1775f58d9f6e47702b9c7ee.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/769/222/769222-1610392721-38e272e6b038db7b8d325204e2a86059d3776d71.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Ingrid Wong
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Senior Campaign Manager. Previously Customer Success at BlueCart. BA in East Asian Studies and Business from Brandeis University.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/ingrid-wong/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="jawwad-khan-2" href="/@jawwad-khan-2"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Jawwad Khan" title="Jawwad Khan" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/333/174/1333174-1673534633-6cff6ab48cba8d82e493559c4c65a7a2895f8126.JPG 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/333/174/1333174-1673534633-d71611aa98f637ac333a380ce686f3126adda0a0.JPG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Jawwad Khan
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Capital
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Director, Republic Capital. Previously at Compound, CEO at ShareTrade, distressed debt investment professional at Barclays, Waterfall Asset Management, Avenue Capital Group.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/jawwadkhan86/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/u/jawwad-khan"><i class="icon-angellist"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="jensen-vu" href="/@jensen-vu"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Jensen Duy Vu" title="Jensen Duy Vu" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/184/818/1184818-1668998264-9b42c2ef777365bb026dc2582ab881a630a62e00.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/184/818/1184818-1668998264-4ee5971964d63ff6559b5e10a0b46e8b6a387f90.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Jensen Duy Vu
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business &amp; Community
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Principal, Republic Note Lead. CEO @ VietChallenge. Previously drafted reports and prepped experts for testimonies in high-profile litigations for a living. Gov Relations @ Minneapolis Fed prior. Grew up in Vietnam, shows when invited out for coffee.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="http://linkedin.com/in/jensenduyvu"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/jensenduyvu"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="john-paul-yezzo-1" href="/@john-paul-yezzo-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of John-Paul Yezzo" title="John-Paul Yezzo" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/206/081/1206081-1642633654-4af2f929efd7490a386a88eb3fd286c493f11e81.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/206/081/1206081-1642633654-e80af7465f7f4eb880ae8f5f0fdda174143e4609.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+John-Paul Yezzo
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Legal &amp; Compliance
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Associate Counsel for Republic Retail. Former litigator and equities broker. LL.M. with dual degrees from Erasmus University of Rotterdam and Warsaw School of Economics. J.D. from St. John&#39;s University School of Law.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/john-paul-yezzo-bb769827/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="julian-jung" href="/@julian-jung"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Julian Jung" title="Julian Jung" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/058/609/58609-1520884897-81d61f84adeb2eaad6bfcded54d9d3772ba9ebbc. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/058/609/58609-1520884897-9eae631dc32e8e19dce2ceb44bdc2142afe19c24." /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Julian Jung
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Partner at Republic Deal Room. Prev: Co-founder Republic Capital. Investor in: Relativity Space, Carta, Rescale, Avax, Polygon, and Genies. 
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/julianjung/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="katie-cooke" href="/@katie-cooke"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Katie Cooke" title="Katie Cooke" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/485/853/485853-1676044452-6ab2759d24a5e14d90ab1d0b4f6d9eb91392f850.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/485/853/485853-1676044452-a8e09e5d32874f98c518fa203980ad3a09b7ce4b.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Katie Cooke
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+HR Manager. Previously recruiting at SingleSprout. Studied International Relations at SUNY Geneseo.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/kathleen-cooke/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="kelsey-bartiss" href="/@kelsey-bartiss"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Kelsey Bartiss" title="Kelsey Bartiss" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/299/334/1299334-1663697561-0c9d95b748d43cca63d3edb69baf87db11af8709.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/299/334/1299334-1663697561-e51b6655ba988636135d7d1d731e8b14c5c35cf0.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Kelsey Bartiss
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Tech
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Technical Project Manager. Travel and book enthusiast. BA in Anthropology from the College of William and Mary, MS in Information Science from the University of North Carolina at Chapel Hill. 
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/kelseybartiss/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="ken-nguyen" href="/@ken-nguyen"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Kendrick Nguyen" title="Kendrick Nguyen" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/000/002/2-1536850753-81719121b261ba2de2aa5db778e65cc339ba979b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/000/002/2-1536850753-0169db31dd6978df8e8ed235bc18cdaef10f76cc.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Kendrick Nguyen
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Chief Executive Officer
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Previously General Counsel at AngelList. Worked at Permal Group and Goodwin Procter. Former Stanford Fellow and securities litigator. 
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/kendrick-nguyen-7145bb5"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/nguyen"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/KendrickEsq"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="kevin-xaisanasy-2" href="/@kevin-xaisanasy-2"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Kevin Xaisanasy" title="Kevin Xaisanasy" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/042/117/1042117-1627483539-5760ab2ef8fb2078f4e861d1a777ca64ed9fc1ab.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/042/117/1042117-1627483539-56826d7ccc2cfa2b8fb298708ed9e0a712b3e361.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Kevin Xaisanasy
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Senior Associate, Finance. Previously, capital markets &amp; private equity at SAB Capital and valuations at Citigroup. B.S. in Finance from SUNY Buffalo.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="kirsten-horning" href="/@kirsten-horning"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Kirsten Horning" title="Kirsten Horning" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/972/386/972386-1639773949-6dba00f119e26eabfce3fd1c9cde5525a4722cd1.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/972/386/972386-1639773949-08564144b93dc3ea43f1c9725c8a9c4163f4b8a7.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Kirsten Horning
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Director, Deal Room. Formerly Principal at XRC Labs and Nomad Goods. BA, UCSB &amp; MA, Georgetown McDonough School of Business.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/kirstenhorning/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/Kirsten_Horning"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="leo-batali-1" href="/@leo-batali-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Leo Batali" title="Leo Batali" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/745/930/745930-1606166473-d9c775acc424786b8d85204f4db3b60686ef0960.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/745/930/745930-1606166473-b40763679381a4c6574063752e662f1c41df6b28.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Leo Batali
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Capital
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Investor Relations. Vast experience in management and hospitality within the entertainment industry, specializing in the music industry. Studied management at the University of Michigan.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="maria-chak-1" href="/@maria-chak-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Maria Chak" title="Maria Chak" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/128/011/1128011-1634664026-cf6912d48cbc401d2c7344b56390a6d636c171ef.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/128/011/1128011-1634664026-07bb9abca2e238e694801cf997321e320e8ab3f5.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Maria Chak
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Crypto
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Project Manager, Republic Crypto Advisor. Previously, founding member of the strategy team at Onyx by J.P. Morgan, a blockchain business unit for payment applications. B.A. in Industrial and Labor Relations from Cornell University.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/maria-chak/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="maria-pope-1" href="/@maria-pope-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Maria Pope" title="Maria Pope" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/111/811/1111811-1632839961-39f33bbc28ea2a52a073c4b76ab22ef8de2b8877.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/111/811/1111811-1632839961-55673ab720ffdc864539cc7fc204193318bcdcf3.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Maria Pope
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Venture Programs + Community Manager. Previously, programs at Black Girl Ventures. Texas A&amp;M Alumni, BS in business &amp; economics.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/mariaannapope/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="mario-lattuga-3" href="/@mario-lattuga-3"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Mario C. Lattuga" title="Mario C. Lattuga" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/963/822/963822-1620672022-fd6b862e70d5ea92047ed9e846e7c19b7b24432c.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/963/822/963822-1620672022-e1d6e0a97ee7b5cf3d4897e74f7441fbef6085fe.png" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Mario C. Lattuga
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business &amp; Legal
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Director of Diligence and Legal Operations for Republic Retail. Former securities litigator and FinTech startup founder. JD from St. John’s University School of Law, and Masters in Securities and Financial Regulation from Georgetown Law.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="marley-brown-1" href="/@marley-brown-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Marley Brown" title="Marley Brown" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/551/909/551909-1580756972-e692343f8ccdd790385d997202206f3f10cecca2.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/551/909/551909-1580756972-f3a9b2e4374f91e156ac42cc657e976cfb932827.png" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Marley Brown
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Director, Deal Operations. Previously Public Affairs at Kivvit. Studied Chemistry at Harvard.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/marleybrown/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="matt-melbourne" href="/@matt-melbourne"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Matt Melbourne" title="Matt Melbourne" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/046/669/46669-1644904725-df68b82e6b8e7d210b3c5137b9dab7ef4ef045ef.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/046/669/46669-1644904725-bdf1bd6adf361cb49c17500a8cbee035737c796c.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Matt Melbourne
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Crypto
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Senior Director, Token Sales. Previously BD at Global Citizen. B.A. in Government &amp; English from Georgetown University.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://linkedin.com/in/mattjmelbourne"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/mattjmelbourne"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/mattjmelbourne"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><span class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="max-mohr"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Max Mohr" title="Max Mohr" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/166/663/1166663-1637013500-1265513e328af55313d3f893218e82880bd3265f.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/166/663/1166663-1637013500-a80fa660abbab92f964148de66cede6e11d91611.png" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Max Mohr
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</span><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Sales Operations Manager. Previously Founder/E-Commerce Manager at The Seasoned Carte and Business Development Assistant Manager at Mitsui USA. Studied Economics at Rutgers University.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="maxwell-rich" href="/@maxwell-rich"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Maxwell Rich" title="Maxwell Rich" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/026/768/26768-1545684191-2692be7dcf98cb2e8f117f59804f30d4f1af96da.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/026/768/26768-1545684191-043920c495ff93fa559db7580cbda933179060af.png" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Maxwell Rich
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Legal &amp; Compliance
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Deputy General Counsel, Vice President of Regulatory Affairs, Secretary. Regulatory advisor to CoinList. Previously at Liberty Mutual and the Clearing House. JD from Boston University, BA in Economics and Political Science from Drew University.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/maxwell-rich-6a431431/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/maxwell-raymond-rich?public_profile=1"><i class="icon-angellist"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><span class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="mario-martins"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Mario Martins" title="Mario Martins" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/205/950/1205950-1663880021-39623f3c9cdaf9fc7bac1b827c1a54310200c751.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/205/950/1205950-1663880021-b528b443ad109cd4132de66068077299c6d89169.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Mario Martins
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Legal &amp; Compliance
+</h6>
+</div>
+</span><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Retail CCO. Spent 13 years at FINRA. JD from Quinnipiac University School of Law, BA from Rutgers
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/mario-martins-jr-0241b6202"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><span class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="maya-aloy"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Maya Aloy" title="Maya Aloy" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/038/623/1038623-1624921484-b9adbd9dfe71b1069e21671ad0e8e53e89cc2c1f.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/038/623/1038623-1624921484-34d3aff530044a56ce0eb5cf65db00e92cad627e.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Maya Aloy
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Crypto
+</h6>
+</div>
+</span><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Project Manager, Republic Crypto. Previous experience working with Security Token Offerings and consulting management services in Latin America and government entities. B.A. in Communications from PUCRS.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><span class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="mikaela-giani"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Mikaela Giani" title="Mikaela Giani" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/737/161/737161-1612387257-88de9a6b02112610c53727bd69d8a81521711683.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/737/161/737161-1612387257-3b690ef3a76630e82f550099183b0163478777cb.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Mikaela Giani
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</span><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Senior Associate, Investment Team. Previously Sales &amp; Marketing Director at Level Four Advisory Services. BA in International Political Economy from University of Texas at Dallas.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/mikaelagiani/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/mikaelagiani"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="patrick-steed" href="/@patrick-steed"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Patrick Steed" title="Patrick Steed" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/166/686/1166686-1637016983-c44fb4d317351fed00b957a8c1f1b6ac3412c3b5.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/166/686/1166686-1637016983-23769f2de8e14e7b4671cbb163c6fd318fc59aff.png" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Patrick Steed
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Investment Team Analyst. Previously, Technology Investment Banking at Jefferies. B.S in Finance and Accounting from Georgetown University.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="peter-green" href="/@peter-green"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Peter Green" title="Peter Green" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/000/022/22-1568397824-7ac53f0084c5ceba1f70bbfcd605ed36780e97f4.JPG 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/000/022/22-1568397824-29404631aade320ee5291c90e8e64307474beb4d.JPG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Peter Green
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Co-founder and Chief Creative Officer; SVP. Previously Founder of Mine, MeetingPulse, Volga Verdi. Worked at Leo Burnett. Masters of management from HSE Moscow.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/petergreeen"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/petergreen"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--facebook s-marginRight0_5" target="_blank" href="https://facebook.com/petergreeen"><i class="icon-facebook"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/petergreeny"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="polly-makevnina-1" href="/@polly-makevnina-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Polly Makevnina" title="Polly Makevnina" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/552/641/552641-1628619807-572f405385f0346d90541c4b9e182b76ffba079d.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/552/641/552641-1628619807-06745836d810548438d2d30e342c4ca7e025c1b8.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Polly Makevnina
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Tech
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Software engineer. Previously freelancer, X Enterprises, Smart People LLC. Masters of Computer Applications, Omsk.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/polly-makevnina/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="ray-mayo" href="/@ray-mayo"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Ray Mayo" title="Ray Mayo" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/159/133/159133-1628304203-0626e19611e9dc664b2abecb48b5b530e2c5d918.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/159/133/159133-1628304203-d4f328b4d5c43ecb0c7fd7f557070cbcf39bacd4.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Ray Mayo
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Capital 
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Republic Capital. Previously, Debt Capital Markets at JPMorgan. Studied Finance and Accounting at Syracuse University.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="raymond-yu-b942ddaf-528c-496a-a3a8-956b91777b8c" href="/@raymond-yu-b942ddaf-528c-496a-a3a8-956b91777b8c"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Raymond Yu" title="Raymond Yu" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/198/395/1198395-1646250763-51bfca1b57b6d329500a3815e017e574b33db70f.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/198/395/1198395-1646250763-7f8e82e1dc31037baa97419a7aa2c4f378d92dbb.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Raymond Yu
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Crypto
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Token Offering Marketing Manager. Previously at Moxtra, Informatica, and Qualcomm. BA in International Business from UC San Diego
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/raymondgyu/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="richard-saulon" href="/@richard-saulon"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Richard Saulon" title="Richard Saulon" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/051/223/1051223-1627327539-6c15075a34f71908e72b8b5cf7808d96c4d936a7.PNG 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/051/223/1051223-1627327539-0a5ea25101720f71bfa067c6e2580ffcba844383.PNG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Richard Saulon
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Accounting Manager at Republic. Previously worked in Forensic Accounting / Non-Profit Finance. BS from Hunter College.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><span class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="rohan-suwarna"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Rohan Suwarna" title="Rohan Suwarna" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/028/061/28061-1599161443-33644f409e6ed48ec85e5a54cdec051f59ed1474.JPG 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/028/061/28061-1599161443-7c9133783cedc153a2507806ca828278567f9041.JPG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Rohan Suwarna
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</span><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Chief of Staff. Previously, Investment Banking at Deutsche Bank. B.S. in Finance and Analytics from Boston College.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/rohan-suwarna-240637109"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/rohan_s_08"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="ryan-mcney" href="/@ryan-mcney"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Ryan McNey" title="Ryan McNey" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/231/868/1231868-1647878351-3492226eb9ec3bd9c576781bff75d84328a58658.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/231/868/1231868-1647878351-7558b13d7b767391b17623726faa7554dc5d7c84.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Ryan McNey
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Republic Crypto
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Technical Project Manager, Republic Crypto. Previously, Vice President at Mobomo and Technology Consultant at Accenture. B.S. in Business Management, West Virginia University.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="sergey-martynov" href="/@sergey-martynov"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Sergei Martynov" title="Sergei Martynov" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/725/783/725783-1640254587-45c47ad6978cf9649bdc866fcf144509b7c67d20.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/725/783/725783-1640254587-43e7a21ecc589f0e00a86d36e7ca2caac2349371.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Sergei Martynov
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Tech
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Quality Advocate at Republic. Previously QA Engineer at Align Technology and Yandex. Engineer’s degree from Moscow State Institute of Electronics and Mathematics.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="taemi-lee" href="/@taemi-lee"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of TaeMi Lee" title="TaeMi Lee" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/744/790/744790-1606192025-8418172acb5bbe4035caf655f67963f45f7fd799.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/744/790/744790-1606192025-45dd2158e904782aee6051b5b0ec0a85635cae78.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+TaeMi Lee
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+VP, Finance. CFO for NextSeed, previously Director of Strategy &amp; Finance at Cheniere. Studied Economics at UT at Austin and received an MBA from UH Bauer School of Business. Board advisor and advocate for animal-related organizations.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/taemi-lee-a0154b6/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="valentin-gavrilov-2" href="/@valentin-gavrilov-2"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Valentin Gavrilov" title="Valentin Gavrilov" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/001/044/520/1044520-1628673874-e84e14f602fc397c79881252b02deb020f53e51c.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/medium/001/044/520/1044520-1628673874-d3ed2a23798b2f9c89fe60a5d6f40dd1d816ab0c.jpeg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Valentin Gavrilov
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Tech
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+QA engineer, Mobile Team. Previously at ARGO.
+Specialist Degree from RSUCE.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="youngro-lee" href="/@youngro-lee"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Youngro Lee" title="Youngro Lee" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/730/089/730089-1612891691-873e91769122bc57069cc415a24766c3cfa6f7d7.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/730/089/730089-1612891691-450b223d04f9efa81efa962b270f0567c7011dfb.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Youngro Lee
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Managing Director, R/Asia. Founder/CEO Nextseed. Previously, private funds attorney at Cleary Gottlieb and Kirkland Ellis. BS, JD/LLM from Cornell.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/youngrolee/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="zhen-cao" href="/@zhen-cao"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Zhen Cao" title="Zhen Cao" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/591/515/591515-1588888923-bf394cac2f5a50a472667e7483209b02dc4acb97.PNG 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/591/515/591515-1588888923-cd6b951f7889b5032f20fe5145c1c8613dc5bc71.PNG" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Zhen Cao
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Business
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Partner - Asia. Founding Partner at venture and crypto arm of JD Capital, the only publicly traded PE fund in China. Previously at HTC Vive, China Central Television. MA from New York University.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/zhen-cao/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--facebook s-marginRight0_5" target="_blank" href="https://www.facebook.com/czzcaozhen"><i class="icon-facebook"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/zhenspectrum"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="jack-bienko" href="/@jack-bienko"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Jack Bienko" title="Jack Bienko" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/000/368/368-1501166741-6cbc58adaff742e86b2f3988a650612de0d4809d.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/000/368/368-1501166741-fa7d699d2761e6cd621539f017591533296effa6.png" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Jack Bienko
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Board, National Entrepreneurship Association. Author, Startup Primer Series.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/bienko"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/bienko"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://www.twitter.com/bienko"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="justin-bailey-1" href="/@justin-bailey-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Justin Bailey" title="Justin Bailey" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/530/087/530087-1586994316-5e7e85272acc18856225a79f9fde44945d6e8e45.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/530/087/530087-1586994316-95be3403a8d701b3de6fee812988e2a276fe8153.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Justin Bailey
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Founder of Fig, studio advisor and game investor, previously COO and Board Member at Double Fine Productions, Corporate Development at PWE and Namco Bandai. Studied at TCU, BA in Finance, BS minor in Computer Science.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/jubailey/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/u/justinbailey12d"><i class="icon-angellist"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="jonathan-swanson" href="/@jonathan-swanson"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Jonathan Swanson" title="Jonathan Swanson" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/000/873/873-1520542080-6fc30d7b4eaa13183accdb51602e8d3a31ec3649.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/000/873/873-1520542080-959dc10060ebd02699b742e238e4304a214b1706.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Jonathan Swanson
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Chairman &amp; Co-Founder at Thumbtack, former White House staffer.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/jonathanwswanson/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/jonathan-swanson"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/swaaanson"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="katherine-krug" href="/@katherine-krug"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Katherine Krug" title="Katherine Krug" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/000/378/378-1501166766-1b37e9d36f21128e8872993bfa840ef0686514da.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/000/378/378-1501166766-39aa46c86db4e49ca4c2ef17e6368b90d167c44d.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Katherine Krug
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Founder of BetterBack, Everest, Fundrah. First solo woman to break $1M on Kickstarter.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/katherinekrug"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/katherine-krug"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/KatherineKrug"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="kenneth-ballenegger-1" href="/@kenneth-ballenegger-1"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Kenneth Ballenegger" title="Kenneth Ballenegger" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/034/541/34541-1513983567-cac3a18a65647ec65b610f47ab68b43c7ff9cc8a.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/034/541/34541-1513983567-49af1e53a4092db110e90d1ea416f0e1b5d2717b.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Kenneth Ballenegger
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Angel in 40+ startups, Partner at Oyster Ventures. Previously, co-founder and manager of Republic Crypto,  engineering at AngelList, founder at FreshPay, founding architect at Chartboost, and product at Tapulous (acq. by Disney)
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/kennethballenegger/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/kb"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/kob"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="naval-ravikant" href="/@naval-ravikant"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Naval Ravikant" title="Naval Ravikant" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/026/289/26289-1501201169-ec996d5b85587dab8db4b51a7317a7cb94af86d5.png 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/026/289/26289-1501201169-772134f4a4fe17362ee4fa16987ccdc02407aba2.png" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Naval Ravikant
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Chairman and Founder at AngelList. Founder at Venture Hacks, Vast and Epinions. Invested in Twitter, Heyzap, Uber.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/navalr"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/naval"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/naval"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="kamal-ravikant" href="/@kamal-ravikant"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Kamal Ravikant" title="Kamal Ravikant" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/190/574/190574-1568397641-e6fa58452709e334554a82f4120026a58537141f.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/190/574/190574-1568397641-04af0411c9b7ddfcb3467c2fed53fdc128b183ef.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Kamal Ravikant
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Entrepreneur, angel investor, best selling author, partner at Evolve VC.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/kamalravikant/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/kamalravikant"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--facebook s-marginRight0_5" target="_blank" href="https://www.facebook.com/pg/kamalravikantauthor/"><i class="icon-facebook"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/kamalravikant"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="nisa-amoils-4" href="/@nisa-amoils-4"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Nisa Amoils" title="Nisa Amoils" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/100/200/100200-1551280850-1723871392c418883ef2a60ba923268629ee6a16.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/100/200/100200-1551280850-16cb19546f4e5babaa959d38bec884c6c60e1799.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Nisa Amoils
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Previously VC at Scout Ventures and family office. Securities lawyer. Boards Wharton Entrepreneurship, Institute Blockchain Innovation, other companies. Contributor for Forbes and Blockchain Magazine. UMich Business and Penn Law.
+</p>
+<div class='s-fontSize19'>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="paul" href="/@paul"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Paul Menchov" title="Paul Menchov" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/000/001/1-1501166191-d4a4584c0a0971d5f28718e6188e1e1dbbb068c8.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/000/001/1-1501166191-9645ebb69d044f2b8130fba1a71bc7fbf6cf2059.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Paul Menchov
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Head of CoinList Capital. CTO and Co-Founder at CoinList. Previously, CTO at Republic and Head of Fundraising Infrastructure at AngelList. Worked at Zynga. Studied at Cornell University.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/pmenchov"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/paul"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/pmenchov"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="peter-diamandis" href="/@peter-diamandis"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Peter Diamandis" title="Peter Diamandis" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/072/452/72452-1567515091-8fd2656c6829a8230b38ef60d687b078d3e0a67d.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/072/452/72452-1567515091-8ea09c7677767254d64027d0eafbc9a9ac8154f5.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Peter Diamandis
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Engineer, physician, best-selling author and entrepreneur. Founder of XPRIZE, co-founder of Singularity University, Human Longevity Inc., Celularity.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/peterdiamandis/"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/PeterDiamandis"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="pialy-aditya" href="/@pialy-aditya"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Pialy Aditya" title="Pialy Aditya" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/050/305/50305-1516675662-30ef5de98fd4923394aa3f9c172dec86991145b0. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/050/305/50305-1516675662-60d5fd9acf9349dcbe0b3fa27d3063320cb16e22." /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Pialy Aditya
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Chief Strategy Officer. Angel investor. Previously GM @ShopYourWay, co-founder and President @Mintbox. MBA from Harvard. Finance from New York University. 
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/pialy"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/pialy"><i class="icon-angellist"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="shaherose-charania" href="/@shaherose-charania"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Shaherose Charania" title="Shaherose Charania" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/000/046/46-1501166262-73677320119eed3e1f7696ae3fd76e30a621bd3f.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/000/046/46-1501166262-55d887d0c546ec067053bf7ff06a04793853d385.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Shaherose Charania
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Co-Founder of Women 2.0, Founder Labs. Board of Directors at Good World Solutions.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/shaherose"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/shaherose"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/shaherose"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="shiza-shahid" href="/@shiza-shahid"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Shiza Shahid" title="Shiza Shahid" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/024/027/24027-1501198182-091ad73d58181636e1b5069acfa1510baaf654e3.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/024/027/24027-1501198182-5c3d2ed86927c52581d51d38a95126d8d00486a1.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Shiza Shahid
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Founder of NOW Ventures and Malala Fund. Investor and social activist. Studied at Stanford University.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/shizashahid"><i class="icon-linkedin"></i></a>
+<a class="c-link c-link--angellist s-marginRight0_5" target="_blank" href="https://angel.co/shiza-shahid-1"><i class="icon-angellist"></i></a>
+<a class="c-link c-link--twitter" target="_blank" href="https://twitter.com/Shiza"><i class="icon-twitter"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 static_pages-about-team_member" data-rc="static_pages/about/team_member"><a class="js-tooltip_ajax u-displayFlex s-marginBottom1 c-link c-link--unstyled static_pages-about-team_member__profile_link " data-type="user" data-slug="todd-ruppert" href="/@todd-ruppert"><div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-team_member__avatar js-user_avatar"><img alt="Profile picture of Todd Ruppert" title="Todd Ruppert" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/683/768/683768-1612912106-7ef053a312a005addac87d5c39836b2488765c1a.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/683/768/683768-1612912106-82f51dd80474578c44cf28157592d0b732947255.jpg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-team_member__name'>
+Todd Ruppert
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Advisor
+</h6>
+</div>
+</a><p class='s-marginBottom1 u-fontWeight400 static_pages-about-team_member__bio'>
+Todd has 40 years of experience in the financial services industry. Previously CEO and President of T. Rowe Price Global Investment Services. Board member of the Rock and Roll Hall of Fame.
+</p>
+<div class='s-fontSize19'>
+<a class="c-link c-link--linkedin s-marginRight0_5" target="_blank" href="https://www.linkedin.com/in/todd-ruppert-61372a7/"><i class="icon-linkedin"></i></a>
+</div>
+</div>
+<div class="s-grid-colSm8 s-grid-colMd6 s-marginBottom3 js-hiring_team_member static_pages-about-hiring_team_member" data-rc="static_pages/about/hiring_team_member"><div class='u-displayFlex s-marginBottom1 static_pages-about-hiring_team_member__profile_link'>
+<div class="c-avatar c-avatar--medium c-avatar--round static_pages-about-hiring_team_member__avatar js-user_avatar"><img srcset="https://assets.republic.com/assets/default/user/medium_2x-a85755da56e046ede39d2f2427d57a6ebf393efcaa9a837999a1f73237ba737d.svg 2x" src="https://assets.republic.com/assets/default/user/removed_user-ca10d8e9b9bcdd195f4ae77506da96714650a849c6cffbb31bcbbefb162557f5.svg" /></div>
+<div>
+<h5 class='s-marginTop1 c-secondaryTitle static_pages-about-hiring_team_member__name'>
+You?
+</h5>
+<h6 class='s-fontSize13 u-fontWeight400 u-colorMuted'>
+Your name could be here.
+</h6>
+</div>
+</div>
+<p class='s-marginBottom1 u-fontWeight400 static_pages-about-hiring_team_member__bio'>
+We are hiring talented people across the board. If you like what
+<br class='u-hiddenMdDown'>
+we do, come and <a href="/jobs">join our team</a>!
+</p>
+</div>
+</div>
+<div class='u-textCenter s-marginBottom5'>
+<p class='s-fontSize14 u-fontWeight400 u-colorGray9'>
+Republic team members displayed here are employed, engaged or advise OpenDeal Inc.
+<br>
+and its affiliates, the Republic family of companies.
+</p>
+</div>
+</div>
+<div class='s-spacerSm3 s-spacerXs2'></div>
+<div>
+<div class='u-displayFlex u-displayFlex--responsive u-justifyContentSpaceBetween u-alignItemsCenter'>
+<h2 class='s-marginBottom1_5 c-primaryTitle static_pages-about__title'>
+Where to find us
+</h2>
+<div class='u-displayFlex u-alignItemsCenter'>
+<a class="static_pages-about__social_item" target="_blank" rel="noopener noreferrer" href="http://facebook.com/joinrepublic"><img src="https://assets.republic.com/assets/static_pages/about/social/facebook-a512997408ee0bc2ca27b6cce942f0cc647362b9fedd79d0b0c37dc9bc6de62a.svg" />
+</a><a class="static_pages-about__social_item" target="_blank" rel="noopener noreferrer" href="http://instagram.com/joinrepublic"><img src="https://assets.republic.com/assets/static_pages/about/social/instagram-aae25c2538c6c9eff556e2d020db5d02a3501560c97c38958f560ba9d1c8daba.svg" />
+</a><a class="static_pages-about__social_item" target="_blank" rel="noopener noreferrer" href="http://twitter.com/joinrepublic"><img src="https://assets.republic.com/assets/static_pages/about/social/twitter-5422994d0e7a237ab7a410cce81134c70f82f120d090a95b1b719774937c754f.svg" />
+</a><a class="static_pages-about__social_item" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/company/republic.co"><img src="https://assets.republic.com/assets/static_pages/about/social/linkedin-0c5e2a446130962e905122322861e273c1a18a233843790af99d00a9147ab59b.svg" />
+</a><a class="static_pages-about__social_item" target="_blank" rel="noopener noreferrer" href="https://discord.gg/AqBrbS7sSt"><img src="https://assets.republic.com/assets/static_pages/about/social/discord-6c76de8b8f502cf5938de71d1eaf75b4f53044b81082a510c95269e4d871d48c.svg" />
+</a></div>
+</div>
+</div>
+<div class='s-spacerSm5 s-spacerXs2'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-about_disclaimer" data-rc="layouts/footer/disclaimers/about_disclaimer"><div class='s-marginBottom2'>
+<p class='s-marginBottom1'>
+This site (the "Site") is owned by OpenDeal Inc. and maintained by Republic Core
+LLC (“Core”), neither of which are registered broker-dealers. Core provides
+technology and support services to OpenDeal Inc. and its affiliates (collectively,
+the “Republic Ecosystem”). All securities listed on the Site are being offered by,
+and all information included on this Site is the responsibility of, the applicable
+issuer of such securities. The intermediary facilitating the offering will be
+identified in such offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+All funding-portal activities are conducted by OpenDeal Portal LLC doing business
+as Republic, a funding portal which is registered with the US Securities and
+Exchange Commission (SEC) as a funding portal (Portal) and is a member of the
+Financial Industry Regulatory Authority (FINRA). OpenDeal Portal LLC is located
+at 149 E 23rd St #2001, New York, NY 10010, please check out background on FINRA’s
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="https://www.finra.org/about/funding-portals-we-regulate">Funding Portal page</a>.
+</p>
+<p class='s-marginBottom1'>
+All broker-dealer related securities activity is conducted by OpenDeal Broker LLC, an
+affiliate of OpenDeal Inc. and OpenDeal Portal LLC, and a registered broker-dealer,
+and member of
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="https://www.finra.org">FINRA</a>
+|
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="https://www.sipc.org">SiPC</a>,
+located at 1345 Avenue of the Americas, 15th Floor, New York, NY 10105, please check
+our background on FINRA’s
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="https://brokercheck.finra.org/firm/summary/291387">BrokerCheck</a>.
+</p>
+<p class='s-marginBottom1'>
+Certain pages discussing the mechanics and providing educational materials regarding
+regulation crowdfunding offerings may refer to multiple members of the Republic
+Ecosystem collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1'>
+Investors should verify any issuer information they consider important before
+making an investment.
+</p>
+<p class='s-marginBottom1'>
+Investments in private companies are particularly risky and may result in total
+loss of invested capital. Past performance of a security or a company does not
+guarantee future results or returns. Only investors who understand the
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="/risks">risks of early stage investment</a>
+and who meet the Republic's
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="/help/can-i-invest">investment criteria</a>
+may invest.
+</p>
+<p class='s-marginBottom1'>
+No member of the Republic Ecosystem verifies information provided by companies
+on this Site and makes no assurance as to the completeness or accuracy of any
+such information. Additional information about companies fundraising on the Site
+can be found by searching the
+<a class="c-link c-link--underline c-link--inherit" target="_blank" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not
+require an EDGAR filing.
+</p>
+<p class='s-marginBottom1'>
+Republic Note holders and as well as users of the site and services maintained by
+the Republic Ecosystem, regardless of and their activities on or relating to the
+Republic Ecosystem, are subject to the applicable terms of service, in their entirety.
+Core is also “testing the waters” with respect to the sale of Republic Notes under
+Regulation A of the Securities Act. The “testing the waters” process allows
+companies to determine whether there may be interest in an eventual offering of
+its securities to qualified purchasers under Regulation A. Core is not under any
+obligation to make an offering under Regulation A. No money or other consideration
+is being solicited for an offering under Regulation A at this time and, if sent,
+it will not be accepted.
+</p>
+<p class='s-marginBottom1'>
+Core may choose to make an offering to some, but not all, of the people who
+indicate an interest in investing, and that offering may or may not be made
+under Regulation A. For example, Core may choose to proceed with its offering
+under Rule 506(c) without ever conducting a Regulation A offering, in which case
+only accredited investors within the meaning of Rule 501 will be able to buy Republic Notes.
+</p>
+<p class='s-marginBottom1'>
+If and when Core conducts an offering under Regulation A of the Act, it will do
+so only once (i) it has filed an offering statement with the Securities and Exchange
+Commission (“SEC”), (ii) the SEC has qualified such offering statement and (iii)
+investors have subscribed to the offering in the manner provided for in the offering
+statement. The information in the offering statement will be more complete than any
+test-the-waters materials and could differ in important ways. Prospective investors
+who are interested in participating in the Regulation A offering must read the offering
+statement filed with the SEC, when that offering statement becomes publicly available.
+</p>
+<p class='s-marginBottom1'>
+No money or other consideration is being solicited at this time in connection with
+any potential Regulation A offering and, if tendered, will not be accepted. No offer
+to buy securities in a Regulation A offering can be accepted and no part of the
+purchase price can be received until an offering statement is qualified with the SEC.
+Any offer to buy securities may be withdrawn or revoked, without obligation or
+commitment of any kind, at any time before notice of its acceptance is given after
+the qualification date. Any indication of interest in Core’s offering involves no
+obligation or commitment of any kind.
+</p>
+<p class='s-marginBottom1'>
+Republic and its affiliates are not and do not operate or act as a bank. Certain banking
+services are provided by BankProv, member FDIC / member DIF. Digital (crypto) assets and
+investment products are not insured by the FDIC, may lose value, and are not deposits or other
+obligations of BankProv and are not guaranteed by BankProv. Terms and conditions apply.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="+qFCvMZckLPBBhRUOXQ2og=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="+qFCvMZckLPBBhRUOXQ2og=="></script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="+qFCvMZckLPBBhRUOXQ2og==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="+qFCvMZckLPBBhRUOXQ2og==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+
+</body></html>
+
+
+

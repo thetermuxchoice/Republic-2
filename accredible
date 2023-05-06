@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="DhV3LRE4qez86AViaNTtuw==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="DhV3LRE4qez86AViaNTtuw==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+Invest in Accredible — Republic
+</title>
+<link href='https://republic.com/accredible' rel='canonical'>
+<meta content='Accredible – Comprehensive digital badge and certificate platform – is now accepting investments on Republic.' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='Invest in Accredible' itemprop='name'>
+<meta content='Accredible – Comprehensive digital badge and certificate platform – is now accepting investments on Republic.' itemprop='description'>
+<meta content='https://assets.republic.com/default/offering-cover/social_share.svg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='Invest in Accredible' name='twitter:title'>
+<meta content='Accredible – Comprehensive digital badge and certificate platform – is now accepting investments on Republic.' name='twitter:description'>
+<meta content='https://assets.republic.com/default/offering-cover/social_share.svg' name='twitter:image'>
+<meta content='https://republic.com/accredible' property='og:url'>
+<meta content='Invest in Accredible' property='og:title'>
+<meta content='Accredible – Comprehensive digital badge and certificate platform – is now accepting investments on Republic.' property='og:description'>
+<meta content='https://assets.republic.com/default/offering-cover/social_share.svg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+<meta content='noindex' name='robots'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/vendor-node_modules_a-db7c58b4.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Ac-919e95b8.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Table_Table_module_scss-e15798b9-0e96676f.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/MediaSliderPage-66fe9f7a.css" />
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="68OO7RyvJbEoKoZqFLUwUHP0yl8WJraES0lTArGAxDfg1cLF1O25_6JuUM4WvOzf8IKaKY5g-cyF4k_DNmRVHQ" />
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+  analytics.page(
+    "offering",
+    "accredible", {
+      url: "https://republic.com/accredible"
+    }, {
+      integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+    }
+  );
+</script>
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="DhV3LRE4qez86AViaNTtuw==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class="offerings-show__body preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="layouts-header_footer" data-rc="layouts/header_footer"><nav class="c-header-nav c-header-nav--default  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/black/150x38/logo-211758c2027fc8268186d512a2119520a35358973648789a123d9fb6c3d5a37f.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search  layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--default" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div>
+<div class="layouts-full_width" data-rc="layouts/full_width"><script nonce="DhV3LRE4qez86AViaNTtuw==">
+  if (dataLayer) {
+    dataLayer.push({"event":"detail","ecommerce":{"currencyCode":"USD","detail":{"products":[{"name":"Accredible","id":"accredible","price":3500,"category":"B2B, SaaS, $5M+ revenue, Venture-backed, $10M+ raised, 50-199 employees, Edtech, Stock Purchase Agreement (SPA), Companies","quantity":1}]}}});
+  }
+</script>
+<div class="js-segment_product_view s-marginBottom3_5 offerings-show" data-sticky-container="true" data-state="published" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Accredible&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1991,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/991/1991-1668442043-1c058b64b1242d15118d54ed9a5d513a09309c83.PNG&quot;,&quot;min_investment_amount&quot;:3500,&quot;slug&quot;:&quot;accredible&quot;,&quot;tags&quot;:&quot;b2b,saas,5m-revenue,venture-backed,10m-raised,50-199-employees,edtech,stock-purchase-agreement,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/accredible&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-rc="offerings/show"><div class='js-router_data' data-root='accredible'></div>
+<header class="s-container s-gridMaxXs24 s-paddingTop5 s-paddingBottom3 offerings-show-header offerings-show-header--accredible" data-rc="offerings/show/header"><div class='js-header_content'>
+<div class='s-grid offerings-show-header__top-part'>
+<div class='s-grid-colSm16'>
+<div class="offerings-show-header-title" data-rc="offerings/show/header/title"><div class='u-displayFlex'>
+<div class='u-hiddenPrint offerings-show-header-title__avatar-wrapper'>
+<div class="c-avatar c-avatar--small offerings-show-header-title__avatar c-avatar--border c-avatar--accredible"><img alt="Logo of Accredible" title="Accredible" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/991/1991-1666982304-3efd6094da1738b49aee90658d9d641027d533a8.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/991/1991-1666982304-49468e899948fbde2e3763dbac2677dac8b33033.png" /></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<h1 class='c-primaryTitle offerings-show-header-title__company-name'>
+Accredible
+</h1>
+</div>
+</div>
+<div class='c-subtitle s-fontSize20 s-marginTop0_5 offerings-show-header-title__high-concept'>
+Comprehensive digital badge and certificate platform
+</div>
+<div class='s-marginTop1_5'>
+<div class=''>
+<div class="c-tag-container u-hiddenPrint s-marginTop1 offerings-show-header-title__tags-wrapper offerings-shared-tags" data-rc="offerings/shared/tags"><a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/b2b">B2B</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/saas">SaaS</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/edtech">Edtech</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8 u-hiddenSmDown'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Accredible" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Faccredible%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Faccredible"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?url=https%3A%2F%2Frepublic.com%2Faccredible"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Frepublic.com%2Faccredible"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Faccredible"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-displayFlex u-blockXsOnly offerings-show-header__media-react'>
+<div class='s-grid-colSm16'>
+<div class='offerings-show-header__media-react-content'>
+<div class="offerings-show-header-media_react" data-rc="offerings/show/header/media_react"><div data-react-key="MediaSliderPage" data-react-id="5cd72b65-3a7d-4a53-886e-8d1c16a4ec97"><div class="js-react-component--placeholder"><div class='offerings-show-header-media_react__image-wrap'>
+<div class='offerings-show-header-media_react__image'>
+<img srcset="https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/949/6949-1667407592-0951841c0867411dcb2add6aaa391c353e7749c5.png 2x" class="u-displayBlock  " alt="Featured image of Accredible" title="Accredible" src="https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/949/6949-1667407592-a8a2033750403ccc55851288f370c0f5ff076591.png" />
+</div>
+</div>
+<div class='offerings-show-header-media_react__thumbs u-hiddenXsOnly'>
+<div class='offerings-show-header-media_react__thumbs-wrap'>
+<div class='offerings-show-header-media_react__thumb'></div>
+<div class='offerings-show-header-media_react__thumb'></div>
+<div class='offerings-show-header-media_react__thumb'></div>
+<div class='offerings-show-header-media_react__thumb'></div>
+<div class='offerings-show-header-media_react__thumb'></div>
+<div class='offerings-show-header-media_react__thumb'></div>
+</div>
+</div>
+</div><div class="js-react-component--content u-invisible"></div></div><script nonce="DhV3LRE4qez86AViaNTtuw==" type="application/json" data-react-key="MediaSliderPage" data-react-id="5cd72b65-3a7d-4a53-886e-8d1c16a4ec97">{"media":{"data":[{"id":"6949","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":0,"content_file_name":"Screen_Shot_2022-11-02_at_9.24.54_AM_11zon.png","content_file_size":477643,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/949/6949-1667407592-a8a2033750403ccc55851288f370c0f5ff076591.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/949/6949-1667407592-0951841c0867411dcb2add6aaa391c353e7749c5.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/949/6949-1667407592-93845156f8d95f6c93ef3dddbd2dab985ffc23d6.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/949/6949-1667407592-ba2875c94727f1bda8a7bd8889d3c4d2ee732683.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6873","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":2,"content_file_name":"Accredible_Deck-2_11zon.png","content_file_size":497445,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/873/6873-1667001999-bfff6d928919a15da9e0e0c8eb9838b440344f6b.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/873/6873-1667001999-30f789df67dfdb9b958cbd6dcc70cd4f817712c0.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/873/6873-1667001999-e945fbbddef5dd57ddc053a303699b3300525b67.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/873/6873-1667001999-7ae2f3d2b5208e68f33d400da8847e2bac7a89cf.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6874","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":3,"content_file_name":"Accredible_Deck-3_11zon.png","content_file_size":486415,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/874/6874-1667002043-1561dcb4b7140499c0dc6fd56a06c1ca79d1fa48.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/874/6874-1667002043-735f17c7b9c22ba1c24f48bf13ed1ef75aa774f5.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/874/6874-1667002043-30a99a51d21c01abfdd75061e06c1285df304359.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/874/6874-1667002043-38513c837c034cb5cc224e4c568e16af8057ac31.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6875","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":4,"content_file_name":"Accredible_Deck-4_11zon.png","content_file_size":433761,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/875/6875-1667002082-8fb327d2f76cd7ef525556844266254eb9e0e005.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/875/6875-1667002082-5e13beff956d537517631558b2211afbf6b7be99.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/875/6875-1667002082-31ae56b5198e8f81cd2fd67034af0a7261c19a1b.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/875/6875-1667002082-d22581512be8c62d0603aa28326bb0dc409f1752.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6876","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":5,"content_file_name":"Accredible_Deck-5_11zon.png","content_file_size":479610,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/876/6876-1667002223-6323856e1add959c6ad30e4d59ae2441ad259eab.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/876/6876-1667002223-dbed1aaccf52b1d1f677ae2b264c95e124753f06.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/876/6876-1667002223-6aadaed1dfdb1a1dfc2a2741ba10557aae21b4a0.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/876/6876-1667002223-f596e0263f4cabc365ada24eec836f621f870dfc.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6877","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":6,"content_file_name":"Accredible_Deck-6_11zon.png","content_file_size":499093,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/877/6877-1667002281-9b90d76bba672356a529129a6700f77b55a98139.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/877/6877-1667002281-8d0d23ec8a6e0ea87e8e02ba2430e0ec220549ca.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/877/6877-1667002281-771aa28ca97f537f4f29b4a7f4dd144e4caa542f.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/877/6877-1667002281-7a7a189be9326e0f1b5802d2fe1fbddabadfbe6f.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6878","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":7,"content_file_name":"Accredible_Deck-7_11zon.png","content_file_size":345732,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/878/6878-1667002628-e31f673d34bb76f2b28d019ccd1da477f8e1fbb0.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/878/6878-1667002628-f8ee077338210a2ea1199ca34c705293c6734961.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/878/6878-1667002628-c565c96e5ed1a6904014d883e33ae5132a22ef99.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/878/6878-1667002628-10e4f68592c672719f6cad7b918e5aed3fa02125.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6879","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":8,"content_file_name":"Accredible_Deck-8_11zon_(1).png","content_file_size":458286,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/879/6879-1667002764-448a5c88d6eaf64a4ef11f951e89126912debb3e.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/879/6879-1667002764-5ed7272b4bf696f05fd2a2197e678089738fbb68.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/879/6879-1667002764-88a636d15216b16915c1397b41919597f4d64ba3.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/879/6879-1667002764-2aab5184e9423d6855e7ab33cb2d9a53fadf8e6a.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6880","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":9,"content_file_name":"Accredible_Deck-9_11zon.png","content_file_size":456557,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/880/6880-1667002830-17cbf274835368aef89feca4559ab3604adecdab.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/880/6880-1667002830-21eb458fed07e3e0e9f2840d74f58f96f599b8c3.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/880/6880-1667002830-72152e54a853505524a23701c2f585cb799b83e0.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/880/6880-1667002830-932ca802ce0447aece6118498a60d01d7f671151.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6881","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":10,"content_file_name":"Accredible_Deck-10_11zon.png","content_file_size":495065,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/881/6881-1667002887-da8d127f206de1c335de5150e0a961878c59a3ab.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/881/6881-1667002887-330cc94cc5ae6fd1f5c36848881c4cc6e8169363.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/881/6881-1667002887-5cadb066f518321be72adc02918ad118ea40ad64.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/881/6881-1667002887-56e19c02007b58b92dfa45762621683ca900415d.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6882","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":11,"content_file_name":"Accredible_Deck-11_11zon.png","content_file_size":466237,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/882/6882-1667002946-1c218d15c809ec810c5b1fc44115d5f46782d74a.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/882/6882-1667002946-fed60e6cd05756c9f9921fc7adcca735165e0816.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/882/6882-1667002946-cb8c89be22b6f94fec8e9517c8f7e9ca04df2e27.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/882/6882-1667002946-f8ec949bd76cb81b0d91b46de7eed9571ae72a07.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6883","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":12,"content_file_name":"Accredible_Deck-12_11zon.png","content_file_size":491591,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/883/6883-1667003050-68b4acb543496ffb610ee1003b920dd05e82f708.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/883/6883-1667003050-c7c4f7c5f9567cfbaf7dcbd3ea1ee315836063ae.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/883/6883-1667003050-76f835651b1862a25413160fea6c52bfeb165da4.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/883/6883-1667003050-a3a1ec217602a7aa8028f1c0952d4caf92425653.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6884","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":13,"content_file_name":"Accredible_Deck-13_11zon.png","content_file_size":487948,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/884/6884-1667003174-7a4b39497a7e975c321a3ddfd259f082f707eb78.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/884/6884-1667003174-a9c1ac6dcc396c88accb7ae23640aae3efc74aa4.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/884/6884-1667003174-db2ba91b80bab6330fff5339293e7b353096c88d.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/884/6884-1667003174-81364c55fab1c01e3afa8d08783a90a0b8784076.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6885","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":14,"content_file_name":"Accredible_Deck-14_11zon.png","content_file_size":458870,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/885/6885-1667003229-5759dd6f70d7835c443ad92587d80eecad9b65ff.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/885/6885-1667003229-5174362942b812e51d1aab2afd194d2ab9ad155d.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/885/6885-1667003229-a93a3a5cc956a62a726f114a4e1fc4332254a5ab.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/885/6885-1667003229-40265d5801ec0c4c8cfe185d0fcaed96ab3ffc6f.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6886","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":15,"content_file_name":"Accredible_Deck-15.png","content_file_size":462486,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/886/6886-1667003277-798b7c882ca0104071794b533a7abb5f3490cc4f.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/886/6886-1667003277-c7deb3e576a1e2bef696639491e3e3241985bfb2.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/886/6886-1667003277-19d2dc4b72a8556341160accedc5b90f24e1cd5f.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/886/6886-1667003277-1c7f0080b3651b52a8877a2c293fe8565fec69fb.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6887","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":16,"content_file_name":"Accredible_Deck-16_11zon.png","content_file_size":494936,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/887/6887-1667003394-d334cdc302367b429a4d2cdb27c093072c571c77.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/887/6887-1667003394-c01d50d4781abf383ad0a082affdc4cf2a9e4683.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/887/6887-1667003394-804e193ab23d1bb795adfd20df3adf19911eb748.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/887/6887-1667003394-2aee2027c6ac116d63a8d246cdf23ac15396ac1d.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}},{"id":"6888","type":"offerings_slider_media_item","attributes":{"content_type":"image","order_num":17,"content_file_name":"Accredible_Deck-17.png","content_file_size":380874,"preview_file_name":null,"preview_file_size":null,"url":null,"url_preview":null,"content_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default/000/006/888/6888-1667003439-bb22a89c42b542ac1d80e125d79631731018ab78.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/default_2x/000/006/888/6888-1667003439-ea3ce9fa416696d886f29de31465828721a4b3ca.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small/000/006/888/6888-1667003439-26ecbb7e8e4e501330b9ebb65bd0d3010a0478e1.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/contents/small_2x/000/006/888/6888-1667003439-e43b27e12563435f61b7d40c68868812fa96745f.png"},"preview_url":{"default":"/previews/default/missing.png","default_2x":"/previews/default_2x/missing.png","small":"/previews/small/missing.png","small_2x":"/previews/small_2x/missing.png"},"youtube_id":null}}]},"editMode":false,"isIssuer":false,"offeringSlug":"accredible","offeringState":"published","missingPreviewUrl":"/previews/small/missing.png"}</script></div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8'>
+<div class="u-displayFlex u-flexDirectionColumn offerings-show-header-sidebar" data-rc="offerings/show/header/sidebar"><div class='u-flexGrow offerings-show-header-sidebar__top-part'>
+<div class="offerings-show-header-private_deal_terms" data-rc="offerings/show/header/private_deal_terms"><div class="offerings-show-flexible_deal_terms-list" data-rc="offerings/show/flexible_deal_terms/list"><div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+This is an <b>SPV deal</b>
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+
+</div>
+<i class='icon-info-letter icon--frame js-tooltip_simple s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon' data-tippy-appendTo='parent' data-tippy-content='&lt;div class=&#39;u-textLeft u-fontWeight400 u-fontSize16&#39;&gt;
+&lt;p&gt;This investment opportunity is to purchase interest in a special purpose vehicle (the &amp;ldquo;Fund&amp;rdquo;) advised by Republic Deal Room Advisor LLC (the &amp;ldquo;Advisor&amp;rdquo;). The Fund will invest substantially all of its assets in the Portfolio Company. The Fund will charge the limited partners operational fees pro rata. The Advisor receives a 2% management fee and a 20% carried interest from the Fund. There is also a fee paid by each limited partner to the Adviser and its affiliates for operating organizing the Fund, which is pro-rated amongst the limited partners and is paid out of capital contributions.&lt;/p&gt;
+&lt;/div&gt;
+' data-tippy-interactive='true'></i>
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Round
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+Series B
+</div>
+<i class='icon-info-letter icon--frame js-tooltip_simple s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon' data-tippy-appendTo='parent' data-tippy-content='&lt;div class=&#39;u-textLeft u-fontWeight400 u-fontSize16&#39;&gt;
+&lt;p&gt;This description of round is designated by objective criteria, however, it does not indicate the maturity or suitability of any investment opportunity.&lt;/p&gt;
+&lt;/div&gt;
+' data-tippy-interactive='true'></i>
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Valuation
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+$100M
+</div>
+<i class='icon-info-letter icon--frame js-tooltip_simple s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon' data-tippy-appendTo='parent' data-tippy-content='&lt;div class=&#39;u-textLeft u-fontWeight400 u-fontSize16&#39;&gt;
+&lt;p&gt;The valuation cap specifies the maximum valuation at which the investment converts. This means that investors, when a trigger event occurs, receive equity shares at the valuation cap price&amp;mdash;even if the valuation at which the company sells is higher. &lt;/p&gt;
+&lt;/div&gt;
+' data-tippy-interactive='true'></i>
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Allocation
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+$500K
+</div>
+<i class='icon-info-letter icon--frame js-tooltip_simple s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon' data-tippy-appendTo='parent' data-tippy-content='&lt;div class=&#39;u-textLeft u-fontWeight400 u-fontSize16&#39;&gt;
+The total investment amount in Accredible being offered to investors in the Deal Room.
+&lt;/div&gt;
+' data-tippy-interactive='true'></i>
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Deadline
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+June 7, 2023
+</div>
+<i class='icon-info-letter icon--frame js-tooltip_simple s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon' data-tippy-appendTo='parent' data-tippy-content='&lt;div class=&#39;u-textLeft u-fontWeight400 u-fontSize16&#39;&gt;
+Accredible campaign will end on &lt;span class=&#39;js-localtime_year_timezone&#39; data-time=&#39;2023-06-07T06:59:59Z&#39;&gt;&lt;/span&gt;.&lt;br&gt;&lt;a target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;u-hiddenPrint&quot; href=&quot;/learn/investors/what-the-deal-terms-mean#campaign-timeline&quot;&gt;Learn more&lt;/a&gt;
+&lt;/div&gt;
+' data-tippy-interactive='true'></i>
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Instrument
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+SAFE
+</div>
+<i class='icon-info-letter icon--frame js-tooltip_simple s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon' data-tippy-appendTo='parent' data-tippy-content='&lt;div class=&#39;u-textLeft u-fontWeight400 u-fontSize16&#39;&gt;
+&lt;p&gt;Investor receives the future shares when a priced round of investment or liquidity event occurs.&lt;/p&gt;
+&lt;/div&gt;
+' data-tippy-interactive='true'></i>
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Minimum investment
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+$3.5K
+</div>
+<i class='icon-info-letter icon--frame js-tooltip_simple s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon' data-tippy-appendTo='parent' data-tippy-content='&lt;div class=&#39;u-textLeft u-fontWeight400 u-fontSize16&#39;&gt;
+The smallest investment amount the issuer is accepting in this offering.
+&lt;/div&gt;
+' data-tippy-interactive='true'></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='offerings-show-header-sidebar__bottom-part s-marginTop2'>
+<div class="u-bgWhite offerings-show-header-invest_button" data-rc="offerings/show/header/invest_button"><div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button--block c-button--large s-paddingHoriz0_5 js-segment_invest_link" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Accredible&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1991,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/991/1991-1668442043-1c058b64b1242d15118d54ed9a5d513a09309c83.PNG&quot;,&quot;min_investment_amount&quot;:3500,&quot;slug&quot;:&quot;accredible&quot;,&quot;tags&quot;:&quot;b2b,saas,5m-revenue,venture-backed,10m-raised,50-199-employees,edtech,stock-purchase-agreement,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/accredible&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-design="header_sidebar" data-label="invest" href="/accredible/invest">Invest in Accredible</a>
+</div>
+<div class='s-marginTop0_5 u-textCenter s-fontSize14 u-fontWeight400 u-colorMuted'>
+<strong>
+$3,500
+</strong>
+minimum
+investment
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class='s-container s-gridMaxXs24 js-external_investors_wrapper'>
+<section class="u-bgGray u-borderRadius10 s-paddingTop1_5 s-paddingHoriz2 s-paddingBottom2 external_investors-shared-section" data-rc="external_investors/shared/section"><div class='s-fontSize22 u-fontWeight400 u-colorGray6 external_investors-shared-section__title'>
+Co-investors
+</div>
+<div class='js-external_investor_investors_wrapper'>
+<div class="external_investors-shared-investors" data-rc="external_investors/shared/investors"><div class='u-displayFlex u-blockSmDown external_investors-shared-investors__items-wrapper'>
+<div class='u-flex1 external_investors-shared-investors__item-wrapper external_investors-shared-investors__item-wrapper--three'>
+<div class="s-fontSize13 u-fontWeight400 u-colorMuted external_investors-shared-investor" data-rc="external_investors/shared/investor"><div class='u-displayFlex u-alignItemsCenter external_investors-shared-investor__sidebar'>
+<div class='c-avatar c-avatar--border external_investors-shared-investor__avatar'>
+<img src="https://uploads.republic.com/p/external_investors/logos/original/000/000/482/482-1666982021-6f4b49ed8925d8e04978b4257a3bf0a617cc8a63.png" />
+</div>
+<div class='s-marginLeft1_5'>
+<div class='c-secondaryTitle s-fontSize25 s-marginBottom0_5'>
+Uncork Capital
+</div>
+</div>
+</div>
+<div class='external_investors-shared-investor__content'>
+<div class='s-marginTop1 u-colorGray4 js-external_investor_description external_investors-shared-investor__description'>
+Uncork Capital is a seed-stage venture capital firm that focuses on SaaS, consumer, marketplaces, hardware, and new technology startups.
+</div>
+<div class='s-marginTop1 u-whiteSpaceNowrap external_investors-shared-investor__companies'>
+<div>
+Uncork Capital also invested in:
+</div>
+<div class='s-marginTop0_5'>
+<img alt="Companies" class="external_investors-shared-investor__companies-image" src="https://uploads.republic.com/p/external_investors/companies/original/000/000/482/482-1666982021-f6829ac1e1183654321b594076bcc8a8d1df6f01.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-flex1 external_investors-shared-investors__item-wrapper external_investors-shared-investors__item-wrapper--three'>
+<div class="s-fontSize13 u-fontWeight400 u-colorMuted external_investors-shared-investor" data-rc="external_investors/shared/investor"><div class='u-displayFlex u-alignItemsCenter external_investors-shared-investor__sidebar'>
+<div class='c-avatar c-avatar--border external_investors-shared-investor__avatar'>
+<img src="https://uploads.republic.com/p/external_investors/logos/original/000/000/481/481-1666981710-ba6aa494e88866dd882d20241760c94c2e3ecce6.png" />
+</div>
+<div class='s-marginLeft1_5'>
+<div class='c-secondaryTitle s-fontSize25 s-marginBottom0_5'>
+PivotNorth Capital
+</div>
+</div>
+</div>
+<div class='external_investors-shared-investor__content'>
+<div class='s-marginTop1 u-colorGray4 js-external_investor_description external_investors-shared-investor__description'>
+PivotNorth Capital is a venture capital firm that invests in software companies. 
+</div>
+<div class='s-marginTop1 u-whiteSpaceNowrap external_investors-shared-investor__companies'>
+<div>
+PivotNorth Capital also invested in:
+</div>
+<div class='s-marginTop0_5'>
+<img alt="Companies" class="external_investors-shared-investor__companies-image" src="https://uploads.republic.com/p/external_investors/companies/original/000/000/481/481-1666981711-1230c4ee02efa353efc0d3bbbb01742875dc29ac.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-flex1 external_investors-shared-investors__item-wrapper external_investors-shared-investors__item-wrapper--three'>
+<div class="s-fontSize13 u-fontWeight400 u-colorMuted external_investors-shared-investor" data-rc="external_investors/shared/investor"><div class='u-displayFlex u-alignItemsCenter external_investors-shared-investor__sidebar'>
+<div class='c-avatar c-avatar--border external_investors-shared-investor__avatar'>
+<img src="https://uploads.republic.com/p/external_investors/logos/original/000/000/007/7-1594118812-281070963fc674379219487bdd6672c2a04c7040.png" />
+</div>
+<div class='s-marginLeft1_5'>
+<div class='c-secondaryTitle s-fontSize25 s-marginBottom0_5'>
+Kapor Capital
+</div>
+<div>
+VC Firm, Oakland
+</div>
+</div>
+</div>
+<div class='external_investors-shared-investor__content'>
+<div class='s-marginTop1 u-colorGray4 js-external_investor_description external_investors-shared-investor__description'>
+Kapor Capital invests in seed stage startups that close gaps of access &amp; economic opportunity, encouraging companies to make D&amp;I a part of their DNA. Notable investments: Twilio, Uber, AngelList, Asana, Via, Bitly, Life360, and many others.
+
+</div>
+<div class='s-marginTop1 u-whiteSpaceNowrap external_investors-shared-investor__companies'>
+<div>
+Kapor Capital also invested in:
+</div>
+<div class='s-marginTop0_5'>
+<img alt="Companies" class="external_investors-shared-investor__companies-image" src="https://uploads.republic.com/p/external_investors/companies/original/000/000/007/7-1594118812-341acee4540e4fb75ba0322fe275b241f7e08269.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class='s-spacerXs3'></div>
+</div>
+<nav class="u-hiddenPrint offerings-show-content_navigation" data-rc="offerings/show/content_navigation"><div class='c-content_nav u-hiddenSmDown'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16 s-grid--middle'>
+<div class='c-content_nav__container'>
+<a class="c-content_nav__link js-content-nav-link active" href="#pitch">Pitch</a>
+<a class="c-content_nav__link js-content-nav-link" href="#discussion">Discussion
+<span class='c-content_nav__booble'>
+8
+</span>
+</a><a class="c-content_nav__link js-content-nav-link" href="#updates">Updates
+<span class='c-content_nav__booble'>
+4
+</span>
+</a></div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 s-grid--middle'>
+<div class='offerings-show-content_navigation__contact-wrapper'>
+<div class='u-displayFlex u-justifyContentSpaceBetween'>
+<a class="u-fontWeight400 s-fontSize18 offerings-show-content_navigation__contact-link" href="mailto: investors@republic.co"><img class="offerings-show-content_navigation__contact-icon" src="https://assets.republic.com/assets/ui/email-a29d8fa08578598628f70549a37b7686c4c4e6366866526b019a2298a626931f.svg" />
+Questions?
+</a>
+<a class="u-fontWeight400 s-fontSize18 offerings-show-content_navigation__contact-link" href="tel:(855)-668-2575"><img class="offerings-show-content_navigation__contact-icon" src="https://assets.republic.com/assets/ui/phone-3cdc41599afd143db75fb1ebaa30d1e64b27032e7a7e17a918f5e45e2c9e651e.svg" />
+(855)-668-2575
+</a>
+</div>
+</div>
+<div class='offerings-show-content_navigation__cta-wrapper'>
+<div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button c-button--block s-paddingHoriz0_5 offerings-show-content_navigation__cta-button js-segment_invest_link" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Accredible&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1991,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/991/1991-1668442043-1c058b64b1242d15118d54ed9a5d513a09309c83.PNG&quot;,&quot;min_investment_amount&quot;:3500,&quot;slug&quot;:&quot;accredible&quot;,&quot;tags&quot;:&quot;b2b,saas,5m-revenue,venture-backed,10m-raised,50-199-employees,edtech,stock-purchase-agreement,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/accredible&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-design="content_navigation" data-label="invest" href="/accredible/invest"><span class='u-hiddenLgOnly'>
+Invest
+</span>
+<span class='u-hiddenMdDown'>
+Invest in Accredible
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenLgOnly u-hiddenMdOnly'>
+<div class='offerings-show-content_navigation__contact-wrapper'>
+<div class='u-displayFlex u-justifyContentSpaceBetween u-fontWeight400 s-fontSize18 offerings-show-content_navigation__mobile-navigation'>
+Questions?
+<span class='u-textRight'>
+<a class="offerings-show-content_navigation__contact-link s-borderRight1 s-marginRight1" href="mailto: investors@republic.co"><img class="offerings-show-content_navigation__contact-icon" src="https://assets.republic.com/assets/ui/email-a29d8fa08578598628f70549a37b7686c4c4e6366866526b019a2298a626931f.svg" />
+</a>
+<a class="offerings-show-content_navigation__contact-link" href="tel:(855)-668-2575"><img class="offerings-show-content_navigation__contact-icon" src="https://assets.republic.com/assets/ui/phone-3cdc41599afd143db75fb1ebaa30d1e64b27032e7a7e17a918f5e45e2c9e651e.svg" />
+</a>
+</span>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp u-displayFlex u-alignItemsCenter offerings-show-content_navigation__mobile-navigation'>
+<select class='c-input c-input--select c-input--large js-mobile-nav offerings-show-content_navigation__mobile-select'>
+<option selected value='/accredible/pitch'>
+Pitch
+</option>
+<option value='/accredible/documents'>
+Documents
+</option>
+<option value='/accredible/press'>
+Press
+</option>
+<option value='/accredible/discussion'>
+Discussion
+(8)
+</option>
+<option value='/accredible/updates'>
+Updates
+(4)
+</option>
+</select>
+<div class='s-marginLeft1_5'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Accredible" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Faccredible%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Faccredible"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?url=https%3A%2F%2Frepublic.com%2Faccredible"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Frepublic.com%2Faccredible"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Faccredible"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class='s-container s-gridMaxXs24 u-hiddenPrint offerings-show__sidebar-navigation-container'>
+<nav class="js-offering_side_navigation u-hidden offerings-show-side_navigation" data-link-active-class="offerings-show-side_navigation__link--active" data-rc="offerings/show/side_navigation"><a class="js-offering_side_navigation_link offerings-show-side_navigation__link offerings-show-side_navigation__link--active" href="/accredible#solution">Solution</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/accredible#product">Product</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/accredible#business-model">Biz. model</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/accredible#traction">Traction</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/accredible#market">Market</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/accredible#vision">Vision</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/accredible#founders">Founders</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/accredible#case-studies">Case studies</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/accredible#disclaimers">Disclaimers</a>
+<div class='s-marginVert1 s-marginRight3 offerings-show-side_navigation__divider'></div>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link" href="/accredible#press">Press</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link" href="/accredible#discussion">Discussion</a>
+</nav>
+</div>
+<div class='js-terms u-hidden s-paddingTop4'>
+<div class='js-section s-paddingTop2' id='terms'>
+<div class="s-container s-gridMaxXs24 s-paddingTop0_5 offerings-show-terms_section" data-rc="offerings/show/terms_section"><div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16'>
+<div class='c-offeringTermsContent'>
+
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8'>
+<div class='u-hiddenPrint'>
+<div class='s-spacerXs3 s-spacerSm0_5'></div>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic Deal Room Advisor (Republic Deal Room Advisor LLC, CRD# 31568) is hosting this Reg D 506(c) securities offering by Republic Q4 II, A Series of Republic Deal Room Master Fund, LP.
+</div>
+</div>
+<div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14 s-marginBottom0_5'>
+Company documents
+</div>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="https://uploads.republic.com/p/offerings/security_attachments/original/000/001/991/1991-1667001341-04b02c039e0c9a8e964e100381adada27ff3dd01.pdf"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Subscription Agreement
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/1748"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+republic-q4-ii-PPM.pdf
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/1747"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+republic-q4-ii-LPA.pdf
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-update u-hidden s-paddingTop4'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='js-section s-grid-colLg17 s-grid--pushLg4 s-grid-colSm20 s-grid--pushSm3' id='updates'>
+<div class='s-paddingTop2'>
+<div class='js-update_section_placeholder' data-url='/accredible/show_updates'>
+<div class='u-textCenter u-colorGray9 s-fontSize20 s-marginVert10'>
+<i class='c-spinner'></i>
+Loading
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-sections offerings-show__sections--tall s-paddingTop4'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid js-pitch_grid offerings-show__pitch-grid'>
+<div class='js-section s-grid-colMd17 s-grid-colSm16 s-marginBottom3 offerings-show__pitch' id='pitch'>
+<div class="offerings-show-pitch_section" data-rc="offerings/show/pitch_section"><div class='s-marginRight3 offerings-show-pitch_section__pitch-wrapper'>
+<div class="s-paddingTop3 s-marginBottom2 offerings-show-pitch_highlights" data-rc="offerings/show/pitch_highlights"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-fontWeight800 u-colorGray6 offerings-show-pitch_highlights__title'>
+Investment summary
+</h2>
+<hr class='c-deal-page-title-divider'>
+<div class='s-marginBottom2_5'>
+<div class="c-tag-highlight-wrapper offerings-show-pitch_highlight_tags" data-rc="offerings/show/pitch_highlight_tags"><div class='c-tag-highlight js-tooltip_simple' data-tippy-content='The company has previously raised over $10M in capital prior to Republic.'>
+<div class='c-tag-highlight__content'>
+<div class='c-tag-highlight__title'>
+$10M+ raised
+</div>
+<div class='c-tag-highlight__description'>
+Company has previously raised over $10M in capital
+</div>
+</div>
+<div class='c-tag-highlight__icon'>
+<img src="https://uploads.republic.com/p/tags/icons/original/000/005/908/5908-1646382164-6abbe53fe7fc2490c50321f20ba7bf43bb6958a8.png" />
+</div>
+
+</div>
+
+<div class='c-tag-highlight'>
+<div class='c-tag-highlight__content'>
+<div class='c-tag-highlight__title'>
+50-199 employees
+</div>
+<div class='c-tag-highlight__description'>
+Company has 50-199 employees on payroll
+</div>
+</div>
+<div class='c-tag-highlight__icon'>
+<img src="https://uploads.republic.com/p/tags/icons/original/000/005/907/5907-1646382342-638d79b96b21871a05ab7e38ba630ccce0588f7f.png" />
+</div>
+
+</div>
+
+<div class='c-tag-highlight js-tooltip_simple' data-tippy-content='The company had over $5,000,000 in trailing revenue in the past 12 months.'>
+<div class='c-tag-highlight__content'>
+<div class='c-tag-highlight__title'>
+$5M+ revenue
+</div>
+<div class='c-tag-highlight__description'>
+Company had over $5M in revenue in the past 12 months
+</div>
+</div>
+<div class='c-tag-highlight__icon'>
+<img src="https://uploads.republic.com/p/tags/icons/original/000/005/928/5928-1646382602-f72157faf5756a193d4a8e3d0271c7c51a5ec950.png" />
+</div>
+
+</div>
+
+<div class='c-tag-highlight'>
+<div class='c-tag-highlight__content'>
+<div class='c-tag-highlight__title'>
+Venture-backed
+</div>
+<div class='c-tag-highlight__description'>
+Company is backed by a venture capital firm
+</div>
+</div>
+<div class='c-tag-highlight__icon'>
+<img src="https://uploads.republic.com/p/tags/icons/original/000/005/970/5970-1646382552-b2b55923978aea19c93b7b14ebef6d493a08dc08.png" />
+</div>
+
+</div>
+
+</div>
+</div>
+</header>
+<div class="offerings-show-summary" data-rc="offerings/show/summary"><div class='c-defaultFormattedContent s-paddingBottom1_5 offerings-show-summary__content'>
+<p>Accredible provides all the tools you need to learn online; search for courses, manage a to-learn list of courses, get notifications when it&rsquo;s time to start, find course-mates, and showcase your knowledge on your r&eacute;sum&eacute;.</p><p>Accredible&#39;s vision is to host the world&rsquo;s credentials and in the process become the world&rsquo;s first truly verifiable repository of human capital. Its comprehensive suite of solutions has attracted the attention of several notable VC firms, including PivotNorth Capital, Uncork Capital, and Kapor Capital.&nbsp;</p><p>This is a special purpose vehicle (SPV) formed to invest in Accredible&#39;s Series B.</p>
+</div>
+</div>
+<div class='c-defaultFormattedContent offerings-show-pitch_highlights__content'>
+<ul><li>Building the world's largest credentialing network</li><li>1,800+ organizations use Accredible like Harvard, Slack, Google, and more</li><li>51M credentials issued with customers putting 75% on the blockchain</li><li>$9.3M ARR | 12M credential recipients </li><li>International team spread out across 12 countries </li></ul>
+</div>
+</div>
+<article class="offerings-pitch_sections-sections_list" data-rc="offerings/pitch_sections/sections_list"><section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Solution" id="solution" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Solution
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">Meet Accredible: Verify the demonstration of specific skills via digital credentials</h2><p>Accredible has created the world's largest high-stakes credentialing network to help learners more fully tell their stories and to give employers trustworthy evidence to back up skill assertions.&nbsp;</p><p><img src="https://uploads.republic.com/p/images/attachments/original/000/078/388/78388-1667067314-263b720b32e869dcad2e4e0b081698cfef3acce4.PNG" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Product" id="product" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Product
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">The world’s most comprehensive digital badge and certificate platform</h2><p>Accredible has two main products: badges and certificates. It provides ancillary services, such as premium whitelabeling, job market insights, and digital wallet cards.&nbsp;</p><p><img src="https://uploads.republic.com/p/images/attachments/original/000/078/389/78389-1667070766-d9bb1f87031fc51beb58c69b2dcce5190bb332c5.PNG" class="fr-fic fr-dib"></p><h3 style="text-align: center;">—</h3><h2 style="text-align: center;">Badges</h2><p>Organizations use digital badges to recognize achievement, illustrate growth, and incentivize behavior. Accredible's visual designer makes it easy to create badges that represent the company's brand. Meta-data is also encoded in the badge to communicate details of the badge to anyone wishing to verify it, or learn more about the context of the achievement it signifies.</p><p><img src="https://uploads.republic.com/p/images/attachments/original/000/078/390/78390-1667071059-0c4728e49a2835ea23b2d4282df4f3572d9cf886.PNG" class="fr-fic fr-dib" style="width: 658px;"></p><h3 style="text-align: center;">—</h3><h2 style="text-align: center;">Certificates</h2><p>Accredible's digital certificates are unsurpassed when it comes to design options, delivery methods, social sharing, analytics, security, and verification. Users can set certificates to automatically expire or renew. Also, single-click verification makes third-party authentication quick and easy. Other features include multi-language support and automatic screen sizing.&nbsp;</p><p><img src="https://uploads.republic.com/p/images/attachments/original/000/078/391/78391-1667071374-67e284d300c199b7dfb165444cc153978289dcbe.PNG" class="fr-fic fr-dib" style="width: 589px;"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Biz. model" id="business-model" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Business model
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">Scalable business model that has unicorn potential</h2><p><img src="https://uploads.republic.com/p/images/attachments/original/000/078/392/78392-1667071684-f5abd963f487cd7a6042d0cced9eead2994ebc29.PNG" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Traction" id="traction" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Traction
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">Accredible is gaining traction across a wide range of industries</h2><p>Accredible's current ARR is $9.3M, and it's on track for $10M by EoY. Additionally, the company has already issued 51M credentials with an average ARPU of $0.71. Accredible has excellent cash flow due to annual contracts that are paid up-front.&nbsp;</p><p><img src="https://uploads.republic.com/p/images/attachments/original/000/078/409/78409-1667111980-f09a8b9122349636012d72ee3eb513d850941f39.PNG" class="fr-fic fr-dib"></p><p>Accredible's customer base (1779 paying customers) continues to expand. Its clients include leading tech firms such as Google, Slack, and Stripe that use credentials to memorialize the professional learning of staff as well as customer training. Top universities, including ASU, Harvard, and Purdue, use Accredible credentials to help students showcase their achievements to the world.</p><p><img src="https://uploads.republic.com/p/images/attachments/original/000/078/408/78408-1667111910-c0798d0856bffb907c1a6bd8e2dff70267ceaa0d.PNG" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Market" id="market" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Market
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">$340.1B total addressable market</h2><p>The global employment services market grew from $1.4T in 2021 to $1.6T in 2022 at a CAGR of 12.5%. It's forecasted to hit $2.3T in 2026 at a CAGR of 9.7%.&nbsp;</p><p>Accredible is poised to take advantage of this increase in market size by helping place the workface via digital credentials.&nbsp;</p><p><img src="https://uploads.republic.com/p/images/attachments/original/000/078/410/78410-1667112550-d648805d64480110f17b141315cd897f4d849705.PNG" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Vision" id="vision" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Vision
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">Accredible seeks to connect education with economic value</h2><p><img src="https://uploads.republic.com/p/images/attachments/original/000/078/411/78411-1667113417-6d0ad3c4431a3a0d25c4b818f2651679d3466374.PNG" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Founders" id="founders" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Founders
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">Meet the Team</h2><p>Danny King, CEO and co-founder, had been programming since he was six years old. He possessed the interest and ability to be successful in the renowned Computer Science program at Durham University but didn’t have the grades to get in. Danny tracked down the head of admissions and talked him into giving him a spot by using evidence of his coding prowess. Shortly after graduating in 2012 (at the top of his class), King and fellow Durham graduate Alan Heppenstall, CTO, launched Accredible to build the world's first truly verifiable repository of human capital.</p><p><img src="https://uploads.republic.com/p/images/attachments/original/000/078/407/78407-1667111289-5bb0362ddc0a96cc8f4da69e019380b93ff35363.PNG" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Case studies" id="case-studies" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Case studies
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<p><strong>Learn more about Accredible's value-add in case studies:</strong><strong>&nbsp;</strong></p><ul><li><a href="https://www.accredible.com/case-studies/hootsuite" target="_blank" rel="nofollow">Certificate Sharing and Professional Directory Empower Social Media Expert Hootsuite</a></li><li><a href="https://www.accredible.com/case-studies/how-brunchwork-increased-the-value-of-their-classes-with-digital-credentials" target="_blank" rel="nofollow">How brunchwork Increased the Value of their Classes with Digital Credentials</a></li><li><a href="https://www.accredible.com/case-studies/dmi" target="_blank" rel="nofollow">How Switching to Accredible Helped DMI Save Time, Save Money, and Increase their Brand Visibility</a></li></ul>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Disclaimers" id="disclaimers" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Disclaimers
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<p><em>In addition to the carried interest Republic Deal Room Advisor LLC is entitled to for the syndicated investments it organizes, certain principals of Republic Deal Room Advisor LLC may have a personal interests in these investments, as disclosed below. When making an investment decision please review any applicable disclosures as they represent pre-existing financial interests held by those principals of Republic Deal Room Advisor LLC.</em></p><p><em>We do not represent that the information contained herein is accurate or complete, and it should not be relied upon as such. Opinions expressed herein are subject to change without notice. Certain information contained herein (including any forward-looking statements and economic and market information) has been obtained from and/or prepared by Accredible or other third-party sources and in certain cases has not been updated through the date hereof. While such sources are believed to be reliable, Republic Deal Room Advisor LLC does not assume any responsibility for the accuracy or completeness of such information. Republic Deal Room Advisor LLC does not undertake any obligation to update the information contained herein as of any future date.</em></p>
+</div>
+</section>
+</article>
+</div>
+<div class='u-hiddenPrint'>
+<div class='s-marginTop3_5 s-borderTop2_5 u-hiddenXsOnly'></div>
+<div class='s-marginTop3 s-borderTop2 u-hiddenSmUp'></div>
+<div class="offerings-show-invest_section" data-rc="offerings/show/invest_section"><form class="simple_form js-offering_investment_form" action="/accredible/invest" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><div class='s-grid'>
+<div class='s-grid-colMd7 s-grid-colSm8 s-grid-colXs9 offerings-show-invest_section__amount-column'>
+<div class='c-input-addon-wrapper'>
+<div class='c-input-addon offerings-show-invest_section__input-amount-addon'>
+<div class='s-fontSize24'>
+$
+</div>
+</div>
+<div class="c-input-group"><input autocomplete="false" class="c-input c-input--optional js-offering_ammount_input js-money_input u-textRight c-input c-input--large c-input--block" placeholder="3,500 min." type="text" name="investment[amount]" id="investment_amount" /></div>
+</div>
+</div>
+<div class='s-grid-colMd17 s-grid-colSm16 s-grid-colXs15'>
+<button name="button" type="submit" class="c-button js-offering_submit_button c-button c-button--large c-button--block offerings-show-invest_section__submit-button">Invest in Accredible
+</button>
+</div>
+</div>
+</form></div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 js-deal_page_sidebar'>
+<div class='s-spacerXs3'></div>
+<div class='js-section js-mobile_section s-marginBottom3 u-hiddenPrint offerings-show__documents' id='documents'>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic Deal Room Advisor (Republic Deal Room Advisor LLC, CRD# 31568) is hosting this Reg D 506(c) securities offering by Republic Q4 II, A Series of Republic Deal Room Master Fund, LP.
+</div>
+</div>
+<div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14 s-marginBottom0_5'>
+Company documents
+</div>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="https://uploads.republic.com/p/offerings/security_attachments/original/000/001/991/1991-1667001341-04b02c039e0c9a8e964e100381adada27ff3dd01.pdf"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Subscription Agreement
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/1748"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+republic-q4-ii-PPM.pdf
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/1747"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+republic-q4-ii-LPA.pdf
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint js-section offerings-show__section' id='press'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+Press
+</h2>
+</div>
+<div class="offerings-show-press_section" data-rc="offerings/show/press_section"><div class='s-grid js-press_container u-text-center'>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.newswire.com/news/thepowermba-and-accredible-the-power-of-digital-credentials-21138353"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/027/457/27457-1667234759-491d2121957836f29d0c2dd10792774e3f378ebd.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+ThePowerMBA and Accredible: The Power of Digital Credentials
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/027/457/27457-1667234759-2971e0e191f1677b396ad245152872e57a4e19bd. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Newswire" title="Newswire" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/027/457/27457-1667234759-7d8a1fbd6e66bced44bfbe3519c7773be9b54331." />
+Newswire
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+May  5, 2020
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Accredible today announced it has partnered with ThePowerMBA to bring digital certificates and badges to business profess...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.prweb.com/releases/2018/04/prweb15438648.htm"><div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Brightspace &amp; Accredible Partnership
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/027/459/27459-1667234796-c72505e8e01486a34f28ef2637f22685a47e17c5. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="PRWeb" title="PRWeb" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/027/459/27459-1667234796-600e9dd52bde904e77e21aeed4c2517b716be7f7." />
+PRWeb
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Apr 30, 2018
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Over 15,000,000 students use D2Ls Brightspace LMS in higher education, K-12 and the enterprise sector (including the Fort...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.prweb.com/releases/2018/04/prweb15438648.htm"><div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Brightspace &amp; Accredible Partnership
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/027/459/27459-1667234796-c72505e8e01486a34f28ef2637f22685a47e17c5. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="PRWeb" title="PRWeb" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/027/459/27459-1667234796-600e9dd52bde904e77e21aeed4c2517b716be7f7." />
+PRWeb
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Apr 30, 2018
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Over 15,000,000 students use D2Ls Brightspace LMS in higher education, K-12 and the enterprise sector (including the Fort...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.prnewswire.com/news-releases/the-ncherm-group-and-accredible-announce-a-new-partnership-aimed-at-furthering-systems-level-solutions-for-safer-schools-and-campuses-300708917.html"><div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+The NCHERM Group and Accredible Announce a New Partnershi...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+Prnewswire
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+BERWYN, Pa., Sept. 10, 2018 /PRNewswire/ -- The NCHERM Group, LLC is partnering with Accredible to add digital badging to...
+</p>
+</div>
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint js-section offerings-show__section' id='discussion'>
+<div class='s-container s-gridMaxXs16'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+Discussion
+</h2>
+<div class='s-marginBottom3 s-fontSize12 u-colorMuted u-textCenter'>
+Ask questions and share feedback with the Accredible team below.
+If you have support related questions for Republic, please contact
+<a href="mailto:investors@republic.co">investors@republic.co</a>.
+</div>
+</div>
+<div class='js-discussion_placeholder' data-url='/accredible/discussion_section'>
+<div class='u-textCenter u-colorGray9 s-fontSize20 s-marginTop6 s-marginBottom10'>
+<i class='c-spinner'></i>
+Loading
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint s-marginTop6 s-borderTop5 offerings-show__footer'>
+<div class='s-container s-gridMaxXs24'>
+<div class="u-textCenter offerings-show-footer" data-rc="offerings/show/footer"><div class='s-marginBottom1'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)"><div class="c-avatar c-avatar--medium offerings-show-footer__avatar c-avatar--border c-avatar--accredible"><img alt="Logo of Accredible" title="Accredible" srcset="https://uploads.republic.com/p/offerings/logos/medium_2x/000/001/991/1991-1666982304-d5e118d3c40bb12b55168e821db711c0e86dd094.png 2x" src="https://uploads.republic.com/p/offerings/logos/medium/000/001/991/1991-1666982304-e90dfb0278ecba0e7e373a146946513da8595ef2.png" /></div></a>
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle s-marginHoriz0_5'>
+<h1 class='c-largeTitle offerings-show-footer__company-name'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)">Accredible</a>
+</h1>
+</div>
+</div>
+<div class='s-marginTop1'>
+<div class='s-paddingTop1 u-hiddenXsOnly'></div>
+<div class='u-displayInlineBlock u-blockXsOnly offerings-show-footer__invest-wrapper'>
+<div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button--extra_large c-button--responsive offerings-show-footer__invest-button js-segment_invest_link" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Accredible&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1991,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/991/1991-1668442043-1c058b64b1242d15118d54ed9a5d513a09309c83.PNG&quot;,&quot;min_investment_amount&quot;:3500,&quot;slug&quot;:&quot;accredible&quot;,&quot;tags&quot;:&quot;b2b,saas,5m-revenue,venture-backed,10m-raised,50-199-employees,edtech,stock-purchase-agreement,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/accredible&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-design="footer" data-label="invest" href="/accredible/invest">Invest in Accredible</a>
+</div>
+<div class='s-marginTop1 u-hiddenSmUp'></div>
+<div class='u-whiteSpaceNowrap offerings-show-footer__follow-wrapper'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Footer" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link c-button--small c-button--secondary" data-action="follow" data-href="/register?after_sign_in=%2Faccredible%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5 u-colorGray2 follows-shared-follow_offering__bubble-counter'>
+130
+</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingBottom1_5 u-hiddenXsOnly'></div>
+</div>
+</div>
+<div class="offerings-shared-schema_org" data-rc="offerings/shared/schema_org"><script nonce="DhV3LRE4qez86AViaNTtuw==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "https://republic.com/companies",
+      "name": "Companies",
+      "image": "https://assets.republic.com/assets/logo/icon/brand/36x40/logo@3x-af4ee9995fb90fffc2d2d3acf41e91f9ea98718053f604912115ab3fd6877321.png"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "https://republic.com/accredible",
+      "name": "Accredible",
+      "image": "https://uploads.republic.com/p/offerings/logos/medium/000/001/991/1991-1666982304-e90dfb0278ecba0e7e373a146946513da8595ef2.png"
+    }
+  }]
+}
+
+
+//]]>
+</script></div>
+</div>
+</div>
+</div>
+</div>
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-deal_room_disclaimer" data-rc="layouts/footer/disclaimers/deal_room_disclaimer"><div class='s-marginBottom2'>
+<p class='s-marginBottom1'>This site (the "<strong>Site</strong>") is owned by OpenDeal Inc. and hosted by its wholly owned subsidiary
+Republic Core LLC, a technology services provider which is not a registered broker-dealer,
+investment adviser, or securities intermediary. Neither Republic Core LLC nor OpenDeal Inc.
+provide investment advice, endorsement, analysis, or recommendations with respect to any
+securities. All securities listed here are being offered by, and all information included on
+this Site is the responsibility of, the applicable issuer of such securities. The
+intermediary facilitating the offering will be identified in such offering’s documentation.
+Certain pages discussing the mechanics and providing educational materials may refer to
+OpenDeal Inc. and its affiliates collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+This page and all other pages that are branches are maintained by Republic Deal Room Advisor LLC,
+an exempt reporting investment adviser, which is a subsidiary of OpenDeal Inc.
+Republic Deal Room Advisor LLC may cancel an offering for any reason, and there is no guarantee
+that a specific allocation will be made available. Successful offerings are syndicated
+through a special purpose funds, and Republic Deal Room Advisor LLC or an affiliate will
+charge a carried interest and management fee as an investment advisor to the relevant fund.
+Early stage investing is highly risky and subject to total loss of capital, and is suitable
+for experienced investors only. Investors co-investing in Republic Deal Room Advisor LLC's
+syndicates are responsible for making their own investment decisions.
+Republic Deal Room Advisor LLC provides investment advisory services to its investment funds only.
+</p>
+<p class='s-marginBottom1'>
+By accessing links to other pages on the Site and thereby accessing the Site and any pages
+thereof, you agree to be bound by the Republic Deal Room Advisor LLC's
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/dealroom-terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/privacy">Privacy Policy</a>,
+please also see Republic Deal Room Advisor LLC's
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://reports.adviserinfo.sec.gov/reports/ADV/315688/PDF/315688.pdf">Form ADV</a>.
+</p>
+<p class='s-marginBottom1 s-paddingHoriz1_5 s-paddingVert1 u-text-center u-fontWeight500'>
+Investors should verify any issuer information they consider important before making an investment.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+
+<script src="https://static.zdassets.com/ekr/snippet.js?key=d10adfc1-5afd-478b-b60b-d5f58ec5e520" id="ze-snippet" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script nonce="DhV3LRE4qez86AViaNTtuw==">
+  window.zESettings = {
+    webWidget: {
+      zIndex: 86,
+      offset: {
+        horizontal: '55px',
+        vertical: '2px',
+        mobile: {
+          horizontal: '-4px',
+          vertical: '90px'
+        }
+      },
+      contactForm: {
+        title: {'*': 'How can we help?'},
+        ticketForms: [{ id: 6139814921239 }],
+        fields: [
+          { id: 'subject', prefill: { '*': 'Need help!' } },
+          { id: 'email', prefill: { '*': "" } },
+          { id: 'key:6164328823703', prefill: { '*': "" } },
+        ],
+      },
+      helpCenter: {
+        title: {'*': 'FAQ'},
+        searchPlaceholder: {'*': 'What can we help you with?'},
+        messageButton: {'*': 'Contact Us'},
+        originalArticleButton: false,
+      },
+    },
+  };
+  
+  zE('webWidget', 'setLocale', 'en');
+  zE('webWidget', 'helpCenter:setSuggestions', { search: 'invest' });
+</script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="DhV3LRE4qez86AViaNTtuw==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="DhV3LRE4qez86AViaNTtuw==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="DhV3LRE4qez86AViaNTtuw==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+<script src="https://assets.republic.com/assets/w/runtime~MediaSliderPage-1098888d834bd3762a55.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ae-cda0d3eb09b2571ee24e.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apexcharts_dist_apexcharts_common_js-ba302c83-12acaec747ed98c96c79.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apollo_client_c-752f32f6a5f08b47aee9.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ap-10286ca6eee77e5cfdbe.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ax-87ca8eab84b534ce51a3.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_braze_web-sdk_sh-082bda95cd1f46db675e.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_br-ded297e3061c09e58176.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ca-0192f74a4e598aec7a52.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_core-js_i-f3d9e78f9f53cf58378d.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_crc-8b8be13627dda03b73d8.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_c-cea66e909f36387f5945.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_da-5b72066967e09ff24edf.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_d-83acda350f41f6abdff3.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_el-ea7a9011bec346028733.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_c-22aa4e04a1fbdd3d6e3f.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_common_dist_browser_genesisStates_mainnet_json-97430531-83fe7f595f064e0385b1.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethersproject_a-8765651a2f1bdccf9a56.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_et-b31cc9258c2c1d07cac5.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_e-d4fab84d8ab34150ad30.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_fontkit_dist_module_mjs-3528d02d-ecc0f4556eda5102b2d3.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_froala_editor_min_js-b1fc3988-ced20c2300f6c9f40897.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_plugins_pkgd_min_js-adc83e4b-33e97225bf9033164d2d.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_grapesjs_dist_grapes_min_js-a826bfc4-cadb07d673643a51118e.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_g-9055b0297f7ac6f017f0.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_i-b77e6ab09fad9dae77d3.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_l-b1a7deddd04fdb5d9a33.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_n-a907fa203947450ef394.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pb-cab37a002985eca657b7.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pd-cf393d506219ee5b112a.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pl-4c6fabe429fda4071dbb.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_p-27f2b800da9d84d8e2bf.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_rc-o-80e5f70e3d9925c8cdb0.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reach-857404c519977edb5b66.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-l-0c79a438a779449c0b1d.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-r-3c1ef064934605ec254d.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reac-dd43f7d7d874a68c99e5.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_r-b902bc774bc3ff333672.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_sc-0f32c01226134eda1296.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_se-74d4cf204c9d98a015aa.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_s-884ee524820f17ecd6cb.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_A-8cf01848e62c80ff23d7.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_I-5990a0d8dde19f6e04bd.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_A-c0356acbaf9d3c64d8d4.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_C-81436052b30a8eba6374.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_F-445b408fa8bf17d5aa78.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_I-662a93905a6a15b4f741.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_P-69d60a2c449dc7cb6600.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_T-e09f8036fafdc3c6afe0.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_ad-a41070ea11aea6a6ef6a.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+<script src="https://assets.republic.com/assets/w/MediaSliderPage-9d07a76fbcff98a1daf3.js" nonce="DhV3LRE4qez86AViaNTtuw=="></script>
+</body></html>
+
+
+

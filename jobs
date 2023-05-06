@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+Work at Republic — Republic
+</title>
+<link href='https://republic.com/jobs' rel='canonical'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='Work at Republic — Republic' itemprop='name'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' itemprop='description'>
+<meta content='https://assets.republic.com/assets/social_share/cover--default-7359efcea39802f13c954dff5a6153e9ad81f6b303c09d67276d2f7ddd7f3b93.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='Work at Republic — Republic' name='twitter:title'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' name='twitter:description'>
+<meta content='https://assets.republic.com/assets/social_share/cover--default-7359efcea39802f13c954dff5a6153e9ad81f6b303c09d67276d2f7ddd7f3b93.jpg' name='twitter:image'>
+<meta content='https://republic.com/jobs' property='og:url'>
+<meta content='Work at Republic — Republic' property='og:title'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' property='og:description'>
+<meta content='https://assets.republic.com/assets/social_share/cover--default-7359efcea39802f13c954dff5a6153e9ad81f6b303c09d67276d2f7ddd7f3b93.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/vendor-node_modules_a-db7c58b4.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Ac-919e95b8.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Table_Table_module_scss-e15798b9-0e96676f.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/JobsPage-753e6135.css" />
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="7IUMS9mNypFAajCw_2G9L1VYHpPHwnxqsuEJJGq9OM_nk0BjEc9W38ou5hT9aGGg1i5O5V-EMyJ8ShXl7Vmp5Q" />
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+  analytics.page({
+    url: "https://republic.com/jobs"
+  }, {
+    integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+  });
+</script>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class=" preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="layouts-header_footer" data-rc="layouts/header_footer"><nav class="c-header-nav c-header-nav--default  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/black/150x38/logo-211758c2027fc8268186d512a2119520a35358973648789a123d9fb6c3d5a37f.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search  layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--default" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div>
+<div class="layouts-full_width" data-rc="layouts/full_width"><div class="jobs-index" data-rc="jobs/index"><div data-react-key="JobsPage" data-react-id="696393eb-6e51-45bf-af11-267e5ee71b8f"><div class="js-react-component--placeholder"><div class="layouts-react_loader layouts-react_loader--fullpage" data-rc="layouts/react_loader"><div class='s-fontSize20 u-textCenter u-colorGray8'>
+<i class='c-spinner'></i>
+Loading
+</div>
+</div>
+</div><div class="js-react-component--content u-invisible"></div></div><script nonce="1J2e1iIAd7VK9MLvsjZRxw==" type="application/json" data-react-key="JobsPage" data-react-id="696393eb-6e51-45bf-af11-267e5ee71b8f">{"jobs":{"data":[{"id":"25","type":"job","attributes":{"id":25,"url":"https://careers-republic.icims.com/jobs/1122/chief-technology-officer/job?in_iframe=1","title":"Chief Technology Officer","category":"Engineering","locations":"US-Remote","about_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cspan\u003e\u003cspan\u003eRepublic is a global financial technology company that allows anyone to invest in anything, anywhere. Republic operates several distinct business lines including a \u003c/span\u003e\u003ca href=\"https://republic.com/\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan\u003eretail investment platform\u003c/span\u003e\u003c/a\u003e\u003cspan\u003e, a \u003c/span\u003e\u003ca href=\"https://www.republiccapital.co/\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan\u003eprivate capital division\u003c/span\u003e\u003c/a\u003e\u003cspan\u003e, and a \u003c/span\u003e\u003ca href=\"https://republiccrypto.com/\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan\u003eblockchain advisory practice\u003c/span\u003e\u003c/a\u003e\u003cspan\u003e. The Republic ecosystem has deployed over $1.5 billion in investments, has supported over 600 companies, and comprises over 2M community members across 150 countries. Republic is backed by dozens of leading investment firms and financial institutions and its affiliated entities have co-invested with the best names in venture and private equity\u003c/span\u003e \u003c/span\u003eFounded in 2016, Republic is headquartered in New York City with offices worldwide, including Seedrs headquarters in London and Dublin.  \u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eWe are looking for our first Chief Technology Officer (CTO) that will be a catalyst to our current team as we continue our growth trajectory.  Reporting to the CEO, this position is an integral part of the leadership team.  You will be responsible for leading the technology strategy and operations. This role will be responsible for all the product development and innovation activities within the organization and across all business units.\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003e\u003cspan\u003e\u003cspan\u003eThe CTO leader must have the demonstrated ability to build, lead, mentor, and motivate a successful high performing team of interdisciplinary engineers in a fast-paced production environment. Excellent communication skills to further grow continuity of the global engineering team. Deep understanding of developing and leading an agile optimized R\u0026amp;D team and scaling resources, processes, and governance for high quality product outcomes.\u003c/span\u003e \u003c/span\u003e\u003c/p\u003e\n\n\u003c/div\u003e","responsibilities_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cstrong\u003e\u003cu\u003e\u003cspan\u003eResponsibilities:\u003c/span\u003e\u003c/u\u003e\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cspan\u003eCreating vision, strategy, timelines for the development and deployment of all technological products and services\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eMaking executive decisions on behalf of the company's technological requirements\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eClearly articulate the organization's technical vision and roadmap to key stakeholders, partners, and the broader executive leadership team. Present goals, win, and progress updates regularly.\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eModel and reinforce ethical behavior in self and others, adhere to organizational policies and guidelines, support compliance initiatives, maintain confidence, conduct business with honesty, and show consistency in words and actions.\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eAttracts, develops, and retains a high performing team to meet the current and evolving needs of the business through effective selection, training, and development, coaching and mentoring and performance management\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eStay current \u0026amp; relevant with new approaches, emerging technologies, industry best practices, standards, relevant architectural principles, and patterns and synthesize those that apply to the company to provide business value and differentiation\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eEnsure that technical infrastructure is maintained such that it is secure, scales and performs\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eStrong focus on building repeatable and sustainable systems and process\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eBuild and reinforce business partnerships both internally and externally by driving excellence in planning, delivery, and communication of IT solutions for business opportunities\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eProvide strategic consultative services to business partners in recommending technical solutions to align to their business needs and fully utilize technologies as a competitive tool\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eProvides technically innovative solutions that are usable (usability), stable and scalable\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003ePartners with the business to drive solutions\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","preferences_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cspan\u003e\u003cstrong\u003e\u003cu\u003e\u003cspan\u003eDemonstrated Behaviors:\u003c/span\u003e\u003c/u\u003e\u003c/strong\u003e\u003c/span\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cspan\u003eEffectively communicates across the organization, clearly articulating a business vision, key objectives, timelines and personal contributions    \u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eActs decisively. Makes decisions with the customer and their patients in mind. Meets commitments with a sense of urgency\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eWorks collaboratively. Flexible and easy to work with\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eThinks strategically. Demonstrated ability to translate strategy into action; excellent analytical skills and an ability to communicate complex issues in a simple way and seeks to understand the why\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cspan\u003e \u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e\u003cspan\u003e\u003cstrong\u003e\u003cu\u003e\u003cspan\u003eRequirements:\u003c/span\u003e\u003c/u\u003e\u003c/strong\u003e\u003c/span\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cspan\u003e15+ years of professional experience with at least 5 years in an executive or similar level capacity\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eProven track record in building and leading high performance global engineering and product teams of 70+ across a portfolio of products or product lines\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003ePrevious experience in a heavily regulated, global environment\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eLead development and execution of a progressive, realistic IT strategy in support of company strategic growth plans\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eDeep knowledge and experience in leading cloud-based and mobile application development in high-growth companies, site reliability, cybersecurity and information security, big data engineering and architecture\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003ePrevious experience with acquisitions and system integration\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eExceptional cross-functional collaborator with an ability to bring people along with your vision\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eMust thrive working in a fast-paced, innovative environment while remaining flexible, proactive, resourceful, and efficient\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eAble to prepare/achieve a realistic annual operational and investment plan that supports business growth\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eFinancial acumen\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eEngage other thought leaders and IT strategic thinkers\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eAbility to develop collaborative relationships\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eExcellent influencing and consultative skills and the ability to proactively identify and resolve issues and opportunities\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eStrong conflict management and negotiation skills\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eAbility to analyze complex issues to develop relevant and realistic plans, programs, and recommendations\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eDemonstrated ability to prioritize requests and deliverables\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eDemonstrated ability to translate strategy into action; excellent analytical skills and an ability to communicate complex issues in a simple way and to orchestrate plans to resolve issues and mitigate risks\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","transmittal_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cdiv\u003e\u003cspan\u003eThe business is accelerating at a rapid pace. Republic is a venture-backed company with real traction across crowdfunding, private investing options and crypto. We recently closed a $150M Series B funding led by Valor Equity Partners. \u003c/span\u003e\u003c/div\u003e\n\u003cdiv\u003e \u003c/div\u003e\n\u003cdiv\u003e\n\u003cp\u003e\u003cspan\u003eAttracting and retaining the very best people is our #1 priority. That’s why we offer our team best-in-class benefits, including fully-subsidized medical, vision, and dental insurance, a 4% 401(k) match, free access to Talkspace, OneMedical, weekly virtual meditation sessions, a monthly fitness stipend up to $100, weekly catered lunch, a learning and development stipend, and more. Seriously–we don’t mess around when it comes to taking care of our own. \u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eCurrently, the estimated base salary range for this position is $300,000 - $350,000. When finalizing an offer, we take into consideration an individual’s experience level, location and qualifications they bring to the role to formulate a competitive total compensation package.\u003c/span\u003e\u003c/p\u003e\n\u003c/div\u003e\n\u003cdiv\u003e \u003c/div\u003e\n\u003cdiv\u003e\u003cspan\u003eEqual Opportunity/Affirmative Action Employer M/F/D/V\u003c/span\u003e\u003c/div\u003e\n\n\u003c/div\u003e","apply_url":"https://careers-republic.icims.com/jobs/1122/chief-technology-officer/job?mode=apply\u0026apply=yes\u0026in_iframe=1\u0026hashed=-1834412662","position":"Regular Full-Time"}},{"id":"11","type":"job","attributes":{"id":11,"url":"https://careers-republic.icims.com/jobs/1088/vice-president-of-engineering%2c-republic-crypto/job?in_iframe=1","title":"Vice President of Engineering, Republic Crypto","category":"Republic Crypto","locations":"US-Remote","about_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cspan\u003e\u003cstrong\u003e\u003cspan\u003eRepublic\u003c/span\u003e\u003c/strong\u003e\u003cspan\u003e is a global financial technology company that allows anyone to invest in anything, anywhere. Republic operates several distinct business lines including a \u003ca tabindex=\"-1\" href=\"https://republic.com/\" target=\"_blank\" class=\"c-link\" data-stringify-link=\"https://republic.com/\" data-sk=\"tooltip_parent\" data-remove-tab-index=\"true\" rel=\"noopener\"\u003eretail investment platform\u003c/a\u003e, a \u003ca tabindex=\"-1\" href=\"https://www.republiccapital.co/\" target=\"_blank\" class=\"c-link\" data-stringify-link=\"https://www.republiccapital.co/\" data-sk=\"tooltip_parent\" data-remove-tab-index=\"true\" rel=\"noopener\"\u003eprivate capital division\u003c/a\u003e, and a \u003ca tabindex=\"-1\" href=\"https://republiccrypto.com/\" target=\"_blank\" class=\"c-link\" data-stringify-link=\"https://republiccrypto.com/\" data-sk=\"tooltip_parent\" data-remove-tab-index=\"true\" rel=\"noopener\"\u003eblockchain advisory practice\u003c/a\u003e. The Republic ecosystem has deployed over $1.5 billion in investments, has supported over 600 companies, and comprises over 2M community members across 150 countries. Republic is backed by dozens of leading investment firms and financial institutions and its affiliated entities have co-invested with the best names in venture and private equity. Founded in 2016, Republic is headquartered in New York City with offices worldwide.\u003c/span\u003e\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e\u003cspan\u003e\u003ca href=\"https://www.republiccrypto.com\" target=\"_blank\" rel=\"noopener\"\u003eRepublic Crypto\u003c/a\u003e is accelerating the growth of Web3 by supporting its most ambitious builders and investors. We are looking for a hands on VP of Engineering to help build and oversee the technical direction of Republic’s Crypto Engineering team\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eThe VP of Engineering will demonstrate advanced Blockchain technology programming experience while scaling a fast-growing, globally-distributed team. This individual also enjoys and thrives in a high-paced environment with a large variety of projects and initiatives at any given time. \u003c/span\u003e\u003c/p\u003e\n\n\u003c/div\u003e","responsibilities_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cul\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eProvide hands-on technical leadership for blockchain engineering excellence\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eDefine strategy for team growth and project deliverables\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eContinue to build, mentor and grow an engineering team that is responsible for first in class software and blockchain projects\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eSet and maintain efficient and secure development processes\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eWrite clean, well tested blockchain smart contract and JavaScript code\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eDevelop a hiring plan that allows the team to achieve growth targets\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eHelp design of blockchain and token solutions and make recommendations on security, cost, performance and reliability\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eProviding high level collaboration and technical guidance for both internal and client team members\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eOrganizing new and at times unexpected projects in a way that manages expectations of team member and clients\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eContributing to various Republic Crypto internal engineering initiatives\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eEngaging partners, prospective clients and current clients of Republic crypto\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003ePreparing presentations and decision support documents for executive staff\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e \u003c/p\u003e\n\n\u003c/div\u003e","preferences_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cul\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003e5+ years experience as a senior software engineer\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003e3+ years experience as a people manager \u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExperience developing, managing and growing a geographically dispersed engineering team\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eHands on technical and product experience in Crypto, Blockchain and or Web3 ecosystem\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eKnowledge of popular blockchain protocols (L1 and L2), their consensus mechanisms and asset standards (Ethereum, Algorand, Avalanche, Polygon, Bitcoin, Solana, Polkadot, etc.)\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eTechnical working knowledge of blockchain assets, smart contracts, blockchain interoperability, blockchain consensus mechanisms, blockchain data securitization, etc.\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExperience writing/debugging and deploying Smart Contracts\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eFamiliarity with Solidity EVM or Rust smart contract programs, Node.JS and React\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExperience deploying smart contracts to the Ethereum, Solana and other blockchains mainnets\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExperience developing, facilitating, and delivering executive-level presentations\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExperience presenting and representing a company to partners and at conferences\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","transmittal_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cspan\u003eThe business is accelerating at a rapid pace. Republic is a venture-backed company with real traction across crowdfunding, private investing options and crypto. We recently closed a $150M Series B funding led by Valor Equity Partners. \u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cdiv\u003e\u003cp\u003e\u003cspan\u003eAttracting and retaining the very best people is our #1 priority. That’s why we offer our team best-in-class benefits, including fully-subsidized medical, vision, and dental insurance, a 4% 401(k) match, free access to Talkspace, OneMedical, weekly virtual meditation sessions, a monthly fitness stipend up to $100, weekly catered lunch, a learning and development stipend, and more. Seriously–we don’t mess around when it comes to taking care of our own. \u003c/span\u003e\u003c/p\u003e\u003c/div\u003e\n\u003cp\u003e\u003cspan\u003e\u003cspan\u003eCurrently, the estimated base salary range for this position is $185,000 - $225,000 + Equity + Crypto Revenue Share. When finalizing an offer, we take into consideration an individual’s experience level, location and qualifications they bring to the role to formulate a competitive total compensation package.\u003c/span\u003e\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eEqual Opportunity/Affirmative Action Employer M/F/D/V\u003c/span\u003e\u003c/p\u003e\n\n\u003c/div\u003e","apply_url":"https://careers-republic.icims.com/jobs/1088/vice-president-of-engineering%2c-republic-crypto/job?mode=apply\u0026apply=yes\u0026in_iframe=1\u0026hashed=-1834412662","position":"Regular Full-Time"}},{"id":"6","type":"job","attributes":{"id":6,"url":"https://careers-republic.icims.com/jobs/1101/vice-president%2c--people/job?in_iframe=1","title":"Vice President, People","category":"Human Resources","locations":"US-NY-New York","about_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cspan\u003e\u003cspan\u003eRepublic is a global financial technology company that allows anyone to invest in anything, anywhere. Republic operates several distinct business lines including a\u003c/span\u003e \u003ca href=\"https://republic.com/\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan\u003eretail investment\u003c/span\u003e \u003cspan\u003eplatform\u003c/span\u003e\u003c/a\u003e\u003cspan\u003e, a \u003c/span\u003e\u003ca href=\"https://www.republiccapital.co/\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan\u003eprivate capital division\u003c/span\u003e\u003c/a\u003e\u003cspan\u003e, and a \u003c/span\u003e\u003ca href=\"https://republiccrypto.com/\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan\u003eblockchain advisory practice\u003c/span\u003e\u003c/a\u003e\u003cspan\u003e. The Republic ecosystem has deployed over $1.5 billion in investments, has supported over 600 companies, and comprises over 2M community members across\u003c/span\u003e \u003cspan\u003e150 countries. Republic is backed by dozens of leading investment firms and financial institutions and its affiliated entities have co-invested with the best names in venture and private equity. Founded in 2016, Republic is headquartered in New York City with offices worldwide.\u003c/span\u003e\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e\u003cspan\u003e\u003cspan\u003eRepublic has an opening for a dynamic and experienced\u003c/span\u003e\u003cstrong\u003e\u003cspan\u003e VP, People\u003c/span\u003e\u003c/strong\u003e\u003cspan\u003e. This position will be responsible for all aspects of building a best in class Human Resources strategy and department. The selected leader will demonstrate advanced capability in designing a strategy, developing leaders, building, and managing relationships with senior stakeholders. This role requires high passion and prior success in maturing a high growth organization to scale.\u003c/span\u003e\u003c/span\u003e\u003c/p\u003e\n\n\u003c/div\u003e","responsibilities_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cspan\u003eOwn company-wide people strategy\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eProvide leadership to and help shape all areas of the People function including: talent acquisition, total rewards, people operations, talent management, learning and development, diversity \u0026amp; inclusion, and internal communications\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eServe as a trusted advisor to the senior leadership team to assist in decision-making and communication strategy throughout the organization\u003c/span\u003e\u003c/li\u003e\n\u003cli\u003e\u003cspan\u003eDevelop and retain a high performing team\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eMediate employee relations and performance issues and provide counsel to fellow managers on appropriate methods of performance management\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003ePartner with Finance to forecast headcount and employee mobility, in support of our business strategy and operational objectives\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eCollaborate with business leaders to build a cohesive culture with equitable policies across organizational boundaries. Drive best and next practice discussions to ensure Republic has the best talent acquisition methodologies yielding efficient results in a high touch environment\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eBuild and develop strong relationships within the organization to understand what talent will be successful at Republic, and identify talent gaps and future talent needs.\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eContinue to strengthen Republic’s employment brand by engaging actively in social media, talent communities, and industry outreach \u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eOwn the implementation of new processes and programs, inclusive of change management to drive adoption\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eBuild a data-driven HR organization with evolving HR metrics and analytics that provide insights\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eEnsure local country compliance as the organization scales.\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","preferences_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cul\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExperienced VP of People or Chief People Officer at a high-growth tech company, preferably in FinTech or other highly regulated industries\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eSubstantial experience with international expansions or international organizations\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003ePossesses unquestionable personal integrity, fairness, and inclusivity\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eAbility to gain trust of business leaders across the organization\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003ePerformance-driven leader with outstanding communication skills\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExperience building a positive culture across distributed and multicultural teams\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eStrong interpersonal skills and independent judgment in prioritizing tasks to meet or exceed deadlines in an ambiguous, constantly evolving environment\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eKeen attention to detail, efficient and highly organized; articulate both written and verbally\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eHR certifications such as SPHR or SHRM-SCP preferred\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","transmittal_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cspan\u003eThe business is accelerating at a rapid pace. Republic is a venture-backed company with real traction across crowdfunding, private investing options and crypto. We recently closed a $150M Series B funding led by Valor Equity Partners. \u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cdiv\u003e\u003cp\u003e\u003cspan\u003eAttracting and retaining the very best people is our #1 priority. That’s why we offer our team best-in-class benefits, including fully-subsidized medical, vision, and dental insurance, a 4% 401(k) match, free access to Talkspace, OneMedical, weekly virtual meditation sessions, a monthly fitness stipend up to $100, weekly catered lunch, a learning and development stipend, and more. Seriously–we don’t mess around when it comes to taking care of our own. \u003c/span\u003e\u003c/p\u003e\u003c/div\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eCandidates based in the New York City area can expect a base salary range of $200,000-$250,000.\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eEqual Opportunity/Affirmative Action Employer M/F/D/V\u003c/span\u003e\u003c/p\u003e\n\n\u003c/div\u003e","apply_url":"https://careers-republic.icims.com/jobs/1101/vice-president%2c--people/job?mode=apply\u0026apply=yes\u0026in_iframe=1\u0026hashed=-1834412662","position":"Regular Full-Time"}},{"id":"126","type":"job","attributes":{"id":126,"url":"https://careers-republic.icims.com/jobs/1133/investment-associate/job?in_iframe=1","title":"Investment Associate","category":"Republic Retail","locations":"US-NY-New York","about_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cstrong\u003e\u003cspan\u003eRepublic\u003c/span\u003e\u003c/strong\u003e\u003cspan\u003e is a financial technology firm that allows everyone to invest in private markets. Republic operates several distinct business lines including a retail investment platform, a private capital division, and a blockchain advisory practice. The Republic ecosystem has deployed over $700 million in investments, has supported over 600 companies, and comprises a community of over 2.5M users across 100 countries. Republic is backed by dozens of leading investment firms and financial institutions and its affiliated entities have co-invested with the best names in venture and private equity. Founded in 2016, Republic is headquartered in New York City with offices worldwide.\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eWe’re looking for an\u003c/span\u003e\u003cstrong\u003e\u003cspan\u003e Investment Associate\u003c/span\u003e\u003c/strong\u003e\u003cspan\u003e to join Republic’s rapidly growing Investment Team. You’ll support our team on pipeline management, due diligence, partnerships, growth, and Investment Committee preparation. You’ll gain unique exposure to the US startup and VC investment ecosystem while learning business skills invaluable to any high-growth company.\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eOur team needs a scrappy, motivated and fast learner who is aligned with Republic’s mission to democratize startup investing. Prior experience in business development, sales, or investment at a startup, fund or in the tech ecosystem broadly is highly preferred but not necessarily required. \u003c/span\u003e\u003c/p\u003e\n\n\u003c/div\u003e","responsibilities_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cul\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eReview company pitch decks and perform preliminary research ahead of sales calls\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eParticipate in, take notes on, and ultimately lead thorough diligence on industries ranging from Crypto, CPG, Blockchain, Fintech, Real Estate, Video Games, SaaS (and more) through the form of market research, financial due diligence, and application of US securities law\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003ePrepare internal and external pitch decks to present to C-Suite level executives and necessary stakeholders\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExecute follow-up document request, perform verification procedures, and analyze financial statements after due diligence calls\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eUltimately generate detailed investment memos to present to Investment Committee\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eWorking collaboratively with internal stakeholders (Sales, Operations, Legal, partnerships etc)\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eUnderwriting experience to analyze potential areas of growth\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eMaintain and optimize internal databases (such as Salesforce or AirTable) on reviewed investment opportunities. Prepare quarterly and annual reports for Republic management on deal activity and marketplace volume. \u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eAbility to work in a high-growth fast-paced startup that will give you the opportunity to lead and own your own projects\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","preferences_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cul\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003ePassion for tech and VC – You have a demonstrated interest in the world of startups.\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eStrong communicator – You can communicate well both internally (with your Investment Team colleagues and other team leads) and externally (with clients and partners).  \u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eOrganizational superpowers – You can manage multiple workflows, maintain a tight control of your inbox, and know how to shepherd stakeholders through every stage of a deal. \u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eGet it done attitude – You are scrappy, resourceful, and relentless, doing what needs to be done to drive success for your team and for the business.\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eSelf-starter with superior work ethic and uncompromising personal integrity\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eHighly analytical with an interest in sifting through, and identifying trends within, large volumes of data \u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExperience working with Microsoft Powerpoint and Microsoft Excel\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExperience working in financial models and underwriting\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eExperience working with Salesforce or Airtable a plus\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eCrypto or Blockchain experience, a plus \u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eSIE + Series 79 / 7, a plus \u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003e1-3 years of relevant work experience in Investment Banking, Private Equity, Venture Capital, and/or Consulting.\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","transmittal_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cspan\u003eThe business is accelerating at a rapid pace. Republic is a venture-backed company with real traction across crowdfunding, private investing options and crypto. We recently closed a $150M Series B funding led by Valor Equity Partners.  We value our employees and strive to offer competitive benefits to support their whole selves.  Here’s a sampling:  Unlimited PTO, fully subsidized medical, dental, and vision insurance, 4% 401k match, fitness stipend and weekly virtual meditation.\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eCurrently, the estimated base salary range for this position is $70,000 - $100,000. When finalizing an offer, we take into consideration an individual’s experience level, location, and qualifications they bring to the role to formulate a competitive total compensation package.\u003c/span\u003e\u003c/p\u003e\n\n\u003c/div\u003e","apply_url":"https://careers-republic.icims.com/jobs/1133/investment-associate/job?mode=apply\u0026apply=yes\u0026in_iframe=1\u0026hashed=-1834412662","position":"Regular Full-Time"}},{"id":"159","type":"job","attributes":{"id":159,"url":"https://careers-republic.icims.com/jobs/1135/fund-controller/job?in_iframe=1","title":"Fund Controller","category":"Republic Capital","locations":"US-NY-New York","about_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003eRepublic is a financial technology firm that allows everyone to invest in private markets. Republic operates several distinct business lines including a retail investment platform, a private capital division, and a blockchain advisory practice. Founded in 2016, Republic is headquartered in New York City with offices worldwide.\u003c/p\u003e\n\u003cp\u003e\u003cbr\u003eRepublic Capital is the institutional arm of Republic that invests in early and growth-stage technology companies. The firm has nearly $1 billion in assets under management across deep tech, fintech, and web3 investments.\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003eRepublic Capital is looking for a Fund Controller to help manage fund accounting. You will oversee the Fund Administrators and work closely across Finance and Investor Relations to analyze our growing portfolio and ensure seamless distributions back to our investors.\u003c/p\u003e\n\n\u003c/div\u003e","responsibilities_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cul\u003e\n\u003cli\u003eLead Republic Capital’s fund accounting function\u003c/li\u003e\n\u003cli\u003eManage Shadow Accounting OR Full NAV Reconciliation process\u003c/li\u003e\n\u003cli\u003eReconcile all portfolio and cash activity to source data\u003c/li\u003e\n\u003cli\u003eEnsure fund expenses are accrued timely and in accordance with GAAP\u003c/li\u003e\n\u003cli\u003eReview investor allocations and ensure fee/allocations are booked accurately\u003c/li\u003e\n\u003cli\u003eOversee Fund Admins and review quarterly net asset value reporting\u003c/li\u003e\n\u003cli\u003eLiaise with fund administrator as they prepare the YE AFS\u003c/li\u003e\n\u003cli\u003eLiaise with auditors to ensure completion of audits by SEC/External/Internal Deadlines\u003c/li\u003e\n\u003cli\u003eSPV quarterly reconciliations\u003c/li\u003e\n\u003cli\u003eAudit our records for completeness and accuracy of all SPVs / Vehicles that will be doing distributions\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","preferences_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cul\u003e\n\u003cli\u003e6-8 years of fund or partnership accounting; CPA preferred\u003c/li\u003e\n\u003cli\u003eExperience in both venture capital and crypto preferred\u003c/li\u003e\n\u003cli\u003eExperience managing multiple projects, engagements and teams\u003c/li\u003e\n\u003cli\u003eOwnership and accountability\u003c/li\u003e\n\u003cli\u003eHighly organized and extremely detail oriented\u003c/li\u003e\n\u003cli\u003eStrong analytical skills\u003c/li\u003e\n\u003cli\u003eExcellent written and verbal communication skills\u003c/li\u003e\n\u003cli\u003eComfortable working in several technologies platforms including Google Suite, Microsoft Office, Salesforce, and more\u003c/li\u003e\n\u003cli\u003eDemonstrated ability to handle multiple tasks with accuracy and precision\u003c/li\u003e\n\u003cli\u003eComfortable working in a high-stakes, fast-paced environment\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","transmittal_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003eThe business is accelerating at a rapid pace. Republic is a venture-backed company with real traction across crowdfunding, private investing options and crypto. We recently closed a $150M Series B funding led by Valor Equity Partners.\u003c/p\u003e\n\u003cp\u003e\u003cbr\u003eAttracting and retaining the very best people is our #1 priority. That’s why we offer our team best-in-class benefits, including fully-subsidized medical, vision, and dental insurance, a 4% 401(k) match, free access to Talkspace, weekly virtual meditation sessions, a monthly wellness stipend up to $100, quarterly swag bonuses, team lunches, and more. Seriously–we don’t mess around when it comes to taking care of our own.\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eCurrently, the estimated base salary range for this position is $110,000 - $130,000. When finalizing an offer, we take into consideration an individual’s experience level, location, and qualifications they bring to the role to formulate a competitive total compensation package.\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003eEqual Opportunity/Affirmative Action Employer M/F/D/V\u003c/p\u003e\n\n\u003c/div\u003e","apply_url":"https://careers-republic.icims.com/jobs/1135/fund-controller/job?mode=apply\u0026apply=yes\u0026in_iframe=1\u0026hashed=-1834412662","position":"Regular Full-Time"}},{"id":"160","type":"job","attributes":{"id":160,"url":"https://careers-republic.icims.com/jobs/1134/director%2c-portfolio/job?in_iframe=1","title":"Director, Portfolio","category":"Republic Retail","locations":"US-NY-New York","about_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003eRepublic is a financial technology firm that allows everyone to invest in private markets. Republic operates several distinct business lines including a retail investment platform, a private capital division, and a blockchain advisory practice. The Republic ecosystem has deployed over $1.5 billion in investments, has supported over 600 companies, and is comprised of a community of over 1.5M users across 100 countries. Republic is backed by dozens of leading investment firms and financial institutions and its affiliated entities have co-invested with the best names in venture and private equity. Founded in 2016, Republic is headquartered in New York City with offices worldwide. Core to Republic’s mission is empowering individuals to learn, discover and invest in private vetted investment opportunities. \u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003eWe are looking for a Portfolio Director to be a key leader on the Republic Retail team. As Director of US Portfolio, you will be responsible for managing the post-raise founder operations and experience at scale. This position reports directly into the Deputy Managing Director for Republic’s US Retail division. \u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003eThe Portfolio team is tasked with facilitating investor updates, collaborating with Sales to optimize alumni referrals and deal flow, and managing communications surrounding additional raises, follow-on financings, SAFE conversions, acquisitions, dissolutions  and exit events. We pride ourselves in providing an excellent client experience and empowering companies to grow their business while leveraging Republic’s vast network and offerings. You will oversee the team and will work cross-functionally with Marketing, Product, Legal, Operations, Sales, Partnerships and across the business to ensure a frictionless and efficient post-raise founder experience.\u003c/p\u003e\n\n\u003c/div\u003e","responsibilities_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cul\u003e\n\u003cli\u003e\n\u003cem\u003eAlumni relations and support:\u003c/em\u003e You will be responsible for managing Republic’s alumni relations. This includes managing post-raise communications, educational resources, customer delight initiatives, and managing a small team to provide excellent support to Republic’s portfolio companies.\u003c/li\u003e\n\u003cli\u003e\n\u003cem\u003ePost-raise workflows and operations:\u003c/em\u003e You will be responsible for streamlining existing post-raise processes including the crowd safe conversion process, transfer agent enrollment, secondary market launch and enrollment, issuance and distribution of tax documentation, communicating payment solutions for companies managing investor payouts, ongoing Fig and Debt offering payments, Portfolio perks management, quarterly investor updates, and other operational needs.\u003c/li\u003e\n\u003cli\u003e\n\u003cem\u003eAlumni inquiries and resources:\u003c/em\u003e The Portfolio team is responsible for building out resources to address common questions related to the post-raise experience. This requires in-depth knowledge surrounding the custodial crowd safe conversion process, M\u0026amp;A activity, and other matters that will require ongoing collaboration with Republic’s Legal, Product and Platform Operations teams to understand complex regulations and work flows.\u003cbr\u003eAlumni referrals and deal flow: You will be responsible for working with Sales to optimize the deal flow engine to increase alumni referrals, repeat alumni raises, and generate other revenue-driving opportunities within the Republic ecosystem.\u003c/li\u003e\n\u003cli\u003e\n\u003cem\u003eReporting and Dashboards:\u003c/em\u003e You will be responsible for refining and analyzing Portfolio dashboards to track KPIs including alumni satisfaction (NPS), and provide monthly founder feedback reports.\u003c/li\u003e\n\u003cli\u003e\n\u003cem\u003eToken offering and Deal Room portfolio management:\u003c/em\u003e You will be responsible for building the portfolio process for Republic’s token sale and accredited Deal Room offerings. This will require close collaboration with the Crypto, Sales and Product teams.\u003c/li\u003e\n\u003cli\u003e\n\u003cem\u003eCrisis communications:\u003c/em\u003e You will own the playbook for handling complex founder inquiries and complaints. You will be responsible for crafting communications to address founder frustrations including product bugs, legal complexities, and operational difficulties.\u003c/li\u003e\n\u003cli\u003e\n\u003cem\u003ePortfolio Wins Tracking:\u003c/em\u003e You will work with the marketing team to create collateral to highlight Portfolio wins, facilitate case studies and communicate Portfolio’s ongoing track record with the broader Republic community.\u003c/li\u003e\n\u003cli\u003e\n\u003cem\u003eThe Republic Note:\u003c/em\u003e You will be responsible for building out reporting relevant to the Republic Note and communicating the health of Republic’s portfolio to investors.\u003c/li\u003e\n\u003cli\u003e\n\u003cem\u003eTeam management:\u003c/em\u003e You will manage a team of two fulltime employees and one intern.\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","preferences_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cul\u003e\n\u003cli\u003eYou preferably have 5+ years of \u003cstrong\u003efounder relations management, portfolio management or operations experience\u003c/strong\u003e and are comfortable handling complex client relations.\u003c/li\u003e\n\u003cli\u003eYou preferably have experience with fintech or finance, and \u003cstrong\u003estrong financial acumen\u003c/strong\u003e. You are confident speaking to a HNWI or institutional partners, portfolio founders and their legal counsel\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eYou understand the complexities of working in a highly regulated environment.\u003c/strong\u003e You have familiarity with SEC/FINRA regulations, and will develop an in-depth understanding of different securities exemptions.\u003c/li\u003e\n\u003cli\u003eYou are a \u003cstrong\u003edata-driven decision maker\u003c/strong\u003e and are not afraid to challenge the status quo.\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eYou have experience with client relations tools\u003c/strong\u003e. You understand the tools available in digital spaces for account management and how to use them to build a best-in-class customer experience.\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eYou take initiative\u003c/strong\u003e. There is no task too small or “not your job.” You understand that to begin, you will be required to ask questions and take action.\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eYou love numbers\u003c/strong\u003e. You thrive working with data sets and analyzing results to drive product and communication.\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eYou have excellent written and verbal communication skills\u003c/strong\u003e: You can represent Republic both online and in-person in a professional and clear manner. You can communicate complex topics in a simple and concise manner.\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eYou are a team-player\u003c/strong\u003e and are comfortable working across different teams to accomplish important goals.\u003c/li\u003e\n\u003cli\u003e\n\u003cstrong\u003eYou understand the big picture, but still sweat the details\u003c/strong\u003e: you can manage complex projects that span multiple teams and relationships (and catch the spelling mistake in this bullet point on the first read).\u003c/li\u003e\n\u003cli\u003eYou ideally have experience with Salesforce, Airtable or another CRM\u003c/li\u003e\n\u003cli\u003eYou have prior management experience\u003c/li\u003e\n\u003cli\u003eYou ideally are familiar with the crypto space and/or have experience with tokenized assets\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","transmittal_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003eThe business is accelerating at a rapid pace. Republic is a venture-backed company with real traction across crowdfunding, private investing options and crypto. We recently closed a $150M Series B funding led by Valor Equity Partners.\u003c/p\u003e\n\u003cp\u003e\u003cbr\u003eAttracting and retaining the very best people is our #1 priority. That’s why we offer our team best-in-class benefits, including fully-subsidized medical, vision, and dental insurance, a 4% 401(k) match, free access to Talkspace, weekly virtual meditation sessions, a monthly wellness stipend up to $100, quarterly swag bonuses, team lunches, and more. Seriously–we don’t mess around when it comes to taking care of our own.\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eCurrently, the estimated base salary range for this position is $90,000 - $150,000. When finalizing an offer, we take into consideration an individual’s experience level, location and qualifications they bring to the role to formulate a competitive total compensation package.\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003eEqual Opportunity/Affirmative Action Employer M/F/D/V\u003c/p\u003e\n\n\u003c/div\u003e","apply_url":"https://careers-republic.icims.com/jobs/1134/director%2c-portfolio/job?mode=apply\u0026apply=yes\u0026in_iframe=1\u0026hashed=-1834412662","position":"Regular Full-Time"}},{"id":"22","type":"job","attributes":{"id":22,"url":"https://careers-republic.icims.com/jobs/1125/economics-associate%2c-republic-crypto/job?in_iframe=1","title":"Economics Associate, Republic Crypto","category":"Republic Crypto","locations":"US-Remote","about_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cspan\u003eRepublic is a global financial technology company that allows anyone to invest in anything, anywhere. Republic operates several distinct business lines including a \u003c/span\u003e\u003ca href=\"https://republic.com/\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan\u003eretail investment platform\u003c/span\u003e\u003c/a\u003e\u003cspan\u003e, a \u003c/span\u003e\u003ca href=\"https://www.republiccapital.co/\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan\u003eprivate capital division\u003c/span\u003e\u003c/a\u003e\u003cspan\u003e, and a \u003c/span\u003e\u003ca href=\"https://republiccrypto.com/\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan\u003eblockchain advisory practice\u003c/span\u003e\u003c/a\u003e\u003cspan\u003e. The Republic ecosystem has deployed over $1.5 billion in investments, has supported over 600 companies, and comprises over 2M community members across 150 countries. Republic is backed by dozens of leading investment firms and financial institutions and its affiliated entities have co-invested with the best names in venture and private equity. Founded in 2016, Republic is headquartered in New York City with offices worldwide.\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003e\u003ca href=\"https://www.republiccrypto.com\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan\u003eRepublic Crypto\u003c/span\u003e\u003c/a\u003e\u003cspan\u003e is accelerating the growth of Web3 by supporting its most ambitious builders and investors. We’re looking for an Economics Associate to join the Republic Crypto Advisory Service team to help support client-facing economic design and implementation.\u003c/span\u003e\u003c/p\u003e\n\n\u003c/div\u003e","responsibilities_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cul\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eReport regularly to enterprise clients regarding education in Web 3 topics, mainly focused in economics and the deliverables of the economics team\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eSet expectations, deadlines, and coordinate the initiation, execution, submission, and iteration of deliverables from the Economics Team\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eSupport economics leadership in developing and creating theoretical, financial, and visual models of network, protocol, and game economies\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eSupport economics leadership in the analysis of token utility testing, and iteration on token utility hypotheses\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eWork closely with Research Associate to dissect and critique competing economic models in the industry\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eAttend and participate in client economics meetings, tracking their needs from the team and driving timelines for deliverable execution\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","preferences_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cul\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003e1-2 years experience in consulting for large enterprises or equivalent experience\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eAbility to distill complex system designs and economic models into fundamental components and modules\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003ePersistent curiosity and creativity to develop mechanism designs that allow for widely varied and novel Web 3 products to implement features that maximize token utilities \u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eAbility to verbally and effectively articulate economic frameworks, experimental methodologies, and monetary/fiscal policy to clients who are not intimately familiar either economics or Web3 vocabularies\u003c/span\u003e\u003c/li\u003e\n\u003cli aria-level=\"1\"\u003e\u003cspan\u003eMinimum Bachelor’s degree in Economics or related field, or demonstrated track record of building, analyzing, and broad understanding existing economic literature\u003c/span\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003c/div\u003e","transmittal_section":"\u003cdiv class=\"iCIMS_Expandable_Text\"\u003e\n\u003cp\u003e\u003cspan\u003eThe business is accelerating at a rapid pace. Republic is a venture-backed company with real traction across crowdfunding, private investing options and crypto. We recently closed a $150M Series B funding led by Valor Equity Partners. \u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e\u003cspan\u003e \u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eAttracting and retaining the very best people is our #1 priority. That’s why we offer our team best-in-class benefits, including fully-subsidized medical, vision, and dental insurance, a 4% 401(k) match, free access to Talkspace, OneMedical, weekly virtual meditation sessions, a monthly fitness stipend up to $100, weekly catered lunch, a learning and development stipend, and more. Seriously–we don’t mess around when it comes to taking care of our own. \u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003e\u003cspan\u003e\u003cspan\u003eCurrently, the estimated base salary range for this position is $80,000 - $95,000. When finalizing an offer, we take into consideration an individual’s experience level, location and qualifications they bring to the role to formulate a competitive total compensation package.\u003c/span\u003e\u003c/span\u003e\u003c/p\u003e\n\u003cp\u003e \u003c/p\u003e\n\u003cp\u003e\u003cspan\u003eEqual Opportunity/Affirmative Action Employer M/F/D/V\u003c/span\u003e\u003c/p\u003e\n\n\u003c/div\u003e","apply_url":"https://careers-republic.icims.com/jobs/1125/economics-associate%2c-republic-crypto/job?mode=apply\u0026apply=yes\u0026in_iframe=1\u0026hashed=-1834412662","position":"Regular Full-Time"}}]}}</script></div>
+</div>
+</div>
+</div>
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-full_disclaimer" data-rc="layouts/footer/disclaimers/full_disclaimer"><p class='s-marginBottom1'>
+This site (the "Site") is owned and maintained by OpenDeal Inc., which is not a registered
+broker-dealer. OpenDeal Inc. does not give investment advice, endorsement, analysis or
+recommendations with respect to any securities. All securities listed here are being offered
+by, and all information included on this Site is the responsibility of, the applicable issuer
+of such securities. The intermediary facilitating the offering will be identified in such
+offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+All funding-portal activities are conducted by OpenDeal Portal LLC doing business as Republic,
+a funding portal which is registered with the US Securities and Exchange Commission (SEC) as a
+funding portal (Portal) and is a member of the Financial Industry Regulatory Authority (FINRA).
+OpenDeal Portal LLC is located at 149 E 23rd St #2001, New York, NY 10010, please
+check out background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org/about/funding-portals-we-regulate">Funding Portal page</a>.
+</p>
+<p class='s-marginBottom1'>
+All broker-dealer related securities activity is conducted by OpenDeal Broker LLC, an
+affiliate of OpenDeal Inc. and OpenDeal Portal LLC, and a registered broker-dealer, and member
+of
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org">FINRA</a>
+|
+<a class="c-link c-link--underline" href="https://www.sipc.org/">SiPC</a>,
+located at 1345 Avenue of the Americas, 15th Floor, New York, NY 10105, please check our
+background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://brokercheck.finra.org/firm/summary/291387">BrokerCheck</a>.
+</p>
+<p class='s-marginBottom1'>
+Certain pages discussing the mechanics and providing educational materials regarding
+regulation crowdfunding offerings may refer to OpenDeal Broker LLC and OpenDeal Portal LLC
+collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC make investment
+recommendations and no communication, through this Site or in any other medium should be
+construed as a recommendation for any security offered on or off this investment platform.
+Investment opportunities posted on this Site are private placements of securities that are
+not publicly traded, involve a high degree of risk, may lose value, are subject to holding
+period requirements and are intended for investors who do not need a liquid investment. Past
+performance is not indicative of future results. Investors must be able to afford the loss
+of their entire investment. Only qualified investors, which may be restricted to only
+Accredited Investors or non-U.S. persons, may invest in offerings hosted by OpenDeal Broker.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC, nor any of their
+officers, directors, agents and employees makes any warranty, express or implied, of any
+kind whatsoever related to the adequacy, accuracy or completeness of any information on this
+Site or the use of information on this site. Offers to sell securities can only be made
+through official offering documents that contain important information about the investment
+and the issuers, including risks. Investors should carefully read the offering documents.
+Investors should conduct their own due diligence and are encouraged to consult with their
+tax, legal and financial advisors.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1 s-paddingHoriz1_5 s-paddingVert1 u-text-center u-fontWeight500'>
+Investors should verify any issuer information they consider important before making
+an investment.
+</p>
+<p class='s-marginBottom1'>
+Investments in private companies are particularly risky and may result in total loss of
+invested capital. Past performance of a security or a company does not guarantee future
+results or returns. Only investors who understand the
+<a class="c-link c-link--underline" href="/risks">risks of early stage investment</a>
+and who meet the Republic's
+<a class="c-link c-link--underline" href="/help/can-i-invest">investment criteria</a>
+may invest.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC verify
+information provided by companies on this Site and makes no assurance as to the completeness
+or accuracy of any such information. Additional information about companies fundraising on
+the Site can be found by searching the
+<a target="_blank" rel="noopener" class="c-link c-link--underline" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not require an
+EDGAR filing.
+</p>
+<p class='s-marginBottom1'>
+To help the government fight the funding of terrorism and money laundering activities,
+Federal law requires all financial institutions to obtain, verify, and record information
+that identifies each person who opens an account.
+Therefore, when you use the Services we will ask for your name, address, date of birth,
+and other information that will allow us to identify you.
+We may also ask to see your driver's license, passport or other identifying documents.
+</p>
+<p class='s-marginBottom1'>
+Republic and its affiliates are not and do not operate or act as a bank. Certain banking
+services are provided by BankProv, member FDIC / member DIF. Digital (crypto) assets and
+investment products are not insured by the FDIC, may lose value, and are not deposits or other
+obligations of BankProv and are not guaranteed by BankProv. Terms and conditions apply.
+</p>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="1J2e1iIAd7VK9MLvsjZRxw==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="1J2e1iIAd7VK9MLvsjZRxw==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+<script src="https://assets.republic.com/assets/w/runtime~JobsPage-71a6b018fbf0aacacfaa.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ae-cda0d3eb09b2571ee24e.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apexcharts_dist_apexcharts_common_js-ba302c83-12acaec747ed98c96c79.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apollo_client_c-752f32f6a5f08b47aee9.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ap-10286ca6eee77e5cfdbe.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ax-87ca8eab84b534ce51a3.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_braze_web-sdk_sh-082bda95cd1f46db675e.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_br-ded297e3061c09e58176.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ca-0192f74a4e598aec7a52.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_core-js_i-f3d9e78f9f53cf58378d.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_crc-8b8be13627dda03b73d8.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_c-cea66e909f36387f5945.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_da-5b72066967e09ff24edf.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_d-83acda350f41f6abdff3.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_el-ea7a9011bec346028733.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_c-22aa4e04a1fbdd3d6e3f.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_common_dist_browser_genesisStates_mainnet_json-97430531-83fe7f595f064e0385b1.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethersproject_a-8765651a2f1bdccf9a56.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_et-b31cc9258c2c1d07cac5.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_e-d4fab84d8ab34150ad30.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_fontkit_dist_module_mjs-3528d02d-ecc0f4556eda5102b2d3.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_froala_editor_min_js-b1fc3988-ced20c2300f6c9f40897.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_plugins_pkgd_min_js-adc83e4b-33e97225bf9033164d2d.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_grapesjs_dist_grapes_min_js-a826bfc4-cadb07d673643a51118e.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_g-9055b0297f7ac6f017f0.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_i-b77e6ab09fad9dae77d3.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_l-b1a7deddd04fdb5d9a33.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_n-a907fa203947450ef394.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pb-cab37a002985eca657b7.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pd-cf393d506219ee5b112a.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pl-4c6fabe429fda4071dbb.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_p-27f2b800da9d84d8e2bf.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_rc-o-80e5f70e3d9925c8cdb0.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reach-857404c519977edb5b66.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-l-0c79a438a779449c0b1d.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-r-3c1ef064934605ec254d.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reac-dd43f7d7d874a68c99e5.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_r-b902bc774bc3ff333672.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_sc-0f32c01226134eda1296.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_se-74d4cf204c9d98a015aa.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_s-884ee524820f17ecd6cb.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_A-8cf01848e62c80ff23d7.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_I-5990a0d8dde19f6e04bd.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+<script src="https://assets.republic.com/assets/w/JobsPage-68bbec31513e62779be3.js" nonce="1J2e1iIAd7VK9MLvsjZRxw=="></script>
+</body></html>
+
+
+

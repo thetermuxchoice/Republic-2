@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+Mugatunes — Republic
+</title>
+<link href='https://republic.com/mugatunes' rel='canonical'>
+<meta content='Mugatunes – Music discovery &amp;amp;amp; curation powered by tastemakers – is now accepting investments on Republic.' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='Mugatunes' itemprop='name'>
+<meta content='Mugatunes – Music discovery &amp;amp;amp; curation powered by tastemakers – is now accepting investments on Republic.' itemprop='description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/113/113-1526921772-7ab5a42c94826b308c304e011fc7625c290f7cdc.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='Mugatunes' name='twitter:title'>
+<meta content='Mugatunes – Music discovery &amp;amp;amp; curation powered by tastemakers – is now accepting investments on Republic.' name='twitter:description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/113/113-1526921772-7ab5a42c94826b308c304e011fc7625c290f7cdc.jpg' name='twitter:image'>
+<meta content='https://republic.com/mugatunes' property='og:url'>
+<meta content='Mugatunes' property='og:title'>
+<meta content='Mugatunes – Music discovery &amp;amp;amp; curation powered by tastemakers – is now accepting investments on Republic.' property='og:description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/113/113-1526921772-7ab5a42c94826b308c304e011fc7625c290f7cdc.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/vendor-node_modules_a-db7c58b4.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Ac-919e95b8.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Table_Table_module_scss-e15798b9-0e96676f.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/MediaSliderPage-66fe9f7a.css" />
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="J5aYHZceKChwX_hMEUx-KahjY6I2LG6vXVAi84tA9RssgNQ1X1y0ZvobLugTRaKmKxUz1K5qIeeT-z4yDKRkMQ" />
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  analytics.page(
+    "offering",
+    "mugatunes", {
+      url: "https://republic.com/mugatunes"
+    }, {
+      integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+    }
+  );
+</script>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class="offerings-show__body preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="layouts-header_footer" data-rc="layouts/header_footer"><nav class="c-header-nav c-header-nav--default  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/black/150x38/logo-211758c2027fc8268186d512a2119520a35358973648789a123d9fb6c3d5a37f.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search  layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--default" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div>
+<div class="layouts-full_width" data-rc="layouts/full_width"><script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  if (dataLayer) {
+    dataLayer.push({"event":"detail","ecommerce":{"currencyCode":"USD","detail":{"products":[{"name":"Mugatunes","id":"mugatunes","price":50,"category":"Social Impact, Music, B2C, Companies, Crowd SAFE","quantity":1}]}}});
+  }
+</script>
+<div class="js-segment_product_view s-marginBottom3_5 offerings-show" data-sticky-container="true" data-state="finalized" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Mugatunes&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:113,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/113/113-1586841692-1353806036a07116d4c92cdce3063212e90937ef.jpg&quot;,&quot;min_investment_amount&quot;:50,&quot;slug&quot;:&quot;mugatunes&quot;,&quot;tags&quot;:&quot;social-impact,music,b2c,v-companies,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/mugatunes&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-rc="offerings/show"><div class='js-router_data' data-root='mugatunes'></div>
+<div class="offerings-show-invest_modal" data-rc="offerings/show/invest_modal"><div class='js-remodal remodal offerings-show-invest_modal__invest_modal' data-remodal-id='invest'>
+<a class='remodal-close' data-remodal-action='close'></a>
+<h1 class='c-secondaryTitle offerings-show-invest_modal__invest_title'>
+Mugatunes isn't accepting new investments
+</h1>
+<p class='s-marginTop2 s-fontSize17 u-colorMuted offerings-show-invest_modal__invest_date'>
+Mugatunes’ deadline was
+<span class='u-blockXsOnly'>
+July 31, 2018
+</span>
+</p>
+<p class='s-marginTop2 s-marginHoriz5 s-fontSize17 offerings-show-invest_modal__invest_message'>
+Follow the company to stay updated on their progress,
+including future investment opportunities
+</p>
+<p class='s-marginTop1'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Invest modal" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link" data-action="follow" data-href="/register?after_sign_in=%2Fmugatunes%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5'>
+265
+</span>
+</button>
+</div>
+</p>
+<hr class='s-marginTop2 s-marginPullHoriz2 offerings-show-invest_modal__invest_divider'>
+<div class='u-displayFlex u-alignItemsCenters-marginTop2 offerings-show-invest_modal__invest_footer'>
+<div class='u-flex1'>
+Explore new investment opportunities:
+</div>
+<div class='u-flex1'>
+<a class="c-button c-button--secondary" href="/#offerings">View companies raising now</a>
+</div>
+</div>
+</div>
+</div>
+<header class="s-container s-gridMaxXs24 s-paddingTop5 s-paddingBottom3 offerings-show-header offerings-show-header--mugatunes" data-rc="offerings/show/header"><div class='js-header_content'>
+<div class='s-marginPullTop2'>
+<div class="s-marginBottom2 u-displayFlex u-alignItemsCenter s-fontSize18 u-colorMuted offerings-show-header-message_campaign_ended" data-rc="offerings/show/header/message_campaign_ended"><div class='u-flexGrow s-borderTop0_5 s-marginTop0_5'></div>
+<div class='s-marginHoriz1'>
+<i class='icon-lock'></i>
+Campaign ended
+</div>
+<div class='u-flexGrow s-borderTop0_5 s-marginTop0_5'></div>
+</div>
+</div>
+<div class='s-grid offerings-show-header__top-part'>
+<div class='s-grid-colSm16'>
+<div class="offerings-show-header-title" data-rc="offerings/show/header/title"><div class='u-displayFlex'>
+<div class='u-hiddenPrint offerings-show-header-title__avatar-wrapper'>
+<div class="c-avatar c-avatar--small offerings-show-header-title__avatar c-avatar--border c-avatar--mugatunes"><img alt="Logo of Mugatunes" title="Mugatunes" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/113/113-1526919122-921ce74fc43bc274f9415c0c04929105dece7a21.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/113/113-1526919122-00b3acd421c43381a6d976030cae8429bcf08cfc.png" /></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<h1 class='c-primaryTitle offerings-show-header-title__company-name'>
+Mugatunes
+</h1>
+</div>
+</div>
+<div class='c-subtitle s-fontSize20 s-marginTop0_5 offerings-show-header-title__high-concept'>
+Music discovery &amp; curation powered by tastemakers
+</div>
+<div class='s-marginTop1_5'>
+<div class=''>
+<div class="c-tag-container u-hiddenPrint s-marginTop1 offerings-show-header-title__tags-wrapper offerings-shared-tags" data-rc="offerings/shared/tags"><a class="c-tag c-tag--small c-tag--flat c-tag--no_border " style="background-color: #CEEAFF" href="/tag/social-impact">Social Impact</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/music">Music</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/b2c">B2C</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8 u-hiddenSmDown'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Mugatunes" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Fmugatunes%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Fmugatunes"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?url=https%3A%2F%2Frepublic.com%2Fmugatunes"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Frepublic.com%2Fmugatunes"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Fmugatunes"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-displayFlex u-blockXsOnly offerings-show-header__media-react'>
+<div class='s-grid-colSm16'>
+<div class='offerings-show-header__media-react-content'>
+<div class="offerings-show-header-media_react" data-rc="offerings/show/header/media_react"><div data-react-key="MediaSliderPage" data-react-id="ecfea292-6894-491a-a033-ec9276d3baa0"><div class="js-react-component--placeholder"><div class='offerings-show-header-media_react__image-wrap'>
+<div class='offerings-show-header-media_react__image'>
+<img srcset="https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/001/771/1771-1636530944-317e04e96cd1c0f58c834243744700d5838ad5c1.jpg 2x" class="u-displayBlock  " alt="Featured image of Mugatunes" title="Mugatunes" src="https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/001/771/1771-1636530944-536502646e4c6e8bca03d6f4047388397ecdc8f8.jpg" />
+</div>
+</div>
+</div><div class="js-react-component--content u-invisible"></div></div><script nonce="ZcYGfb7xhEBqdjqPXGciSQ==" type="application/json" data-react-key="MediaSliderPage" data-react-id="ecfea292-6894-491a-a033-ec9276d3baa0">{"media":{"data":[{"id":"1771","type":"offerings_slider_media_item","attributes":{"content_type":"video","order_num":0,"content_file_name":"muga.mp4","content_file_size":20058163,"preview_file_name":"113-1526921191-53226ba82ad0e2ec74ba6708eaa45e59fd3c75eb.jpg","preview_file_size":297634,"url":null,"url_preview":null,"content_url":{"original":"https://uploads.republic.com/p/offerings/slider_media_items/contents/original/000/001/771/1771-1636530947-d5b1788e719747335270dc40608893b8417279f1.mp4"},"preview_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/001/771/1771-1636530944-536502646e4c6e8bca03d6f4047388397ecdc8f8.jpg","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/001/771/1771-1636530944-317e04e96cd1c0f58c834243744700d5838ad5c1.jpg","small":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small/000/001/771/1771-1636530944-cdc109df08f5e6f38f8ffb3d0a5d1dbc06c2f78c.jpg","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small_2x/000/001/771/1771-1636530944-8c5a992f69107240b7f97cd58fcc08d85400867d.jpg"},"youtube_id":null}}]},"editMode":false,"isIssuer":false,"offeringSlug":"mugatunes","offeringState":"finalized","missingPreviewUrl":"/previews/small/missing.png"}</script></div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8'>
+<div class="u-displayFlex u-flexDirectionColumn offerings-show-header-sidebar" data-rc="offerings/show/header/sidebar"><div class='u-flexGrow offerings-show-header-sidebar__top-part'>
+<div class="s-grid offerings-show-header-raising_information" data-rc="offerings/show/header/raising_information"><div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 s-borderBottom1 offerings-show-header-raised_amount offerings-show-header-raised_amount--without-divider" data-rc="offerings/show/header/raised_amount"><div class='s-fontSize35 c-condensedTitle offerings-show-header-raised_amount__title u-colorGreen'>
+$93,950
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-raised_amount__subtitle'>
+190% of minimum goal raised
+</div>
+<i class='icon-info-letter icon--frame u-displayInlineBlock js-tooltip_simple offerings-show-header-raised_amount__icon-info' data-tippy-content='Mugatunes is raising up to $500K with a minimum goal of $50K'></i>
+</div>
+<div class='c-progress c-progress--large s-marginTop0_5 c-progress--gray'>
+<div class='c-progress__bar' style='width: 187%'></div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 offerings-show-header-investors offerings-show-header-investors--closed" data-rc="offerings/show/header/investors"><div class='c-primaryTitle s-fontSize35 offerings-show-header-investors__title u-colorMuted'>
+217
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-investors__subtitle'>
+Investors
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-message_successfully_funded" data-rc="offerings/show/header/message_successfully_funded">Successfully funded and closed
+<span class='u-whiteSpaceNowrap'>
+on July 31, 2018.
+</span>
+</div>
+</div>
+<div class='offerings-show-header-sidebar__bottom-part s-marginTop2'>
+<div class="u-bgWhite offerings-show-header-invest_button" data-rc="offerings/show/header/invest_button"><div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button--block c-button--large s-paddingHoriz0_5 c-button--disabled offerings-shared-invest_button__lock_button js-locked_button u-displayFlex u-justifyContentCenter" href="/mugatunes#invest"><i class="icon-lock"></i> Invest in Mugatunes
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class='u-bgGray s-paddingTop3 s-paddingBottom2_5 offerings-show__other-offerings'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-displayFlex u-justifyContentSpaceBetween u-flexWrap u-alignItemsCenter'>
+<h2 class='c-secondaryTitle u-colorGray6'>
+Open for investment
+</h2>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7 s-marginVert0_5'>
+Investors in Mugatunes also invested in these companies.
+<a href="/companies">View more</a>
+</div>
+</div>
+<div class='s-marginTop1 s-marginBottom1_5'>
+<div class="offerings-show-cards_slider" data-rc="offerings/show/cards_slider"><div class='s-grid js-offerings_slider js-segment_product_list offerings-show-cards_slider__slider' data-segment-list-id='promo-offering-other-deals'>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Skybound&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1817,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/817/1817-1679605633-18401378bbc24a7a957208dcbb03ec106f11b773.png&quot;,&quot;min_investment_amount&quot;:500,&quot;slug&quot;:&quot;skybound&quot;,&quot;tags&quot;:&quot;equity-1,v-companies,b2c,50-199-employees,arts-entertainment,video-games,5m-revenue,tier-1-vc-backing,25m-raised&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/skybound&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/skybound"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Skybound" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fskybound%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/817/1817-1679605633-18401378bbc24a7a957208dcbb03ec106f11b773.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--skybound"><img alt="Logo of Skybound" title="Skybound" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/817/1817-1665587549-0c5b74a35524056032473c7ae8ba23f7cc85840d.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/817/1817-1665587549-d02609a0c1c72095de383a88bb69f525b305087c.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Skybound
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Global hit entertainment from the company behind The...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Capital R · Reg A+
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Tampa Cityfund&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1908,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/908/1908-1670619657-0adb8a96e14f317bc9cf6bf11d2829a3dbaea5b9.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;tampa-cityfund-a&quot;,&quot;tags&quot;:&quot;residential-real-estate,b2c,cityfund-1,v-real-estate,republic-alum,interest-purchase-agreement&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/tampa-cityfund-a&quot;,&quot;vertical&quot;:&quot;real-estate&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/tampa-cityfund-a"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Tampa Cityfund" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Ftampa-cityfund-a%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/908/1908-1670619657-0adb8a96e14f317bc9cf6bf11d2829a3dbaea5b9.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--tampa-cityfund-a"><img alt="Logo of Tampa Cityfund" title="Tampa Cityfund" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/908/1908-1663945019-385e0667e96d5e04accafa6c760ed807ea9002d7.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/908/1908-1663945019-9905499202857fbbaa31eb1c3e67d78113fa3869.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Tampa Cityfund
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Own a piece of Tampa
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Capital R · Reg A+
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Aftrparty&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1953,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/953/1953-1667919185-c0c433f16388f38bcf8a0601fea6f7719fc685a1.jpeg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;aftrparty&quot;,&quot;tags&quot;:&quot;b2c,p2p,social-meida-networks,software-saas,v-companies,crowd-safe,apps&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/aftrparty&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/aftrparty"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Aftrparty" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Faftrparty%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/953/1953-1667919185-c0c433f16388f38bcf8a0601fea6f7719fc685a1.jpeg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--aftrparty"><img alt="Logo of Aftrparty" title="Aftrparty" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/953/1953-1664403533-f9042bba7687bf16926dd557f84bf33d4c5eb99b.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/953/1953-1664403533-9915d8e2f0bc50efac104d321c40d3ce8892f5cb.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Aftrparty
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+The future-facing events platform | Plan. Broadcast....
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Aptera Motors&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:2007,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/007/2007-1670460146-8f91e7a366bc468aa7d13df7d7770c6461a5d783.jpg&quot;,&quot;min_investment_amount&quot;:210,&quot;slug&quot;:&quot;aptera&quot;,&quot;tags&quot;:&quot;equity-1,combat-carbon,green-power,automotive-1,electric-vehicles,b2b,b2c,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/aptera&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/aptera"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Aptera Motors" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Faptera%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/007/2007-1670460146-8f91e7a366bc468aa7d13df7d7770c6461a5d783.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--aptera"><img alt="Logo of Aptera Motors" title="Aptera Motors" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/007/2007-1668647273-f6b79f04f7f0298b2d0a89daf10b7421b0b4b814.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/007/2007-1668647273-98023563c79661fed0285e182deae92459da94c8.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Aptera Motors
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Grid-independent, solar-charging vehicles | The effi...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Capital R · Reg A+
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:true,&quot;company_name&quot;:&quot;BuyAlerts&quot;,&quot;days_remaining&quot;:6,&quot;id&quot;:2065,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/065/2065-1674503319-fba03242fd891738b3ba7832f451ccaa57058fe3.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;buy-alerts&quot;,&quot;tags&quot;:&quot;fintech,ai-machine-learning,big-data,v-companies,saas,crowd-safe,1m-revenue,bootstrapped&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/buy-alerts&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/buy-alerts"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="BuyAlerts" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fbuy-alerts%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/065/2065-1674503319-fba03242fd891738b3ba7832f451ccaa57058fe3.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--buy-alerts"><img alt="Logo of BuyAlerts" title="BuyAlerts" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/065/2065-1677087602-a39b1e77a9ccadd1a24e6fc331b3762b29c53aba.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/065/2065-1677087602-e464f714d44a1e8bfcd446239c100b19c0d73d8d.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">BuyAlerts
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+AI technology for the markets | Trade alerts, when t...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;QuantmRE&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:2233,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/233/2233-1676577904-c796a75d63ec07e2c779deb1c74c7616d069daab.png&quot;,&quot;min_investment_amount&quot;:150,&quot;slug&quot;:&quot;quantmre&quot;,&quot;tags&quot;:&quot;b2c,marketplace,fintech,real-estate-tech,venture-backed,1m-raised,apps,blockchain,crowd-safe,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/quantmre&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/quantmre"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="QuantmRE" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fquantmre%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/233/2233-1676577904-c796a75d63ec07e2c779deb1c74c7616d069daab.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--quantmre"><img alt="Logo of QuantmRE" title="QuantmRE" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/233/2233-1676515972-46dbe1ea6cc417e5d2d7893175efb7b2a74bd3c9.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/233/2233-1676515972-f15d364d7fabab5d4adda66db1fcc1a5a603b57e.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">QuantmRE
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Making home equity accessible, investible, and trada...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+</div>
+<div class='js-offerings_slider_loader u-hiddenXsOnly s-marginTop7'>
+<div class='u-textCenter s-fontSize18 u-fontWeight400 u-colorMuted'>
+<i class='c-spinner'></i>
+Loading...
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="u-hiddenPrint offerings-show-content_navigation" data-rc="offerings/show/content_navigation"><div class='c-content_nav u-hiddenSmDown'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16 s-grid--middle'>
+<div class='c-content_nav__container'>
+<a class="c-content_nav__link js-content-nav-link active" href="#pitch">Pitch</a>
+<a class="c-content_nav__link js-content-nav-link" href="#updates">Updates
+<span class='c-content_nav__booble'>
+4
+</span>
+</a><a class="c-content_nav__link js-content-nav-link" href="#reviews">Reviews
+<span class='c-content_nav__booble'>
+45
+</span>
+</a></div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 s-grid--middle'>
+<div class='offerings-show-content_navigation__contact-wrapper'>
+<div class='u-displayFlex u-justifyContentSpaceBetween'>
+</div>
+</div>
+<div class='offerings-show-content_navigation__cta-wrapper'>
+<div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button c-button--block s-paddingHoriz0_5 offerings-show-content_navigation__cta-button c-button--disabled offerings-shared-invest_button__lock_button js-locked_button u-displayFlex u-justifyContentCenter" href="/mugatunes#invest"><i class="icon-lock"></i> <span class='u-hiddenLgOnly'>
+Invest
+</span>
+<span class='u-hiddenMdDown'>
+Invest in Mugatunes
+</span>
+
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp u-displayFlex u-alignItemsCenter offerings-show-content_navigation__mobile-navigation'>
+<select class='c-input c-input--select c-input--large js-mobile-nav offerings-show-content_navigation__mobile-select'>
+<option selected value='/mugatunes/pitch'>
+Pitch
+</option>
+<option value='/mugatunes/deal-terms'>
+Deal terms
+</option>
+<option value='/mugatunes/documents'>
+Documents
+</option>
+<option value='/mugatunes/team'>
+Team
+</option>
+<option value='/mugatunes/press'>
+Press
+</option>
+<option value='/mugatunes/updates'>
+Updates
+(4)
+</option>
+<option value='/mugatunes/reviews'>
+Reviews (45)
+</option>
+</select>
+<div class='s-marginLeft1_5'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Mugatunes" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Fmugatunes%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Fmugatunes"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?url=https%3A%2F%2Frepublic.com%2Fmugatunes"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Frepublic.com%2Fmugatunes"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Fmugatunes"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingTop0_5 s-borderBottom0_5 u-textCenter s-fontSize14 offerings-show-content_navigation__disclaimer'>
+<div class='u-colorGray7 u-fontWeight400'>
+<i class='icon-attention u-colorOrange'></i>
+<span class='u-hiddenSmUp'>
+Closed on July 31, 2018.
+Information may not be up-to-date.
+</span>
+<span class='u-hiddenXsOnly'>
+Campaign closed on July 31, 2018.
+Information displayed may not be up-to-date.
+</span>
+</div>
+</div>
+</nav>
+<div class='js-terms u-hidden s-paddingTop6_5'>
+<div class='js-section s-paddingTop2' id='terms'>
+<div class="s-container s-gridMaxXs24 s-paddingTop0_5 offerings-show-terms_section" data-rc="offerings/show/terms_section"><div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16'>
+<div class='c-offeringTermsContent'>
+
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8'>
+<div class='u-hiddenPrint'>
+<div class='s-spacerXs3 s-spacerSm0_5'></div>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic (OpenDeal Portal LLC, CRD #283874) is hosting this Reg CF securities offering by Mugatunes Inc.. View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001725941&amp;owner=exclude&amp;action=getcompany"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form C
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-update u-hidden s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='js-section s-grid-colLg17 s-grid--pushLg4 s-grid-colSm20 s-grid--pushSm3' id='updates'>
+<div class='s-paddingTop2'>
+<div class='js-update_section_placeholder' data-url='/mugatunes/show_updates'>
+<div class='u-textCenter u-colorGray9 s-fontSize20 s-marginVert10'>
+<i class='c-spinner'></i>
+Loading
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-reviews u-hidden s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='js-section' id='reviews'>
+<div class='s-paddingTop2'>
+<div class="s-paddingTop1_5 offerings-show-reviews_section" data-rc="offerings/show/reviews_section"><h3 class='s-marginBottom3 c-secondaryTitle u-colorMuted offerings-show-reviews_section__title'>
+Hear from some of the
+<span class='u-whiteSpaceNowrap'>
+217
+investors
+</span>
+in Mugatunes
+</h3>
+<div class='js-investment_reasons_loader'>
+<div class="investment_reasons-shared-page_loader" data-rc="investment_reasons/shared/page_loader"><div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<hr class='s-marginVert2'>
+<div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-investment_reasons_wrapper'></div>
+<div class='js-investment_reasons_show_more_wrapper u-hidden'>
+<div class='s-spacerXs2_5 s-spacerSm4'></div>
+<div class='s-grid'>
+<div class='s-grid-colSm16'>
+<a class="js-investment_reasons_show_more c-button c-button--secondary c-button--large c-button--block" data-url="/mugatunes/reviews/page/1" href="javascript:void(0)">Show more</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-sections offerings-show__sections s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid js-pitch_grid offerings-show__pitch-grid'>
+<div class='js-section s-grid-colMd17 s-grid-colSm16 s-marginBottom3 offerings-show__pitch' id='pitch'>
+<div class="offerings-show-pitch_section" data-rc="offerings/show/pitch_section"><div class='s-marginRight3 offerings-show-pitch_section__pitch-wrapper'>
+<div class="js-pitch_section s-paddingTop3 offerings-show-pitch_non_modular" data-rc="offerings/show/pitch_non_modular"><div class='js-pitch_content c-offeringPitchContent offerings-show-pitch_non_modular__pitch-content offerings-show-pitch_non_modular__pitch-content--Mugatunes'>
+<h3>Deal highlights</h3><ul><li class="u-wysiwygMedium">Platform where music enthusiasts write about, share, and curate new songs</li><li class="u-wysiwygMedium">#1 Indie Music Publication - <a href="https://tunemunk.com/best-indie-music-blog-2017/" target="_blank" rel="nofollow">Tunemunk</a>&nbsp;</li><li class="u-wysiwygMedium">'Top Music Publication’ - <a href="http://www.refinery29.com/2013/07/50253/music-blogs#slide-4" target="_blank" rel="nofollow">Refinery 29</a></li><li class="u-wysiwygMedium">Launched full service digital agency for Artists &amp; Brands - <a href="http://muga.media/" target="_blank" rel="nofollow">Muga Media</a></li><li class="u-wysiwygMedium">250+ pieces of user generated&nbsp;content each month</li><li class="u-wysiwygMedium">250,000+ monthly reach to the target demographic</li><li class="u-wysiwygMedium">Raised ~$100,000 in 2017</li></ul><hr><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/005/856/5856-1523920948-e20a9ddba7a25dbf8a02d7327488e3ce6d199093.png" alt="The Problem" title="The Problem" class="fr-fic fr-dii"></figure><h3>Music Discovery is Broken</h3><ul><li>&nbsp;<strong>The experience of sharing music with friends doesn't exist digitally.&nbsp;</strong>Music Enthusiasts&nbsp;don't have a platform to share discoveries where people are listening</li><li><strong>The Radio</strong> regurgitates the same Top 40 mainstream songs, heavily influenced by major labels and special interests</li><li>Bot-curation services <strong>(</strong><strong>Pandora)</strong> have limited skips and don’t include underground music, remixes, or brand new songs</li><li><strong>Soundcloud, Spotify and Youtube</strong><strong>'s</strong> recommendations are curated by algorithms and popular playlists include <a href="https://www.dailydot.com/upstream/spotify-playlist-black-market/" target="_blank" rel="nofollow">paid-placements</a> (upwards of $10,000 a song). Discovering quality content can be overwhelming and takes practice</li><li><strong>Music Bloggers &amp; Tastemakers</strong> are the go-to place to discover breaking music, but there’s thousands of blogs all with niche genres of expertise.&nbsp;</li></ul><h3><img src="https://uploads.republic.co/p/images/attachments/original/000/005/859/5859-1523921528-ab95e89db7438ea9bcfccab2bfac5df420811a61.png" alt="The Solution" title="The Solution" class="fr-fic fr-dii"><br><br>Music Curation from Tastes You Can Trust.</h3><h3><img src="https://uploads.republic.co/p/images/attachments/original/000/006/115/6115-1524623939-e12012e0dc06b3516a91228ed269a962226969f8.gif" class="fr-fic fr-dii"></h3><p><strong>How it works</strong></p><ul><li>Music enthusiasts <a href="http://www.mugatunes.com/tastemaker_signup" target="_blank" rel="nofollow">apply</a> to become <strong>Tastemakers</strong>. &nbsp;Applications include background information, music tastes and a short playlist.&nbsp;</li><li>Once accepted, Tastemakers post new songs (and write about them), curate hand-picked playlists and write articles.&nbsp;</li></ul><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/133/6133-1524869703-b62ad1d75cd18eee01c070294d5b2b0b9e4247ef.jpg" class="fr-fic fr-dii"></figure><ul><li>Listeners enjoy free, human curated music with seamless streaming.&nbsp;</li><li>Content is ranked by up-votes, creating a trending chart that resets each week.&nbsp;</li><li>Users can save their favorite songs and create their own custom playlist.</li></ul><p><br><img src="https://uploads.republic.co/p/images/attachments/original/000/005/869/5869-1523921767-28543bca1b16b16b057ce2a96f73eb0f65ee8657.png" alt="Our Buzz is Building" title="Our Buzz is Building" class="fr-fic fr-dii"></p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/135/6135-1524870194-cdba8aa005647e7fff1b94889097a24a73e4d62e.jpg" class="fr-fic fr-dii"></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/136/6136-1524870679-1f72a95aeea7c5ea0dcffba6fc3fd0fed7b154b4.jpg" class="fr-fic fr-dii"></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/137/6137-1524870724-db666ba760615186ed7c9c80b4a61de7404756fd.jpg" class="fr-fic fr-dii"></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/138/6138-1524872089-4a16dd6a4c4f80c370708f86af3701e90f749c83.jpg" class="fr-fic fr-dii"></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/139/6139-1524872181-fc40e238c906f8f52ea996686323eafb146d103b.jpg" class="fr-fic fr-dii"></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/140/6140-1524872200-a591130e5fd88fe9d54068086e962ceb1ba75759.jpg" class="fr-fic fr-dii"></figure><figure><br><img src="https://uploads.republic.co/p/images/attachments/original/000/005/863/5863-1523921619-085877fbbcb5c4d13b52f2ef5fbd139eb261403c.png" alt="Tastemakers Drive Our Growth" title="Tastemakers Drive Our Growth" class="fr-fic fr-dii"></figure><p><strong>Tastemakers:</strong></p><ul><li>Create content, drive traffic and get involved across the business.&nbsp;</li><li>Are proud of their&nbsp;content and share their&nbsp;profiles with their networks</li><li>Take ownership in the company and rep our brand</li><li><strong>In return</strong> get recognition for their discoveries, an audience looking for music curation, free brand merchandise, blogging experience, and a shiny new trophy for their resume.&nbsp;</li></ul><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/141/6141-1524873420-b441bf95928aaa74b94cba4de6d23828ea6f308d.jpg" class="fr-fic fr-dii"></figure><p><br></p><h2><img src="https://uploads.republic.co/p/images/attachments/original/000/005/864/5864-1523921654-fcd359a9abd6eef5b9abc8591a4f8930f1fd5aad.png" alt="A Glimpse at Our Community" title="A Glimpse at Our Community" class="fr-fic fr-dii"></h2><figure class="c-slider"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/161/6161-1524874793-2bfe1e99484747c1c66c6474485989600190291e.jpg" class="fr-fil fr-dib"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/151/6151-1524874719-b251fddf103ac59edb0bab9593ea3b59fe0b6034.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/152/6152-1524874726-3eb244fb2bcdd5904e364abe7a4e0149660f12e7.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/149/6149-1524874704-3fd7fdaf902c039da2377f46e48e629b08674759.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/150/6150-1524874709-c0ebe0ca9d088d91c643a1091b9d57d36565421e.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/153/6153-1524874733-e8e8f2c265497af9bef1956d9688b7dc4869a37e.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/154/6154-1524874748-b9be17de1eed146129c1a45deef7e4fc7a8ada82.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/155/6155-1524874755-b52c04dc078a6ae6f683151eb38c2aaa27991da0.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/156/6156-1524874761-3ff167783697d3379ea3fc858e73ccbc41580266.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/157/6157-1524874768-4d89a42c09638e8a23d50ce52c64c27fffc47933.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/158/6158-1524874774-7db7c01c6042003ee38c6d13648431205a351038.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/159/6159-1524874781-961d1347ffbbf5c1d29e6c578c7003f8508340df.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/160/6160-1524874786-b830533c56aac46a12d56fe24815f95615e9fef4.jpg" class="fr-fic fr-dii"><img src="https://uploads.republic.co/p/images/attachments/original/000/006/162/6162-1524874798-1398e56c1c06b05ff2f72d1d45898711348fb240.jpg" class="fr-fic fr-dii"></figure><h2><br><img src="https://uploads.republic.co/p/images/attachments/original/000/005/866/5866-1523921681-64d390f736d4b781830c513640e27648a1a66366.png" alt="Trusted by Artists" title="Trusted by Artists" class="fr-fic fr-dii"></h2><ul><li>They're proud to have their music featured by our Tastemakers</li><li>They share our social media posts and point their audience to our platform</li><li>They&nbsp;participate in our exclusive content:</li></ul><p><strong><em>'Explain That Gram'</em> Interview Series</strong></p><p class="u-floatLeft">#1 - <a href="https://www.facebook.com/mugatunes/videos/vl.124755904771496/2301849153374015/?type=1" target="_blank" rel="nofollow">Nora En Pure</a><br>#2 - <a href="https://www.facebook.com/mugatunes/videos/vl.124755904771496/2323927457832851/?type=1" target="_blank" rel="nofollow">Cheat Codes</a><br>#3 - <a href="https://www.facebook.com/mugatunes/videos/vl.124755904771496/2333242086901388/?type=1" target="_blank" rel="nofollow">A&nbsp;R&nbsp;I&nbsp;Z&nbsp;O&nbsp;N&nbsp;A</a><br>#4 - <a href="https://www.facebook.com/mugatunes/videos/2384410478451215/" target="_blank" rel="nofollow">Hotel Garuda</a><br>#5 - <a href="https://www.facebook.com/mugatunes/videos/vl.124755904771496/2344096349149295/?type=1" target="_blank" rel="nofollow">Cash Cash</a><br>#6 - <a href="https://www.facebook.com/mugatunes/videos/vl.124755904771496/2351019745123622/?type=1" target="_blank" rel="nofollow">Elephante</a></p><p class="u-floatLeft">#7 - <a href="https://www.facebook.com/mugatunes/videos/vl.124755904771496/2356443024581294/?type=1" target="_blank" rel="nofollow">Caye</a><br>#8 - <a href="https://www.facebook.com/mugatunes/videos/vl.124755904771496/2372336699658593/?type=1" target="_blank" rel="nofollow">Shaun Frank</a><br>#9 - <a href="https://www.facebook.com/mugatunes/videos/vl.124755904771496/2378299702395626/?type=1" target="_blank" rel="nofollow">Two Friends</a><br>#10 - <a href="https://www.facebook.com/mugatunes/videos/2384410478451215/" target="_blank" rel="nofollow">B.o.B.</a><br>#11 - <a href="https://www.facebook.com/mugatunes/videos/vl.124755904771496/2388451461380450/?type=1" target="_blank" rel="nofollow">Young Bombs</a><br>#12 - <a href="https://www.facebook.com/mugatunes/videos/2486791638213098/" target="_blank" rel="nofollow">Chelsea Cutler</a></p><p><br></p><p><br></p><p><br></p><p><br><br></p><p><span class="fr-video fr-fvc fr-dvb fr-draggable"><iframe src="//www.youtube.com/embed/CnOcFOs6mzY" frameborder="0" allowfullscreen=""></iframe></span></p><p>&nbsp;<img src="https://uploads.republic.co/p/images/attachments/original/000/005/881/5881-1523932436-3c935b28b172d3f6f156d1dc97389c638cddeb95.png" alt="Business Model" title="Business Model" class="fr-fic fr-dii"></p><h3>We recently launched our digital agency, <a href="http://www.muga.media" target="_blank" rel="nofollow">Muga Media</a>.&nbsp;</h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/142/6142-1524873583-0741a9756d97c860ede0a69ef1b2aaebd6b00d5c.jpg" class="fr-fic fr-dii"></figure><h3>We Connect Brands &amp; Artists with Our Audience</h3><ul><li>Our <strong>advertisements</strong> come in the form of multi-facetted, engaging, and authentic campaigns. &nbsp;We bridge brands' stories with music, engaging our audience through creative and genuine content.&nbsp;</li><li>We <strong>introduce artists to our fans</strong> through music submissions, featured posts, native ads, and playlist placements. We only work with artists whose music we believe in.</li><li>We also include <strong>ad-hoc branding services</strong> including; web design, videography, logo design, consulting, social media management.</li></ul><h3>A Winning Formula</h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/143/6143-1524873628-d28a335f1a594b3e708560bda38f041fb4e6cb2f.jpg" class="fr-fic fr-dii"></figure><p><br></p><h2><img src="https://uploads.republic.co/p/images/attachments/original/000/005/868/5868-1523921727-8056aca4a0837fbf706e329cb4d6eac1f5c71a01.png" alt="Previous Investments" title="Previous Investments" class="fr-fic fr-dii"></h2><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/144/6144-1524873652-02cb7f347373b0940e8ff99217fd216978bd6dab.jpg" class="fr-fic fr-dii"></figure><h3><br>What Our Investors are Saying</h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/145/6145-1524873807-e12d763f40dd1d3d97896f5435644fb6d28fe9a8.jpg" class="fr-fic fr-dii"></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/005/871/5871-1523921866-8b02ec03b949da0bf6f4a40564e3da216e9efcba.png" alt="Where We're Going" title="Where We're Going" class="fr-fic fr-dii"></figure><h3>We aim to own the discovery space and leverage our network to create the first fully integrated music ecosystem. From the recording, to the chart, to the concerts.&nbsp;</h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/148/6148-1524874141-3c5df8d46b933bdaf0e82e998c9c27bae048eb3a.jpg" class="fr-fic fr-dii"></figure><h3><img src="https://uploads.republic.co/p/images/attachments/original/000/005/877/5877-1523923810-cd54817e3224293668bffd55cb8368b6a27e6ec3.png" alt="Our Story" title="Our Story" class="fr-fic fr-dii"></h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/129/6129-1524790267-36caafa2547f0cfb7f804d63b708553e15b89d04.jpg" class="fr-fic fr-dii"></figure><h3>Born Out Of Necessity&nbsp;</h3><p>In college we spent hours discovering new music, only to return to our dorm and fight over the speaker. There had to be a better a way to share great new music. Our solution was a dropbox folder titled <em>“No Sh*tty Music”</em> .&nbsp;</p><p>The dropbox turned into a blog, and a few months later there were 14 writers from 6 colleges. We realized we&nbsp;weren’t alone, and began accepting applications for new&nbsp;‘Tastemakers'.<br><br>Since then we've had hundreds&nbsp;Tastemakers curate thousands of songs&nbsp;on the platform.<br>Our mission is to build tools that empower fans to curate,&nbsp;discover &amp; experience&nbsp;music.<br><br></p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/012/6012-1524167460-64763da37699ffeb48dbb91334ae071eeb8c2caf.png" alt="A Word From Our CEO" title="A Word From Our CEO" class="fr-fic fr-dii"></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/006/147/6147-1524874015-8dc7b201d880c47a154e5b013baeacec1d875acf.jpg" class="fr-fic fr-dii"></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 js-deal_page_sidebar'>
+<div class='s-spacerXs3'></div>
+<div class='js-section js-mobile_section s-marginBottom3 offerings-show__deal-terms' id='deal-terms'>
+<div class="offerings-show-deal_terms" data-rc="offerings/show/deal_terms"><div class="s-marginBottom1_5 offerings-show-deal_terms-header" data-rc="offerings/show/deal_terms/header"><h2 class='s-fontSize25 u-fontWeight800 u-colorGray6 c-condensedTitle offerings-show-deal_terms-header__title'>
+Deal terms
+</h2>
+<hr class='c-deal-page-title-divider'>
+</div>
+<div class='terms-block'>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-valuation_cap" data-rc="offerings/show/deal_terms/valuation_cap"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Valuation cap
+</div>
+<p class='c-deal-term__content'>
+$4,000,000
+</p>
+<p class='c-deal-term__helper'>
+The maximum valuation at which your investment converts
+into equity shares or cash.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe#terms">Learn more</a>
+</br>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-discount" data-rc="offerings/show/deal_terms/discount"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Discount
+</div>
+<p class='c-deal-term__content'>
+20%
+</p>
+<p class='c-deal-term__helper'>
+If a trigger event for Mugatunes occurs, the discount provision
+gives investors equity shares (or equal value in cash) at a reduced price.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe#terms">Learn more.</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-min_investment" data-rc="offerings/show/deal_terms/min_investment"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Minimum investment
+</div>
+<p class='c-deal-term__content'>
+$50
+</p>
+<p class='c-deal-term__helper'>
+The smallest investment amount
+that Mugatunes is
+accepting.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#minimum-and-maximum-investment">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-raise_amounts" data-rc="offerings/show/deal_terms/raise_amounts"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Funding goal
+</div>
+<p class='c-deal-term__content'>
+$50K &ndash; $500K
+</p>
+<p class='c-deal-term__helper'>
+Mugatunes needs to raise
+$50K before the deadline.
+The maximum amount Mugatunes
+is willing to
+raise
+is $50K &ndash; $500K.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#funding-goal">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-deadline" data-rc="offerings/show/deal_terms/deadline"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Deadline
+</div>
+<div class='c-deal-term__content'>
+<span class='js-localtime_year' data-time='2018-07-31T06:59:00Z'></span>
+</div>
+<div class='c-deal-term__helper'>
+Mugatunes needs to reach their minimum funding goal before the deadline
+(
+<span class='js-localtime_year_timezone' data-time='2018-07-31T06:59:00Z'></span>).
+If they don’t, all investments will be refunded.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#campaign-timeline">Learn more</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-securities" data-rc="offerings/show/deal_terms/securities"><div class="offerings-show-deal_terms-securities-security" data-rc="offerings/show/deal_terms/securities/security"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Type of security
+</div>
+<p class='c-deal-term__content'>
+Crowd SAFE
+<span class='s-fontSize16 u-fontWeight400'>
+<p class='c-deal-term__helper'>
+A SAFE allows an investor to make a cash investment in a company, with rights to receive certain company stock at a later date, in connection with a specific event.
+<span class='u-hiddenPrint'>
+&middot;
+</span>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe">Learn more</a>
+</p>
+</span>
+</p>
+</div>
+<div class="offerings-show-deal_terms-securities-security_other" data-rc="offerings/show/deal_terms/securities/security_other"><div class='c-deal-term c-deal-term--with-divider'>
+<div class='c-deal-term__title'>
+Includes a <a href="#risks">Right of Repurchase</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="offerings-show-deal_terms-footer" data-rc="offerings/show/deal_terms/footer"><footer class='s-paddingTop1 js-deal_terms_footer u-hiddenPrint'>
+<a target="_blank" class="c-button c-button--secondary c-button--block" href="/learn/investors/what-the-deal-terms-mean">How it works</a>
+</footer>
+</div>
+</div>
+</div>
+<div class='js-section js-mobile_section s-marginBottom3 u-hiddenPrint offerings-show__documents' id='documents'>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic (OpenDeal Portal LLC, CRD #283874) is hosting this Reg CF securities offering by Mugatunes Inc.. View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001725941&amp;owner=exclude&amp;action=getcompany"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form C
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='about'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+About Mugatunes
+</h2>
+</div>
+<div class="offerings-show-about_section" data-rc="offerings/show/about_section"><div class='s-grid js-display'>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Legal Name
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+Mugatunes Inc.
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Founded
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+Feb 2015
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Form
+</div>
+<div class='s-fontSize18'>
+Delaware
+Corporation
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Employees
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+0
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Website
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+<a target="_blank" href="http://www.mugatunes.com/">mugatunes.com</a>
+</div>
+</div>
+<div class='u-hiddenPrint offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Social Media
+</div>
+<div class='s-marginPullLeft1 s-fontSize18'>
+<a target="_blank" title="Twitter" class="s-marginLeft1 c-link c-link--twitter" href="https://twitter.com/mugatunes"><i class="icon-twitter"></i></a>
+<a target="_blank" title="Instagram" class="s-marginLeft1 c-link c-link--instagram" href="https://www.instagram.com/mugatunes/?hl=en"><i class="icon-instagram"></i></a>
+<a target="_blank" title="Facebook" class="s-marginLeft1 c-link c-link--facebook" href="https://www.facebook.com/mugatunes/"><i class="icon-facebook"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hiddenPrint'>
+<div class='offerings-show-about_section__row offerings-show-about_section__row--map'>
+<div class='u-fontWeight400 u-colorGray7 s-marginBottom0_5'>
+Headquarters
+</div>
+<div class='s-fontSize18 offerings-show-about_section__address'>
+<img alt="Google Map location of of Mugatunes" title="Google Map location of of Mugatunes" src="https://maps.googleapis.com/maps/api/staticmap?center=357%2BCommercial%2BStreet%2CBoston%2CMA&amp;format=png&amp;key=AIzaSyBSAkS8gvhmvxYO9XQOuP1ows6mbvx_jAE&amp;maptype=roadmap&amp;markers=size%3Asmall%7Ccolor%3A0xff0000%7Clabel%3A1%7C357%2BCommercial%2BStreet%2CBoston%2CMA&amp;scale=2&amp;size=360x165&amp;visual_refresh=true&amp;zoom=13&amp;signature=lf31zcE4MaY7Kowm9LhvkZiGwIY=" />
+<div class='s-fontSize12 offerings-show-about_section__address_text'>
+357 Commercial Street
+, Boston, MA
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hidden u-blockPrint offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Headquarters
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+357 Commercial Street, Boston, MA, United States 02109
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='team'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='s-marginBottom1 offerings-show__section-title'>
+<div class='c-condensedTitle u-colorGray6'>
+Mugatunes Team
+</div>
+<div class='s-fontSize14 u-colorGray9 s-marginTop1 u-fontWeight400'>
+Everyone helping build Mugatunes, not limited to employees
+</div>
+</h2>
+</div>
+<div class="offerings-show-team_section" data-rc="offerings/show/team_section"><div class='js-sort_data' data-featured-placeholder-klass='offerings-show-team_section__featured_team_member s-marginBottom1 s-border1' data-placeholder-klass='offerings-show-team_section__team_member s-marginBottom1 s-border1'></div>
+<div class='s-grid u-hiddenPrint'>
+<div class='s-grid-colMd24'>
+<div class=' offerings-show-team_section__team_member_container'>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Drew Meagher" title="Drew Meagher" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/544/544-1512438298-1ccc8563412fbffa810f0cf031afc00a8f41acd7.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/544/544-1512438298-f4414b51c1d3aecad96de113149cc681b533e652.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Drew Meagher
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+CEO &amp; Co-Founder
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Editor In Chief || Branding &amp; Marketing ||
+Business Dev ||
+Tastemaker Recruiting Vetting ||
+Content Management &amp; Distribution
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--facebook" href="https://www.facebook.com/drew.meagher.5"><i class="icon-facebook"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--twitter" href="https://twitter.com/Mugatunes"><i class="icon-twitter"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/andrew-meagher-a3b49495/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of William Wissemann" title="William Wissemann" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/787/787-1522904561-825f298c65449c1d476834d67fdbe4800d801e35.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/787/787-1522904561-a1d0d1d75f9b72caa355e1b78d2e770c8add823a.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+William Wissemann
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Technology Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Full stack software engineer || Crawl Engineer at Hanzo Archives
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--facebook" href="https://www.facebook.com/william.wissemann"><i class="icon-facebook"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/william-wissemann-72a9b238/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Justin Albaniel" title="Justin Albaniel" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/789/789-1522966311-76d58f5eb0138e32e42d962e9052e8c44cd1a8c0.jpeg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/789/789-1522966311-d495cec94ffa262d3ed46ac418decb39cf76d7fe.jpeg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Justin Albaniel
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Videography
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Co-Founder at Wooden Grain Co. 
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--facebook" href="https://www.facebook.com/justinalbniel"><i class="icon-facebook"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--twitter" href="https://twitter.com/woodengrain"><i class="icon-twitter"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Rob Gau" title="Rob Gau" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/788/788-1522905961-c8ad4f066dfa9e695657981947b1fac4ca2aea6c.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/788/788-1522905961-269f34cc9383e7a09b3b4b68bd27cf77cf782020.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Rob Gau
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Co-founder &amp; Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Music Aficianado || Sales at Warner Media
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--twitter" href="https://twitter.com/robgau44?lang=en"><i class="icon-twitter"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Nathan Dionne" title="Nathan Dionne" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/781/781-1522902411-cb8d798463d8cb6a46adaa0abebc7ddbc9883e81.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/781/781-1522902411-6e2124a5bd40d37119a9c2378dbad52d19c25d48.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Nathan Dionne
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Investor &amp; Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Founder &amp; CPO at NorthOut ||
+Former CTO at Barstool Sports ||
+Founder GamerDuel
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--facebook" href="https://www.facebook.com/nathan.dionne.12"><i class="icon-facebook"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--twitter" href="https://twitter.com/Nates_Here?lang=en"><i class="icon-twitter"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/nathan-dionne-58b8002b/"><i class="icon-linkedin"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--angellist" href="https://angel.co/nathan-dionne-2"><i class="icon-angellist"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Brett Maloley" title="Brett Maloley" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/780/780-1522902112-c61cdcf2105ad3219d81cc6ded815f329c3f604d.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/780/780-1522902112-0c0dca8e46386d86a6bb5c360b3d86abea978f78.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Brett Maloley
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Investor &amp; Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+CEO at Ladder.fit || Former CEO at Game Plan || Former Co-Founder at Office To Octagon
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--facebook" href="https://www.facebook.com/brett.maloley"><i class="icon-facebook"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--twitter" href="https://twitter.com/brettmaloley?lang=en"><i class="icon-twitter"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/bmaloley"><i class="icon-linkedin"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--angellist" href="https://angel.co/brett-maloley"><i class="icon-angellist"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Dave Carpentier" title="Dave Carpentier" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/783/783-1522903005-7287f2c3d8367871c229694e9a039af229623e6e.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/783/783-1522903005-0dee56c1d430b37565900449ea50dda559ff249b.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Dave Carpentier
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Investor &amp; Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Founder &amp; CEO at Assurely
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--facebook" href="https://www.facebook.com/dave.carpentier.75"><i class="icon-facebook"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/david-carpentier-91a7935/"><i class="icon-linkedin"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--angellist" href="https://angel.co/david-carpentier"><i class="icon-angellist"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Anthony Duignan-Cabrera" title="Anthony Duignan-Cabrera" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/785/785-1522903796-40898f9039156cfc9da78b7b80e7a3bb5fd28be0.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/785/785-1522903796-ab7360476361b26d66ec65f32e936cd9d3ea8d7b.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Anthony Duignan-Cabrera
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Investor &amp; Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Director of Digital and Communications at Bamboo Technologies || CEO at ADC Strategy
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--facebook" href="https://www.facebook.com/anthonyduignancabrera"><i class="icon-facebook"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--twitter" href="https://twitter.com/aduignancabrera?lang=en"><i class="icon-twitter"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/thomas-digan-cfa-b1068b20/"><i class="icon-linkedin"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--angellist" href="https://angel.co/anthony-duignancabrera"><i class="icon-angellist"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Tom Digan" title="Tom Digan" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/784/784-1522903564-beabc454643037787f0e388b92f79811bfc3c3fd.jpeg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/784/784-1522903564-4743f39aa19ec2d219fd3474f48854e9db34ce15.jpeg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Tom Digan
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Investor &amp; Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Partner &amp; Head of Trading at Sorin Capital Management
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/thomas-digan-cfa-b1068b20/"><i class="icon-linkedin"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--angellist" href="https://angel.co/tom-digan-1"><i class="icon-angellist"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Eric Engdahl" title="Eric Engdahl" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/782/782-1522902845-32d276613b2b748998b3a14261c5d34e119ec424.jpeg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/782/782-1522902845-b45d7a868dbb1dd344bb2e54add7eb9a519d27a6.jpeg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Eric Engdahl
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Investor &amp; Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Founding Partner at Powerhouse Capital LLC
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--facebook" href="https://www.facebook.com/eric.engdahl"><i class="icon-facebook"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/eric-engdahl-39b392/"><i class="icon-linkedin"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--angellist" href="https://angel.co/eric-engdahl"><i class="icon-angellist"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Mathew Thomas" title="Mathew Thomas" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/786/786-1522904109-f5412ea1490af211fc6327b8e22b4221306f78d3.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/786/786-1522904109-707b4acd333e10456739407f1510530eaeb7325d.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Mathew Thomas
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+CEO at Concertpass || CEO at Live Media Labs
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--facebook" href="https://www.facebook.com/sirmat"><i class="icon-facebook"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/sirmathew/"><i class="icon-linkedin"></i></a>
+
+</span>
+<span class='s-marginLeft1'>
+<a target="_blank" class="c-link c-link--angellist" href="https://angel.co/sirmat"><i class="icon-angellist"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='js-hidden_team_members u-hiddenXsOnly'>
+<div class='s-marginTop2_5 offerings-show-team_section__team_member_container'>
+</div>
+</div>
+<div class='u-hiddenSmUp u-text-center'>
+<a class="c-button c-button--secondary js-show_all_team_members" href="#">8 more team members</a>
+</div>
+</div>
+</div>
+<div class='s-grid u-textCenter u-hidden u-blockPrint'>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Drew Meagher
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+CEO &amp; Co-Founder
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+William Wissemann
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Technology Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Justin Albaniel
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Videography
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Rob Gau
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Co-founder &amp; Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Nathan Dionne
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Investor &amp; Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Brett Maloley
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Investor &amp; Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Dave Carpentier
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Investor &amp; Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Anthony Duignan-Cabrera
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Investor &amp; Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Tom Digan
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Investor &amp; Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Eric Engdahl
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Investor &amp; Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Mathew Thomas
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Advisor
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint js-section offerings-show__section' id='press'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+Press
+</h2>
+</div>
+<div class="offerings-show-press_section" data-rc="offerings/show/press_section"><div class='s-grid js-press_container u-text-center'>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.bloomberg.com/news/audio/2018-06-13/bloomberg-baystate-business-airbnb-biotech-textbooks"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/005/298/5298-1529352521-9859aaaaa7bb38411dc594f9fdbd5b4bf85dddd4.jpg);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Interview with CEO Drew Meagher
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/005/298/5298-1529352423-2653246f2b33664d1a076dc843a092b3d283a0d2. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Bloomberg.com" title="Bloomberg.com" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/005/298/5298-1529352423-7e15fd8a1ed1f2abe717855cc1af5aa32319fbf9." />
+Bloomberg.com
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Jun 13, 2018
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Bloomberg Baystate Business Hour - Interview with Mugatunes CEO, Drew Meagher (17:20)
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://tunemunk.com/best-indie-music-blog-2017/"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/005/143/5143-1525282268-000f4172f84f959ccf2295ba9b74f577ad443429.png);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Best Indie Music Blog of 2017
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/005/143/5143-1525123163-e616fa72d24e21015be1e8709c369f3df3d9806f. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="tunemunk" title="tunemunk" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/005/143/5143-1525123163-553db5ec0c7303a2d30aab7b036a8ff98deafe3a." />
+tunemunk
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Jan  1, 2018
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+The winner of the best indie music blog for 2017 was Mugatunes!!! Independent music (also called indie music or indie for...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.refinery29.com/2013/07/50253/music-blogs"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/005/141/5141-1525282250-1272ded76fa4fb08118ec2249bf350125a7a9339.jpg);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+The Best Music Blogs That Aren&#39;t Pitchfork
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/005/141/5141-1525122575-cf6e32568b31405ce8537c519dd6f404452578f0. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Refinery29" title="Refinery29" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/005/141/5141-1525122575-80cb01fffac4e677ed524fe4cb406ccae8bc2fa1." />
+Refinery29
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Nov 22, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Their slogan is #noshittymusic — are you sold yet? Each day, the blog&#39;s authors creates curated playlists that show off t...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://amclub.co/blogs/news/5-music-sites-to-get-hooked-on"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/005/142/5142-1525122737-645551e8203bc3200651ab871e26e12d6db80e6f.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+5 Music Sites to Get Hooked On
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/005/142/5142-1525122737-9881e5cfd0fcd33af7f62975842436332e886099. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="A.M." title="A.M." src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/005/142/5142-1525122737-e95009c4928170e231540f428316336915084d64." />
+A.M.
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Sep 25, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Mugatunes was created by college roommates, that wanted a place to share the music they love. Since then this site has in...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.entrepreneur.com/video/299429"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/005/117/5117-1525228906-d5fac74256d1969ba03abb8e09d8cc3560a75ca6.jpg);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+How to Start a Tech Company If You Don&#39;t Know That Much A...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/005/117/5117-1524776220-dfa1b381f02523ebbb9bb62528e436ea04845135. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Entrepreneur" title="Entrepreneur" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/005/117/5117-1524776220-cac2b7a5fd3f053d6aabf7d2e232897fccf9a0a2." />
+Entrepreneur
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Sep  8, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+After problems with devshops and struggling to get the product to where he knew it had to be, Drew Meagher didn&#39;t give up.
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://muga.media/blog/bloomberg-business-hour-drew-meagher-interview30"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/005/140/5140-1525119468-33afd20fa223ef6fb064c68a25c9d928a70dbc7d.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Bloomberg Business Hour - Drew Meagher Interview
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/005/140/5140-1525119468-0dcac76f4cb65060e28a5f0ae6042a2ac327b66e. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Muga Media * Digital Agency for Artists &amp; Brands" title="Muga Media * Digital Agency for Artists &amp; Brands" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/005/140/5140-1525119468-4ccc651fb97c42dc91681efa3d96d30d3b3ad9d5." />
+Muga Media * Digital Agency for Artists &amp; Brands
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Apr 15, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+I sat down with Tom Moroney and Anne Mostue of Bloomberg Baystate Business hour to chat about the launch of our new Mugat...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article u-hidden'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.bizjournals.com/boston/blog/startups/2015/08/meet-the-startup-on-a-mission-to-ban-sh-tty-music.html"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/005/118/5118-1525282326-b1a93a5307b3a8a294985c5cfee70642e6c50f48.jpg);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Meet the startup on a mission to ban &#39;sh*tty&#39; music - Bos...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/005/118/5118-1524776231-3b04301c998a3c39723b23d320219fa6fe585ff4. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Boston Business Journal" title="Boston Business Journal" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/005/118/5118-1524776231-a9a20a9d2c55f7d888a3cb9303c6c71d3702b132." />
+Boston Business Journal
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Aug  7, 2015
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Mugatunes, an intercollegiate music-sharing platform, was the winner of a startup competition that matches startups with ...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article u-hidden'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://www.telegram.com/article/20160522/NEWS/160529805"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/005/122/5122-1524783514-4167a0809b46ce7f6c5f575796af5d7f78ccbcac.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Bottom Line: Mugatunes mushrooms to campuses around the g...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/005/122/5122-1524783513-0451aed8dc90e7d048b91d396b86aa02642d1be1. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="telegram.com" title="telegram.com" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/005/122/5122-1524783513-208c82c545bafc417fa46b451933cf2d88797495." />
+telegram.com
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+A dropbox shared among roommates for good music has mushroomed into a social media music-sharing website for college camp...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article u-hidden'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.forbes.com/sites/hughmcintyre/2016/05/08/meet-the-7-music-startups-that-were-featured-at-canadian-music-week/"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/005/120/5120-1525282314-50b43afcd20705d19f8f49cd521f3e81c947a86d.jpg);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Meet The Seven Music Startups That Were Featured At Canad...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/005/120/5120-1524776252-f5a7c98a96f134dbb2fc58eeef59b9d9bbad4cc1. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Forbes" title="Forbes" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/005/120/5120-1524776252-88568886e10bce771db523519ab6ebf9e82388b1." />
+Forbes
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+This past Thursday, Canadian Music Week held its first annual Startup Launch Pad, a pitch competition for startups in the...
+</p>
+</div>
+</a></div>
+</div>
+</div>
+<div class='s-marginTop1 u-text-center'>
+<a class="c-button c-button--secondary js-show_all_articles" href="javascript:void(0)">Show all</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint s-marginTop6 s-borderTop5 offerings-show__footer'>
+<div class='s-container s-gridMaxXs24'>
+<div class="u-textCenter offerings-show-footer" data-rc="offerings/show/footer"><div class='s-marginBottom1'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)"><div class="c-avatar c-avatar--medium offerings-show-footer__avatar c-avatar--border c-avatar--mugatunes"><img alt="Logo of Mugatunes" title="Mugatunes" srcset="https://uploads.republic.com/p/offerings/logos/medium_2x/000/000/113/113-1526919122-cd5ae128095e4881f923437302fea1f8b6eaa75d.png 2x" src="https://uploads.republic.com/p/offerings/logos/medium/000/000/113/113-1526919122-16f5eba4347cf4cc4a3e53c9739829e68c6f4cd0.png" /></div></a>
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle s-marginHoriz0_5'>
+<h1 class='c-largeTitle offerings-show-footer__company-name'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)">Mugatunes</a>
+</h1>
+</div>
+<div class='u-displayInlineBlock u-blockXsOnly u-verticalAlignMiddle s-paddingTop0_5'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Footer" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link c-button--small c-button--secondary" data-action="follow" data-href="/register?after_sign_in=%2Fmugatunes%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5 u-colorGray2 follows-shared-follow_offering__bubble-counter'>
+265
+</span>
+</button>
+</div>
+</div>
+</div>
+<div class='s-marginTop1_5 s-fontSize18 u-fontWeight500 u-colorGreen'>
+Mugatunes successfully raised
+$93,950
+from 217 investors
+on July 31, 2018
+</div>
+<div class='s-marginTop2'>
+<div class='s-paddingTop1 u-hiddenXsOnly'></div>
+<div class="offerings-show-footer-investors" data-rc="offerings/show/footer/investors"><div class='u-displayFlex u-justifyContentCenter'>
+<span class="js-tooltip_ajax  " data-type="user" data-slug="kinson-au"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Kinson Au" title="Kinson Au" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/049/173/49173-1516073169-298d10bdb0a148b220ad8949e5a20b57eda1b781. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/049/173/49173-1516073169-69c16ca82743a64cfda98a02e0347da2d7176155." /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="taaj-davis"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Taaj Davis" title="Taaj Davis" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/068/890/68890-1528822625-7329ddc5c165597952db096cc0b348dbe1fb3341. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/068/890/68890-1528822625-ac172a4af3608d7fbd366abe0a6c035b607663c7." /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="marissa-endow"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Marissa Endow" title="Marissa Endow" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/071/574/71574-1532122711-6f3456e898afbec2f07aea8b5ce6586fd08b06d3.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/071/574/71574-1532122711-1bfff0ebc346b2c06fbe6a4e48e9dc2fb8cd1f51.jpg" /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="clifton-mcmillan-jr"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Clifton McMillan Jr" title="Clifton McMillan Jr" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/023/911/23911-1533505829-6811b677c3fcffffb933536b32e7ade4674e67c8.jpg 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/023/911/23911-1533505829-da6399a0a674c8ab607183ba6846a413d5c3a816.jpg" /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="robbie-hennig"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Robbie Hennig" title="Robbie Hennig" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/071/824/71824-1532473258-2b055fe33cf17d9d672468adbf9a777fed871f35. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/071/824/71824-1532473258-10e6a48c7ba592006a84e9da52f65d324c678f4c." /></div>
+</span></div>
+<div class='s-marginTop1 s-fontSize18 u-fontWeight400 u-lineHeight1_3'>
+Kinson, Taaj, Marissa, Clifton, Robbie, and 212 others
+invested.
+<a class="js-scroll_to_section" href="#reviews">45 Reviews</a>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingBottom1_5 u-hiddenXsOnly'></div>
+</div>
+</div>
+<div class="offerings-shared-schema_org" data-rc="offerings/shared/schema_org"><script nonce="ZcYGfb7xhEBqdjqPXGciSQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "https://republic.com/companies",
+      "name": "Companies",
+      "image": "https://assets.republic.com/assets/logo/icon/brand/36x40/logo@3x-af4ee9995fb90fffc2d2d3acf41e91f9ea98718053f604912115ab3fd6877321.png"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "https://republic.com/mugatunes",
+      "name": "Mugatunes",
+      "image": "https://uploads.republic.com/p/offerings/logos/medium/000/000/113/113-1526919122-16f5eba4347cf4cc4a3e53c9739829e68c6f4cd0.png"
+    }
+  }]
+}
+
+
+//]]>
+</script></div>
+</div>
+</div>
+</div>
+</div>
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-full_disclaimer" data-rc="layouts/footer/disclaimers/full_disclaimer"><p class='s-marginBottom1'>
+This site (the "Site") is owned and maintained by OpenDeal Inc., which is not a registered
+broker-dealer. OpenDeal Inc. does not give investment advice, endorsement, analysis or
+recommendations with respect to any securities. All securities listed here are being offered
+by, and all information included on this Site is the responsibility of, the applicable issuer
+of such securities. The intermediary facilitating the offering will be identified in such
+offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+All funding-portal activities are conducted by OpenDeal Portal LLC doing business as Republic,
+a funding portal which is registered with the US Securities and Exchange Commission (SEC) as a
+funding portal (Portal) and is a member of the Financial Industry Regulatory Authority (FINRA).
+OpenDeal Portal LLC is located at 149 E 23rd St #2001, New York, NY 10010, please
+check out background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org/about/funding-portals-we-regulate">Funding Portal page</a>.
+</p>
+<p class='s-marginBottom1'>
+All broker-dealer related securities activity is conducted by OpenDeal Broker LLC, an
+affiliate of OpenDeal Inc. and OpenDeal Portal LLC, and a registered broker-dealer, and member
+of
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org">FINRA</a>
+|
+<a class="c-link c-link--underline" href="https://www.sipc.org/">SiPC</a>,
+located at 1345 Avenue of the Americas, 15th Floor, New York, NY 10105, please check our
+background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://brokercheck.finra.org/firm/summary/291387">BrokerCheck</a>.
+</p>
+<p class='s-marginBottom1'>
+Certain pages discussing the mechanics and providing educational materials regarding
+regulation crowdfunding offerings may refer to OpenDeal Broker LLC and OpenDeal Portal LLC
+collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC make investment
+recommendations and no communication, through this Site or in any other medium should be
+construed as a recommendation for any security offered on or off this investment platform.
+Investment opportunities posted on this Site are private placements of securities that are
+not publicly traded, involve a high degree of risk, may lose value, are subject to holding
+period requirements and are intended for investors who do not need a liquid investment. Past
+performance is not indicative of future results. Investors must be able to afford the loss
+of their entire investment. Only qualified investors, which may be restricted to only
+Accredited Investors or non-U.S. persons, may invest in offerings hosted by OpenDeal Broker.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC, nor any of their
+officers, directors, agents and employees makes any warranty, express or implied, of any
+kind whatsoever related to the adequacy, accuracy or completeness of any information on this
+Site or the use of information on this site. Offers to sell securities can only be made
+through official offering documents that contain important information about the investment
+and the issuers, including risks. Investors should carefully read the offering documents.
+Investors should conduct their own due diligence and are encouraged to consult with their
+tax, legal and financial advisors.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1 s-paddingHoriz1_5 s-paddingVert1 u-text-center u-fontWeight500'>
+Investors should verify any issuer information they consider important before making
+an investment.
+</p>
+<p class='s-marginBottom1'>
+Investments in private companies are particularly risky and may result in total loss of
+invested capital. Past performance of a security or a company does not guarantee future
+results or returns. Only investors who understand the
+<a class="c-link c-link--underline" href="/risks">risks of early stage investment</a>
+and who meet the Republic's
+<a class="c-link c-link--underline" href="/help/can-i-invest">investment criteria</a>
+may invest.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC verify
+information provided by companies on this Site and makes no assurance as to the completeness
+or accuracy of any such information. Additional information about companies fundraising on
+the Site can be found by searching the
+<a target="_blank" rel="noopener" class="c-link c-link--underline" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not require an
+EDGAR filing.
+</p>
+<p class='s-marginBottom1'>
+To help the government fight the funding of terrorism and money laundering activities,
+Federal law requires all financial institutions to obtain, verify, and record information
+that identifies each person who opens an account.
+Therefore, when you use the Services we will ask for your name, address, date of birth,
+and other information that will allow us to identify you.
+We may also ask to see your driver's license, passport or other identifying documents.
+</p>
+<p class='s-marginBottom1'>
+Republic and its affiliates are not and do not operate or act as a bank. Certain banking
+services are provided by BankProv, member FDIC / member DIF. Digital (crypto) assets and
+investment products are not insured by the FDIC, may lose value, and are not deposits or other
+obligations of BankProv and are not guaranteed by BankProv. Terms and conditions apply.
+</p>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+
+<script src="https://static.zdassets.com/ekr/snippet.js?key=d10adfc1-5afd-478b-b60b-d5f58ec5e520" id="ze-snippet" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==">
+  window.zESettings = {
+    webWidget: {
+      zIndex: 86,
+      offset: {
+        horizontal: '55px',
+        vertical: '2px',
+        mobile: {
+          horizontal: '-4px',
+          vertical: '90px'
+        }
+      },
+      contactForm: {
+        title: {'*': 'How can we help?'},
+        ticketForms: [{ id: 6139814921239 }],
+        fields: [
+          { id: 'subject', prefill: { '*': 'Need help!' } },
+          { id: 'email', prefill: { '*': "" } },
+          { id: 'key:6164328823703', prefill: { '*': "" } },
+        ],
+      },
+      helpCenter: {
+        title: {'*': 'FAQ'},
+        searchPlaceholder: {'*': 'What can we help you with?'},
+        messageButton: {'*': 'Contact Us'},
+        originalArticleButton: false,
+      },
+    },
+  };
+  
+  zE('webWidget', 'setLocale', 'en');
+  zE('webWidget', 'helpCenter:setSuggestions', { search: 'invest' });
+</script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="ZcYGfb7xhEBqdjqPXGciSQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="ZcYGfb7xhEBqdjqPXGciSQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+<script src="https://assets.republic.com/assets/w/runtime~MediaSliderPage-1098888d834bd3762a55.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ae-cda0d3eb09b2571ee24e.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apexcharts_dist_apexcharts_common_js-ba302c83-12acaec747ed98c96c79.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apollo_client_c-752f32f6a5f08b47aee9.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ap-10286ca6eee77e5cfdbe.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ax-87ca8eab84b534ce51a3.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_braze_web-sdk_sh-082bda95cd1f46db675e.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_br-ded297e3061c09e58176.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ca-0192f74a4e598aec7a52.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_core-js_i-f3d9e78f9f53cf58378d.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_crc-8b8be13627dda03b73d8.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_c-cea66e909f36387f5945.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_da-5b72066967e09ff24edf.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_d-83acda350f41f6abdff3.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_el-ea7a9011bec346028733.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_c-22aa4e04a1fbdd3d6e3f.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_common_dist_browser_genesisStates_mainnet_json-97430531-83fe7f595f064e0385b1.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethersproject_a-8765651a2f1bdccf9a56.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_et-b31cc9258c2c1d07cac5.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_e-d4fab84d8ab34150ad30.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_fontkit_dist_module_mjs-3528d02d-ecc0f4556eda5102b2d3.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_froala_editor_min_js-b1fc3988-ced20c2300f6c9f40897.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_plugins_pkgd_min_js-adc83e4b-33e97225bf9033164d2d.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_grapesjs_dist_grapes_min_js-a826bfc4-cadb07d673643a51118e.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_g-9055b0297f7ac6f017f0.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_i-b77e6ab09fad9dae77d3.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_l-b1a7deddd04fdb5d9a33.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_n-a907fa203947450ef394.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pb-cab37a002985eca657b7.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pd-cf393d506219ee5b112a.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pl-4c6fabe429fda4071dbb.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_p-27f2b800da9d84d8e2bf.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_rc-o-80e5f70e3d9925c8cdb0.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reach-857404c519977edb5b66.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-l-0c79a438a779449c0b1d.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-r-3c1ef064934605ec254d.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reac-dd43f7d7d874a68c99e5.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_r-b902bc774bc3ff333672.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_sc-0f32c01226134eda1296.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_se-74d4cf204c9d98a015aa.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_s-884ee524820f17ecd6cb.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_A-8cf01848e62c80ff23d7.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_I-5990a0d8dde19f6e04bd.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_A-c0356acbaf9d3c64d8d4.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_C-81436052b30a8eba6374.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_F-445b408fa8bf17d5aa78.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_I-662a93905a6a15b4f741.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_P-69d60a2c449dc7cb6600.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_T-e09f8036fafdc3c6afe0.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_ad-a41070ea11aea6a6ef6a.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+<script src="https://assets.republic.com/assets/w/MediaSliderPage-9d07a76fbcff98a1daf3.js" nonce="ZcYGfb7xhEBqdjqPXGciSQ=="></script>
+</body></html>
+
+
+

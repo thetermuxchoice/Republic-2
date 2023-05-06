@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="RIViN94IfNP35RQal4ijQQ==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="RIViN94IfNP35RQal4ijQQ==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+Maternova — Republic
+</title>
+<link href='https://republic.com/maternova' rel='canonical'>
+<meta content='Invest in a women&amp;#39;s health solutions company with a pioneering anti-Zika apparel product' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='Maternova' itemprop='name'>
+<meta content='Invest in a women&amp;#39;s health solutions company with a pioneering anti-Zika apparel product' itemprop='description'>
+<meta content='https://uploads.republic.com/p/offerings/cover_photos/social_share/000/000/008/8-1586238350-5786c97c18b2ee6fbddaa3ffd21a2368777b4ed8.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='Maternova' name='twitter:title'>
+<meta content='Invest in a women&amp;#39;s health solutions company with a pioneering anti-Zika apparel product' name='twitter:description'>
+<meta content='https://uploads.republic.com/p/offerings/cover_photos/social_share/000/000/008/8-1586238350-5786c97c18b2ee6fbddaa3ffd21a2368777b4ed8.jpg' name='twitter:image'>
+<meta content='https://republic.com/maternova' property='og:url'>
+<meta content='Maternova' property='og:title'>
+<meta content='Invest in a women&amp;#39;s health solutions company with a pioneering anti-Zika apparel product' property='og:description'>
+<meta content='https://uploads.republic.com/p/offerings/cover_photos/social_share/000/000/008/8-1586238350-5786c97c18b2ee6fbddaa3ffd21a2368777b4ed8.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/vendor-node_modules_a-db7c58b4.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Ac-919e95b8.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Table_Table_module_scss-e15798b9-0e96676f.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/MediaSliderPage-66fe9f7a.css" />
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="9LpcMnAobaFlRaR_fgVfxX-m0UiYPIKwfjKOoQnfOgf_rBAauGrx7-8Bctt8DINK_NCBPgB6zfiwmZJgjjurLQ" />
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+  analytics.page(
+    "offering",
+    "maternova", {
+      url: "https://republic.com/maternova"
+    }, {
+      integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+    }
+  );
+</script>
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="RIViN94IfNP35RQal4ijQQ==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class="offerings-show__body preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="layouts-header_footer" data-rc="layouts/header_footer"><nav class="c-header-nav c-header-nav--default  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/black/150x38/logo-211758c2027fc8268186d512a2119520a35358973648789a123d9fb6c3d5a37f.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search  layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--default" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div>
+<div class="layouts-full_width" data-rc="layouts/full_width"><script nonce="RIViN94IfNP35RQal4ijQQ==">
+  if (dataLayer) {
+    dataLayer.push({"event":"detail","ecommerce":{"currencyCode":"USD","detail":{"products":[{"name":"Maternova","id":"maternova","price":20,"category":"Companies, Women Founders, Nanotechnology, Social Impact, B2C, Profitable, Bootstrapped, Apparel \u0026 Accessories, Crowd SAFE, Health \u0026 Wellness","quantity":1}]}}});
+  }
+</script>
+<div class="js-segment_product_view s-marginBottom3_5 offerings-show" data-sticky-container="true" data-state="finalized" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Maternova&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:8,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/008/8-1586841642-08ceb1cd40615a31daddc24203a3873740d795bf.jpg&quot;,&quot;min_investment_amount&quot;:20,&quot;slug&quot;:&quot;maternova&quot;,&quot;tags&quot;:&quot;v-companies,women-founders,nanotechnology,social-impact,b2c,profitable,bootstrapped,apparel-accessories,crowd-safe,health-wellness&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/maternova&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-rc="offerings/show"><div class='js-router_data' data-root='maternova'></div>
+<div class="offerings-show-invest_modal" data-rc="offerings/show/invest_modal"><div class='js-remodal remodal offerings-show-invest_modal__invest_modal' data-remodal-id='invest'>
+<a class='remodal-close' data-remodal-action='close'></a>
+<h1 class='c-secondaryTitle offerings-show-invest_modal__invest_title'>
+Maternova isn't accepting new investments
+</h1>
+<p class='s-marginTop2 s-fontSize17 u-colorMuted offerings-show-invest_modal__invest_date'>
+Maternova’s deadline was
+<span class='u-blockXsOnly'>
+December 20, 2016
+</span>
+</p>
+<p class='s-marginTop2 s-marginHoriz5 s-fontSize17 offerings-show-invest_modal__invest_message'>
+Follow the company to stay updated on their progress,
+including future investment opportunities
+</p>
+<p class='s-marginTop1'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Invest modal" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link" data-action="follow" data-href="/register?after_sign_in=%2Fmaternova%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5'>
+254
+</span>
+</button>
+</div>
+</p>
+<hr class='s-marginTop2 s-marginPullHoriz2 offerings-show-invest_modal__invest_divider'>
+<div class='u-displayFlex u-alignItemsCenters-marginTop2 offerings-show-invest_modal__invest_footer'>
+<div class='u-flex1'>
+Explore new investment opportunities:
+</div>
+<div class='u-flex1'>
+<a class="c-button c-button--secondary" href="/#offerings">View companies raising now</a>
+</div>
+</div>
+</div>
+</div>
+<header class="s-container s-gridMaxXs24 s-paddingTop5 s-paddingBottom3 offerings-show-header offerings-show-header--maternova" data-rc="offerings/show/header"><div class='js-header_content'>
+<div class='s-marginPullTop2'>
+<div class="s-marginBottom2 u-displayFlex u-alignItemsCenter s-fontSize18 u-colorMuted offerings-show-header-message_campaign_ended" data-rc="offerings/show/header/message_campaign_ended"><div class='u-flexGrow s-borderTop0_5 s-marginTop0_5'></div>
+<div class='s-marginHoriz1'>
+<i class='icon-lock'></i>
+Campaign ended
+</div>
+<div class='u-flexGrow s-borderTop0_5 s-marginTop0_5'></div>
+</div>
+</div>
+<div class='s-grid offerings-show-header__top-part'>
+<div class='s-grid-colSm16'>
+<div class="offerings-show-header-title" data-rc="offerings/show/header/title"><div class='u-displayFlex'>
+<div class='u-hiddenPrint offerings-show-header-title__avatar-wrapper'>
+<div class="c-avatar c-avatar--small offerings-show-header-title__avatar c-avatar--border c-avatar--maternova"><img alt="Logo of Maternova" title="Maternova" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/008/8-1526918413-319056ba8acdfd79283ef1397b7df266bcbefcf4.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/008/8-1526918413-ad70e13ca751a8d18ce7773567b5355c1f008bd4.png" /></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<h1 class='c-primaryTitle offerings-show-header-title__company-name'>
+Maternova
+</h1>
+</div>
+</div>
+<div class='c-subtitle s-fontSize20 s-marginTop0_5 offerings-show-header-title__high-concept'>
+Maker of an innovative fashion line that protects from Zika and other viruses
+</div>
+<div class='s-marginTop1_5'>
+<div class=''>
+<div class="c-tag-container u-hiddenPrint s-marginTop1 offerings-show-header-title__tags-wrapper offerings-shared-tags" data-rc="offerings/shared/tags"><a class="c-tag c-tag--small c-tag--flat c-tag--no_border " style="background-color: #c2f9f4" href="/tag/women-founders">Women Founders</a>
+<a class="c-tag c-tag--small c-tag--flat c-tag--no_border " style="background-color: #CEEAFF" href="/tag/social-impact">Social Impact</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/b2c">B2C</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/apparel-accessories">Apparel &amp; Accessories</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/nanotechnology">Nanotechnology</a>
+<a class="c-tag c-tag--small c-tag--flat c-tag--no_border c-tag--flat" style="" href="/tag/health-wellness">Health &amp; Wellness</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8 u-hiddenSmDown'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Maternova" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Fmaternova%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Fmaternova"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?text=Invest+in+a+women%27s+health+solutions+company+with+a+pioneering+anti-Zika+apparel+product&amp;url=https%3A%2F%2Frepublic.com%2Fmaternova"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?text=Invest+in+a+women%27s+health+solutions+company+with+a+pioneering+anti-Zika+apparel+product&amp;url=https%3A%2F%2Frepublic.com%2Fmaternova"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Fmaternova"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-displayFlex u-blockXsOnly offerings-show-header__media-react'>
+<div class='s-grid-colSm16'>
+<div class='offerings-show-header__media-react-content'>
+<div class="offerings-show-header-media_react" data-rc="offerings/show/header/media_react"><div data-react-key="MediaSliderPage" data-react-id="121f2bd9-ef49-4dfd-b067-a864f797ed7a"><div class="js-react-component--placeholder"><div class='offerings-show-header-media_react__image-wrap'>
+<div class='offerings-show-header-media_react__image'>
+<img srcset="https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/001/725/1725-1636530791-4957ad0dd71f0db25c00eecd50035042729483ec.jpg 2x" class="u-displayBlock  " alt="Featured image of Maternova" title="Maternova" src="https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/001/725/1725-1636530791-1d340add84f78e1e2606fc9b59cc55b74424a212.jpg" />
+</div>
+</div>
+</div><div class="js-react-component--content u-invisible"></div></div><script nonce="RIViN94IfNP35RQal4ijQQ==" type="application/json" data-react-key="MediaSliderPage" data-react-id="121f2bd9-ef49-4dfd-b067-a864f797ed7a">{"media":{"data":[{"id":"1725","type":"offerings_slider_media_item","attributes":{"content_type":"video","order_num":0,"content_file_name":"Fine_Cut.mp4","content_file_size":34278881,"preview_file_name":"8-1526920931-4ff8c2cab94e07bbf578388c93e277cebaf6d98e.jpg","preview_file_size":102097,"url":null,"url_preview":null,"content_url":{"original":"https://uploads.republic.com/p/offerings/slider_media_items/contents/original/000/001/725/1725-1636530794-79a9f0216eb396a81182d4eb0e2e9b9f7e1df17a.mp4"},"preview_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/001/725/1725-1636530791-1d340add84f78e1e2606fc9b59cc55b74424a212.jpg","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/001/725/1725-1636530791-4957ad0dd71f0db25c00eecd50035042729483ec.jpg","small":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small/000/001/725/1725-1636530791-f67ef1ab46927ec1a4321ea7b00fed2bec03fa2d.jpg","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small_2x/000/001/725/1725-1636530791-5ccbd7f869247716dc6f8cb4363e513e01ad1299.jpg"},"youtube_id":null}}]},"editMode":false,"isIssuer":false,"offeringSlug":"maternova","offeringState":"finalized","missingPreviewUrl":"/previews/small/missing.png"}</script></div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8'>
+<div class="u-displayFlex u-flexDirectionColumn offerings-show-header-sidebar" data-rc="offerings/show/header/sidebar"><div class='u-flexGrow offerings-show-header-sidebar__top-part'>
+<div class="s-grid offerings-show-header-raising_information" data-rc="offerings/show/header/raising_information"><div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 s-borderBottom1 offerings-show-header-raised_amount offerings-show-header-raised_amount--without-divider" data-rc="offerings/show/header/raised_amount"><div class='s-fontSize35 c-condensedTitle offerings-show-header-raised_amount__title u-colorGreen'>
+$104,976
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-raised_amount__subtitle'>
+100% of minimum goal raised
+</div>
+<i class='icon-info-letter icon--frame u-displayInlineBlock js-tooltip_simple offerings-show-header-raised_amount__icon-info' data-tippy-content='Maternova is raising up to $500K with a minimum goal of $100K'></i>
+</div>
+<div class='c-progress c-progress--large s-marginTop0_5 c-progress--gray'>
+<div class='c-progress__bar' style='width: 104%'></div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 offerings-show-header-investors offerings-show-header-investors--closed" data-rc="offerings/show/header/investors"><div class='c-primaryTitle s-fontSize35 offerings-show-header-investors__title u-colorMuted'>
+131
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-investors__subtitle'>
+Investors
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-message_successfully_funded" data-rc="offerings/show/header/message_successfully_funded">Successfully funded and closed
+<span class='u-whiteSpaceNowrap'>
+on December 20, 2016.
+</span>
+</div>
+</div>
+<div class='offerings-show-header-sidebar__bottom-part s-marginTop2'>
+<div class="u-bgWhite offerings-show-header-invest_button" data-rc="offerings/show/header/invest_button"><div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button--block c-button--large s-paddingHoriz0_5 c-button--disabled offerings-shared-invest_button__lock_button js-locked_button u-displayFlex u-justifyContentCenter" href="/maternova#invest"><i class="icon-lock"></i> Invest in Maternova
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class='u-bgGray s-paddingTop3 s-paddingBottom2_5 offerings-show__other-offerings'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-displayFlex u-justifyContentSpaceBetween u-flexWrap u-alignItemsCenter'>
+<h2 class='c-secondaryTitle u-colorGray6'>
+Open for investment
+</h2>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7 s-marginVert0_5'>
+Investors in Maternova also invested in these companies.
+<a href="/companies">View more</a>
+</div>
+</div>
+<div class='s-marginTop1 s-marginBottom1_5'>
+<div class="offerings-show-cards_slider" data-rc="offerings/show/cards_slider"><div class='s-grid js-offerings_slider js-segment_product_list offerings-show-cards_slider__slider' data-segment-list-id='promo-offering-other-deals'>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;HelloSubs&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1992,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/992/1992-1669649307-439c62431f9209bd2451c61989bdf0b1f12ebcd8.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;hellosubs&quot;,&quot;tags&quot;:&quot;marketplace,edtech,apps,crowd-safe,v-companies,venture-backed,1m-revenue,coming-soon-1,b2b&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/hellosubs&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/hellosubs"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="HelloSubs" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fhellosubs%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/992/1992-1669649307-439c62431f9209bd2451c61989bdf0b1f12ebcd8.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--hellosubs"><img alt="Logo of HelloSubs" title="HelloSubs" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/992/1992-1667880537-5890af22e72e61623c1b11aaa8f79be29bb6d3e8.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/992/1992-1667880537-ba0502b64ed6fc63569b8e7e7339fa6231215641.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">HelloSubs
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Solving the substitute teacher shortage with our on-...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:true,&quot;company_name&quot;:&quot;BuyAlerts&quot;,&quot;days_remaining&quot;:6,&quot;id&quot;:2065,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/065/2065-1674503319-fba03242fd891738b3ba7832f451ccaa57058fe3.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;buy-alerts&quot;,&quot;tags&quot;:&quot;fintech,ai-machine-learning,big-data,v-companies,saas,crowd-safe,1m-revenue,bootstrapped&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/buy-alerts&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/buy-alerts"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="BuyAlerts" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fbuy-alerts%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/065/2065-1674503319-fba03242fd891738b3ba7832f451ccaa57058fe3.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--buy-alerts"><img alt="Logo of BuyAlerts" title="BuyAlerts" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/065/2065-1677087602-a39b1e77a9ccadd1a24e6fc331b3762b29c53aba.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/065/2065-1677087602-e464f714d44a1e8bfcd446239c100b19c0d73d8d.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">BuyAlerts
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+AI technology for the markets | Trade alerts, when t...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+</div>
+<div class='js-offerings_slider_loader u-hiddenXsOnly s-marginTop7'>
+<div class='u-textCenter s-fontSize18 u-fontWeight400 u-colorMuted'>
+<i class='c-spinner'></i>
+Loading...
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="u-hiddenPrint offerings-show-content_navigation" data-rc="offerings/show/content_navigation"><div class='c-content_nav u-hiddenSmDown'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16 s-grid--middle'>
+<div class='c-content_nav__container'>
+<a class="c-content_nav__link js-content-nav-link active" href="#pitch">Pitch</a>
+<a class="c-content_nav__link js-content-nav-link" href="#updates">Updates
+<span class='c-content_nav__booble'>
+9
+</span>
+</a><a class="c-content_nav__link js-content-nav-link" href="#reviews">Reviews
+<span class='c-content_nav__booble'>
+21
+</span>
+</a></div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 s-grid--middle'>
+<div class='offerings-show-content_navigation__contact-wrapper'>
+<div class='u-displayFlex u-justifyContentSpaceBetween'>
+</div>
+</div>
+<div class='offerings-show-content_navigation__cta-wrapper'>
+<div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button c-button--block s-paddingHoriz0_5 offerings-show-content_navigation__cta-button c-button--disabled offerings-shared-invest_button__lock_button js-locked_button u-displayFlex u-justifyContentCenter" href="/maternova#invest"><i class="icon-lock"></i> <span class='u-hiddenLgOnly'>
+Invest
+</span>
+<span class='u-hiddenMdDown'>
+Invest in Maternova
+</span>
+
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp u-displayFlex u-alignItemsCenter offerings-show-content_navigation__mobile-navigation'>
+<select class='c-input c-input--select c-input--large js-mobile-nav offerings-show-content_navigation__mobile-select'>
+<option selected value='/maternova/pitch'>
+Pitch
+</option>
+<option value='/maternova/deal-terms'>
+Deal terms
+</option>
+<option value='/maternova/documents'>
+Documents
+</option>
+<option value='/maternova/team'>
+Team
+</option>
+<option value='/maternova/press'>
+Press
+</option>
+<option value='/maternova/updates'>
+Updates
+(9)
+</option>
+<option value='/maternova/reviews'>
+Reviews (21)
+</option>
+</select>
+<div class='s-marginLeft1_5'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Maternova" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Fmaternova%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Fmaternova"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?text=Invest+in+a+women%27s+health+solutions+company+with+a+pioneering+anti-Zika+apparel+product&amp;url=https%3A%2F%2Frepublic.com%2Fmaternova"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?text=Invest+in+a+women%27s+health+solutions+company+with+a+pioneering+anti-Zika+apparel+product&amp;url=https%3A%2F%2Frepublic.com%2Fmaternova"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Fmaternova"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingTop0_5 s-borderBottom0_5 u-textCenter s-fontSize14 offerings-show-content_navigation__disclaimer'>
+<div class='u-colorGray7 u-fontWeight400'>
+<i class='icon-attention u-colorOrange'></i>
+<span class='u-hiddenSmUp'>
+Closed on December 20, 2016.
+Information may not be up-to-date.
+</span>
+<span class='u-hiddenXsOnly'>
+Campaign closed on December 20, 2016.
+Information displayed may not be up-to-date.
+</span>
+</div>
+</div>
+</nav>
+<div class='js-terms u-hidden s-paddingTop6_5'>
+<div class='js-section s-paddingTop2' id='terms'>
+<div class="s-container s-gridMaxXs24 s-paddingTop0_5 offerings-show-terms_section" data-rc="offerings/show/terms_section"><div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16'>
+<div class='c-offeringTermsContent'>
+
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8'>
+<div class='u-hiddenPrint'>
+<div class='s-spacerXs3 s-spacerSm0_5'></div>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic (OpenDeal Portal LLC, CRD #283874) is hosting this Reg CF securities offering by . View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/cgi-bin/browse-edgar?company=maternova&amp;owner=exclude&amp;action=getcompany"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form C
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+<div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14 s-marginBottom0_5'>
+Company documents
+</div>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/5"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Maternova Crowd Safe
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-update u-hidden s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='js-section s-grid-colLg17 s-grid--pushLg4 s-grid-colSm20 s-grid--pushSm3' id='updates'>
+<div class='s-paddingTop2'>
+<div class='js-update_section_placeholder' data-url='/maternova/show_updates'>
+<div class='u-textCenter u-colorGray9 s-fontSize20 s-marginVert10'>
+<i class='c-spinner'></i>
+Loading
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-reviews u-hidden s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='js-section' id='reviews'>
+<div class='s-paddingTop2'>
+<div class="s-paddingTop1_5 offerings-show-reviews_section" data-rc="offerings/show/reviews_section"><h3 class='s-marginBottom3 c-secondaryTitle u-colorMuted offerings-show-reviews_section__title'>
+Hear from some of the
+<span class='u-whiteSpaceNowrap'>
+131
+investors
+</span>
+in Maternova
+</h3>
+<div class='js-investment_reasons_loader'>
+<div class="investment_reasons-shared-page_loader" data-rc="investment_reasons/shared/page_loader"><div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<hr class='s-marginVert2'>
+<div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-investment_reasons_wrapper'></div>
+<div class='js-investment_reasons_show_more_wrapper u-hidden'>
+<div class='s-spacerXs2_5 s-spacerSm4'></div>
+<div class='s-grid'>
+<div class='s-grid-colSm16'>
+<a class="js-investment_reasons_show_more c-button c-button--secondary c-button--large c-button--block" data-url="/maternova/reviews/page/1" href="javascript:void(0)">Show more</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-sections offerings-show__sections s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid js-pitch_grid offerings-show__pitch-grid'>
+<div class='js-section s-grid-colMd17 s-grid-colSm16 s-marginBottom3 offerings-show__pitch' id='pitch'>
+<div class="offerings-show-pitch_section" data-rc="offerings/show/pitch_section"><div class='s-marginRight3 offerings-show-pitch_section__pitch-wrapper'>
+<div class="js-pitch_section s-paddingTop3 offerings-show-pitch_non_modular" data-rc="offerings/show/pitch_non_modular"><div class='js-pitch_content c-offeringPitchContent offerings-show-pitch_non_modular__pitch-content offerings-show-pitch_non_modular__pitch-content--Maternova'>
+<h3>Deal highlights</h3><ul><li class="u-wysiwygMedium">Stylish apparel line that protects from Zika and other viruses</li><li class="u-wysiwygMedium">Made of innovative fabric with nanotechnology</li><li class="u-wysiwygMedium">Globally known brand for expertise in maternal and newborn health</li><li class="u-wysiwygMedium">Established cash flow-positive business</li></ul><p class="u-wysiwygMedium">As seen in:</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/623/623-1480612267-3d43a3604bd9e9dc8b2267a2365e5b9f31cd5d45.png" class="fr-fic fr-dii"></figure><p><br></p><h2>The world is not safe for women</h2><h3>Insect borne illnesses: Zika, Lyme, malaria, dengue, Chikungunya, etc., pose serious health threats for moms and babies. They spread quickly across the US and Latin America and trigger public health alerts.</h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/624/624-1480612522-cfe654f0ed3be30c5435034366a8513b00a8e042.png" class="fr-fic fr-dii"></figure><p>Among significantly affected countries are USA, Brazil, Mexico, Colombia and over 100 more. The effects of these viruses can be quite severe for pregnant women and their babies, with microcephaly as one consequence of Zika.</p><p><br></p><p>Current preventive solutions like mosquito repellents have proven to be ineffective. Research by our partner clinic in El Salvador (run by Americares) has documented that women avoid wearing skin based repellents because they smell bad and are expensive.</p><p>Our study found that only 89% of women are not comfortable applying repellent directly to their skin. Vaccines, bed nets, community spraying and mosquito traps are not enough.</p><p><strong><br></strong></p><p><strong>Women need an inexpensive way to protect themselves from Zika as they move about during the day. This is especially critical for countries without a sophisticated medical system.&nbsp;</strong></p><p><br></p><h2>Introducing NovaVeil – a line of protective apparel by Maternova, incorporating stylish design and nanotechnology</h2><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/541/541-1476401029-3ade6cfcb4c4f6ceb53c41570f020b2cf5d7744c.jpg" class="fr-fic fr-dii"><br></figure><p>A labor of love between Maternova, Inc. and a renowned Brazilian designer Alessandra Gold, NovaVeil is the first line of stylish protective apparel that allows women to feel empowered and confident, knowing that they are protecting themselves beautifully.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/625/625-1480612766-8a0f2e1f8e6dff950124795dbd89cadf15154fbd.jpg" class="fr-fic fr-dii"></figure><p>NovaVeil is using a patented nanotechnology-enhanced textile that repels the mosquitoes that carry viruses, This textile allows us to manufacture stylish but affordable garments that women can wear during the day to protect themselves against the Zika virus.</p><h3><strong>NovaVeil line:<br><br></strong><img src="https://uploads.republic.co/p/images/attachments/original/000/000/626/626-1480612821-b5ef597e424b1dd53a0ef3d54a2f4f4bf1e69658.jpg" class="fr-fic fr-dii"></h3><p>We use the world's best scientific minds alongside the ideal creative partner to develop original and innovative solutions.</p><p><br></p><p>Each detail is crafted specifically for impacted climates and consider the habits of the mosquitoes – they bite in the day and they especially like dark colors – so the designs feature a lighter calming palette.</p><p><strong><br></strong></p><h3><strong>Maternity dress</strong></h3><p>First ever dress designed to appeal across cultures, expand to fit a growing belly and imbued with nanotech repellent</p><ul><li><p>Thoughtfully constructed for women of all sizes and heights</p></li><li><p>Interior dress comes with simple cinching ties</p></li><li><p>Ruched hem adjusters for full or mid length options</p></li></ul><h3><strong>Cardigan</strong></h3><ul><li><p>lightweight elongated cardigan</p></li><li><p>includes a hood to protect the head and hair</p></li><li><p>sleeves that extend over most of the hand for maximum coverage and protection.</p></li></ul><h3><strong>Scarf</strong></h3><ul><li><p>Lightweight breathable scarf</p></li><li><p>able to cover the head or the lap</p></li><li><p>can cover an infant bassinet or an infant nursing with mother</p></li></ul><h3><strong>Leggings</strong></h3><ul><li><p>Light colored leggings</p></li><li>Protect the lower half of the body and ankles, an area of particular interest to the virus carrying mosquitos.</li></ul><p><img src="https://uploads.republic.co/p/images/attachments/original/000/000/542/542-1476401081-e08413ed38f371cd2ddd06e6dc7327ea126b2039.jpg" class="fr-fic fr-dii"><br></p><p class="u-text-center"><br></p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/627/627-1480613421-80fb687f0fda4301397fd7660b5ccd7977658806.png" class="fr-fic fr-dii"></figure><p>Chemicals used by pregnant women must be safe for the mother and for the fetus. NovaVeil is protecting women using a special fabric that does not result in the absorption of repellent chemicals into the skin.</p><h3><img src="https://uploads.republic.co/p/images/attachments/original/000/000/628/628-1480613482-fde72cc057fce6e9b6728347e51d197648594b63.png" class="fr-fic fr-dii"><br></h3><p>The Environmental Protection Agency reviews clinical and environmental data to ensure consumer protection. By using a chemical already approved by the EPA we 1) ensure that it is safe and 2) save years of approval and testing.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/630/630-1480613516-3625c571cec2a73836e371a6e0df583a33fabe67.png" class="fr-fic fr-dii"></figure><p>By ensuring a long life for a maternity garment and other pieces, we bring down the average cost per day of protection significantly.</p><p><br></p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/000/631/631-1480613530-95b303b6563ee9142b9e4d0b527f045ad1e23ced.png" class="fr-fic fr-dii"><br></p><p>According to studies, skin-based repellents are avoided because of odor. By providing an odorless solution in the form of apparel, we increase the chances that women will use it and be protected.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/629/629-1480613497-ec8bec69c2713358c228fb7279af7c5b00c05ea0.png" class="fr-fic fr-dii"></figure><p>Skin-based repellents are a hassle and are quite costly. NovaVeil makes protection from mosquitos effortless – wearing clothing is easier than applying repellent every few hours.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/632/632-1480613552-29e2c49a2a7d0d7b70d82e9e35e71a8faaf6149a.png" class="fr-fic fr-dii"></figure><p>Mosquitos in some countries, including Puerto Rico, have evolved to be able to resist permethrin – this widely recommended insecticide is simply not effective in many areas.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/633/633-1480613561-6a574e8b9d67d4d68c7ac782b3b0c217198c3f95.png" class="fr-fic fr-dii"></figure><p>Nanotechnology processes allow the insect repellent to be bound to textile fibers at the molecular level. It is this process which gives the textile its long life through many washings.</p><p>A patented technology enables us to offer something that is exclusively our own. It can not be copied and allows us, with our partners, to maintain quality control.</p><h2>And.. <strong>stylish</strong>.</h2><p>Maternova considers style as a part of dignity. Women should be able to protect themselves and their babies while still looking stunning.</p><p>We’ve partnered with Alessandra Gold - the fashion designer behind the NovaVeil line.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/634/634-1480613605-223d82653089cfbbf5d4db280785d7bca1e128ac.jpg" class="fr-fic fr-dii"></figure><p>Born in Brazil and headquartered in Miami, Alessandra knows how to design for women and is 100% committed to creative approaches to protecting women.</p><ul><li><p>trained at Fashion Institute of Technology, New York</p></li><li><p>named as this year's top 10 Miami designer</p></li><li><p>named one of 8 Latin American designers to watch by Glamour magazine</p></li><li><p>designs featured in Sports Illustrated, Nylon, and Vogue</p></li></ul><p><img src="https://uploads.republic.co/p/images/attachments/original/000/000/643/643-1480614668-39c08e529bec2cb5b02ba932877b5389d69b9acb.png" class="fr-fic fr-dii"><br></p><h2><strong>Solution for the whole world</strong></h2><h3>Retail line for established markets</h3><p>We will sell the NovaVeil line at retail prices so that higher-income women have access to stylish apparel that protects against Zika. Doctors and midwives will sell products through their clinics, governments will buy product in bulk, and individuals will buy retail so that the average woman in Europe, the U.S. and Brazil can be protected.</p><h3>Subsidized line for lower-income women at risk</h3><p>Part of the proceeds from the retail line will be used to subsidize a line of protective apparel for low-income women in the countries hardest hit by viruses. Humanitarian organizations will be able to purchase in bulk for distribution for displaced populations at risk of mosquito borne illness.</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/000/643/643-1480614668-39c08e529bec2cb5b02ba932877b5389d69b9acb.png" class="fr-fic fr-dii"><br></p><h2><strong>About Maternova, Inc.&nbsp;</strong></h2><p>Maternova, Inc is a globally recognized women’s health solutions company. We’re the purveyors of hope and innovation: our mission is to improve the quality of life for women and newborns everywhere by accelerating access to life-saving technologies. We create health-enhancing solutions that young women will want to integrate into everyday life.</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/000/636/636-1480613865-e186e321568c3d69724ec4f00eec132fafd4e525.png" class="fr-fic fr-dii"><br></p><p><br></p><h3>We have the right pieces in place to launch NovaVeil &nbsp;</h3><p>We already distribute medical technologies around the world. We work with governments, hospitals, humanitarian organizations and clinicians. In other words, we have the customers and the distribution system in place.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/635/635-1480613859-d5fdaf71ebeea789ac28ee75212d8b96dbaabc67.png" class="fr-fic fr-dii"></figure><p><br></p><h3>A trusted brand</h3><p>Maternova negotiates exclusive distribution agreements with innovators and entrepreneurs as well as corporates. We use a series of product screens to select life-saving innovations, and the innovators work with us because of our reach and reputation.</p><p><br><img src="https://uploads.republic.co/p/images/attachments/original/000/000/637/637-1480613908-8aec856139fe796dee7609edb0119ed02f858c94.png" class="fr-fic fr-dii"><br></p><h3><br></h3><h3>A proven, working business model</h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/638/638-1480613927-ae45ca25129d4608b02b73f866c4ce62619ab322.png" class="fr-fic fr-dii"></figure><p><br></p><h3>A&nbsp;15,000-strong provider network</h3><p>Through our self-built mailing list and social media, we reach over 15,000 frontline providers and procurement agencies who equip them. This network allows us to 'take the pulse' of the needs of clinicians, and to test and validate innovations rapidly.</p><p><br></p><h3>Existing products portfolio</h3><p>Survival Duos: one of Maternova’s products on the market:</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/639/639-1480614102-f2a102cc9c31bfa6f1b37abeb4be8f1857d3747b.png" class="fr-fic fr-dii"></figure><p>See more products at <a href="https://maternova.net/collections/all" target="_blank" rel="nofollow">maternova.net</a>.</p><p><br></p><p><br></p><h3>Happy customers &amp; partners</h3><figure><img src="https://uploads.republic.co/p/offering_images/attachments/original/000/000/458/458-1468826967-eb31e79e3d981bb905ba4f48cefcc5e6e0a3f855.png" class="fr-fic fr-dii"></figure><figure class="u-text-center"><img src="https://uploads.republic.co/p/offering_images/attachments/original/000/000/470/470-1468830615-9643a50e7ce4712794350aa48cece0076eabf047.png" class="fr-fic fr-dii"></figure><p class="u-text-center"><br></p><h3>Mentions in major press outlets</h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/640/640-1480614271-a8938701486a7e9f6ffca030ad6e3eea5cf344dc.png" class="fr-fic fr-dii"></figure><p>Hear the recent <a href="https://bbc.in/2fFIr8B" target="_blank" rel="nofollow">piece on BBC</a>.</p><p><br></p><h3>Support by grants and experts</h3><p>Maternova’s protective apparel concept is supported by some of the leading experts on global health and Zika. Maternova is part of an elite cohort of innovators cultivated by CAMtech and Massachusetts General Hospital. This cohort is advised by Dr. Michael Callahan, a top authority on Zika and head of the Zika Foundation. We are also supported with a seed grant from Grand Challenges Canada.</p><figure class="u-text-center"><img src="https://uploads.republic.co/p/images/attachments/original/000/000/641/641-1480614317-0dcd4c1f21b623822af49ba4d04745ab3745e4dc.png" class="fr-fic fr-dii"></figure><p><br></p><h3>We're in the&nbsp;growing medical device market</h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/642/642-1480614345-c4200fa598a5b341a1d96bbf3c33b35578f9db6a.png" class="fr-fic fr-dii"></figure><h3 class="u-text-center"><br></h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/643/643-1480614668-39c08e529bec2cb5b02ba932877b5389d69b9acb.png" class="fr-fic fr-dii"></figure><h2>What your investment will fund</h2><ul><li><p>Develop final prototypes for the protective apparel</p></li><li><p>Research demand for a full anti-Zika kit (apparel, repellent, bednets, etc)</p></li><li><p>Work with pattern maker to create patterns</p></li><li><p>Place order with the manufacturer</p></li><li><p>Launch marketing campaign</p></li><li><p>Deliver first run of the finished garments</p></li></ul><p><img src="https://uploads.republic.co/p/images/attachments/original/000/000/643/643-1480614668-39c08e529bec2cb5b02ba932877b5389d69b9acb.png" class="fr-fic fr-dii"></p><h2>Where we are now</h2><p>Within two months of developing the NovaVeil idea we have done the following:</p><ul><li><p>sourced the patented textile</p></li><li><p>partnered with a talented fashion designer from Brazil</p></li><li><p>produced the first run of maternity t-shirts for testing</p></li><li><p>designed four initial maternity pieces for the NovaVeil line</p></li><li><p>set up a partnership with a clinic in El Salvador (Americares)</p></li><li><p>designed a user testing tool</p></li><li><p>received requests from around the world, &nbsp;</p></li><li>Got early validation from the independent technical review teams in May 2016 from CAMtech, Mass General Hospital's Zika awards</li></ul><p><img src="https://uploads.republic.co/p/images/attachments/original/000/000/643/643-1480614668-39c08e529bec2cb5b02ba932877b5389d69b9acb.png" class="fr-fic fr-dii"></p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/000/644/644-1480615311-20bd1fe722efa10199d07328abebd76d4f757721.jpg" class="fr-fic fr-dii"></figure><h3><strong>Why&nbsp;we want you to join us</strong></h3><p>We want investors who are mothers, fathers, grandparents and daughters.</p><p>We need passionate people who understand that to protect women, to reduce the number of women dying in childbirth and to improve the health of adolescent girls, we need innovative, pioneering business models.</p><p><strong>We believe it’s a great time to be a woman.</strong> We are so excited to connect with your at the moment when innovation is desperately needed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 js-deal_page_sidebar'>
+<div class='s-spacerXs3'></div>
+<div class='js-section js-mobile_section s-marginBottom3 offerings-show__deal-terms' id='deal-terms'>
+<div class="offerings-show-deal_terms" data-rc="offerings/show/deal_terms"><div class="s-marginBottom1_5 offerings-show-deal_terms-header" data-rc="offerings/show/deal_terms/header"><h2 class='s-fontSize25 u-fontWeight800 u-colorGray6 c-condensedTitle offerings-show-deal_terms-header__title'>
+Deal terms
+</h2>
+<hr class='c-deal-page-title-divider'>
+</div>
+<div class='terms-block'>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-valuation_cap" data-rc="offerings/show/deal_terms/valuation_cap"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Valuation cap
+</div>
+<p class='c-deal-term__content'>
+$4,000,000
+</p>
+<p class='c-deal-term__helper'>
+The maximum valuation at which your investment converts
+into equity shares or cash.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe#terms">Learn more</a>
+</br>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-discount" data-rc="offerings/show/deal_terms/discount"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Discount
+</div>
+<p class='c-deal-term__content'>
+10%
+</p>
+<p class='c-deal-term__helper'>
+If a trigger event for Maternova occurs, the discount provision
+gives investors equity shares (or equal value in cash) at a reduced price.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe#terms">Learn more.</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-min_investment" data-rc="offerings/show/deal_terms/min_investment"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Minimum investment
+</div>
+<p class='c-deal-term__content'>
+$20
+</p>
+<p class='c-deal-term__helper'>
+The smallest investment amount
+that Maternova is
+accepting.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#minimum-and-maximum-investment">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-max_investment" data-rc="offerings/show/deal_terms/max_investment"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Maximum investment
+</div>
+<p class='c-deal-term__content'>
+$100,000
+</p>
+<p class='c-deal-term__helper'>
+The largest investment amount that Maternova is
+accepting.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#minimum-and-maximum-investment">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-raise_amounts" data-rc="offerings/show/deal_terms/raise_amounts"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Funding goal
+</div>
+<p class='c-deal-term__content'>
+$100K &ndash; $500K
+</p>
+<p class='c-deal-term__helper'>
+Maternova needs to raise
+$100K before the deadline.
+The maximum amount Maternova
+is willing to
+raise
+is $100K &ndash; $500K.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#funding-goal">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-deadline" data-rc="offerings/show/deal_terms/deadline"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Deadline
+</div>
+<div class='c-deal-term__content'>
+<span class='js-localtime_year' data-time='2016-12-20T04:59:00Z'></span>
+</div>
+<div class='c-deal-term__helper'>
+Maternova needs to reach their minimum funding goal before the deadline
+(
+<span class='js-localtime_year_timezone' data-time='2016-12-20T04:59:00Z'></span>).
+If they don’t, all investments will be refunded.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#campaign-timeline">Learn more</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-securities" data-rc="offerings/show/deal_terms/securities"><div class="offerings-show-deal_terms-securities-security" data-rc="offerings/show/deal_terms/securities/security"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Type of security
+</div>
+<p class='c-deal-term__content'>
+Crowd SAFE
+<span class='s-fontSize16 u-fontWeight400'>
+<p class='c-deal-term__helper'>
+A SAFE allows an investor to make a cash investment in a company, with rights to receive certain company stock at a later date, in connection with a specific event.
+<span class='u-hiddenPrint'>
+&middot;
+</span>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe">Learn more</a>
+</p>
+</span>
+</p>
+</div>
+<div class="offerings-show-deal_terms-securities-security_other" data-rc="offerings/show/deal_terms/securities/security_other"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="offerings-show-deal_terms-footer" data-rc="offerings/show/deal_terms/footer"><footer class='s-paddingTop1 js-deal_terms_footer u-hiddenPrint'>
+<a target="_blank" class="c-button c-button--secondary c-button--block" href="/learn/investors/what-the-deal-terms-mean">How it works</a>
+</footer>
+</div>
+</div>
+</div>
+<div class='js-section js-mobile_section s-marginBottom3 u-hiddenPrint offerings-show__documents' id='documents'>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic (OpenDeal Portal LLC, CRD #283874) is hosting this Reg CF securities offering by . View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/cgi-bin/browse-edgar?company=maternova&amp;owner=exclude&amp;action=getcompany"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form C
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+<div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14 s-marginBottom0_5'>
+Company documents
+</div>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/5"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Maternova Crowd Safe
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint js-section offerings-show__section' id='endorsements'>
+<div class='s-container s-gridMaxXs24 offerings-show__endorsements_container'>
+<div class='u-textCenter'>
+<h3 class='offerings-show__section-title'>
+Endorsed by
+</h3>
+</div>
+<div class='u-textCenter'>
+<div class='s-grid-colMd6 s-grid-colSm12 s-marginBottom2'>
+<a href="/women2" class="u-text-center s-paddingVert1 s-border1_5 c-link c-link--unstyled investor_groups-investor_group_card" data-rc="investor_groups/investor_group_card"><div class="c-avatar c-avatar--medium investor_groups-investor_group_card__avatar s-marginVert2 c-avatar--border"><img alt="Logo of Women 2.0" title="Women 2.0" srcset="https://uploads.republic.com/p/investor_groups/logos/medium_2x/000/000/007/7-1490797327-d93b74daecffed7816ae9d6b2cdb6d2273b0ef47.png 2x" src="https://uploads.republic.com/p/investor_groups/logos/medium/000/000/007/7-1490797327-c97d14dd473e21e5508a2813b79c28ccb8ef6f39.png" /></div>
+<h4 class='u-colorGray1 s-fontSize18 u-fontWeight500 investor_groups-investor_group_card__name'>
+Women 2.0
+</h4>
+<div class='s-marginTop1 s-marginBottom1 s-fontSize15 u-colorGray6 u-fontWeight400 investor_groups-investor_group_card__headline'>
+Building a future where gender is no longer a factor
+</div>
+<div class='s-fontSize14 u-colorGray8 u-fontWeight400 s-paddingTop0_5 investor_groups-investor_group_card__counter'>
+1606 members
+</div>
+<div class='s-marginTop1 s-marginHoriz1 u-hiddenXsOnly'>
+<span class='c-button c-button--secondary c-button--block js-register' href='/register?after_sign_in=%2Fwomen2%3Fjoin%3Dtrue'>
+Join
+</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='about'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+About Maternova
+</h2>
+</div>
+<div class="offerings-show-about_section" data-rc="offerings/show/about_section"><div class='s-grid js-display'>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Founded
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+May 2009
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Form
+</div>
+<div class='s-fontSize18'>
+Rhode Island
+Corporation
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Employees
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+4
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Website
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+<a target="_blank" href="http://maternova.net/">maternova.net</a>
+</div>
+</div>
+<div class='u-hiddenPrint offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Social Media
+</div>
+<div class='s-marginPullLeft1 s-fontSize18'>
+<a target="_blank" title="Twitter" class="s-marginLeft1 c-link c-link--twitter" href="https://twitter.com/maternova"><i class="icon-twitter"></i></a>
+<a target="_blank" title="Facebook" class="s-marginLeft1 c-link c-link--facebook" href="https://www.facebook.com/Maternova.net/"><i class="icon-facebook"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hiddenPrint'>
+<div class='offerings-show-about_section__row offerings-show-about_section__row--map'>
+<div class='u-fontWeight400 u-colorGray7 s-marginBottom0_5'>
+Headquarters
+</div>
+<div class='s-fontSize18 offerings-show-about_section__address'>
+<img alt="Google Map location of of Maternova" title="Google Map location of of Maternova" src="https://maps.googleapis.com/maps/api/staticmap?center=460%2BHarris%2BAve%2BSuite%2B201%2CProvidence%2CRI&amp;format=png&amp;key=AIzaSyBSAkS8gvhmvxYO9XQOuP1ows6mbvx_jAE&amp;maptype=roadmap&amp;markers=size%3Asmall%7Ccolor%3A0xff0000%7Clabel%3A1%7C460%2BHarris%2BAve%2BSuite%2B201%2CProvidence%2CRI&amp;scale=2&amp;size=360x165&amp;visual_refresh=true&amp;zoom=13&amp;signature=_ChCflaQc_UPgOpCXGzpO72cTuI=" />
+<div class='s-fontSize12 offerings-show-about_section__address_text'>
+460 Harris Ave Suite 201
+, Providence, RI
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hidden u-blockPrint offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Headquarters
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+460 Harris Ave Suite 201, Providence, RI, United States 02909
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='team'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='s-marginBottom1 offerings-show__section-title'>
+<div class='c-condensedTitle u-colorGray6'>
+Maternova Team
+</div>
+<div class='s-fontSize14 u-colorGray9 s-marginTop1 u-fontWeight400'>
+Everyone helping build Maternova, not limited to employees
+</div>
+</h2>
+</div>
+<div class="offerings-show-team_section" data-rc="offerings/show/team_section"><div class='js-sort_data' data-featured-placeholder-klass='offerings-show-team_section__featured_team_member s-marginBottom1 s-border1' data-placeholder-klass='offerings-show-team_section__team_member s-marginBottom1 s-border1'></div>
+<div class='s-grid u-hiddenPrint'>
+<div class='s-grid-colMd24'>
+<div class=' offerings-show-team_section__team_member_container'>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Meg Wirth" title="Meg Wirth" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/017/17-1501093130-b0c7538a6e08a0ef0a5bdf4eef1e9d6e6795d069.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/017/17-1501093130-e80c38fdef1d2c5f1bd051ba8e467694ef87e735.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Meg Wirth
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+CEO and Co-Founder
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+S.E.VEN fellow and a Cartier Women's Initiative finalist. BA from Harvard University and an MPA in international development from Princeton University's Woodrow Wilson School.
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Allyson Cote" title="Allyson Cote" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/024/24-1501093294-cc83e02977676d8b5c10ffe419f1e0821c23e68c.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/024/24-1501093294-dfe0529b88d6216f4b11a2cf2872c3960abea684.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Allyson Cote
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+COO and Co-Founder
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Brings startup experience, marketing, and design to the management team. Prior to Maternova, Allyson acted as a founding Vice President team member of Shape Up, Inc. as well as acting as COO for Alessandra Gold, Inc.
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Ron Corriveau" title="Ron Corriveau" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/037/37-1501093400-b3b601b88db02dd3323e782a53fa32e59d98fab4.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/037/37-1501093400-cb6de82bd5b61cac6d11d06e9ad04246ddb68727.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Ron Corriveau
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+VP of Strategy
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Develops partnerships with Fortune 500 companies.
+Strategized sales channels and distribution.
+Founder and President of XLR8.Partners
+</div>
+</div>
+</div>
+</div>
+<div class='js-hidden_team_members u-hiddenXsOnly'>
+<div class='s-marginTop2_5 offerings-show-team_section__team_member_container'>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-textCenter u-hidden u-blockPrint'>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Meg Wirth
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+CEO and Co-Founder
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Allyson Cote
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+COO and Co-Founder
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Ron Corriveau
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+VP of Strategy
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint js-section offerings-show__section' id='press'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+Press
+</h2>
+</div>
+<div class="offerings-show-press_section" data-rc="offerings/show/press_section"><div class='s-grid js-press_container u-text-center'>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.prweb.com/releases/maternova_receives_prestigious_global_katerva_award_for_commercialization_of_innovations_in_maternal_and_newborn_health/prweb16595855.htm"><div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Maternova Receives Prestigious Global Katerva Award for C...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/009/218/9218-1581786816-fa19af760d0de93375ff2cbbc612dbbf41845db8. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="PRWeb" title="PRWeb" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/009/218/9218-1581786816-df4fab27e841035dc76b4d3d075092c5d4dc661a." />
+PRWeb
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Sep 25, 2019
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+&quot;Too often life-saving innovations do not reach a global scale because they lack a long-term champion, a commercializatio...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.golocalprov.com/business/ri-tech-and-innovation-report-the-katerva-awards"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/009/220/9220-1581786819-8005740b168da42d0feaa3f812b9a946259834ff.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+GoLocalProv | Business | &quot;RI Tech and Innovation Report&quot; ...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/009/220/9220-1581786822-843e1ac787148b53a204bb98cb70d9ee4c74ecda. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="GoLocalProv" title="GoLocalProv" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/009/220/9220-1581786822-0ad982fb0b962a68d9286036ba75f05c6f79958b." />
+GoLocalProv
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+May 16, 2019
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Touted as the &quot;pinnacle of global sustainability recognition,&quot; the Katerva Awards pay tribute to companies, people and id...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://entrepreneurship.babson.edu/from-commander-to-student-to-fellow-to-ceo/"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/009/219/9219-1581786817-3e4f2f843bd9fcd02688de92656c007f2efd60dd.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+From Commander to Student to Fellow to CEO · Babson Thoug...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/009/219/9219-1581786816-883d82a3bd63882bf3902ac62d2756ba2d0a1bf9. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Babson Thought &amp; Action" title="Babson Thought &amp; Action" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/009/219/9219-1581786816-8e31f060a131403d82c6a5793b1e11d6b5dbe7e1." />
+Babson Thought &amp; Action
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Mar 20, 2019
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+As graduation approached for Prakash Veenam MBA &#39;18, he took advantage of a summer fellowship offered through the Leonard...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.newswire.com/news/saving-mothers-announces-innovative-partnership-with-maternova-inc-to-20198098"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/004/933/4933-1518834465-dbe06a06e91433a39e499f8ba396811941197caf.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Saving Mothers Announces Innovative Partnership With Mate...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/004/933/4933-1518834537-21904d7b8bb9ec4884f42d059930f01314b43207. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Newswire" title="Newswire" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/004/933/4933-1518834537-9b1f95509314306806f266aa13bb3bb87004a859." />
+Newswire
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Mar  2, 2017
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Two leading-edge organizations join forces to deliver low-cost high impact solutions to reduce maternal death rates in de...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://wnpr.org/post/rhode-island-company-creates-clothing-protect-against-zika-virus"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/000/145/145-1518727593-51f17be19574b5c868d08720ab21d0ef0a794979.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Rhode Island Company Creates Clothing to Protect Against ...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/000/145/145-1518727594-34f9e4ab1ed14d6e7e092c4cf99ea02bb35206b8. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Wnpr" title="Wnpr" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/000/145/145-1518727594-1acd7d048892745485fe091b0d1194a1c15dd39c." />
+Wnpr
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Nov  7, 2016
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+The Centers for Disease Control and Prevention has found evidence that more than 1,000 pregnant women in the United State...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://bostinno.streetwise.co/2016/10/14/maternova-crowdfunds-fashionable-anti-zika-apparel-line/"><div class='press-article__cover' style='background-image: url(http://wp.streetwise.co/wp-content/uploads/2016/10/unnamed1-630x385.png);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+This Women&#39;s Health Co. Is Pioneering a Line of Stylish A...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/000/144/144-1518727593-c936a9c9e538c65bae4b8f1a6e37c457549183aa. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="BostInno" title="BostInno" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/000/144/144-1518727593-85b17a0895127386a4c8a4b42a2a45ca8aa80d66." />
+BostInno
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Oct 14, 2016
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Fashion trends might be ephemeral, but a Providence-based company is designing stylish clothing with a much larger vision...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article u-hidden'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.forbes.com/sites/annefield/2016/07/29/low-cost-fashion-forward-anti-zika-tunics-from-an-ecommerce-marketplace-for-maternal-health/"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/004/106/4106-1518819109-facd8b63451f5b90c07e9a55a1e570ffc3d6cd70.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Low-Cost, Fashion-Forward Anti-Zika Tunics From An Ecomme...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/004/106/4106-1518822682-1db3b6bf026b4f0bba670ec9d194219530e1b38a. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Forbes" title="Forbes" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/004/106/4106-1518822682-b180bc663c7e9f7657469a1c27606886cee8066f." />
+Forbes
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Jul 29, 2016
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+In the struggle to stop the Zika virus devastating Latin America, one social enterprise marketplace has created an innova...
+</p>
+</div>
+</a></div>
+</div>
+</div>
+<div class='s-marginTop1 u-text-center'>
+<a class="c-button c-button--secondary js-show_all_articles" href="javascript:void(0)">Show all</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint s-marginTop6 s-borderTop5 offerings-show__footer'>
+<div class='s-container s-gridMaxXs24'>
+<div class="u-textCenter offerings-show-footer" data-rc="offerings/show/footer"><div class='s-marginBottom1'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)"><div class="c-avatar c-avatar--medium offerings-show-footer__avatar c-avatar--border c-avatar--maternova"><img alt="Logo of Maternova" title="Maternova" srcset="https://uploads.republic.com/p/offerings/logos/medium_2x/000/000/008/8-1526918413-c3654a8fa16dac62eea3b2f1fb4b98dbd25fc631.png 2x" src="https://uploads.republic.com/p/offerings/logos/medium/000/000/008/8-1526918413-9824025cc36f314c28e28fc75b0ba1f7ee00b2c7.png" /></div></a>
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle s-marginHoriz0_5'>
+<h1 class='c-largeTitle offerings-show-footer__company-name'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)">Maternova</a>
+</h1>
+</div>
+<div class='u-displayInlineBlock u-blockXsOnly u-verticalAlignMiddle s-paddingTop0_5'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Footer" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link c-button--small c-button--secondary" data-action="follow" data-href="/register?after_sign_in=%2Fmaternova%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5 u-colorGray2 follows-shared-follow_offering__bubble-counter'>
+254
+</span>
+</button>
+</div>
+</div>
+</div>
+<div class='s-marginTop1_5 s-fontSize18 u-fontWeight500 u-colorGreen'>
+Maternova successfully raised
+$104,976
+from 131 investors
+on December 20, 2016
+</div>
+</div>
+<div class='s-paddingBottom1_5 u-hiddenXsOnly'></div>
+</div>
+</div>
+<div class="offerings-shared-schema_org" data-rc="offerings/shared/schema_org"><script nonce="RIViN94IfNP35RQal4ijQQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "https://republic.com/companies",
+      "name": "Companies",
+      "image": "https://assets.republic.com/assets/logo/icon/brand/36x40/logo@3x-af4ee9995fb90fffc2d2d3acf41e91f9ea98718053f604912115ab3fd6877321.png"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "https://republic.com/maternova",
+      "name": "Maternova",
+      "image": "https://uploads.republic.com/p/offerings/logos/medium/000/000/008/8-1526918413-9824025cc36f314c28e28fc75b0ba1f7ee00b2c7.png"
+    }
+  }]
+}
+
+
+//]]>
+</script></div>
+</div>
+</div>
+</div>
+</div>
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-full_disclaimer" data-rc="layouts/footer/disclaimers/full_disclaimer"><p class='s-marginBottom1'>
+This site (the "Site") is owned and maintained by OpenDeal Inc., which is not a registered
+broker-dealer. OpenDeal Inc. does not give investment advice, endorsement, analysis or
+recommendations with respect to any securities. All securities listed here are being offered
+by, and all information included on this Site is the responsibility of, the applicable issuer
+of such securities. The intermediary facilitating the offering will be identified in such
+offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+All funding-portal activities are conducted by OpenDeal Portal LLC doing business as Republic,
+a funding portal which is registered with the US Securities and Exchange Commission (SEC) as a
+funding portal (Portal) and is a member of the Financial Industry Regulatory Authority (FINRA).
+OpenDeal Portal LLC is located at 149 E 23rd St #2001, New York, NY 10010, please
+check out background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org/about/funding-portals-we-regulate">Funding Portal page</a>.
+</p>
+<p class='s-marginBottom1'>
+All broker-dealer related securities activity is conducted by OpenDeal Broker LLC, an
+affiliate of OpenDeal Inc. and OpenDeal Portal LLC, and a registered broker-dealer, and member
+of
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org">FINRA</a>
+|
+<a class="c-link c-link--underline" href="https://www.sipc.org/">SiPC</a>,
+located at 1345 Avenue of the Americas, 15th Floor, New York, NY 10105, please check our
+background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://brokercheck.finra.org/firm/summary/291387">BrokerCheck</a>.
+</p>
+<p class='s-marginBottom1'>
+Certain pages discussing the mechanics and providing educational materials regarding
+regulation crowdfunding offerings may refer to OpenDeal Broker LLC and OpenDeal Portal LLC
+collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC make investment
+recommendations and no communication, through this Site or in any other medium should be
+construed as a recommendation for any security offered on or off this investment platform.
+Investment opportunities posted on this Site are private placements of securities that are
+not publicly traded, involve a high degree of risk, may lose value, are subject to holding
+period requirements and are intended for investors who do not need a liquid investment. Past
+performance is not indicative of future results. Investors must be able to afford the loss
+of their entire investment. Only qualified investors, which may be restricted to only
+Accredited Investors or non-U.S. persons, may invest in offerings hosted by OpenDeal Broker.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC, nor any of their
+officers, directors, agents and employees makes any warranty, express or implied, of any
+kind whatsoever related to the adequacy, accuracy or completeness of any information on this
+Site or the use of information on this site. Offers to sell securities can only be made
+through official offering documents that contain important information about the investment
+and the issuers, including risks. Investors should carefully read the offering documents.
+Investors should conduct their own due diligence and are encouraged to consult with their
+tax, legal and financial advisors.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1 s-paddingHoriz1_5 s-paddingVert1 u-text-center u-fontWeight500'>
+Investors should verify any issuer information they consider important before making
+an investment.
+</p>
+<p class='s-marginBottom1'>
+Investments in private companies are particularly risky and may result in total loss of
+invested capital. Past performance of a security or a company does not guarantee future
+results or returns. Only investors who understand the
+<a class="c-link c-link--underline" href="/risks">risks of early stage investment</a>
+and who meet the Republic's
+<a class="c-link c-link--underline" href="/help/can-i-invest">investment criteria</a>
+may invest.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC verify
+information provided by companies on this Site and makes no assurance as to the completeness
+or accuracy of any such information. Additional information about companies fundraising on
+the Site can be found by searching the
+<a target="_blank" rel="noopener" class="c-link c-link--underline" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not require an
+EDGAR filing.
+</p>
+<p class='s-marginBottom1'>
+To help the government fight the funding of terrorism and money laundering activities,
+Federal law requires all financial institutions to obtain, verify, and record information
+that identifies each person who opens an account.
+Therefore, when you use the Services we will ask for your name, address, date of birth,
+and other information that will allow us to identify you.
+We may also ask to see your driver's license, passport or other identifying documents.
+</p>
+<p class='s-marginBottom1'>
+Republic and its affiliates are not and do not operate or act as a bank. Certain banking
+services are provided by BankProv, member FDIC / member DIF. Digital (crypto) assets and
+investment products are not insured by the FDIC, may lose value, and are not deposits or other
+obligations of BankProv and are not guaranteed by BankProv. Terms and conditions apply.
+</p>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+
+<script src="https://static.zdassets.com/ekr/snippet.js?key=d10adfc1-5afd-478b-b60b-d5f58ec5e520" id="ze-snippet" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script nonce="RIViN94IfNP35RQal4ijQQ==">
+  window.zESettings = {
+    webWidget: {
+      zIndex: 86,
+      offset: {
+        horizontal: '55px',
+        vertical: '2px',
+        mobile: {
+          horizontal: '-4px',
+          vertical: '90px'
+        }
+      },
+      contactForm: {
+        title: {'*': 'How can we help?'},
+        ticketForms: [{ id: 6139814921239 }],
+        fields: [
+          { id: 'subject', prefill: { '*': 'Need help!' } },
+          { id: 'email', prefill: { '*': "" } },
+          { id: 'key:6164328823703', prefill: { '*': "" } },
+        ],
+      },
+      helpCenter: {
+        title: {'*': 'FAQ'},
+        searchPlaceholder: {'*': 'What can we help you with?'},
+        messageButton: {'*': 'Contact Us'},
+        originalArticleButton: false,
+      },
+    },
+  };
+  
+  zE('webWidget', 'setLocale', 'en');
+  zE('webWidget', 'helpCenter:setSuggestions', { search: 'invest' });
+</script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="RIViN94IfNP35RQal4ijQQ==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="RIViN94IfNP35RQal4ijQQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="RIViN94IfNP35RQal4ijQQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+<script src="https://assets.republic.com/assets/w/runtime~MediaSliderPage-1098888d834bd3762a55.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ae-cda0d3eb09b2571ee24e.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apexcharts_dist_apexcharts_common_js-ba302c83-12acaec747ed98c96c79.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apollo_client_c-752f32f6a5f08b47aee9.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ap-10286ca6eee77e5cfdbe.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ax-87ca8eab84b534ce51a3.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_braze_web-sdk_sh-082bda95cd1f46db675e.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_br-ded297e3061c09e58176.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ca-0192f74a4e598aec7a52.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_core-js_i-f3d9e78f9f53cf58378d.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_crc-8b8be13627dda03b73d8.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_c-cea66e909f36387f5945.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_da-5b72066967e09ff24edf.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_d-83acda350f41f6abdff3.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_el-ea7a9011bec346028733.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_c-22aa4e04a1fbdd3d6e3f.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_common_dist_browser_genesisStates_mainnet_json-97430531-83fe7f595f064e0385b1.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethersproject_a-8765651a2f1bdccf9a56.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_et-b31cc9258c2c1d07cac5.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_e-d4fab84d8ab34150ad30.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_fontkit_dist_module_mjs-3528d02d-ecc0f4556eda5102b2d3.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_froala_editor_min_js-b1fc3988-ced20c2300f6c9f40897.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_plugins_pkgd_min_js-adc83e4b-33e97225bf9033164d2d.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_grapesjs_dist_grapes_min_js-a826bfc4-cadb07d673643a51118e.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_g-9055b0297f7ac6f017f0.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_i-b77e6ab09fad9dae77d3.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_l-b1a7deddd04fdb5d9a33.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_n-a907fa203947450ef394.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pb-cab37a002985eca657b7.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pd-cf393d506219ee5b112a.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pl-4c6fabe429fda4071dbb.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_p-27f2b800da9d84d8e2bf.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_rc-o-80e5f70e3d9925c8cdb0.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reach-857404c519977edb5b66.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-l-0c79a438a779449c0b1d.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-r-3c1ef064934605ec254d.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reac-dd43f7d7d874a68c99e5.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_r-b902bc774bc3ff333672.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_sc-0f32c01226134eda1296.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_se-74d4cf204c9d98a015aa.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_s-884ee524820f17ecd6cb.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_A-8cf01848e62c80ff23d7.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_I-5990a0d8dde19f6e04bd.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_A-c0356acbaf9d3c64d8d4.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_C-81436052b30a8eba6374.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_F-445b408fa8bf17d5aa78.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_I-662a93905a6a15b4f741.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_P-69d60a2c449dc7cb6600.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_T-e09f8036fafdc3c6afe0.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_ad-a41070ea11aea6a6ef6a.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+<script src="https://assets.republic.com/assets/w/MediaSliderPage-9d07a76fbcff98a1daf3.js" nonce="RIViN94IfNP35RQal4ijQQ=="></script>
+</body></html>
+
+
+

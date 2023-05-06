@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+Invest in RYSE — Republic
+</title>
+<link href='https://republic.com/ryse' rel='canonical'>
+<meta content='Automate your existing shades to save energy and money' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='Invest in RYSE' itemprop='name'>
+<meta content='Automate your existing shades to save energy and money' itemprop='description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/001/964/1964-1681941182-b1d4a475f59fa1346629ee51727afaac48d88afa.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='Invest in RYSE' name='twitter:title'>
+<meta content='Automate your existing shades to save energy and money' name='twitter:description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/001/964/1964-1681941182-b1d4a475f59fa1346629ee51727afaac48d88afa.jpg' name='twitter:image'>
+<meta content='https://republic.com/ryse' property='og:url'>
+<meta content='Invest in RYSE' property='og:title'>
+<meta content='Automate your existing shades to save energy and money' property='og:description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/001/964/1964-1681941182-b1d4a475f59fa1346629ee51727afaac48d88afa.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/vendor-node_modules_a-db7c58b4.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Ac-919e95b8.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Table_Table_module_scss-e15798b9-0e96676f.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/MediaSliderPage-66fe9f7a.css" />
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="f_P3F_eTZY6t-sSC8cM4Eab8kpfCDDNaFN4EPr5Z7iJ05bs_P9H5wCe-EibzyuSeJYrC4VpKfBLadRj_Ob1_CA" />
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  analytics.page(
+    "offering",
+    "ryse", {
+      url: "https://republic.com/ryse"
+    }, {
+      integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+    }
+  );
+</script>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class="offerings-show__body preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="layouts-header_footer" data-rc="layouts/header_footer"><nav class="c-header-nav c-header-nav--default  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/black/150x38/logo-211758c2027fc8268186d512a2119520a35358973648789a123d9fb6c3d5a37f.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search  layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--default" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div>
+<div class="layouts-full_width" data-rc="layouts/full_width"><script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  if (dataLayer) {
+    dataLayer.push({"event":"detail","ecommerce":{"currencyCode":"USD","detail":{"products":[{"name":"RYSE","id":"ryse","price":1000,"category":"Companies, AAPI Founders, Hardware, Smart Devices, B2C, Consumer Electronics, Household Goods, Venture-backed, $1M+ raised, Stock Purchase Agreement (SPA)","quantity":1}]}}});
+  }
+</script>
+<div class="js-segment_product_view s-marginBottom3_5 offerings-show" data-sticky-container="true" data-state="published" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;RYSE&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1964,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/964/1964-1681941118-142780427646a32211a34c4df8dab76659a7474f.jpg&quot;,&quot;min_investment_amount&quot;:1000,&quot;slug&quot;:&quot;ryse&quot;,&quot;tags&quot;:&quot;v-companies,aapi-founders,hardware,smart-devices,b2c,consumer-electronics,household-goods,venture-backed,1m-raised,stock-purchase-agreement&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/ryse&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-rc="offerings/show"><div class='js-router_data' data-root='ryse'></div>
+<header class="s-container s-gridMaxXs24 s-paddingTop5 s-paddingBottom3 offerings-show-header offerings-show-header--ryse" data-rc="offerings/show/header"><div class='js-header_content'>
+<div class='s-grid offerings-show-header__top-part'>
+<div class='s-grid-colSm16'>
+<div class="offerings-show-header-title" data-rc="offerings/show/header/title"><div class='u-displayFlex'>
+<div class='u-hiddenPrint offerings-show-header-title__avatar-wrapper'>
+<div class="c-avatar c-avatar--small offerings-show-header-title__avatar c-avatar--border c-avatar--ryse"><img alt="Logo of RYSE" title="RYSE" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/964/1964-1665784742-28df98be5386087dd613a64f89a5632b36ea3f60.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/964/1964-1665784742-7dd4876a49f3f2a5f48be0b58ffc14f6d0ac136e.png" /></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<h1 class='c-primaryTitle offerings-show-header-title__company-name'>
+RYSE
+</h1>
+</div>
+</div>
+<div class='c-subtitle s-fontSize20 s-marginTop0_5 offerings-show-header-title__high-concept'>
+Automate your existing shades to save energy and money
+</div>
+<div class='s-marginTop1_5'>
+<div class=''>
+<div class="c-tag-container u-hiddenPrint s-marginTop1 offerings-show-header-title__tags-wrapper offerings-shared-tags" data-rc="offerings/shared/tags"><a class="c-tag c-tag--small c-tag--flat c-tag--no_border " style="background-color: #FFF6B9" href="/tag/aapi-founders">AAPI Founders</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/hardware">Hardware</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/smart-devices">Smart Devices</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/b2c">B2C</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/consumer-electronics">Consumer Electronics</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/household-goods">Household Goods</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8 u-hiddenSmDown'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="RYSE" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Fryse%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Fryse"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?text=Automate+your+existing+shades+to+save+energy+and+money&amp;url=https%3A%2F%2Frepublic.com%2Fryse"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?text=Automate+your+existing+shades+to+save+energy+and+money&amp;url=https%3A%2F%2Frepublic.com%2Fryse"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Fryse"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-displayFlex u-blockXsOnly offerings-show-header__media-react'>
+<div class='s-grid-colSm16'>
+<div class='offerings-show-header__media-react-content'>
+<div class="offerings-show-header-media_react" data-rc="offerings/show/header/media_react"><div data-react-key="MediaSliderPage" data-react-id="d242e424-7d5e-4f48-b3da-43aa3626cb34"><div class="js-react-component--placeholder"><div class='offerings-show-header-media_react__image-wrap'>
+<div class='offerings-show-header-media_react__image'>
+<img srcset="https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/009/170/9170-1681305298-d244b7f2bdffaec46566fbf354b9545e1cbd3ada.png 2x" class="u-displayBlock  " alt="Featured image of RYSE" title="RYSE" src="https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/009/170/9170-1681305298-d546046803dd9da7d689961cbb6c9c149f067866.png" />
+</div>
+</div>
+</div><div class="js-react-component--content u-invisible"></div></div><script nonce="ZLwqAEUIMUuKuiWHKpRyZg==" type="application/json" data-react-key="MediaSliderPage" data-react-id="d242e424-7d5e-4f48-b3da-43aa3626cb34">{"media":{"data":[{"id":"9170","type":"offerings_slider_media_item","attributes":{"content_type":"video","order_num":2601,"content_file_name":"Untitled.mp4","content_file_size":87156456,"preview_file_name":"use.png","preview_file_size":364914,"url":null,"url_preview":null,"content_url":{"original":"https://uploads.republic.com/p/offerings/slider_media_items/contents/original/000/009/170/9170-1680804344-cfdd4243c59a34fe8cc08d29c663ddc17e08fc61.mp4"},"preview_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/009/170/9170-1681305298-d546046803dd9da7d689961cbb6c9c149f067866.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/009/170/9170-1681305298-d244b7f2bdffaec46566fbf354b9545e1cbd3ada.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small/000/009/170/9170-1681305298-c4dd3760da8ce22585c776ccd44b9fcacb229a05.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small_2x/000/009/170/9170-1681305298-5e397ff782adb8e17e6f47ff92151ba478a0edd5.png"},"youtube_id":null}}]},"editMode":false,"isIssuer":false,"offeringSlug":"ryse","offeringState":"published","missingPreviewUrl":"/previews/small/missing.png"}</script></div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8'>
+<div class="u-displayFlex u-flexDirectionColumn offerings-show-header-sidebar" data-rc="offerings/show/header/sidebar"><div class='u-flexGrow offerings-show-header-sidebar__top-part'>
+<div class="s-grid offerings-show-header-raising_information" data-rc="offerings/show/header/raising_information"><div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 s-borderBottom1 offerings-show-header-raised_amount offerings-show-header-raised_amount--without-divider" data-rc="offerings/show/header/raised_amount"><div class='s-fontSize35 c-condensedTitle offerings-show-header-raised_amount__title u-colorGreen'>
+$529,851
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-raised_amount__subtitle'>
+Raised publicly and privately
+</div>
+<i class='icon-info-letter icon--frame u-displayInlineBlock js-tooltip_simple offerings-show-header-raised_amount__icon-info' data-tippy-content='$3K (30M% of $0.01 minimum goal) raised via Reg A+ on Republic.&lt;br&gt;&lt;br&gt;Total raised to date includes $526,851.00 raised off Republic&#39;s platform under the same terms as of April 19, 2023.'></i>
+</div>
+<div class='c-progress c-progress--large s-marginTop0_5 c-progress--gray'>
+<div class='c-progress__bar' style='width: 30000000%'></div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm24 s-grid-colXs12'>
+<div class="s-marginBottom1_5 offerings-show-header-investors offerings-show-header-investors--" data-rc="offerings/show/header/investors"><div class='c-primaryTitle s-fontSize35 offerings-show-header-investors__title '>
+3
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-investors__subtitle'>
+Investors
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm24 s-grid-colXs12'>
+<div class="offerings-show-header-deadline" data-rc="offerings/show/header/deadline"><div class='c-primaryTitle s-fontSize35 offerings-show-header-deadline__title'>
+82
+days
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-deadline__subtitle'>
+Left to invest
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm24 s-grid-colXs12'>
+<div class="offerings-show-header-flexible_terms" data-rc="offerings/show/header/flexible_terms"></div>
+</div>
+</div>
+</div>
+<div class='offerings-show-header-sidebar__bottom-part s-marginTop2'>
+<div class="u-bgWhite offerings-show-header-invest_button" data-rc="offerings/show/header/invest_button"><div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button--block c-button--large s-paddingHoriz0_5 js-segment_invest_link" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;RYSE&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1964,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/964/1964-1681941118-142780427646a32211a34c4df8dab76659a7474f.jpg&quot;,&quot;min_investment_amount&quot;:1000,&quot;slug&quot;:&quot;ryse&quot;,&quot;tags&quot;:&quot;v-companies,aapi-founders,hardware,smart-devices,b2c,consumer-electronics,household-goods,venture-backed,1m-raised,stock-purchase-agreement&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/ryse&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-design="header_sidebar" data-label="invest" href="/ryse/invest">Invest in RYSE</a>
+</div>
+<div class='s-marginTop0_5 u-textCenter s-fontSize14 u-fontWeight400 u-colorMuted'>
+<strong>
+$1,000
+</strong>
+minimum
+investment
+<span class='u-hiddenSmUp'>
+&middot;
+<a class="js-scroll_to_deal_terms_link c-link" data-target-id="deal-terms" href="javascript:void(0)">Deal terms</a>
+</span>
+<span class='u-hiddenXsOnly'>
+&middot;
+<a class="c-link" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<nav class="u-hiddenPrint offerings-show-content_navigation" data-rc="offerings/show/content_navigation"><div class='c-content_nav u-hiddenSmDown'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16 s-grid--middle'>
+<div class='c-content_nav__container'>
+<a class="c-content_nav__link js-content-nav-link active" href="#pitch">Pitch</a>
+<a class="c-content_nav__link js-content-nav-link" href="#discussion">Discussion
+<span class='c-content_nav__booble'>
+23
+</span>
+</a><a class="c-content_nav__link js-content-nav-link" href="#updates">Updates
+</a></div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 s-grid--middle'>
+<div class='offerings-show-content_navigation__contact-wrapper'>
+<div class='u-displayFlex u-justifyContentSpaceBetween'>
+</div>
+</div>
+<div class='offerings-show-content_navigation__cta-wrapper'>
+<div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button c-button--block s-paddingHoriz0_5 offerings-show-content_navigation__cta-button js-segment_invest_link" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;RYSE&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1964,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/964/1964-1681941118-142780427646a32211a34c4df8dab76659a7474f.jpg&quot;,&quot;min_investment_amount&quot;:1000,&quot;slug&quot;:&quot;ryse&quot;,&quot;tags&quot;:&quot;v-companies,aapi-founders,hardware,smart-devices,b2c,consumer-electronics,household-goods,venture-backed,1m-raised,stock-purchase-agreement&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/ryse&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-design="content_navigation" data-label="invest" href="/ryse/invest"><span class='u-hiddenLgOnly'>
+Invest
+</span>
+<span class='u-hiddenMdDown'>
+Invest in RYSE
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp u-displayFlex u-alignItemsCenter offerings-show-content_navigation__mobile-navigation'>
+<select class='c-input c-input--select c-input--large js-mobile-nav offerings-show-content_navigation__mobile-select'>
+<option selected value='/ryse/pitch'>
+Pitch
+</option>
+<option value='/ryse/deal-terms'>
+Deal terms
+</option>
+<option value='/ryse/documents'>
+Documents
+</option>
+<option value='/ryse/team'>
+Team
+</option>
+<option value='/ryse/risks'>
+Risks
+</option>
+<option value='/ryse/discussion'>
+Discussion
+(23)
+</option>
+<option value='/ryse/updates'>
+Updates
+</option>
+<option value='/ryse/faq'>
+FAQ
+</option>
+</select>
+<div class='s-marginLeft1_5'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="RYSE" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Fryse%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Fryse"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?text=Automate+your+existing+shades+to+save+energy+and+money&amp;url=https%3A%2F%2Frepublic.com%2Fryse"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?text=Automate+your+existing+shades+to+save+energy+and+money&amp;url=https%3A%2F%2Frepublic.com%2Fryse"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Fryse"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class='s-container s-gridMaxXs24 u-hiddenPrint offerings-show__sidebar-navigation-container'>
+<nav class="js-offering_side_navigation u-hidden offerings-show-side_navigation" data-link-active-class="offerings-show-side_navigation__link--active" data-rc="offerings/show/side_navigation"><a class="js-offering_side_navigation_link offerings-show-side_navigation__link offerings-show-side_navigation__link--active" href="/ryse#problem">Problem</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#solution">Solution</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#product">Product</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#traction">Traction</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#customers">Customers</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#business-model">Biz. model</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#market">Market</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#competition">Competition</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#vision-and-strategy">Vision and strategy</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#impact">Impact</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#funding">Funding</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#founders">Founders</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#summary">Summary</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link " href="/ryse#disclaimers">Disclaimers</a>
+<div class='s-marginVert1 s-marginRight3 offerings-show-side_navigation__divider'></div>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link" href="/ryse#about">About</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link" href="/ryse#team">Team</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link" href="/ryse#faq">FAQ</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link" href="/ryse#risks">Risks</a>
+<a class="js-offering_side_navigation_link offerings-show-side_navigation__link" href="/ryse#discussion">Discussion</a>
+</nav>
+</div>
+<div class='js-terms u-hidden s-paddingTop4'>
+<div class='js-section s-paddingTop2' id='terms'>
+<div class="s-container s-gridMaxXs24 s-paddingTop0_5 offerings-show-terms_section" data-rc="offerings/show/terms_section"><div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16'>
+<div class='c-offeringTermsContent'>
+
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8'>
+<div class='u-hiddenPrint'>
+<div class='s-spacerXs3 s-spacerSm0_5'></div>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Capital R (OpenDeal Broker LLC, CRD #291387) is hosting this Reg A+ securities offering by RYSE Inc.. View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/Archives/edgar/data/1824930/000168316823002269/ryse_253g2.htm"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form 1-A
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+<div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14 s-marginBottom0_5'>
+Company documents
+</div>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="https://uploads.republic.com/p/offerings/security_attachments/original/000/001/964/1964-1680555395-3321466c9eafe65790a89e08d949b83f76005fdf.pdf"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Subscription Agreement
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/2671"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Ryse Form 253g2.pdf
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/1744"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Additional Risk Disclosures.pdf
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/1743"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Disclosures &amp; Disclaimers.pdf
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/1742"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Form CRS.pdf
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-update u-hidden s-paddingTop4'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='js-section s-grid-colLg17 s-grid--pushLg4 s-grid-colSm20 s-grid--pushSm3' id='updates'>
+<div class='s-paddingTop2'>
+<div class='js-update_section_placeholder' data-url='/ryse/show_updates'>
+<div class='u-textCenter u-colorGray9 s-fontSize20 s-marginVert10'>
+<i class='c-spinner'></i>
+Loading
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-reviews u-hidden s-paddingTop4'>
+<div class='s-container s-gridMaxXs24'>
+<div class='js-section' id='reviews'>
+<div class='s-paddingTop2'>
+<div class="s-paddingTop1_5 offerings-show-reviews_section" data-rc="offerings/show/reviews_section"><h3 class='s-marginBottom3 c-secondaryTitle u-colorMuted offerings-show-reviews_section__title'>
+Hear from some of the
+<span class='u-whiteSpaceNowrap'>
+3
+investors
+</span>
+in RYSE
+</h3>
+<div class='js-investment_reasons_loader'>
+<div class="investment_reasons-shared-page_loader" data-rc="investment_reasons/shared/page_loader"><div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<hr class='s-marginVert2'>
+<div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-investment_reasons_wrapper'></div>
+<div class='js-investment_reasons_show_more_wrapper u-hidden'>
+<div class='s-spacerXs2_5 s-spacerSm4'></div>
+<div class='s-grid'>
+<div class='s-grid-colSm16'>
+<a class="js-investment_reasons_show_more c-button c-button--secondary c-button--large c-button--block" data-url="/ryse/reviews/page/1" href="javascript:void(0)">Show more</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-sections offerings-show__sections s-paddingTop4'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid js-pitch_grid offerings-show__pitch-grid'>
+<div class='js-section s-grid-colMd17 s-grid-colSm16 s-marginBottom3 offerings-show__pitch' id='pitch'>
+<div class="offerings-show-pitch_section" data-rc="offerings/show/pitch_section"><div class='s-marginRight3 offerings-show-pitch_section__pitch-wrapper'>
+<div class="s-paddingTop3 s-marginBottom2 offerings-show-pitch_highlights" data-rc="offerings/show/pitch_highlights"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-fontWeight800 u-colorGray6 offerings-show-pitch_highlights__title'>
+Highlights
+</h2>
+<hr class='c-deal-page-title-divider'>
+<div class='s-marginBottom2_5'>
+<div class="c-tag-highlight-wrapper offerings-show-pitch_highlight_tags" data-rc="offerings/show/pitch_highlight_tags"><div class='c-tag-highlight js-tooltip_simple' data-tippy-content='The company has raised over $1M in capital prior to Republic.'>
+<div class='c-tag-highlight__content'>
+<div class='c-tag-highlight__title'>
+$1M+ raised
+</div>
+<div class='c-tag-highlight__description'>
+Company has previously raised over $1M in capital
+</div>
+</div>
+<div class='c-tag-highlight__icon'>
+<img src="https://uploads.republic.com/p/tags/icons/original/000/005/915/5915-1646382197-10b2f0cdd05e87b82381ef7ff3b619710bb1a8d1.png" />
+</div>
+
+</div>
+
+<div class='c-tag-highlight'>
+<div class='c-tag-highlight__content'>
+<div class='c-tag-highlight__title'>
+Venture-backed
+</div>
+<div class='c-tag-highlight__description'>
+Company is backed by a venture capital firm
+</div>
+</div>
+<div class='c-tag-highlight__icon'>
+<img src="https://uploads.republic.com/p/tags/icons/original/000/005/970/5970-1646382552-b2b55923978aea19c93b7b14ebef6d493a08dc08.png" />
+</div>
+
+</div>
+
+</div>
+</div>
+</header>
+<div class="offerings-show-summary" data-rc="offerings/show/summary"></div>
+<div class='c-defaultFormattedContent offerings-show-pitch_highlights__content'>
+<ul><li>Retrofit your existing shades with automation to save energy and money</li><li>Awarded $4M CAD cleantech government grant funding</li><li>$7M revenue with 35K units sold (as of 2022)</li><li>Relationships with Amazon, Bed Bath Beyond, IOTaS &amp; more</li><li>Backed by Elemental VC, Cogito Capital &amp; others</li></ul>
+</div>
+</div>
+<article class="offerings-pitch_sections-sections_list" data-rc="offerings/pitch_sections/sections_list"><section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Custom" id="custom" data-rc="offerings/pitch_sections/section"><div class='js-pitch_content c-offeringPitchContent clearfix'>
+<p class="u-wysiwygMedium" style="text-align: center;"><em>There may be other available opportunities that are similar to this investment but have different attributes, characteristics, cost factors, and fees.</em><br><br><em>Past financial results are no guarantee of future performance. <a href="https://republic.com/help/forward-looking-financial-projections-disclaimer-bda22d32-4ea8-4f51-8920-2d89729e29c8" target="_blank" rel="nofollow">Click here for important information regarding Financial Projections</a> which are not guaranteed.</em><br><br><a href="https://republic.co/documents/402" rel="nofollow"><em>Disclosures &amp; disclaimers</em></a></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Problem" id="problem" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Problem
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">Buildings account for<br><a href="https://www.energy.gov/articles/department-energy-announces-80-million-innovative-building-technologies-and-practices" target="_blank" rel="nofollow"><strong>40%</strong></a><strong>&nbsp;of all US energy consumption,</strong></h2><h3 style="text-align: center;">primarily through lighting, heating and cooling.</h3><p><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/076/736/76736-1665783331-118d88fed86fe6aaadac46478bf54899101503e8.jpg" class="fr-fic fr-dib"></p><p style="text-align: left;">Yet <a href="https://www.energy.gov/energysaver/update-or-replace-windows" target="_blank" rel="nofollow"><strong>33%</strong></a> of this energy is wasted or leaked, and <a href="https://www.energy.gov/energysaver/update-or-replace-windows" target="_blank" rel="nofollow"><strong>50%</strong></a> is lost through windows — a <strong>$</strong><a href="https://www.magentahouse.org/articles/looking-at-not-through-the-window" target="_blank" rel="nofollow"><strong>35 billion</strong></a> dollar problem.</p><p>One of the <strong>most</strong> <strong>effective and simple</strong> ways to reduce this energy loss is to install automated “<strong>smart shades</strong>," which can reduce lighting energy by <a href="https://drive.google.com/file/d/1IlNSxiv7dQNMyXZmKTsuAZj3kbITt5Vh/view" target="_blank" rel="nofollow"><strong>74%</strong></a> and cooling energy by <strong>over&nbsp;</strong><a href="https://drive.google.com/file/d/1IlNSxiv7dQNMyXZmKTsuAZj3kbITt5Vh/view" target="_blank" rel="nofollow"><strong>20%</strong></a>.</p><p><strong><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/076/706/76706-1665776061-ae5763f647a35a1e81fedf78af155e0e09b0ff50.jpg" class="fr-fic fr-dii fr-fil" style="width: 280px;"></strong></p><p><strong>But smart shades:</strong></p><ul><li class="u-wysiwygMedium"><strong>Are expensive</strong><br>Motorized shades can cost up to an additional $500+ per shade, making them out of reach for the mass market* (competitor costs estimates include the cost of the window shade)</li><li class="u-wysiwygMedium"><strong>Don't offer retrofits</strong><br>It has been very difficult to motorize your existing window shades.</li><li class="u-wysiwygMedium"><strong>Aren't DIY-friendly</strong><br>Professional installation at an additional cost is usually required.</li></ul>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Solution" id="solution" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Solution
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<div title="Page 3"><span class="fr-video fr-dvb fr-draggable"><div class="vsc-controller fr-draggable"><br></div><video autoplay="autoplay" class="fr-draggable fr-fvc fr-dvi" loop="loop" muted="true" playsinline="true" src="https://uploads.republic.com/p/videos/attachments/original/000/001/192/1192-1666973876-834e27bd318b76e3c95913772cc109e824a93549.mp4" style="width: 686px; height: 364.5px;">Your browser does not support HTML5 video.</video></span><div title="Page 6"><h2 style="text-align: center;">Automated shades<br>save energy</h2><p><strong>RYSE</strong> creates IoT smart devices that enable you to motorize and automate your window shades.</p><p>We focus on retrofitting your existing shades, making them smart and automated.</p><p>Powered by our software that leverages A.I., sensors, and weather data, <strong>RYSE</strong> intelligently controls your shades to optimize for energy savings and occupant comfort.</p><br></div></div><p><br></p><div class="vsc-controller fr-draggable"><br></div><p><span class="fr-video fr-fvc fr-dvb fr-draggable"><video autoplay="autoplay" class="fr-draggable fr-fvc fr-dvi" loop="loop" muted="true" playsinline="true" src="https://uploads.republic.com/p/videos/attachments/original/000/001/193/1193-1666974694-4ad9b2f951718eabf774246a3b95ccd18ea725c7.mp4" style="width: 670.047px; height: 390.891px;">Your browser does not support HTML5 video.</video></span></p><p><br></p><div class="s-grid"><div class="s-grid-colSm12"><h3>Solar Heat Gain Management</h3><h2><a href="https://drive.google.com/file/d/1IlNSxiv7dQNMyXZmKTsuAZj3kbITt5Vh/view" target="_blank" rel="nofollow"><strong>20</strong></a><strong>% savings</strong></h2><h3>from cooling energy</h3><p>Automatically lower shades to block solar heat gain during hot sunny weather.</p></div><div class="s-grid-colSm12"><h3>Daylight Harvesting<br class="u-hiddenXsOnly"><br class="u-hiddenXsOnly"></h3><h2><a href="https://drive.google.com/file/d/1IlNSxiv7dQNMyXZmKTsuAZj3kbITt5Vh/view" target="_blank" rel="nofollow"><strong>74</strong></a><strong>% savings</strong></h2><h3>from lighting energy</h3><p>Automatically open shades to capture natural daylight during overcast weather.</p></div></div>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Product" id="product" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Product
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h3 style="text-align: center;">RYSE focuses on two core characteristics:</h3><h2 style="text-align: center;">Affordability<br>+<br>Retrofitting</h2><p><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/142/87142-1681417209-9a5af7a258037c2b738e32f0e3956dd1310e8c6d.webp" class="fr-fic fr-dib"></p><h3 style="text-align: center;"><br>—<br>Unique approach to motorization<br>—</h3><p style="text-align: center;"><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/139/87139-1681416846-9dbf0b9c84db4a5ca913a37b16cf7bea13064380.webp" class="fr-fic fr-dib" style="width: 688px;"><br><br><strong>—</strong><br><strong>Simply installed in minutes</strong><br><strong>—</strong><br><br><strong><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/076/708/76708-1665776479-436f020c12d6fe2fe76429a45b0ffbd65258afde.jpg" class="fr-fic fr-dib"></strong><br></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Traction" id="traction" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Traction
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">$7M+ revenue &amp;<br>35K units sold</h2><h3 style="text-align: center;">As of 2022</h3><p><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/143/87143-1681418077-f552978c570e6050a8df70bac2267deaaec7e332.webp" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Customers" id="customers" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Customers
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 class="u-wysiwygSmall" style="text-align: center;">B2B customers</h2><p><br><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/146/87146-1681418503-422f6f9d6c4c9dd387b6f46e0c8a5c22b086055d.webp" class="fr-fic fr-dib"><br></p><hr><h3 style="text-align: center;">Existing buildings saving energy with RYSE</h3><hr><p><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/145/87145-1681418229-c009374096e1a9e679ead2fe2ac1117d51e8682a.webp" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Biz. model" id="business-model" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Business model
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">High-margin device sales</h2><p class="u-wysiwygSmall"><br><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/147/87147-1681418827-64689622a3bbdcbe8233b6e2ee93a2b8ec53431b.webp" class="fr-fic fr-dib"></p><p class="u-wysiwygMedium" style="text-align: center;"><em>*Costs are rounded, fluctuate over time and account for shipping.</em>&nbsp;</p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Market" id="market" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Market
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">Massive opportunity in offices, hotels,<br>&amp; senior housing</h2><p><br><span class="fr-img-caption fr-fic fr-dib" style="width: 565.995px;"><span class="fr-img-wrap"><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/076/719/76719-1665778817-c4095021b218a1dd3a33308ddebc8aca2297f998.jpg"><span class="fr-inner"><br><em>The above projections constitute forward-looking statements involving known and unknown risks, uncertainties, and other factors that may cause actual outcomes to differ from the above projections. You should not place undue reliance on forward-looking statements. The cautionary statements set forth in the Offering Memorandum, including in the “Risk Factors” section and elsewhere, identify important factors that you should consider in evaluating our forward-looking statements, including these projections.</em></span></span></span></p><h3 style="text-align: center;">Selling in<strong>&nbsp;</strong>households, with a focus on growth in:</h3><p style="text-align: center;">—<br>Residential smart homes<br>&amp; sustainable buildings<br>—</p><ul><li class="u-wysiwygMedium" style="text-align: left;"><strong><a href="https://www.marketingdive.com/news/study-smart-speaker-ownership-surges-36-to-53m-us-adults/545717/" target="_blank" rel="nofollow"><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/157/87157-1681420402-68cc56607ada3341777a1508dbd9d6d940a97e70.webp" class="fr-fic fr-dii fr-fir" style="width: 302px;"></a><a href="https://www.marketingdive.com/news/study-smart-speaker-ownership-surges-36-to-53m-us-adults/545717/" target="_blank" rel="nofollow"></a></strong><a href="https://www.marketingdive.com/news/study-smart-speaker-ownership-surges-36-to-53m-us-adults/545717/" target="_blank" rel="nofollow">30%&nbsp;</a>of US households have a voice speaker for home automation</li><li class="u-wysiwygMedium" style="text-align: left;">Potential <a href="https://drive.google.com/file/d/16sy6FS83NvdDn7Fhd75K-VXZ0q2clz_E/view" target="_blank" rel="nofollow">550 million</a> manual shades to be motorized</li><li class="u-wysiwygMedium" style="text-align: left;"><strong>Total Addressable Market:&nbsp;</strong><a href="https://www.statista.com/outlook/dmo/smart-home/united-states" target="_blank" rel="nofollow"><strong>$27B</strong></a></li></ul><p class="u-wysiwygMedium"><br></p><p><a href="https://www.eia.gov/consumption/commercial/data/2012/bc/cfm/b2.php" target="_blank" rel="nofollow"></a> <a href="https://www.eia.gov/consumption/commercial/data/2012/bc/cfm/b2.php" target="_blank" rel="nofollow"></a></p><ul><li class="u-wysiwygMedium"><a href="https://www.eia.gov/consumption/commercial/data/2012/bc/cfm/b2.php" target="_blank" rel="nofollow"></a><a href="https://www.eia.gov/consumption/commercial/data/2012/bc/cfm/b2.php" target="_blank" rel="nofollow"><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/158/87158-1681420510-6eda39702e0103b3c83af3e521c0d3c0905933e1.webp" class="fr-fic fr-fir fr-dii" style="width: 302px;"></a>780,000 buildings with automation systems (BAS)</li><li class="u-wysiwygMedium"><a href="https://www.eia.gov/consumption/commercial/data/2012/bc/cfm/b2.php" target="_blank" rel="nofollow">220,000</a> buildings have lighting controls for <strong>energy savings</strong></li><li class="u-wysiwygMedium" style="text-align: left;"><strong>Total Addressable Market: <a href="https://www.eia.gov/consumption/commercial/data/2012/#b1-b2" target="_blank" rel="nofollow"><strong>$35B</strong></a></strong><br><a href="https://www.statista.com/statistics/240267/number-of-housing-units-in-the-united-states/#:~:text=The%20number%20of%20housing%20units,amounted%20to%20140.8%20million%20units" target="_blank" rel="nofollow"></a></li></ul><p class="u-wysiwygMedium"><a href="https://www.statista.com/statistics/240267/number-of-housing-units-in-the-united-states/#:~:text=The%20number%20of%20housing%20units,amounted%20to%20140.8%20million%20units" target="_blank" rel="nofollow"><br></a></p><ul><li class="u-wysiwygMedium"><a href="https://www.statista.com/statistics/240267/number-of-housing-units-in-the-united-states/#:~:text=The%20number%20of%20housing%20units,amounted%20to%20140.8%20million%20units" target="_blank" rel="nofollow"></a><a href="https://www.statista.com/statistics/240267/number-of-housing-units-in-the-united-states/#:~:text=The%20number%20of%20housing%20units,amounted%20to%20140.8%20million%20units" target="_blank" rel="nofollow"><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/077/708/77708-1666731789-87a381f7549bd3f19fa514402d47a0cad8da7d81.png" class="fr-fic fr-dii fr-fir" style="width: 305px;"></a>120M+ residential households in the US, <a href="https://www.oberlo.com/statistics/smart-home-statistics#:~:text=The%20number%20of%20households%20using,smart%20home%20device%20every%20month" target="_blank" rel="nofollow">43%&nbsp;</a>own at least one smart device</li><li class="u-wysiwygMedium"><a href="https://www.security.org/smart-home/consumer-shopping-insights/#:~:text=Key%20Findings-,7%20in%2010%20homebuyers%20are%20looking%20for%20a%20smart%20home,followed%20by%20safety%20and%20security" target="_blank" rel="nofollow">7-in-10</a> homebuyers look for smart homes; <a href="https://www.security.org/smart-home/consumer-shopping-insights/#:~:text=Key%20Findings-,7%20in%2010%20homebuyers%20are%20looking%20for%20a%20smart%20home,followed%20by%20safety%20and%20security" target="_blank" rel="nofollow">78%</a> willing to pay more for smart homes</li></ul><p class="u-wysiwygMedium"><br><br></p><p class="u-wysiwygMedium"><a href="https://www.eia.gov/consumption/commercial/data/2012/bc/cfm/b2.php" target="_blank" rel="nofollow"><br></a></p><ul><li class="u-wysiwygMedium"><a href="https://www.eia.gov/consumption/commercial/data/2012/bc/cfm/b2.php" target="_blank" rel="nofollow"><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/077/710/77710-1666731876-70b2fd847dd814e756208a671f93343d86d6d8e3.png" class="fr-fic fr-dii fr-fir" style="width: 306px;">780,000</a> properties with Building Automation Systems (BAS) in the US</li><li class="u-wysiwygMedium"><a href="https://www.johnsoncontrols.com/media-center/news/press-releases/2022/04/12/johnson-controls-annual-energy-efficiency-indicator-survey-reveals-investments-in-sustainability-hav" target="_blank" rel="nofollow">62%&nbsp;</a>of businesses indicate likely to invest in smart building technology</li></ul><p><br></p><p><br></p><p><br></p><p style="text-align: center;">—<br>Senior housing &amp; hotels<br>—</p><ul><li class="u-wysiwygMedium"><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/077/711/77711-1666731929-ac6484ff8e39b0a7edd25ecbdc33e8cae582913f.png" class="fr-fic fr-dii fr-fir" style="width: 313px;">~29,000 assisted living communities and 7-in-10 people in the US require assisted living in their lifetime</li><li class="u-wysiwygMedium">Adults aged 50+ that own smart-home technology doubled from 2019 to 2020 - that's a 100% increase</li></ul><p><br></p><p><br></p><ul><li class="u-wysiwygMedium"><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/077/712/77712-1666731981-a6f474665719b688ee744d9289eb961b376f7f7c.png" class="fr-fic fr-dii fr-fir" style="width: 315px;">54,200+ Hotels with over 5M guest rooms across the US</li><li class="u-wysiwygMedium">73% of travelers are more likely to choose hotels offering self-service tech according to Hotel Technology News</li></ul>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Competition" id="competition" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Competition
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<p><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/083/020/83020-1675461674-06f104e2952ed6d1e53dd98ad594b7584680f2a4.jpg" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Vision and strategy" id="vision-and-strategy" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Vision and strategy
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">A brand encompassing all window covering types</h2><p style="text-align: center;"><em>Historical sales have been primarily</em><br><em>e-commerce, which means there’s</em><br><em>still significant room for growth.</em></p><p><span class="fr-video fr-fvc fr-dvb fr-draggable"><iframe src="https://www.youtube.com/embed/kC8G9UAlxVc?controls=0" frameborder="0" allowfullscreen=""></iframe></span><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/161/87161-1681422440-b4905cb6268c5cdf3a59b24944cc4dd1735cf30a.webp" class="fr-fic fr-dib"></p><p><span class="fr-video fr-dvb fr-draggable"><video autoplay="autoplay" class="fr-draggable fr-fvc fr-dvi" loop="loop" muted="true" playsinline="true" src="https://uploads.republic.com/p/videos/attachments/original/000/002/143/2143-1681421901-2f894c0b997e07c3ebaa773bb04fb48c9392796d.mp4" style="width: 691.096px; height: 370.903px;">Your browser does not support HTML5 video.</video></span><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/160/87160-1681422376-00ca068f0b6efca5bc991c9e088cedb53ffa780e.webp" class="fr-fic fr-dib"></p><h3 style="text-align: center;"><br>—<br>Growth channels<br>—</h3><p><span class="fr-img-caption fr-fic fr-dii" style="width: 678.104px;"><span class="fr-img-wrap"><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/083/151/83151-1675788243-a819fc89bcab63c59dcd7d3b2fb72bf789c83327.png"><span class="fr-inner">Projections (in millions)</span></span></span></p><p>According to Infiniti Research, online sales only represent 7% of industry revenues for SmartShades — and we’ve generated over $5 million selling into this small channels.</p><p>In 2023, RYSE will scale into B2B and wholesale channels, selling to multi-family real estate developers and landlords, and teleco partners that sell and manage smart home and security services for households – this accounts for 60% of industry revenues.</p><p>By 2024, RYSE expects to be scaled into physical retail, which accounts for 33% of industry revenues.</p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Impact" id="impact" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Impact
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<div><h2 style="text-align: center;">Aging comfortably and independently</h2><p><br></p></div><p><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/076/737/76737-1665783616-b7b23eaf0031a7584592d26e48b4ae3ab17602f8.jpg" class="fr-fic fr-dii fr-fil" style="width: 341px;">Not only do SmartShades save energy, but they provide greater <strong>comfort</strong> and <strong>convenience</strong>, particularly for the aging population, seniors, and the disabled — providing &nbsp;a solution to lift heavy shades and live <strong>independently</strong>.&nbsp;</p><p>The number of adults aged 85+, who need help with basic personal care, will nearly <a href="https://www.urban.org/policy-centers/cross-center-initiatives/program-retirement-policy/projects/data-warehouse/what-future-holds/us-population-aging" target="_blank" rel="nofollow"><strong>quadruple</strong></a> between 2000 and 2040.</p><p>There's a reason why the number of seniors who own a voice-activated home assistant device almost <a href="https://www.nar.realtor/blogs/economists-outlook/aging-population-to-boost-smart-home-technologies#:~:text=For%20older%20adults%2C%20according%20to,were%20interested%20in%20getting%20it" target="_blank" rel="nofollow">doubled&nbsp;</a>from 2019 - 2020.</p><p>We believe that Smart Home products and SmartShades in particular will play a key role in providing independence to the growing market.</p><p style="text-align: center;"><strong>—</strong><br><strong>The solution is simple:</strong><br><strong>Mass adoption of Smart Shades</strong><br><strong>—</strong></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Funding" id="funding" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Funding
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">Our investors</h2><p><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/164/87164-1681422703-499da01796b6a87469d331ff111c9fa52b962b32.webp" class="fr-fic fr-dib"></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Founders" id="founders" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Founders
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<h2 style="text-align: center;">Experienced leadership<br>team that delivers</h2><p><img src="/cdn-cgi/image/width=680,dpr=2/https://uploads.republic.com/p/images/attachments/original/000/087/167/87167-1681422815-cdee68776a4138120c1e49688acb8ddf57688201.webp" class="fr-fic fr-dii"><br></p>
+</div>
+</section>
+<section class="js-pitch_section s-paddingTop3 s-marginBottom2 offerings-pitch_sections-section" data-section-name="Disclaimers" id="disclaimers" data-rc="offerings/pitch_sections/section"><header>
+<h2 class='c-condensedTitle s-fontSize25 u-colorGray6 s-marginBottom1_5 offerings-pitch_sections-section__title'>
+Disclaimers
+</h2>
+<hr class='s-marginTop1 offerings-pitch_sections-section__divider'>
+</header>
+<div class='js-pitch_content c-offeringPitchContent clearfix'>
+<p class="u-wysiwygMedium"><a href="https://republic.co/risks" target="_blank" rel="nofollow">Risks of early stage investment</a>. Not an offer to buy or sell securities. This is a long-term speculative illiquid investment. Investment is not FDIC or SiPC insured. You may lose money.</p><p class="u-wysiwygMedium">Your investment is binding and irrevocable, although we reserve the right to reject it for any reason or no reason at all. Funds committed will remain in an escrow account maintained by BankProv until such time as a closing occurs. We will not be issuing share certificates; your investment will be solely recorded in book-entry electronic form by DealMaker Transfer Agent LLC, our transfer agent. Securities offered through OpenDeal Broker LLC, a registered broker dealer, member of FINRA (<a href="http://www.finra.org/" target="_blank" rel="nofollow">www.finra.org</a>), member of SIPC (<a href="http://www.sipc.org/" target="_blank" rel="nofollow">www.sipc.org</a>). We will pay OpenDeal Broker LLC, a registered broker-dealer, a cash commission equal to 6% &nbsp;of the dollar value of the Offering Shares issued and a number of shares of Class B Common Shares equal to 1% of the Offering Shares issued to investors in this offering, plus certain offering costs. Please review OpenDeal Broker LLC’s <a href="https://files.brokercheck.finra.org/crs_297797.pdf" rel="nofollow">Form CRS</a>. OpenDeal Broker LLC may require additional documents or information from you to complete your purchase, you will be contacted by a registered representative in this event.</p><p class="u-wysiwygMedium">An offering statement relating to RYSE Inc.'s Class B Common Shares has been filed with the Securities and Exchange Commission and became qualified on July 27, 2022. Prior to making any investment in RYSE Inc.’s Class B Common Shares, you should review a copy of the offering circular, or contact RYSE Inc. by phone at (416) 639-2324. No offer to sell any securities, and no solicitation of an offer to buy any securities, is being made in any jurisdiction in which such offer, sale or solicitation would not be permitted by applicable law.<br><br>* Forward-Looking Statements<br><br>The Offering Materials And This Website May Contain Forward-Looking Statements And Information Relating To, Among Other Things, RYSE Inc., Its Business Plan And Strategy, And Its Industry. These Forward-Looking Statements Are Based On The Beliefs Of, Assumptions Made By, And Information Currently Available To The Company’s Management. When Used In The Offering Materials, The Words “Estimate,” “Project,” “Believe,” “Anticipate,” “Intend,” “Expect” And Similar Expressions Are Intended To Identify Forward-Looking Statements, Which Constitute Forward-Looking Statements. These Statements Reflect Management’s Current Views With Respect To Future Events And Are Subject To Risks And Uncertainties That Could Cause RYSE Inc.’s Actual Results To Differ Materially From Those Contained In The Forward-Looking Statements. Investors Are Cautioned Not To Place Undue Reliance On These Forward-Looking Statements, Which Speak Only As Of The Date On Which They Are Made. RYSE Inc. Does Not Undertake Any Obligation To Revise Or Update These Forward-Looking Statements To Reflect Events Or Circumstances After Such Date Or To Reflect The Occurrence Of Unanticipated Events.</p>
+</div>
+</section>
+</article>
+</div>
+<div class='u-hiddenPrint'>
+<div class='s-marginTop3_5 s-borderTop2_5 u-hiddenXsOnly'></div>
+<div class='s-marginTop3 s-borderTop2 u-hiddenSmUp'></div>
+<div class="offerings-show-invest_section" data-rc="offerings/show/invest_section"><form class="simple_form js-offering_investment_form" action="/ryse/invest" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><div class='s-grid'>
+<div class='s-grid-colMd7 s-grid-colSm8 s-grid-colXs9 offerings-show-invest_section__amount-column'>
+<div class='c-input-addon-wrapper'>
+<div class='c-input-addon offerings-show-invest_section__input-amount-addon'>
+<div class='s-fontSize24'>
+$
+</div>
+</div>
+<div class="c-input-group"><input autocomplete="false" class="c-input c-input--optional js-offering_ammount_input js-money_input u-textRight c-input c-input--large c-input--block" placeholder="1,000 min." type="text" name="investment[amount]" id="investment_amount" /></div>
+</div>
+</div>
+<div class='s-grid-colMd17 s-grid-colSm16 s-grid-colXs15'>
+<button name="button" type="submit" class="c-button js-offering_submit_button c-button c-button--large c-button--block offerings-show-invest_section__submit-button">Invest in RYSE
+</button>
+</div>
+</div>
+</form></div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 js-deal_page_sidebar'>
+<div class='s-spacerXs3'></div>
+<div class='js-section js-mobile_section s-marginBottom3 offerings-show__deal-terms' id='deal-terms'>
+<div class="offerings-show-flexible_deal_terms" data-rc="offerings/show/flexible_deal_terms"><div class="s-marginBottom1_5 offerings-show-deal_terms-header" data-rc="offerings/show/deal_terms/header"><h2 class='s-fontSize25 u-fontWeight800 u-colorGray6 c-condensedTitle offerings-show-deal_terms-header__title'>
+Deal terms
+</h2>
+<hr class='c-deal-page-title-divider'>
+</div>
+<div class="offerings-show-flexible_deal_terms-list" data-rc="offerings/show/flexible_deal_terms/list"><div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Allocation
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+$25M
+</div>
+<i class='icon-info-letter icon--frame c-infoTip s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon'></i>
+</div>
+<div class='js-flexible_deal_term_details u-colorGray3 offerings-show-flexible_deal_terms-item__details'>
+<p>The total investment amount in RYSE being offered to investors.</p>
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Minimum investment
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+$1K
+</div>
+<i class='icon-info-letter icon--frame c-infoTip s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon'></i>
+</div>
+<div class='js-flexible_deal_term_details u-colorGray3 offerings-show-flexible_deal_terms-item__details'>
+The smallest investment amount the issuer is accepting in this offering.
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Maximum investment
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+$1M
+</div>
+<i class='icon-info-letter icon--frame c-infoTip s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon'></i>
+</div>
+<div class='js-flexible_deal_term_details u-colorGray3 offerings-show-flexible_deal_terms-item__details'>
+The largest investment amount the issuer is accepting in this offering.
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Security type
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+Class B Common Shares
+</div>
+<i class='icon-info-letter icon--frame c-infoTip s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon'></i>
+</div>
+<div class='js-flexible_deal_term_details u-colorGray3 offerings-show-flexible_deal_terms-item__details'>
+<p>Type of securities issued by RYSE Inc. in this offering.</p><p><a class="u-hiddenPrint" href="/help/what-are-shares-of-common-or-preferred-stock-2" rel="noopener" target="_blank">Learn more</a></p>
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Price per security
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+$1
+</div>
+<i class='icon-info-letter icon--frame c-infoTip s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon'></i>
+</div>
+<div class='js-flexible_deal_term_details u-colorGray3 offerings-show-flexible_deal_terms-item__details'>
+<p>Price per share being offered to investors.</p>
+</div>
+</div>
+<div class="js-flexible_deal_term u-fontWeight400 offerings-show-flexible_deal_terms-item" data-rc="offerings/show/flexible_deal_terms/item"><div class='u-displayFlex u-alignItemsCenter s-fontSize18 offerings-show-flexible_deal_terms-item__entry'>
+<div class='u-flexGrow u-colorGray3'>
+Pre-money Valuation Cap
+</div>
+<div class='u-fontWeight600 u-textRight s-marginLeft1 offerings-show-flexible_deal_terms-item__value'>
+$46M
+</div>
+<i class='icon-info-letter icon--frame c-infoTip s-fontSize9 offerings-show-flexible_deal_terms-item__tooltip-icon'></i>
+</div>
+<div class='js-flexible_deal_term_details u-colorGray3 offerings-show-flexible_deal_terms-item__details'>
+
+</div>
+</div>
+</div>
+</div>
+<div class="offerings-show-deal_terms-footer" data-rc="offerings/show/deal_terms/footer"><footer class='s-paddingTop1 js-deal_terms_footer u-hiddenPrint'>
+<a target="_blank" class="c-button c-button--secondary c-button--block" href="/help/category/investing#reg-a-investing">How it works</a>
+</footer>
+</div>
+</div>
+</div>
+<div class='js-section js-mobile_section s-marginBottom3 u-hiddenPrint offerings-show__documents' id='documents'>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Capital R (OpenDeal Broker LLC, CRD #291387) is hosting this Reg A+ securities offering by RYSE Inc.. View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/Archives/edgar/data/1824930/000168316823002269/ryse_253g2.htm"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form 1-A
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+<div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14 s-marginBottom0_5'>
+Company documents
+</div>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="https://uploads.republic.com/p/offerings/security_attachments/original/000/001/964/1964-1680555395-3321466c9eafe65790a89e08d949b83f76005fdf.pdf"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Subscription Agreement
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/2671"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Ryse Form 253g2.pdf
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/1744"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Additional Risk Disclosures.pdf
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/1743"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Disclosures &amp; Disclaimers.pdf
+</span>
+</a>
+<a class="offerings-shared-documents_section__document-link" target="_blank" href="/documents/1742"><i class='icon-doc s-marginRight0_5 s-fontSize24'></i>
+<span>
+Form CRS.pdf
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='about'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+About RYSE
+</h2>
+</div>
+<div class="offerings-show-about_section" data-rc="offerings/show/about_section"><div class='s-grid js-display'>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Legal Name
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+RYSE Inc.
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Founded
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+May 2009
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Form
+</div>
+<div class='s-fontSize18'>
+California
+Other
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Employees
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+21
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Website
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+<a target="_blank" href="https://helloryse.com">helloryse.com</a>
+</div>
+</div>
+<div class='u-hiddenPrint offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Social Media
+</div>
+<div class='s-marginPullLeft1 s-fontSize18'>
+<a target="_blank" title="Twitter" class="s-marginLeft1 c-link c-link--twitter" href="https://twitter.com/helloryse?"><i class="icon-twitter"></i></a>
+<a target="_blank" title="Instagram" class="s-marginLeft1 c-link c-link--instagram" href="https://www.instagram.com/helloryse/"><i class="icon-instagram"></i></a>
+<a target="_blank" title="Linkedin" class="s-marginLeft1 c-link c-link--linkedin" href="https://www.linkedin.com/company/helloryse/"><i class="icon-linkedin"></i></a>
+<a target="_blank" title="Facebook" class="s-marginLeft1 c-link c-link--facebook" href="https://www.facebook.com/helloryse"><i class="icon-facebook"></i></a>
+<a target="_blank" title="Youtube" class="s-marginLeft1 c-link c-link--youtube" href="https://www.youtube.com/channel/UCT_1QUyGqjUNYfyrVfoRvXA"><i class="icon-youtube"></i></a>
+<a target="_blank" title="Tiktok" class="s-marginLeft1 c-link c-link--tiktok" href="https://www.tiktok.com/@helloryse"><i class="icon-tiktok"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hiddenPrint'>
+<div class='offerings-show-about_section__row offerings-show-about_section__row--map'>
+<div class='u-fontWeight400 u-colorGray7 s-marginBottom0_5'>
+Headquarters
+</div>
+<div class='s-fontSize18 offerings-show-about_section__address'>
+<img alt="Google Map location of of RYSE" title="Google Map location of of RYSE" src="https://maps.googleapis.com/maps/api/staticmap?center=20%2BCamden%2BStreet%2CToronto%2COntario&amp;format=png&amp;key=AIzaSyBSAkS8gvhmvxYO9XQOuP1ows6mbvx_jAE&amp;maptype=roadmap&amp;markers=size%3Asmall%7Ccolor%3A0xff0000%7Clabel%3A1%7C20%2BCamden%2BStreet%2CToronto%2COntario&amp;scale=2&amp;size=360x165&amp;visual_refresh=true&amp;zoom=13&amp;signature=VcFyLqgNw-dedTW-x9lCGIfQ9eo=" />
+<div class='s-fontSize12 offerings-show-about_section__address_text'>
+20 Camden Street
+Suite 200
+, Toronto, Ontario
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hidden u-blockPrint offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Headquarters
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+20 Camden Street, Suite 200, Toronto, Ontario, Canada M5V 1V1
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='team'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='s-marginBottom1 offerings-show__section-title'>
+<div class='c-condensedTitle u-colorGray6'>
+RYSE Team
+</div>
+<div class='s-fontSize14 u-colorGray9 s-marginTop1 u-fontWeight400'>
+Everyone helping build RYSE, not limited to employees
+</div>
+</h2>
+</div>
+<div class="offerings-show-team_section" data-rc="offerings/show/team_section"><div class='js-sort_data' data-featured-placeholder-klass='offerings-show-team_section__featured_team_member s-marginBottom1 s-border1' data-placeholder-klass='offerings-show-team_section__team_member s-marginBottom1 s-border1'></div>
+<div class='s-grid u-hiddenPrint'>
+<div class='s-grid-colMd24'>
+<div class=' offerings-show-team_section__team_member_container'>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Trung Pham" title="Trung Pham" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/008/646/8646-1681921067-cc80303120130f4eaf5e28ad25aa2290b665ea65.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/008/646/8646-1681921067-3facf9aec8561d195480c3bb3432e61e8bd824e6.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Trung Pham
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Co-Founder, CEO
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Marc Bishara" title="Marc Bishara" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/010/474/10474-1681921131-c7faf9a84c7bed0d09ab634734e2a6d5867f3996.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/010/474/10474-1681921131-94c4e3183fe85985befa8a9c25148b29e4e3588e.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Marc Bishara
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+CTO
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+
+</div>
+</div>
+</div>
+</div>
+<div class='js-hidden_team_members u-hiddenXsOnly'>
+<div class='s-marginTop2_5 offerings-show-team_section__team_member_container'>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-textCenter u-hidden u-blockPrint'>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Trung Pham
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Co-Founder, CEO
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Marc Bishara
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+CTO
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='faq'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+FAQ
+</h2>
+</div>
+<div class="offerings-show-questions_section" data-rc="offerings/show/questions_section"><div class='s-grid'>
+<div class='s-grid-colSm8 u-fontWeight400 offerings-show-questions_section__column'>
+<div class='js-question-container'>
+<div class='js-question offerings-show-questions_section__question'>
+<a class="js-question_link c-link--no-underline selected offerings-show-questions_section__question_link" href="javascript:void(0)">Do you have more information about the risks of investing in this campaign?</a>
+<div class='offerings-show-questions_section__question_container'>
+<div class='js-question_text s-fontSize16 u-fontWeight400 s-border1 offerings-show-questions_section__question_text x'>
+<h4 class='s-marginBottom1 s-fontSize18 u-fontWeight500 u-hiddenXsOnly offerings-show-questions_section__question_title'>
+Do you have more information about the risks of investing in this campaign?
+</h4>
+<p>You can find resources on the risks to investing here:&nbsp;</p><p><br></p><p><a href="https://republic.com/documents/402" rel="nofollow" target="_blank">Disclosures &amp; Disclaimers&nbsp;</a></p><p><a href="https://republic.com/documents/398" rel="nofollow" target="_blank">Additional Risks Disclosures</a></p>
+</div>
+</div>
+</div>
+<div class='js-discussion_hint s-marginTop1 s-fontSize12 u-hiddenPrint'>
+Still have questions? Check the
+<a class="js-content-nav-link" href="#discussion">discussion section.</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='risks'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+Risks
+</h2>
+</div>
+<div class="offerings-show-risks_section" data-rc="offerings/show/risks_section"><div class='s-grid'>
+<div class='s-grid-colSm24'>
+<div class='s-grid'>
+<div class='s-grid-colSm12 u-fontWeight400 offerings-show-risks_section__column'>
+<div class='js-risk-container'>
+<div class='js-risk offerings-show-risks_section__risk'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">The company’s auditor has issued a “going concern” opinion.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+The company’s auditor has issued a “going concern” opinion on its financial statements, which means the company may not be able to succeed as a business without additional financing. As of December 31, 2021 the date of its financial statements, the company is not close to profitability. The audit report states that the company’s ability to continue as a going concern for the next twelve months is dependent upon its ability to generate cash from operating activities and/or to raise additional capital to fund its operations. The company’s failure to raise additional short-term capital could have a negative impact on not only their financial condition but also their ability to remain in business.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">We are an early stage company and have not yet generated any profits.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+The company is in the development stages of its second generation product, and therefore has a limited history upon which an evaluation of its performance and future prospects can be made. Our business activity to date was devoted to raising capital, building and marketing our first product and devising and planning for our second generation product. Our current and proposed operations are subject to all the business risks associated with relatively new enterprises. These include likely fluctuations in operating results as the company reacts to developments in its market, including purchasing and usage patterns of customers and the entry of competitors into the market. We will only be able to pay dividends on any shares once our directors determine that we are financially able to do so. RYSE incurred a net loss CDN$ 3,099,626 in 2021 and a net loss of CDN$5,163,387 in 2020. There is no assurance that we will ever become profitable or generate sufficient revenues to pay dividends to the holders of the shares.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">Demand for our product may be affected by new entrants who copy our products and/or infringe on our intellectual property.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+The ability to protect and enforce intellectual property rights varies across jurisdictions. An inability to preserve our intellectual property rights may adversely affect our financial performance. Competitors and others may also initiate litigation to challenge the validity of our intellectual property or allege that we infringe their intellectual property. We may be required to pay substantial damages if it is determined our products infringe on their intellectual property. We may also be required to develop an alternative, non-infringing product that could be costly and time-consuming, or acquire a license on terms that are not favorable to us. Protecting or defending against such claims could significantly increase our costs, divert management’s time and attention away from other business matters, and otherwise adversely affect our results of operations and financial condition.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">RYSE depends on component and product manufacturing and logistical services provided by outsourcing partners, many of whom are located outside of the U.S.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+Substantially all of RYSE’s manufacturing is performed in whole or in part by a few outsourcing partners located primarily in Asia. While these arrangements may lower operating costs, they also reduce the company’s direct control over production and distribution. It is uncertain what effect such diminished control will have on the quality or quantity of products or services, or RYSE’s flexibility to respond to changing conditions. We may experience operational difficulties with our manufacturing partners, including reductions in the availability of production capacity, failure to comply with product specifications, insufficient quality control, failure to meet production deadlines, increases in manufacturing costs and longer lead time. Our partners may experience disruptions in their manufacturing operations due to equipment breakdowns, labor strikes or shortages, natural disasters, component or material shortages, cost increases, violation of environmental, health or safety laws and regulations, health epidemics, or other problems. For example, the outbreak of coronavirus (COVID-19), or the COVID-19 outbreak, widely and negatively impacted supply chains in China in early 2020. We may be unable to pass potential cost increases to our customers. We may have disputes with our contract manufacturers, which may result in litigation expenses, divert our management’s attention and cause supply shortages to us, which may cause harm to the company and its finances.
+
+Although arrangements with these partners may contain provisions for warranty expense reimbursement, RYSE may remain responsible to the consumer for warranty service in the event of product defects and could experience an unanticipated product defect or warranty liability.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">RYSE competes in a highly competitive market against businesses that are more established.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+All of the markets into which RYSE’s products are and will be sold are extremely competitive. The consumer product business is extremely competitive as is the “internet-of-things” market.
+
+RYSE expects competition to emerge both from existing and new companies. The company believes that its ability to compete depends on many factors, some of which are beyond its control, including:
+
+·	Market acceptance of RYSE’s products by retailers and consumers;
+·	RYSE’s ability to attract and retain employees, quality suppliers and quality distributors;
+·	Adequate capital resources; and
+·	The effectiveness of RYSE’s advertising and marketing efforts, including the ability to retain a powerful brand identity.
+
+Many of our competitors have longer operating histories and significantly greater financial, technical, distribution, marketing and sales resources than does RYSE. Many have established products recognized in the consumer marketplace. RYSE cannot assure you that it will be able to compete successfully against these or emerging competitors.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">To remain competitive and stimulate customer demand, RYSE must successfully manage frequent product introductions, improvements, and transitions.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+Due to the competitive nature of the industries in which RYSE competes, the company must continually update its products, introduce new products and technologies, enhance existing products, and effectively stimulate customer demand for new and upgraded products. The success of new product introductions depends on a number of factors including, but not limited to, timely and successful product development, market acceptance, RYSE’s ability to manage the risks associated with new product production ramp-up issues, the effective management of purchase commitments and inventory levels in line with anticipated product demand, the availability of products in appropriate quantities and costs to meet anticipated demand, and the risk that new products may have quality or other defects or deficiencies in the early stages of introduction. Accordingly, RYSE cannot determine in advance the ultimate effect of product updates, new product introductions and transitions.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">The size and future growth in the market for our RYSE SmartShades under development has not been established with precision and may be smaller than we estimate, possibly materially. If our estimates and projections overestimate the size of this market, our sales growth may be adversely affected.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+Our estimates of the size and future growth in the market for our products and application technology under development is based on a number of internal studies, reports and estimates. In addition, our internal estimates are based in large part on current feedback from clients using current generation technology and our belief is that the use and implementation in the United States and, eventually, worldwide will be extensive. While we believe we are using effective tools in estimating the total market for our product, these estimates may not be correct and the conditions supporting our estimates may change at any time, thereby reducing the predictive accuracy of these underlying factors. The actual demand for our products or competitive products, could differ materially from our projections if our assumptions are incorrect. As a result, our estimates of the size and future growth in the market for AXIS Gear, RYSE SmartShades or any future products may prove to be incorrect. If the demand is smaller than we have estimated, it may impair our projected sales growth and have an adverse impact on our business.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">If we are unable to properly forecast future demand of our products, our production levels may not meet demands, which could negatively impact our operating results.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+Our ability to manage our inventory levels to meet our customer’s demand for our products is important for our business. Our production levels and inventory management are based on demand estimates six to twelve months forward taking into account supply lead times, production capacity, timing of shipments, and dealer inventory levels. If we overestimate or underestimate demand for any of our products during a given season, we may not maintain appropriate inventory levels, which could negatively impact our net sales or working capital, hinder our ability to meet customer demand, or cause us to incur excess and obsolete inventory charges.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">We have existing patents that we might not be able to protect properly.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+One of the company’s most valuable assets is its intellectual property. The company has 5 patents that have so far been granted in the United States. Going forward, we may submit further patent and other intellectual property filings including trademarks, copyrights, Internet domain names, and trade secrets. The company has not so far engaged in litigation when some of our competitors have attempted to misappropriate or violate intellectual property rights owned by the company since so far such attempts have not had a material impact on our operations. Should such violations increase in nature or frequency, we will protect our intellectual property portfolio from such violations, within the constraints of our available resources. It is important to note that unforeseeable costs associated with such practices may consume a significant portion of our capital, which could negatively affect our research and development efforts and our business, in general.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">Internal system or service failures, including as a result of cyber or other security incidents, could disrupt business operations, result in the loss of critical and confidential information, and adversely impact our reputation, our business, financial condition, results of operations and cash flows. Our connected products potentially expose our business to cybersecurity threats.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+The AXIS Gear and RYSE SmartShade are connected products and potentially expose our business to cybersecurity threats. As a result, we could be subject to systems, service or product failures, natural disasters, power shortages or terrorist attacks, but also from exposure to cyber or other security threats. Global cybersecurity threats and incidents can range from uncoordinated individual attempts to gain unauthorized access to our systems to sophisticated and targeted measures known as advanced persistent threats directed at our products, our customers and/or our third-party service providers, including cloud providers. There has been an increase in the frequency and sophistication of cyber and other security threats we face, and our customers are increasingly requiring cyber and other security protections and standards in our products, and we may incur additional costs to comply with such demands.
+
+The potential consequences of a material cyber or other security incident include financial loss, reputational damage, negative media coverage, litigation with third parties, which in turn could adversely affect our competitiveness, business, financial condition, results of operations and cash flows.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">Changes in tariffs, import or export restrictions, Chinese regulations, or other trade barriers may reduce gross margins.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+We currently manufacture our products in China, including sourcing all components for our products there. We may incur increases in costs due to changes in tariffs, import or export restrictions, other trade barriers, or unexpected changes in regulatory requirements, any of which could reduce our gross margins. Moreover, volatile economic conditions may impact the ability of our manufacturers to make timely deliveries; and in the event that a supplier fails to make a delivery, there is no guarantee that we will be able to timely locate an alternative manufacturer of comparable quality at an acceptable price. Since the beginning of 2018, there has been increasing rhetoric, in some cases coupled with legislative or executive action, from several U.S. and foreign leaders regarding tariffs against foreign imports of certain materials. It is difficult to anticipate the impact on our business caused by the proposed tariffs or whether the proposed changes in tariffs will materialize in the future. Given the relatively fluid regulatory environment in China and the United States, there could be additional tax, tariffs, or other regulatory changes in the future. Any such changes could directly and materially adversely impact our business, financial condition, and operating results.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">There is a risk of failure based on the wireless transmission of data used by our smartphone platform, which could result in failure of users to adopt the platform.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+If there is instability in a wireless network, Bluetooth module, or other network problems that are out of our control, our new platform may not be well received. Our smartphone platform relies on the wireless transmission of data through Wi-Fi networks and Bluetooth module. These networks are often deemed less secure than a hard-wired network. The security of a wireless network is often out of our control. However, any breach of security could result in the market and sensor device manufacturers to fail to embrace our platform
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">Our business involves the use, transmission, and storage of confidential information, and the failure to properly safeguard such information could result in significant reputational harm.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+We may at times collect, store, and transmit information of, or on behalf of, our clients that may include certain types of confidential information that may be considered personal or sensitive, and that are subject to laws that apply to data breaches. We believe that we take reasonable steps to protect the security, integrity, and confidentiality of the information we collect and store, but there is no guarantee that inadvertent or unauthorized disclosure will not occur or that third parties will not gain unauthorized access to this information despite our efforts to protect this information, including through a cyber-attack that circumvents existing security measures and compromises the data that we store. If such unauthorized disclosure or access does occur, we may be required to notify persons whose information was disclosed or accessed. Most states have enacted data breach notification laws and, in addition to federal laws that apply to certain types of information, such as financial information, federal legislation has been proposed that would establish broader federal obligations with respect to data breaches. We may also be subject to claims of breach of contract for such unauthorized disclosure or access, investigation and penalties by regulatory authorities and potential claims by persons whose information was disclosed. The unauthorized disclosure of information, or a cyber-security incident involving data that we store, may result in the termination of one or more of our commercial relationships or a reduction in client confidence and usage of our services. We may also be subject to litigation alleging the improper use, transmission, or storage of confidential information, which could damage our reputation among our current and potential clients and cause us to lose business and revenue.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">We currently have commercial liability insurance that provides us with protection against certain product liability claims associated with the production, marketing and sale of our products, and/or the expense of defending against claims of product liability. Should such insurance not sufficiently protect us, our assets could be materially depleted and we could be subject to negative publicity which could impair our reputation.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+The production, marketing and sale of digital products have inherent risks of liability in the event of product failure or claim of harm caused by product operation. Furthermore, even meritless claims of product liability may be costly to defend against. We have commercial liability insurance up to CDN$2,000,000, which would cover some of these claims and it is our management’s position that our products do not carry substantial product liability risk. However, if our insurance proves to be insufficient, claims against us could generate negative publicity, which could impair our reputation and adversely affect the demand for our products, our ability to generate sales and our profitability. It is also possible that we could face liability in a products liability lawsuit for manufacturing defects or defective design, which may not be covered.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">We cannot assure you that we will effectively manage our growth.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+RYSE’s employee headcount and the scope and complexity of our business will increase significantly and we expect headcount growth to continue for the foreseeable future. The growth and expansion of our business and products create significant challenges for our management, operational, and financial resources, including managing multiple relations with users, distributors, vendors, and other third parties. In the event of continued growth of the company’s operations or in the number of our third-party relationships, our information technology systems or internal controls and procedures may not be adequate to support our operations. We must continue to improve our operational, financial, and management processes and systems and to effectively expand, train, and manage our employee base. As we continue to grow, and have to implement more complex organizational management structures, we may find it increasingly difficult to maintain adequate oversight. This could negatively affect our business performance.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">An economic downturn may adversely affect consumer discretionary spending and demand for our products and services.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+Our products and services may be considered discretionary items for consumers. Factors affecting the level of consumer spending for such discretionary items include general economic conditions and other factors, such as consumer confidence in future economic conditions, consumer sentiment, the availability and cost of consumer credit, levels of unemployment, and tax rates. Unfavorable economic conditions may lead consumers to delay or reduce purchases of our products and services and consumer demand for our products and services may not grow as we expect. Our sensitivity to economic cycles and any related fluctuation in consumer demand for our products and services may have an adverse effect on our operating results and financial condition.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">The loss of one or more of RYSE’s key personnel, or our failure to attract and retain other highly qualified personnel in the future, could harm our business.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+RYSE currently depends on the continued services and performance of key members of its management team. The loss of key personnel could disrupt our operations and have an adverse effect on our business. Our CEO is instrumental to our current operations and, should he no longer be able to perform his duties, we cannot guarantee that we would be able to find and hire a new CEO and management in a timely manner. As we continue to grow, we cannot guarantee that we will continue to attract the personnel the company needs to maintain its competitive position. If we do not succeed in attracting, hiring, and integrating qualified personnel, or retaining and motivating existing key personnel, we may be unable to grow effectively.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">Our costs may grow more quickly than our revenues, harming our business and profitability.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+RYSE’s efforts to attract competent personnel and the costs of marketing and increasing the sales of our product will require significant resources. Our expenses or the time to market may be greater than we anticipate and our investments to make the business more efficient may not be successful. In addition, RYSE may need to increase marketing, sales, and other operating expenses in order to grow and expand its operations and to remain competitive. Increases in our costs may adversely affect our business and profitability.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">As a growing company, we have to develop effective financial and operational processes and controls.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+Effective internal controls and accounting resources are necessary for us to provide reliable financial reports, which, as a growing company, we are still building out with the support of third party professional services firms. At December 31, 2019, we identified a material weakness in our internal controls over financial reporting, as we did not have sufficient accounting resources with relevant technical accounting skills to address certain complex matters in our financial statements. In addition, we did not sufficiently design internal controls to provide the appropriate level of oversight regarding the financial recordkeeping and review of the Company’s financial reporting. This weakness has been addressed in 2020 and 2021 via hiring an outsourced CFO service provider. Failure to achieve and maintain an effective internal accounting and control environment could cause us to face regulatory action and cause investors to lose confidence in our reported financial information, either of which could have an adverse effect on our business and financial results.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">We are and may continue to be significantly impacted by the worldwide economic downturn due to the COVID-19 pandemic.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+In December 2019, a novel strain of coronavirus, or COVID-19, was reported to have surfaced in Wuhan, China. COVID-19 has spread to many countries, including the United States, and was declared to be a pandemic by the World Health Organization. Efforts to contain the spread of COVID-19 have intensified and the U.S., Europe and Asia have implemented severe travel restrictions and social distancing. The impacts of the outbreak are unknown and rapidly evolving. A widespread health crisis has adversely affected and could continue to affect the global economy, resulting in an economic downturn that could negatively impact the value of the company’s shares and investor demand for shares generally.
+ 
+The continued spread of COVID-19 has also led to severe disruption and volatility in the global capital markets, which could increase our cost of capital and adversely affect our ability to access the capital markets in the future. It is possible that the continued spread of COVID-19 could cause a further economic slowdown or recession or cause other unpredictable events, each of which could adversely affect our business, results of operations, or financial condition.
+
+ 
+
+The extent to which COVID-19 affects our financial results will depend on future developments, which are highly uncertain and cannot be predicted, including new information which may emerge concerning the severity of the COVID-19 outbreak and the actions to contain the outbreak or treat its impact, among others. Moreover, the COVID-19 outbreak has had and may continue to have indeterminable adverse effects on general commercial activity and the world economy, and our business and results of operations could be adversely affected to the extent that COVID-19 or any other pandemic harms the global economy generally.
+
+ 
+
+While cancellation of existing client contracts due to pandemic-related financial hardship has not occurred to date, some negotiations for expected contracts were delayed or frozen for an indeterminate time, which has had and is expected to have a material effect on the company’s forecasted revenues.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">We expect to raise additional capital through equity offerings and to provide our employees with equity incentives. Therefore, your ownership interest in RYSE is likely to continue to be diluted.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+The company might not sell enough securities in this offering to meet its operating needs and fulfill its plans, in which case it will cease operating and you will get nothing. Even if we sell all the common stock we are offering now, the company will possibly need to raise more funds in the future, and if it can’t get them, we may fail. The company may offer additional shares of its common stock and/or other classes of equity or debt that convert into shares of common stock, any of which offerings would dilute the ownership percentage of investors in this offering. See “Dilution.”
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">Voting control is in the hands of the company’s founder.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+The Class B Common Shares are non-voting securities. Voting control is concentrated in the hands of the company’s founder, Trung Pham (the “Founder”), who owns more than 59% of the voting Class A Common Shares and holds a proxy to vote the Class A Common Shares that he does not own. You will not be able to influence our policies or any other corporate matter, including the election of directors, changes to our company’s governance documents, expanding any employee equity or option pool, and any merger, consolidation, sale of all or substantially all of our assets, or other major action requiring shareholder approval. See “Securities Being Offered”. The Founder will make all major decisions regarding the company. As a minority shareholder, you will not have a say in these decisions.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">Investors will have no ability to impact or otherwise influence corporate decisions of the company.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+Along with the subscription agreement that investors will execute in connection with this offering, investors will be required to become parties to a voting trust agreement and shareholders agreement, which have been filed as exhibits to the Offering Statement of which this Offering Circular forms a part. The Voting Trust Agreement grants to the company’s founder an irrevocable right to vote their Class B Common Shares (as such shares may be converted, exchanged, changed, reclassified, redesignated, subdivided or consolidated) on all matters that are put to a vote of the shareholders. Furthermore, transferees of the investors party to the subscription agreement must agree to be bound by the terms of the voting trust agreement. For more information, see “Securities Being Offered – Class B Common Shares – Voting Rights; Voting Trust Agreement.” See also, “Securities Being Offered – Class B Common Shares –Shareholders Agreement.”
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">RYSE expects to continue to raise additional capital through equity offerings and to incent its employees with equity incentives. Therefore, your ownership interest in RYSE is likely to continue to be diluted.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+RYSE may offer shares of its Class A Common Shares, Class B Common Shares, preferred shares and/or other classes of equity or debt that convert into shares of Class B Common Shares, any of which offerings would dilute the ownership percentage represented by any shares of Class B Common Shares purchased by you.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">There is no current market for any of our common shares.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+There is no formal marketplace for the resale of our Class B Common Shares. Shares may be traded on the over-the-counter market to the extent any demand exists. Investors should assume that they may not be able to liquidate their investment for the foreseeable future.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">The subscription agreement has a forum selection provision that requires disputes be resolved in state or federal courts in the State of Delaware, regardless of convenience or cost to you, the investor.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+In order to invest in this offering, investors agree to resolve disputes arising under the subscription agreement in state or federal courts located in the State of Delaware, for the purpose of any suit, action or other proceeding arising out of or based upon the agreement. Section 22 of the Securities Act creates concurrent jurisdiction for federal and state courts over all suits brought to enforce any duty or liability created by the Securities Act or the rules and regulations thereunder. We believe that the exclusive forum provision applies to claims arising under the Securities Act, but there is uncertainty as to whether a court would enforce such a provision in this context. Section 27 of the Exchange Act creates exclusive federal jurisdiction over all suits brought to enforce any duty or liability created by the Exchange Act or the rules and regulations thereunder. As a result, the exclusive forum provision will not apply to suits brought to enforce any duty or liability created by the Exchange Act or any other claim for which the federal courts have exclusive jurisdiction. You will not be deemed to have waived the company’s compliance with the federal securities laws and the rules and regulations thereunder. This forum selection provision may limit your ability to obtain a favorable judicial forum for disputes with us. Alternatively, if a court were to find the provision inapplicable to, or unenforceable in an action, we may incur additional costs associated with resolving such matters in other jurisdictions, which could adversely affect our business, financial condition or results of operations.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">Investors in this offering may not be entitled to a jury trial with respect to claims arising under the subscription agreement, which could result in less favorable outcomes to the plaintiff(s) in any action under the agreement.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+Investors in this offering will be bound by the subscription agreement, which includes a provision under which investors waive the right to a jury trial of any claim they may have against the company arising out of or relating to the agreement, including any claims made under the federal securities laws. By signing the agreement, the investor warrants that the investor has reviewed this waiver with his or her legal counsel, and knowingly and voluntarily waives the investor’s jury trial rights following consultation with the investor’s legal counsel.
+
+If we opposed a jury trial demand based on the waiver, a court would determine whether the waiver was enforceable based on the facts and circumstances of that case in accordance with the applicable state and federal law. To our knowledge, the enforceability of a contractual pre-dispute jury trial waiver in connection with claims arising under the federal securities laws has not been finally adjudicated by a federal court. However, we believe that a contractual pre-dispute jury trial waiver provision is generally enforceable, including under the laws of the State of Delaware, which governs the agreement, by a federal or state court in the State of Delaware. In determining whether to enforce a contractual pre-dispute jury trial waiver provision, courts will generally consider whether the visibility of the jury trial waiver provision within the agreement is sufficiently prominent such that a party knowingly, intelligently and voluntarily waived the right to a jury trial. We believe that this is the case with respect to the subscription agreement. You should consult legal counsel regarding the jury waiver provision before entering into the subscription agreement.
+
+If you bring a claim against the company in connection with matters arising under the agreement, including claims under the federal securities laws, you may not be entitled to a jury trial with respect to those claims, which may have the effect of limiting and discouraging lawsuits against the company. If a lawsuit is brought against the company under the agreement, it may be heard only by a judge or justice of the applicable trial court, which would be conducted according to different civil procedures and may result in different outcomes than a trial by jury would have had, including results that could be less favorable to the plaintiff(s) in such an action.
+
+Nevertheless, if the jury trial waiver provision is not permitted by applicable law, an action could proceed under the terms of the agreement with a jury trial. No condition, stipulation or provision of the subscription agreement serves as a waiver by any holder of the company’s securities or by the company of compliance with any substantive provision of the federal securities laws and the rules and regulations promulgated under those laws.
+
+In addition, when the shares are transferred, the transferee is required to agree to all the same conditions, obligations and restrictions applicable to the shares or to the transferor with regard to ownership of the shares, that were in effect immediately prior to the transfer of the shares, including but not limited to the subscription agreement.
+</div>
+</div>
+<div class='js-risk offerings-show-risks_section__risk u-hidden'>
+<a class="js-risk_link c-link--no-underline offerings-show-risks_section__risk_link" href="javascript:void(0)">Using a credit card to purchase shares may impact the return on your investment as well as subject you to other risks inherent in this form of payment.</a>
+<div class='s-fontSize16 u-fontWeight400 js-risk_text offerings-show-risks_section__risk_text'>
+Investors in this offering have the option of paying for their investment with a credit card, which is not usual in the traditional investment markets. Transaction fees charged by your credit card company (which can reach 5% of transaction value if considered a cash advance) and interest charged on unpaid card balances (which can reach almost 25% in some states) add to the effective purchase price of the shares you buy. See “Plan of Distribution.” The cost of using a credit card may also increase if you do not make the minimum monthly card payments and incur late fees. Using a credit card is a relatively new form of payment for securities and will subject you to other risks inherent in this form of payment, including that, if you fail to make credit card payments (e.g. minimum monthly payments), you risk damaging your credit score and payment by credit card may be more susceptible to abuse than other forms of payment. Moreover, where a third-party payment processor is used, as in this offering, your recovery options in the case of disputes may be limited. The increased costs due to transaction fees and interest may reduce the return on your investment.
+
+ 
+
+The Commission’s Office of Investor Education and Advocacy issued an Investor Alert dated February 14, 2018 entitled: Credit Cards and Investments – A Risky Combination, which explains these and other risks you may want to consider before using a credit card to pay for your investment.
+</div>
+</div>
+<div class='s-marginTop1 s-marginBottom1_5 u-fontWeight500'>
+<a class="js-show_all_risks" href="javascript:void(0)">Show all Risks</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint js-section offerings-show__section' id='discussion'>
+<div class='s-container s-gridMaxXs16'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+Discussion
+</h2>
+<div class='s-marginBottom3 s-fontSize12 u-colorMuted u-textCenter'>
+Ask questions and share feedback with the RYSE team below.
+If you have support related questions for Republic, please contact
+<a href="mailto:investors@republic.co">investors@republic.co</a>.
+</div>
+</div>
+<div class='js-discussion_placeholder' data-url='/ryse/discussion_section'>
+<div class='u-textCenter u-colorGray9 s-fontSize20 s-marginTop6 s-marginBottom10'>
+<i class='c-spinner'></i>
+Loading
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint s-marginTop6 s-borderTop5 offerings-show__footer'>
+<div class='s-container s-gridMaxXs24'>
+<div class="u-textCenter offerings-show-footer" data-rc="offerings/show/footer"><div class='s-marginBottom1'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)"><div class="c-avatar c-avatar--medium offerings-show-footer__avatar c-avatar--border c-avatar--ryse"><img alt="Logo of RYSE" title="RYSE" srcset="https://uploads.republic.com/p/offerings/logos/medium_2x/000/001/964/1964-1665784742-62bfb01eee19e59680bfdab91e1cc7abeb78d972.png 2x" src="https://uploads.republic.com/p/offerings/logos/medium/000/001/964/1964-1665784742-7fee6073cdb0ee871ad1e8255d19d1fd905d4c2c.png" /></div></a>
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle s-marginHoriz0_5'>
+<h1 class='c-largeTitle offerings-show-footer__company-name'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)">RYSE</a>
+</h1>
+</div>
+</div>
+<div class='s-marginTop1'>
+<div class='s-paddingTop1 u-hiddenXsOnly'></div>
+<div class='u-displayInlineBlock u-blockXsOnly offerings-show-footer__invest-wrapper'>
+<div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button--extra_large c-button--responsive offerings-show-footer__invest-button js-segment_invest_link" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;RYSE&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1964,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/964/1964-1681941118-142780427646a32211a34c4df8dab76659a7474f.jpg&quot;,&quot;min_investment_amount&quot;:1000,&quot;slug&quot;:&quot;ryse&quot;,&quot;tags&quot;:&quot;v-companies,aapi-founders,hardware,smart-devices,b2c,consumer-electronics,household-goods,venture-backed,1m-raised,stock-purchase-agreement&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/ryse&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-design="footer" data-label="invest" href="/ryse/invest">Invest in RYSE</a>
+</div>
+<div class='s-marginTop1 u-hiddenSmUp'></div>
+<div class='u-whiteSpaceNowrap offerings-show-footer__follow-wrapper'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Footer" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link c-button--small c-button--secondary" data-action="follow" data-href="/register?after_sign_in=%2Fryse%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5 u-colorGray2 follows-shared-follow_offering__bubble-counter'>
+48
+</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingBottom1_5 u-hiddenXsOnly'></div>
+</div>
+</div>
+<div class="offerings-shared-schema_org" data-rc="offerings/shared/schema_org"><script nonce="ZLwqAEUIMUuKuiWHKpRyZg==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "https://republic.com/companies",
+      "name": "Companies",
+      "image": "https://assets.republic.com/assets/logo/icon/brand/36x40/logo@3x-af4ee9995fb90fffc2d2d3acf41e91f9ea98718053f604912115ab3fd6877321.png"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "https://republic.com/ryse",
+      "name": "RYSE",
+      "image": "https://uploads.republic.com/p/offerings/logos/medium/000/001/964/1964-1665784742-7fee6073cdb0ee871ad1e8255d19d1fd905d4c2c.png"
+    }
+  }]
+}
+
+
+//]]>
+</script></div>
+</div>
+</div>
+</div>
+</div>
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-full_disclaimer" data-rc="layouts/footer/disclaimers/full_disclaimer"><p class='s-marginBottom1'>
+This site (the "Site") is owned and maintained by OpenDeal Inc., which is not a registered
+broker-dealer. OpenDeal Inc. does not give investment advice, endorsement, analysis or
+recommendations with respect to any securities. All securities listed here are being offered
+by, and all information included on this Site is the responsibility of, the applicable issuer
+of such securities. The intermediary facilitating the offering will be identified in such
+offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+All funding-portal activities are conducted by OpenDeal Portal LLC doing business as Republic,
+a funding portal which is registered with the US Securities and Exchange Commission (SEC) as a
+funding portal (Portal) and is a member of the Financial Industry Regulatory Authority (FINRA).
+OpenDeal Portal LLC is located at 149 E 23rd St #2001, New York, NY 10010, please
+check out background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org/about/funding-portals-we-regulate">Funding Portal page</a>.
+</p>
+<p class='s-marginBottom1'>
+All broker-dealer related securities activity is conducted by OpenDeal Broker LLC, an
+affiliate of OpenDeal Inc. and OpenDeal Portal LLC, and a registered broker-dealer, and member
+of
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org">FINRA</a>
+|
+<a class="c-link c-link--underline" href="https://www.sipc.org/">SiPC</a>,
+located at 1345 Avenue of the Americas, 15th Floor, New York, NY 10105, please check our
+background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://brokercheck.finra.org/firm/summary/291387">BrokerCheck</a>.
+</p>
+<p class='s-marginBottom1'>
+Certain pages discussing the mechanics and providing educational materials regarding
+regulation crowdfunding offerings may refer to OpenDeal Broker LLC and OpenDeal Portal LLC
+collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC make investment
+recommendations and no communication, through this Site or in any other medium should be
+construed as a recommendation for any security offered on or off this investment platform.
+Investment opportunities posted on this Site are private placements of securities that are
+not publicly traded, involve a high degree of risk, may lose value, are subject to holding
+period requirements and are intended for investors who do not need a liquid investment. Past
+performance is not indicative of future results. Investors must be able to afford the loss
+of their entire investment. Only qualified investors, which may be restricted to only
+Accredited Investors or non-U.S. persons, may invest in offerings hosted by OpenDeal Broker.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC, nor any of their
+officers, directors, agents and employees makes any warranty, express or implied, of any
+kind whatsoever related to the adequacy, accuracy or completeness of any information on this
+Site or the use of information on this site. Offers to sell securities can only be made
+through official offering documents that contain important information about the investment
+and the issuers, including risks. Investors should carefully read the offering documents.
+Investors should conduct their own due diligence and are encouraged to consult with their
+tax, legal and financial advisors.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1 s-paddingHoriz1_5 s-paddingVert1 u-text-center u-fontWeight500'>
+Investors should verify any issuer information they consider important before making
+an investment.
+</p>
+<p class='s-marginBottom1'>
+Investments in private companies are particularly risky and may result in total loss of
+invested capital. Past performance of a security or a company does not guarantee future
+results or returns. Only investors who understand the
+<a class="c-link c-link--underline" href="/risks">risks of early stage investment</a>
+and who meet the Republic's
+<a class="c-link c-link--underline" href="/help/can-i-invest">investment criteria</a>
+may invest.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC verify
+information provided by companies on this Site and makes no assurance as to the completeness
+or accuracy of any such information. Additional information about companies fundraising on
+the Site can be found by searching the
+<a target="_blank" rel="noopener" class="c-link c-link--underline" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not require an
+EDGAR filing.
+</p>
+<p class='s-marginBottom1'>
+To help the government fight the funding of terrorism and money laundering activities,
+Federal law requires all financial institutions to obtain, verify, and record information
+that identifies each person who opens an account.
+Therefore, when you use the Services we will ask for your name, address, date of birth,
+and other information that will allow us to identify you.
+We may also ask to see your driver's license, passport or other identifying documents.
+</p>
+<p class='s-marginBottom1'>
+Republic and its affiliates are not and do not operate or act as a bank. Certain banking
+services are provided by BankProv, member FDIC / member DIF. Digital (crypto) assets and
+investment products are not insured by the FDIC, may lose value, and are not deposits or other
+obligations of BankProv and are not guaranteed by BankProv. Terms and conditions apply.
+</p>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+
+<script src="https://static.zdassets.com/ekr/snippet.js?key=d10adfc1-5afd-478b-b60b-d5f58ec5e520" id="ze-snippet" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==">
+  window.zESettings = {
+    webWidget: {
+      zIndex: 86,
+      offset: {
+        horizontal: '55px',
+        vertical: '2px',
+        mobile: {
+          horizontal: '-4px',
+          vertical: '90px'
+        }
+      },
+      contactForm: {
+        title: {'*': 'How can we help?'},
+        ticketForms: [{ id: 6139814921239 }],
+        fields: [
+          { id: 'subject', prefill: { '*': 'Need help!' } },
+          { id: 'email', prefill: { '*': "" } },
+          { id: 'key:6164328823703', prefill: { '*': "" } },
+        ],
+      },
+      helpCenter: {
+        title: {'*': 'FAQ'},
+        searchPlaceholder: {'*': 'What can we help you with?'},
+        messageButton: {'*': 'Contact Us'},
+        originalArticleButton: false,
+      },
+    },
+  };
+  
+  zE('webWidget', 'setLocale', 'en');
+  zE('webWidget', 'helpCenter:setSuggestions', { search: 'invest' });
+</script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="ZLwqAEUIMUuKuiWHKpRyZg==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="ZLwqAEUIMUuKuiWHKpRyZg==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+<script src="https://assets.republic.com/assets/w/runtime~MediaSliderPage-1098888d834bd3762a55.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ae-cda0d3eb09b2571ee24e.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apexcharts_dist_apexcharts_common_js-ba302c83-12acaec747ed98c96c79.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apollo_client_c-752f32f6a5f08b47aee9.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ap-10286ca6eee77e5cfdbe.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ax-87ca8eab84b534ce51a3.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_braze_web-sdk_sh-082bda95cd1f46db675e.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_br-ded297e3061c09e58176.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ca-0192f74a4e598aec7a52.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_core-js_i-f3d9e78f9f53cf58378d.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_crc-8b8be13627dda03b73d8.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_c-cea66e909f36387f5945.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_da-5b72066967e09ff24edf.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_d-83acda350f41f6abdff3.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_el-ea7a9011bec346028733.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_c-22aa4e04a1fbdd3d6e3f.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_common_dist_browser_genesisStates_mainnet_json-97430531-83fe7f595f064e0385b1.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethersproject_a-8765651a2f1bdccf9a56.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_et-b31cc9258c2c1d07cac5.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_e-d4fab84d8ab34150ad30.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_fontkit_dist_module_mjs-3528d02d-ecc0f4556eda5102b2d3.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_froala_editor_min_js-b1fc3988-ced20c2300f6c9f40897.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_plugins_pkgd_min_js-adc83e4b-33e97225bf9033164d2d.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_grapesjs_dist_grapes_min_js-a826bfc4-cadb07d673643a51118e.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_g-9055b0297f7ac6f017f0.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_i-b77e6ab09fad9dae77d3.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_l-b1a7deddd04fdb5d9a33.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_n-a907fa203947450ef394.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pb-cab37a002985eca657b7.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pd-cf393d506219ee5b112a.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pl-4c6fabe429fda4071dbb.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_p-27f2b800da9d84d8e2bf.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_rc-o-80e5f70e3d9925c8cdb0.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reach-857404c519977edb5b66.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-l-0c79a438a779449c0b1d.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-r-3c1ef064934605ec254d.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reac-dd43f7d7d874a68c99e5.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_r-b902bc774bc3ff333672.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_sc-0f32c01226134eda1296.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_se-74d4cf204c9d98a015aa.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_s-884ee524820f17ecd6cb.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_A-8cf01848e62c80ff23d7.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_I-5990a0d8dde19f6e04bd.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_A-c0356acbaf9d3c64d8d4.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_C-81436052b30a8eba6374.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_F-445b408fa8bf17d5aa78.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_I-662a93905a6a15b4f741.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_P-69d60a2c449dc7cb6600.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_T-e09f8036fafdc3c6afe0.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_ad-a41070ea11aea6a6ef6a.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+<script src="https://assets.republic.com/assets/w/MediaSliderPage-9d07a76fbcff98a1daf3.js" nonce="ZLwqAEUIMUuKuiWHKpRyZg=="></script>
+</body></html>
+
+
+

@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+Republic — where anyone can invest in startups
+</title>
+<link href='https://republic.com/market-terms' rel='canonical'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='Republic — where anyone can invest in startups' itemprop='name'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' itemprop='description'>
+<meta content='https://assets.republic.com/assets/social_share/cover--default-7359efcea39802f13c954dff5a6153e9ad81f6b303c09d67276d2f7ddd7f3b93.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='Republic — where anyone can invest in startups' name='twitter:title'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' name='twitter:description'>
+<meta content='https://assets.republic.com/assets/social_share/cover--default-7359efcea39802f13c954dff5a6153e9ad81f6b303c09d67276d2f7ddd7f3b93.jpg' name='twitter:image'>
+<meta content='https://republic.com/market-terms' property='og:url'>
+<meta content='Republic — where anyone can invest in startups' property='og:title'>
+<meta content='Invest in impactful startups raising money via equity crowdfunding' property='og:description'>
+<meta content='https://assets.republic.com/assets/social_share/cover--default-7359efcea39802f13c954dff5a6153e9ad81f6b303c09d67276d2f7ddd7f3b93.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="ijUNUkT8fkqQIq51aLiDNQ=="></script>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="74-bKa3nT400Ht6xF13nY_jlN0-heKvy6q2TjFr9dbDkmdcBZaXTw75aCBUVVDvse5NnOTk-5LokBo9N3Rnkmg" />
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+  analytics.page({
+    url: "https://republic.com/market-terms"
+  }, {
+    integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+  });
+</script>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class=" preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="layouts-header_footer" data-rc="layouts/header_footer"><nav class="c-header-nav c-header-nav--default  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/black/150x38/logo-211758c2027fc8268186d512a2119520a35358973648789a123d9fb6c3d5a37f.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search  layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--default" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div>
+<div class="s-container s-gridMaxXs24 s-paddingTop2 s-paddingBottom5 layouts-container" data-rc="layouts/container"><div class="static_pages-secondary_market" data-rc="static_pages/secondary_market"><div class='s-grid'>
+<div class='s-grid-colSm6'>
+<div class="static_pages-nav" data-rc="static_pages/nav"><div class='u-hiddenSmUp static_pages-nav__mobile-navigation'>
+<select class='js-mobile-nav c-input c-input--select'>
+<option value='/about'>About</option>
+<option value='/contact'>Contact</option>
+<option value='/privacy'>Privacy policy</option>
+<option value='/accessibility'>Accessibility</option>
+<option value='/cookie_disclosure'>Cookie disclosure</option>
+<option value='/terms'>Terms of Service</option>
+<option value='/risks'>Risks</option>
+<option selected value='/market-terms'>Secondary market terms</option>
+<!-- %option{selected: static_page_presenter.sidebar_selected('valuation_policy'), -->
+<!-- value: valuation_policy_path} Valuation policy -->
+</select>
+</div>
+<nav class='c-nav u-hiddenXsOnly static_pages-nav__navigation'>
+<a class="c-nav__link " href="/about">About</a>
+<a class="c-nav__link " href="/contact">Contact</a>
+<a class="c-nav__link " href="/privacy">Privacy policy</a>
+<a class="c-nav__link " href="/accessibility">Accessibility</a>
+<a class="c-nav__link " href="/cookie-disclosure">Cookie disclosure</a>
+<a class="c-nav__link " href="/terms">Terms of Service</a>
+<a class="c-nav__link " href="/risks">Risks</a>
+<a class="c-nav__link c-nav__link--active" href="/market-terms">Secondary market terms</a>
+<!-- = link_to 'Valuation policy', -->
+<!-- valuation_policy_path, -->
+<!-- class: &quot;c-nav__link &quot; -->
+</nav>
+</div>
+</div>
+<div class='s-grid--preSm1 s-grid-colSm17'>
+<section>
+<div class='c-formattedContent'>
+<h1 class='c-primaryTitle'>
+Republic's Secondary Market Terms of Use and Privacy Policy
+</h1>
+<h2 class='c-secondaryTitle'>
+General
+</h2>
+<p>
+Republic’s Secondary Market was created by Republic Investment Services LLC (“<span class='u-fontWeight600 u-whiteSpaceNowrap'>Republic</span>”) and is operated in its sole and absolute discretion. No broker-dealer or FINRA member firm is or has
+been involved in the development or operation of Republic’s Secondary Market. No affiliate of Republic
+participates in Republic's Secondary Market in a brokerage, investment advisory, money transmission,
+trust or custody capacity.
+</p>
+<p>
+The issuers, each of which are unaffiliated with Republic unless otherwise noted, and such issuers’
+securities listed here, are not listed on any national stock exchange or other regulated securities
+market.
+</p>
+<p>
+Republic is not compensated by any party for maintaining, operating or otherwise providing services
+associated with Republic's Secondary Market. Republic is incurring all costs associated with the Escrow
+Agent without reimbursement or other remuneration.
+</p>
+<p>
+Republic is not registered, licensed, or supervised as a broker dealer or investment adviser by the
+Securities and Exchange Commission (SEC), the Financial Industry Regulatory Authority (FINRA), or any
+other financial regulatory authority or licensed to provide any financial advice or services. Republic's
+Secondary Market is not a registered national securities exchange, Alternative Trading Platform regulated
+pursuant to Rule ATS or securities information processor. Republic has no fiduciary duty or duties of care
+to uses of Republic's Secondary Market.
+</p>
+<p>
+The information provided on Republic’s Secondary Market pages (www.republic.com/market and its branches)
+do not consist of firm quotes, but rather a list of securities, previously sold through the affiliated
+Republic platform, the holders of which have indicated a desire to buy or sell and a mechanism for
+potential purchasers and seller to communicate with potential counterparties.
+<span class='u-textDecorationUnderline'>
+Republic does not assure any participant that any particular transaction will ever occur.
+</span>
+All transactions between participants must be executed by the participants independent of Republic or any
+of its respective affiliates. Any implied or approximate valuation provided via Republic's Secondary
+Market is provided through a pre-determined formula, which shall be disclosed to all participants where
+relevant and does not constitute investment advice, a research report or the actual valuation of an issuer
+or a security.
+</p>
+<p>
+All applicable state and federal securities laws (including the anti-fraud and anti-manipulation
+provisions) apply to any offer made or transaction consummated using Republic’s Secondary Market.
+</p>
+<p>
+The securities of certain Issuers which are listed on the Republic Secondary Market<span class='u-fontWeight600 u-whiteSpaceNowrap'>are not necessarily</span>eligible to transact; only securities and their Issuers which have met all terms and conditions (as
+further defined below) will be considered “<span class='u-fontWeight600 u-whiteSpaceNowrap'>Eligible Securities</span>”. Only the Eligible Securities may transact. Eligibility is temporal and may change from time to time.
+</p>
+<p>
+Each Issuer of Eligible Securities has engaged Brassica Services, LLC, a SEC-registered transfer agent
+and an affiliate of Republic as the registrar and transfer agent of its securities. The seller must
+provide the contact information for the issuer, and any engaged transfer agent, to any prospective
+purchaser.
+</p>
+<p>
+Any participant in a transaction that is a broker-dealer, an associated person of a broker-dealer, or who
+has a state securities license is responsible for identifying that fact to Republic and any prospective
+participants prior to participating on this platform.
+</p>
+<p>
+Two-sided quotes in which a participant indicates an indication to buy a security at one price and an
+indication to sell that same security at a higher price are prohibited.
+</p>
+<p>
+The registration requirements of the federal securities laws apply to all offers and sales through
+Republic's Secondary Market absent an available exception or exemption.
+</p>
+<h2 class='c-secondaryTitle'>
+Terms of Use
+</h2>
+<p>
+By accessing or using our website at www.republic.com/market (“<span class='u-fontWeight600 u-whiteSpaceNowrap'>Republic's Secondary Market</span>”), including any subdomain thereof (the “<span class='u-fontWeight600 u-whiteSpaceNowrap'>Site</span>”), you (the “<span class='u-fontWeight600 u-whiteSpaceNowrap'>User</span>”) signify that you have read, understand and agree to be bound by these terms of use (“<span class='u-fontWeight600 u-whiteSpaceNowrap'>Terms of Use</span>”). As used herein, “<span class='u-fontWeight600 u-whiteSpaceNowrap'>Users</span>” means anyone who accesses and/or uses the Site. For any terms herein applicable to all Users, all
+investor members, or business and other entity Users specifically, or where the context otherwise
+requires, “Users” shall be deemed to include any business or other entity on behalf of which the Site is
+accessed by any other User, and “you” shall be deemed to include any such business or other entity and
+any person acting on behalf of any such business or other entity in connection with the use of the Site.
+As used herein, “<span class='u-fontWeight600 u-whiteSpaceNowrap'>Escrow Agent</span>” means BankProv or any duly appointed successor thereto, “bank” as defined by the Exchange Act of 1934,
+as amended (the “<span class='u-fontWeight600 u-whiteSpaceNowrap'>Exchange Act</span>”) that has agreed in writing to hold funds for the benefit of, and to promptly transmit or return the
+funds to, the persons entitled thereto in accordance with the terms of any relevant transactional
+documents (the “<span class='u-fontWeight600 u-whiteSpaceNowrap'>Transactional Documents</span>”).
+</p>
+<h2 class='c-secondaryTitle'>
+Changes to these Terms of Use
+</h2>
+<p>
+We may make changes to these Terms of Use from time to time. If we do this, we will post the changed Terms
+of Use on the Site and will indicate at the top of this page the date the Terms of Use were last revised.
+You understand and agree that your continued use of the Site after we have made any such changes
+constitutes your acceptance of the new Terms of Use.
+</p>
+<h2 class='c-secondaryTitle'>
+Secondary activity
+</h2>
+<p>
+Any secondary trading activity of securities through Republic's Secondary Market will be solely effected
+between participants (i.e., purchasers and sellers), all of whom must be Users. By participation on the
+Secondary Market, you acknowledge your understanding that: (i) all transactions will be executed only by
+direct electronic communications between Users, using tools made available by Republic and off of the
+Site, (ii) all negotiations will be by and between the Users, (iii) all funds settlement activities will
+be performed via the Escrow Agent, and (iv) Republic will not receive, transfer or hold funds or
+securities as an incident of hosting Republic's Secondary Market.
+</p>
+<p>
+All indications, whether to buy or sell, will expire after
+<span class='u-textDecorationUnderline'>sixty (60) calendar days</span>
+by default. Indications may only be made via Republic's Secondary Market, any indication made off of
+Republic's Secondary Market will be disqualified and the User removed.
+</p>
+<p>
+Users agree to the transmission of their email addresses and names to prospective counterparties if the
+potential participant wants to purchase or sell securities of the type the User has indicated they wish to
+purchase or sell.
+</p>
+<p>
+Users agree and understand they are solely responsible for (i) negotiating, (ii) seeking and receiving
+necessary consents for, (iii) conducting diligence on and (iv) closing all transactions.
+</p>
+<h2 class='c-secondaryTitle'>
+<span class='u-textDecorationUnderline'>
+IN NO EVENT WILL REPUBLIC BROKER A TRANSACTION
+</span>
+TERMS APPLICABLE TO ALL USERS: ELIGIBILITY, LICENSE AND REPRESENTATIONS
+</h2>
+<h3 class='u-fontWeight400'>
+Eligibility: General
+</h3>
+<p>
+This Site is intended solely for Users who, if they are a natural person, are eighteen (18) years of age
+or older, and any registration by, use of or access to the Site by any natural person under 18 is
+unauthorized, unlicensed and in violation of these Terms of Use. By using the Site, you represent and
+warrant that, if you are a natural person, you are 18 or older and that you agree to and will abide by all
+of the terms and conditions of these Terms of Use. If you violate any of these Terms of Use, or otherwise
+violate an agreement between you and us, Republic may delete your profile and any content or information
+that you have posted on the Site and/or prohibit you from using or accessing the Site (or any portion,
+aspect or feature of the Site), at any time in its sole discretion, with or without notice, including
+without limitation if it believes that you are under 18. Only persons who are “accredited investors” as
+defined by SEC Rule 501 may purchase securities via Republic's Secondary Market, any person may make an
+indication to sell and sell pursuant to the terms herein. Republic reserves the right to request that you
+verify your status as an “accredited investor” prior to accessing or using Republic's Secondary Market.
+</p>
+<h3 class='u-fontWeight400'>
+Proprietary Rights in Site Content; Limited License
+</h3>
+<p>
+All content on the Site, including but not limited to designs, text, graphics, pictures, video,
+information, software, music, sound and other files, and their selection and arrangement (the "<span class='u-fontWeight600 u-whiteSpaceNowrap'>Site Content</span>"), are the proprietary property of Republic with all rights reserved, except the copyright to certain
+images appearing on the Site may belong to third-parties and we are using such images as a fair and
+permissible use and or with the consent of the copyright holder. No Site Content may be modified, copied,
+distributed, framed, reproduced, republished, downloaded, displayed, posted, transmitted, or sold in any
+form or by any means, in whole or in part, without Republic's prior written permission, except as provided
+in the following sentence and except that the foregoing does not apply to your own User Content (as
+defined below) that you legally post on the Site. Provided that you are eligible for use of the Site, you
+are granted a limited license to access and use the Site and to download or print a copy of any portion of
+the Site Content solely for your use in connection with your use of the Site, provided that you keep all
+copyright or other proprietary notices intact. Except for your own User Content (as defined below), you
+may not republish Site Content on any Internet, Intranet or Extranet site or incorporate the information
+in any other database or compilation, and any other use of the Site Content is strictly prohibited. Any
+use of the Site or the Site Content other than as specifically authorized herein, without the prior
+written permission of Republic, is strictly prohibited and will terminate the license granted herein. Such
+unauthorized use may also violate applicable laws including without limitation copyright and trademark
+laws and applicable communications regulations and statutes. Unless explicitly stated herein, nothing in
+these Terms of Use shall be construed as conferring any license to intellectual property rights, whether
+by estoppel, implication or otherwise. This license is revocable by us at any time without notice and with
+or without cause.
+</p>
+<p>
+You may review personal information posted by or relating to other Users on the Site, but you are not
+authorized to disclose such information for any purpose. You may not reproduce any personal information.
+Further, you represent and warrant that: (i) you do not have the ability to match any personal information
+posted by or relating to other Users to the identity of any individual; (ii) you will not make any attempt
+to obtain data permitting you to match any personal information posted by or relating to other Users to
+the identity of any individual; (iii) you will not accept any information from any third party that
+permits such a match; and (iv) you will make no such match.
+</p>
+<h3 class='u-fontWeight400'>
+Restrictions on Data Collection/Termination
+</h3>
+<p>
+Without our prior consent, you may not:
+</p>
+<ul>
+<li>
+use any automated means to access this Site or collect any information from the Site (including, without
+limitation, robots, spiders, scripts or other automatic devices or programs);
+</li>
+<li>
+frame the Site, utilize framing techniques to enclose any Content or other proprietary information,
+place popup windows over this Site's pages, or otherwise affect the display of this Site's pages; engage
+in the practices of "screen scraping", "database scraping" or any other activity with the purpose of
+obtaining content or other information; or
+</li>
+<li>
+use this Site in any manner that violates applicable law or that could damage, disable, overburden, or
+impair this Site or interfere with any other party's use and enjoyment of this Site.
+</li>
+</ul>
+<p>
+We may terminate, disable or throttle your access to, or use of, this Site for any reason, including
+without limitation, if we believe that you have violated or acted inconsistently with any portion of these
+Terms of Use.
+</p>
+<h3 class='u-fontWeight400'>
+User Representations
+</h3>
+<p>
+You represent, warrant and agree that no materials of any kind submitted through your account or otherwise
+posted or shared by you through the Site will violate or infringe upon the rights of any third party,
+including copyright, trademark, privacy, publicity or other personal or proprietary rights; or contain
+libelous, defamatory or otherwise unlawful material. You further agree not to harvest or collect email
+addresses or other contact information of Users from the Site by electronic or other means for the
+purposes of sending unsolicited emails or other unsolicited communications. Additionally, you agree not to
+use automated scripts to collect information from the Site or for any other purpose. You further agree
+that you may not use the Site in any unlawful manner or in any other manner that could damage, disable,
+overburden or impair the Site. In addition, you agree not to use the Site to:
+</p>
+<ul>
+<li>
+upload, post, transmit, share, store or otherwise make available any content that we deem to be harmful,
+threatening, unlawful, defamatory, infringing, abusive, inflammatory, harassing, vulgar, obscene,
+fraudulent, invasive of privacy or publicity rights, hateful, or racially, ethnically or otherwise
+objectionable;
+</li>
+<li>
+except where authorized by Republic, register for more than one User account, register for a User
+account on behalf of an individual other than yourself, operate a User account on behalf of or for the
+benefit of any person who is not eligible to register for or operate a User account in their own name,
+or register for a User account on behalf of any group or entity (other than approved investment accounts
+opened on behalf of legal entities);
+</li>
+<li>
+impersonate any person or entity, or falsely state or otherwise misrepresent yourself, your age or your
+affiliation with or authority to act on behalf of any person or entity;
+</li>
+<li>
+upload, post, transmit, share or otherwise make available any unsolicited or unauthorized advertising,
+solicitations, promotional materials, "junk mail", "spam", "chain letters", "pyramid schemes", or any
+other form of solicitation;
+</li>
+<li>
+upload, post, transmit, share, store or otherwise make publicly available on the Site any private
+information of any third party, including, without limitation, addresses, phone numbers, email
+addresses, Social Security numbers and credit card numbers;
+</li>
+<li>
+solicit personal information from any natural person under 18 or solicit passwords or personally
+identifying information for commercial or unlawful purposes from any User;
+</li>
+<li>
+upload, post, transmit, share or otherwise make available any material that contains software viruses or
+any other computer code, files or programs designed to interrupt, destroy or limit the functionality of
+any computer software or hardware or telecommunications equipment; intimidate or harass another User;
+</li>
+<li>
+upload, post, transmit, share, store or otherwise make available content that would constitute,
+encourage or provide instructions for a criminal offense, violate the rights of any party, or that would
+otherwise create liability or violate any local, state, national or international law;
+</li>
+<li>
+use or attempt to use another's account, service or system without authorization from that person and
+Republic, or create a false identity on the Site; or
+</li>
+<li>
+upload, post, transmit, share, store or otherwise make available content that, in the sole judgment of
+Republic, is objectionable or which restricts or inhibits any other person from using or enjoying the
+Site, or which may expose Republic or its Users to any harm or liability of any type.
+</li>
+</ul>
+<h3 class='u-fontWeight400'>
+User Content Posted on the Site
+</h3>
+<p>
+You are solely responsible for the personal or business information, photos, profiles, messages, notes,
+text, information, music, video, contact information for you or others, advertisements or other content
+that you upload, publish, provide or display (hereinafter, "post") on or through the Site, or transmit to
+or share with other Users (collectively the "User Content"). It is against the Terms of Use to contact
+members directly or to attempt to enter into any lending transactions with members outside of the Service.
+You understand and agree that Republic may, but is not obligated to, review and delete or remove (without
+notice) any User Content in its sole discretion, including without limitation, User Content that in the
+sole judgment of Republic violates these Terms of Use, might be offensive or illegal, or might violate the
+rights of, harm, or threaten the safety of, Users or others.
+</p>
+<p>
+By posting User Content to any part of the Site, you automatically grant, and you represent and warrant
+that you have the right to grant, to Republic an irrevocable, perpetual, non-exclusive, transferable,
+fully paid, worldwide license (with the right to sublicense) to use, copy, publicly perform, publicly
+display, reformat, translate, excerpt (in whole or in part) and distribute such User Content for any
+purpose on or in connection with the Site or the promotion thereof, to prepare derivative works of, or
+incorporate into other works, such User Content, and to grant and authorize sublicenses of the foregoing.
+You may remove your User Content from the Site at any time. If you choose to remove your User Content,
+the license granted above will not expire.
+</p>
+<p>
+You may review personal or business information posted by other Users on the Site, but you are not
+authorized to disclose such information for any purpose.
+</p>
+<p class='u-fontWeight600'>
+ALL USERS: CONSENT TO ELECTRONIC TRANSACTIONS
+</p>
+<p>
+Because Republic's Secondary Market operates on the Internet, it is necessary for you to consent to
+transact business with us online and electronically.
+</p>
+<p>
+<span class='u-textDecorationUnderline'>Electronic Communications:</span>
+Any disclosures will be provided to you electronically through www.republic.com/market either on our Site
+or via electronic mail to the verified email address you provided or through other electronic means of
+communication based on information provided by you. If you require paper copies of such disclosures, you
+may write to us at the mailing address provided below and a paper copy will be sent to you at a cost of up
+to $5.00. A request for a paper copy of any disclosure will not be considered a withdrawal of your consent
+to receive disclosures electronically.
+</p>
+<p>
+<span class='u-textDecorationUnderline'>Scope of Consent:</span>
+Your consent to transact business electronically, and our agreement to do so, applies to any transactions,
+whether between you and Republic or between you and another party with whom you transact through the Site.
+Your consent will remain in effect for so long as you are a User and, if you are no longer a User such
+consent shall survive.
+</p>
+<p>
+<span class='u-textDecorationUnderline'>Consenting to Do Business Electronically:</span>
+Before you decide to do business electronically through Republic's Secondary Market, you should consider
+whether you have the required hardware and software capabilities described below.
+</p>
+<p>
+<span class='u-textDecorationUnderline'>Withdrawing Consent:</span>
+You may not withdraw consent to doing business with us electronically for as long as you have outstanding
+any investments made through the Site. If you have no outstanding investments made through the site and
+wish to withdraw consent to doing business electronically, we will terminate your registered user account
+with us.
+</p>
+<p>
+<span class='u-textDecorationUnderline'>How to Contact Us regarding Electronic Disclosures:</span>
+You can contact us via email at secondary-market@republic.co.
+</p>
+<h2 class='c-secondaryTitle'>
+SECURITIES MATTERS
+</h2>
+<h3 class='u-fontWeight400'>
+NO INVESTMENT ADVICE
+</h3>
+<p>
+You acknowledge that Republic does not provide investment advice or a recommendation of securities or
+investments. Furthermore, you agree that the contents of Site do not constitute financial, accounting,
+legal or tax advice from Republic or its affiliates. You should always obtain independent investment and
+tax advice from your professional advisers before making any investment decisions.
+</p>
+<h3 class='u-fontWeight400'>
+ESCROW AGENT
+</h3>
+<p>
+If and when a purchaser accepts a seller’s indication, the purchaser will be required to send the agreed
+upon consideration to the Escrow Agent. Upon the Escrow Agent’s receipt of the consideration, the Escrow
+Agent will hold the consideration for the benefit of the participants until either (i) the terms of the
+Transaction Documents are met, in which case, upon notice from Republic, the Escrow Agent will release the
+consideration, without interest or deduction, to the seller, or (ii) if the terms of the Transaction
+Documents are not met within the term of such Transaction Documents, upon notice from Republic, the Escrow
+Agent will return the consideration, without interest or deduction, to the unsuccessful purchaser. No
+transacting party may hold assets with the Escrow Agent outside of a prospective Transaction.
+</p>
+<h3 class='u-fontWeight400'>
+ELIGIBLE SECURITIES
+</h3>
+<p>
+All transactions via Republic's Secondary Market shall be conducted in compliance with Section 4(a)(7) of
+the Securities Act. This requires the following be true for each Transaction and the securities related
+thereto to meet these Terms:
+</p>
+<ol>
+<li>
+Accredited investor requirement.— Each purchaser is an accredited investor, as that term is defined in
+section 230.501(a) of title 17, Code of Federal Regulations (or any successor regulation).
+</li>
+<li>
+Prohibition on general solicitation or advertising.— Neither the seller, nor any person acting on the
+seller’s behalf, offers or sells securities by any form of general solicitation or general advertising.
+</li>
+<li>
+Information requirement.—The following information (which shall be reasonably current in relation to the
+date of Transaction) must be available to the purchaser:
+<ol>
+<li type='A'>
+The exact name of the issuer of the securities and the issuer’s predecessor (if any).
+</li>
+<li type='A'>
+The address of the issuer’s of the securities principal executive offices.
+</li>
+<li type='A'>
+The exact title and class of the security.
+</li>
+<li type='A'>
+The par or stated value of the security.
+</li>
+<li type='A'>
+The number of shares or total amount of the securities outstanding as of the end of the issuer’s
+most recent fiscal year.
+</li>
+<li type='A'>
+The name and address of the transfer agent, corporate secretary, or other person responsible
+for transferring shares and stock certificates.
+</li>
+<li type='A'>
+A statement of the nature of the business of the issuer and the products and services it offers,
+which shall be presumed reasonably current if the statement is as of 12 months before the
+transaction date.
+</li>
+<li type='A'>
+The names of the officers and directors of the issuer.
+</li>
+<li type='A'>
+The names of any persons registered as a broker, dealer, or agent that shall be paid or given,
+directly or indirectly, any commission or remuneration for such person’s participation in the offer
+or sale of the securities.
+</li>
+<li type='A'>
+The issuer’s most recent balance sheet and profit and loss statement and similar financial
+statements, which shall—
+<ol>
+<li type='i'>
+be for such part of the 2 preceding fiscal years as the issuer has been in operation;
+</li>
+<li type='i'>
+be prepared in accordance with generally accepted accounting principles or, in the case of a
+foreign private issuer, be prepared in accordance with generally accepted accounting principles
+or the International Financial Reporting Standards issued by the International Accounting
+Standards Board;
+</li>
+<li type='i'>
+be presumed reasonably current if—
+<ol>
+<li type='I'>
+with respect to the balance sheet, the balance sheet is as of a date less than 16 months
+before the transaction date; and
+</li>
+<li type='I'>
+with respect to the profit and loss statement, such statement is for the 12 months preceding
+the date of the issuer’s balance sheet; and
+</li>
+</ol>
+</li>
+<li type='i'>
+if the balance sheet is not as of a date less than 6 months before the transaction date, be
+accompanied by additional statements of profit and loss for the period from the date of such
+balance sheet to a date less than 6 months before the transaction date.
+</li>
+</ol>
+</li>
+<li type='A'>
+To the extent that the seller is a control person with respect to the issuer, a brief statement
+regarding the nature of the affiliation, and a statement certified by such seller that they have no
+reasonable grounds to believe that the issuer is in violation of the securities laws or regulations.
+</li>
+</ol>
+</li>
+<li>
+Issuers disqualified.—The transaction is not for the sale of a security where the seller is an issuer or
+a subsidiary, either directly or indirectly, of the issuer.
+</li>
+<li>
+Bad actor prohibition.— Neither the seller, nor any person that has been or will be paid (directly or
+indirectly) remuneration or a commission for their participation in the offer or sale of the securities,
+including solicitation of purchasers for the seller is subject to an event that would disqualify an
+issuer or other covered person under Rule 506(d)(1) of Regulation D (17 CFR 230.506(d)(1)) or is subject
+to a statutory disqualification described under section 78c(a)(39) of this title.
+</li>
+<li>
+Business requirement.—The issuer of the securities is engaged in business, is not in the organizational
+stage or in bankruptcy or receivership, and is not a blank check, blind pool, or shell company that has
+no specific business plan or purpose or has indicated that the issuer’s primary business plan is to
+engage in a merger or combination of the business with, or an acquisition of, an unidentified person.
+</li>
+<li>
+Underwriter prohibition.— The transaction is not with respect to a security that constitutes the whole
+or part of an unsold allotment to, or a subscription or participation by, a broker or dealer as an
+underwriter of the security or a redistribution.
+</li>
+<li>
+Outstanding class requirement.— The transaction is with respect to a security of a class that has been
+authorized and outstanding for at least 90 days prior to the date of the transaction.
+</li>
+<li>
+Transfer agent requirement.— The issuer of the securities must have engaged Brassica Services, LLC,
+an SEC-registered transfer agent, as the transfer agent for the relevant class of securities.
+</li>
+<li>
+With respect to an exempted transaction described above, (A) the securities acquired in such transaction
+shall be deemed to have been acquired in a transaction not involving any public offering and (B)
+securities involved in such transaction shall be deemed to be restricted securities within the meaning
+of Rule 144 (17 CFR 230.144) of the Securities Act.
+</li>
+<li>
+The seller shall make and pay for any applicable notice filing with the state either the seller or the
+purchaser resides in.
+</li>
+<li>
+The seller is not an affiliate or control person of the issuer of the relevant securities.
+</li>
+<li>
+No party to the transaction is an officer, director, employee or equivalent for RIS or its affiliates.
+</li>
+</ol>
+<p>
+THE SECURITIES OF ISSUERS WHICH MEET THE REQUIREMENTS ABOVE WILL BE CONSIDERED TO
+<span class='u-textDecorationUnderline'>ELIGIBLE SECURITIES</span>
+AND MAY TRANSACT VIA THE REPUBLIC SECONDARY MARKET. SECURITIES LISTED BY ISSUERS WHO HAVE
+<span class='u-textDecorationUnderline'>NOT</span>
+MET THESE REQUIREMENTS WILL
+<span class='u-textDecorationUnderline'>NOT BE ELIGIBLE</span>
+TO TRANSACT.
+</p>
+<h2 class='c-secondaryTitle'>
+TERMS APPLICABLE TO INDIVIDUAL USERS
+</h2>
+<h3 class='u-fontWeight400'>
+Registration Data; Account Security
+</h3>
+<p>
+In consideration of your use of the Site, you agree to (a) provide accurate, current and complete
+information about you as may be prompted by any registration or subscription forms on the Site or
+otherwise requested by Republic ("Individual Registration Data"); (b) maintain the security of your
+password and identification; (c) maintain and promptly update the Individual Registration Data, and any
+other information you provide to Republic, to keep it accurate, current and complete; (d) promptly notify
+Republic regarding any material changes to information or circumstances that could affect your eligibility
+to continue to use the Site or the terms on which you use the Site; and (e) be fully responsible for all
+use of your account and for any actions that take place using your account.
+</p>
+<h3 class='u-fontWeight400'>
+Know Your Customer
+</h3>
+<p>
+You acknowledge that Republic will perform Know Your Customer (“<span class='u-fontWeight600 u-whiteSpaceNowrap'>KYC</span>”) procedures on all Users, as required by internal policies. You agree that this is a general requirement
+and in compliance with regulatory rules and guidance, and in no way creates or is deemed to be any form of
+recommendation or advice by Republic. Republic may in its sole and absolute discretion decline to accept
+any person’s request in anything, at any time, with no requirement for any reason or explanation; the
+parties agree that such decline(s), if any, shall not constitute an opinion, recommendation or investment,
+legal or tax advice by Republic.
+</p>
+<h2 class='c-secondaryTitle'>
+TERMS APPLICABLE TO BUSINESS AND OTHER ENTITY USERS
+</h2>
+<h3 class='u-fontWeight400'>
+Eligibility: Business and Other Entity Users
+</h3>
+<p>
+Access to the Site for Users that are businesses, other entities or persons acting on behalf of such
+businesses or entities, is intended solely for authorized representatives of businesses or other entities
+that are in good standing in each jurisdiction in which they are registered to conduct business and
+persons otherwise authorized by such businesses or entities to act in furtherance of the business or
+entity's use of the Site. By using the Site on behalf of a business or other entity, you represent and
+warrant that you are duly authorized in accordance with the foregoing by the business or other entity on
+behalf of which you are acting, that you have the power and authority to enter into binding agreements on
+behalf of the business or entity or in the capacity in which you are acting, and that the business or
+entity is in good standing in each jurisdiction in which it is registered to conduct business to the best
+of your knowledge. Furthermore, you confirm that you agree to all of the terms and conditions of these
+Terms of Use individually and on behalf of such business or other entity, and represent and warrant that
+you and such business or other entity will abide by all of the terms and conditions of these Terms of Use.
+If you, the business or entity, any other person acting on behalf of the business or entity or any
+guarantor (if applicable) violate any of these Terms of Use, or otherwise violate an agreement between the
+business or entity (or, if applicable, any guarantor) and Republic, Republic may terminate the business or
+entity's membership, delete any associated profile and any content or information posted on the Site in
+connection with the business or entity's membership and/or prohibit you, such business or entity and any
+other person acting on the business or entity's behalf from using or accessing the Site (or any portion,
+aspect or feature of the Site), at any time in its sole discretion, with or without notice.
+</p>
+<h3 class='u-fontWeight400'>
+Business Registration Data; Account Security
+</h3>
+<p>
+In consideration of your use of the Site and the Service on behalf of a business or other entity member,
+you, individually and on behalf of such business or entity, agree to (a) provide accurate, current and
+complete information about the business or entity, yourself and any other principals and/or authorized
+representatives of the business or entity member as may be prompted by any registration forms on the Site
+or otherwise requested by Republic ("<span class='u-fontWeight600 u-whiteSpaceNowrap'>Business Registration Data</span>"), including the business or entity's full legal name; (b) provide such materials as Republic may request
+to establish and/or verify your or any other person's identity or authority to enter into binding
+agreements on behalf of the business or entity, or to establish and/or verify the business or entity's
+legal existence, good standing in any jurisdiction and eligibility to use the Site; (c) maintain the
+security of any password and identification issued for use by or on behalf of the business or entity; (d)
+maintain and promptly update the Business Registration Data, and any other information provided to
+Republic by you or anyone else acting on behalf of the business or entity, to keep it accurate, current
+and complete; (e) promptly notify Republic regarding any material changes to information or circumstances
+impacting the business or entity's legal existence, good standing in any jurisdiction in which the
+business or entity is authorized to conduct business, or eligibility for continued use of the Site or any
+Service; and (f) be fully responsible for all use of any accounts opened on behalf of the business or
+entity and for any actions that take place using such account.
+</p>
+<h3 class='u-fontWeight400'>
+Additional Representations: Business and Other Entity Users
+</h3>
+<p>
+In addition to the User Representations set forth above under "User Representations", which you hereby
+confirm on behalf of the business or entity member, you further agree, both individually and on behalf of
+the business or entity, not to use the Site to:
+</p>
+<ul>
+<li>
+register for multiple User accounts on behalf of the same business or entity; operate or otherwise
+utilize an account opened in the name of a business or entity for the benefit of any persons other than
+that business or entity;
+</li>
+<li>
+operate or otherwise utilize an account opened in the name of a business or entity for any purpose
+prohibited by law or regulation, any activity which that business or entity is not duly authorized to
+conduct, or for any purpose prohibited by any other agreement between the business or entity and
+Republic or Our Affiliates;
+</li>
+<li>
+operate a User account on behalf of any business or entity with regard to which you are not an
+authorized person with the power to enter into binding agreements on behalf of the business or entity;
+</li>
+<li>
+communicate with any other User regarding the business or entity, or its business operations, other than
+anonymously and publicly via the Site, or upload, post, transmit, share or otherwise make available any
+information or informational material identifying the business or entity or its business operations
+(other than Business Registration Data provided to Republic or other information requested by Republic
+or otherwise necessary for your use of the Site); and
+</li>
+<li>
+upload, post, transmit, share, store or otherwise make publicly available on the Site any private
+information regarding the business or entity, including, without limitation, addresses, phone numbers,
+email addresses, tax identification numbers and credit, or any personal information regarding persons
+associated with the business or entity (other than Business Registration Data provided to Republic).
+</li>
+</ul>
+<p>
+Furthermore, you represent and warrant and agree, both individually and on behalf of the business or
+entity, that:
+</p>
+<ul>
+<li>
+all email addresses provided on behalf of the business or entity are and will be used by the business or
+entity for business purposes; and
+</li>
+<li>
+you will not represent or portray the business or entity as being affiliated with Republic in any
+capacity other than being a User of the Site without Republic's prior written consent.
+</li>
+</ul>
+<h3 class='u-fontWeight400'>
+Scope of License to Use
+</h3>
+<p>
+For Users that are businesses or other entities, or persons acting on behalf of businesses or other
+entities, the limited license to access and use the Site granted above shall be deemed granted to the
+business or entity member and to those authorized representatives of the business or entity for whom
+Business Registration Data has been provided to Republic while acting on behalf of the business or entity
+member in their official capacities. Any access to or use of the Site by persons who are not authorized
+representatives of the business or entity, including but not limited to any representative for whom
+Business Registration Data has not been provided, voids this license and shall constitute a violation of
+these Terms of Use. Furthermore, this license is revocable by us at any time with regard to the business
+or entity member and/or any person acting on such business or entity's behalf without notice and with or
+without cause.
+</p>
+<h2 class='c-secondaryTitle'>
+ALL USERS:
+<span class='u-textDecorationUnderline'>INTELLECTUAL PROPERTY MATTERS</span>
+</h2>
+<h3 class='u-fontWeight400'>
+Trademarks
+</h3>
+<p>
+Republic and other Company graphics, logos, designs, page headers, button icons, scripts and service names
+are registered trademarks, trademarks or trade dress of Republic in the U.S. and/or other countries.
+Republic's trademarks and trade dress may not be used, including as part of trademarks and/or as part of
+domain names, in connection with any product or service in any manner that is likely to cause confusion
+and may not be copied, imitated, or used, in whole or in part, without the prior written permission of
+Republic.
+</p>
+<h3 class='u-fontWeight400'>
+Copyright Complaints
+</h3>
+<p>
+If you believe that any material on the Site infringes upon any copyright which you own or control, you
+may send a written notification of such infringement to our Designated Agent as set forth below:
+</p>
+<p>
+<span class='u-textDecorationUnderline'>E-Mail Address of Designated Agent:</span>
+secondary-market@republic.co
+</p>
+<p>
+To meet the notice requirements under the Digital Millennium Copyright Act, the notification must be a
+written communication that includes the following:
+</p>
+<ul>
+<li>
+A physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive
+right that is allegedly infringed;
+</li>
+<li>
+Identification of the copyrighted work claimed to have been infringed, or, if multiple copyrighted works
+at a single online site are covered by a single notification, a representative list of such works at
+that site;
+</li>
+<li>
+Identification of the material that is claimed to be infringing or to be the subject of infringing
+activity and that is to be removed or access to which is to be disabled, and information reasonably
+sufficient to permit us to locate the material;
+</li>
+<li>
+Information reasonably sufficient to permit us to contact the complaining party, such as an address,
+telephone number and, if available, an electronic mail address at which the complaining party may be
+contacted;
+</li>
+<li>
+A statement that the complaining party has a good-faith belief that use of the material in the manner
+complained of is not authorized by the copyright owner, its agent or the law; and
+</li>
+<li>
+A statement that the information in the notification is accurate, and under penalty of perjury, that the
+complaining party is authorized to act on behalf of the owner of an exclusive right that is allegedly
+infringed.
+</li>
+</ul>
+<h3 class='u-fontWeight400'>
+Repeat Infringer Policy
+</h3>
+<p>
+In accordance with the Digital Millennium Copyright Act (DMCA) and other applicable law, Republic has
+adopted a policy of terminating, in appropriate circumstances and at Republic's sole discretion, the
+memberships of members who are deemed to be repeat infringers. Republic may also at its sole discretion
+limit access to the Site and/or terminate the memberships of any Users who infringe any intellectual
+property rights of others, whether or not there is any repeat infringement.
+</p>
+<h3 class='u-fontWeight400'>
+Submissions
+</h3>
+<p>
+You acknowledge and agree that any questions, comments, suggestions, ideas, feedback or other information
+about the Site or the Service ("<span class='u-fontWeight600 u-whiteSpaceNowrap'>Submissions</span>"), provided by you to Republic are non-confidential and shall become the sole property of Republic.
+Republic shall own exclusive rights, including all intellectual property rights, and shall be entitled to
+the unrestricted use and dissemination of these Submissions for any purpose, commercial or otherwise,
+without acknowledgment or compensation to you.
+</p>
+<h2 class='c-secondaryTitle'>
+ALL USERS: MISCELLANEOUS TERMS
+</h2>
+<h3 class='u-fontWeight400'>
+Links to Other Web Sites and Content
+</h3>
+<p>
+The Site contains links to other web sites ("<span class='u-fontWeight600 u-whiteSpaceNowrap'>Third Party Sites</span>), as well as articles, photographs, text, graphics, pictures, designs, music, sound, video, information,
+software and other content belonging to or originating from third parties (the "<span class='u-fontWeight600 u-whiteSpaceNowrap'>Third Party Content</span>). Such Third Party Sites and Third Party Content are not investigated, monitored or checked for accuracy,
+appropriateness, or completeness by us, and we are not responsible for any Third Party Sites accessed
+through the Site or any Third Party Content posted on the Site, including without limitation the content,
+accuracy, offensiveness, opinions, reliability or policies of or contained in the Third Party Sites or the
+Third Party Content. Inclusion of or linking to any Third Party Site or any Third Party Content does not
+imply approval or endorsement thereof by us. If you decide to leave the Site and access the Third Party
+Sites, you do so at your own risk and you should be aware that our terms and policies no longer govern.
+You should review the applicable terms and policies, including privacy and data gathering practices, of
+any site to which you navigate from the Site.
+</p>
+<h3 class='u-fontWeight400'>
+User Disputes
+</h3>
+<p>
+You are solely responsible for your interactions with other Users. We reserve the right, but have no
+obligation, to monitor disputes between you and other Users.
+</p>
+<h3 class='u-fontWeight400'>
+Privacy
+</h3>
+<p>
+Please review our affiliate’s
+<a href="/settings/privacy">Privacy Policy</a>
+which shall govern each User to the Site. By using the Site or the Service, you are consenting to have
+your personal data transferred to and processed in the United States.
+</p>
+<h3 class='u-fontWeight400'>
+Disclaimers
+</h3>
+<p>
+Republic does not guarantee the accuracy of any User Content or Third Party Content. Although we provide
+rules for User conduct and postings, we do not control and are not responsible for what Users post on the
+Site and are not responsible for any offensive, inappropriate, obscene, unlawful or otherwise
+objectionable content you may encounter on the Site or in connection with any User Content or Third Party
+Content. Republic is not responsible for the conduct, whether online or offline, of any User of the Site.
+Republic cannot guarantee and does not promise any specific results from use of the Site and/or the
+Service.
+</p>
+<p>
+The Site and the Service may be temporarily unavailable from time to time for maintenance or other
+reasons. Republic assumes no responsibility for any error, omission, interruption, deletion, defect, delay
+in operation or transmission, communications line failure, theft or destruction or unauthorized access to,
+or alteration of, User communications. Republic is not responsible for any problems or technical
+malfunction of any telephone network or lines, computer online systems, servers or providers, computer
+equipment, software, failure of email or players on account of technical problems or traffic congestion on
+the Internet or on the Site or combination thereof, including injury or damage to Users or to any other
+person's computer related to or resulting from participating or downloading materials in connection with
+the Web and/or in connection with the Service. Under no circumstances will Republic be responsible for any
+loss or damage, including any loss or damage to any User Content, financial damages or lost profits, loss
+of business, or personal injury or death, resulting from anyone's use of the Site or the Service, any User
+Content or Third Party Content posted on or through the Site or the Service or transmitted to Users, or
+any interactions between Users of the Site, whether online or offline.
+</p>
+<p>
+Republic reserves the right to change any and all content contained in the Site and any Services offered
+through the Site at any time without notice. Reference to any products, services, processes or other
+information, by trade name, trademark, manufacturer, supplier or otherwise does not constitute or imply
+endorsement, sponsorship or recommendation thereof, or any affiliation therewith, by Republic.
+</p>
+<h3 class='u-fontWeight400'>
+Limitation on Liability
+</h3>
+<p>
+EXCEPT IN JURISDICTIONS WHERE SUCH PROVISIONS ARE RESTRICTED AND EXCEPT AS PROVIDED ABOVE IN THE SECTION
+TITLED, "SECURITIES MATTERS", IN NO EVENT WILL REPUBLIC OR ITS DIRECTORS, EMPLOYEES OR AGENTS BE LIABLE TO
+YOU OR ANY THIRD PARTY FOR ANY INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL OR PUNITIVE
+DAMAGES, INCLUDING FOR ANY LOST PROFITS OR LOST DATA ARISING FROM YOUR USE OF THE SITE OR ANY OF THE SITE
+CONTENT OR OTHER MATERIALS ON OR ACCESSED THROUGH THE SITE, EVEN IF REPUBLIC IS AWARE OR HAS BEEN ADVISED
+OF THE POSSIBILITY OF SUCH DAMAGES.
+</p>
+<p>
+NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN EXCEPT AS PROVIDED ABOVE IN THE SECTION TITLED,
+"SECURITIES MATTERS", TO THE EXTENT PERMITTED BY APPLICABLE LAW REPUBLIC'S LIABILITY TO YOU FOR ANY CAUSE
+WHATSOEVER, AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE AMOUNT PAID, IF
+ANY, BY YOU TO REPUBLIC FOR THE SERVICE DURING THE TERM OF MEMBERSHIP. IN NO CASE, EXCEPT AS PROVIDED
+ABOVE IN THE SECTION TITLED, "SECURITIES MATTERS", WILL REPUBLIC'S LIABILITY TO YOU EXCEED $1000. YOU
+ACKNOWLEDGE THAT IF NO FEES ARE PAID TO REPUBLIC FOR THE SERVICE, YOU SHALL BE LIMITED TO INJUNCTIVE
+RELIEF ONLY, UNLESS OTHERWISE PERMITTED BY LAW, AND SHALL NOT BE ENTITLED TO DAMAGES OF ANY KIND FROM
+REPUBLIC, REGARDLESS OF THE CAUSE OF ACTION.
+</p>
+<p>
+IN ADDITION TO THE SPECIFIC SECURITIES LAWS PROVISIONS DESCRIBED ABOVE IN THE SECTION TITLED, "SECURITIES
+MATTERS", CERTAIN FEDERAL AND STATE LAWS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF CERTAIN DAMAGES OR
+LIMITATIONS ON IMPLIED WARRANTIES. IF THESE LAWS APPLY TO YOU, SOME OR ALL OF THE ABOVE DISCLAIMERS,
+EXCLUSIONS OR LIMITATIONS MAY NOT APPLY TO YOU, AND YOU MAY HAVE ADDITIONAL RIGHTS.
+</p>
+<h3 class='u-fontWeight400'>
+Governing Law; Venue and Jurisdiction; Arbitration
+</h3>
+<p>
+By visiting or using the Site and/or the Service, you agree that the laws of the State of Delaware,
+without regard to any principles of conflict of laws that would require or permit the application of the
+laws of any other jurisdiction, will govern these Terms of Use. By agreeing to the Terms of Use and using
+the Website and the Service, you agree to agree to the binding arbitration provisions set forth in these
+Terms of Use and submit to personal jurisdiction in the Federal courts located in New York City for all
+purposes, and you agree to waive, to maximum extent permitted by law, any right to a trial by jury for
+any matter.
+</p>
+<p>
+Either party may, at its sole election, require that the sole and exclusive forum and remedy for
+resolution of a Claim be final and binding arbitration. The arbitration shall be conducted in New York,
+NY. As used in this provision, “Claim” shall include any past, present, or future claim, dispute, or
+controversy involving you (or persons claiming through or connected with you), on the one hand, and
+Republic (or officers, directors, employees, contractors, managers, members or other persons claiming
+through or connected with Republic), on the other hand, relating to or arising out of the Site, these
+Terms of use and/or the activities or relationships that involve, lead to, or result from any of the
+foregoing, including the validity or enforceability of this arbitration provision, provided that this
+provision shall not apply to any Claims arising under Federal securities laws. Claims are subject to
+arbitration regardless of whether they arise from contract; tort (intentional or otherwise); a
+constitution, statute, common law, or principles of equity; or otherwise. Claims include (without
+limitation) matters arising as initial claims, counter-claims, cross-claims, third-party claims, or
+otherwise. The scope of this arbitration provision is to be given the broadest possible interpretation
+that is enforceable.
+</p>
+<p>
+The party initiating arbitration shall do so with the American Arbitration Association (the “AAA”) or
+JAMS. The arbitration shall be conducted according to, and the location of the arbitration shall be
+determined in accordance with, the rules and policies of the administrator selected, except to the extent
+the rules conflict with this arbitration provision or any countervailing law. In the case of a conflict
+between the rules and policies of the administrator and this arbitration provision, this arbitration
+provision shall control, subject to countervailing law, unless all parties to the arbitration consent to
+have the rules and policies of the administrator apply.
+</p>
+<p>
+If we elect arbitration, we shall pay all the administrator’s filing costs and administrative fees (other
+than hearing fees). If you elect arbitration, filing costs and administrative fees (other than hearing
+fees) shall be paid in accordance with the rules of the administrator selected, or in accordance with
+countervailing law if contrary to the administrator’s rules. We shall pay the administrator’s hearing
+fees for one full day of arbitration hearings. Fees for hearings that exceed one day will be paid by the
+party requesting the hearing, unless the administrator’s rules or applicable law require otherwise, or you
+request that we pay them and we agree to do so. Each party shall bear the expense of its own attorney’s
+fees, except as otherwise provided by law. If a statute gives you the right to recover any of these fees,
+these statutory rights shall apply in the arbitration notwithstanding anything to the contrary herein.
+</p>
+<p>
+Within 30 days of a final award by the arbitrator, a party may appeal the award for reconsideration by a
+three-arbitrator panel selected according to the rules of the arbitrator administrator. In the event of
+such an appeal, an opposing party may cross-appeal within 30 days after notice of the appeal. The panel
+will reconsider de novo all aspects of the initial award that are appealed. Costs and conduct of any
+appeal shall be governed by this arbitration provision and the administrator’s rules, in the same way as
+the initial arbitration proceeding. Any award by the individual arbitrator that is not subject to appeal,
+and any panel award on appeal, shall be final and binding, except for any appeal right under the Federal
+Arbitration Act (the “FAA”), and may be entered as a judgment in any court of competent jurisdiction.
+</p>
+<p>
+We agree not to invoke our right to arbitrate an individual Claim that you may bring in Small Claims Court
+or an equivalent court, if any, so long as the Claim is pending only in that court. EXCEPT AS EXPRESSLY
+PROVIDED IN THIS AGREEMENT, NO ARBITRATION SHALL PROCEED ON A CLASS, REPRESENTATIVE, OR COLLECTIVE BASIS
+(INCLUDING AS PRIVATE ATTORNEY GENERAL ON BEHALF OF OTHERS), EVEN IF THE CLAIM OR CLAIMS THAT ARE THE
+SUBJECT OF THE ARBITRATION HAD PREVIOUSLY BEEN ASSERTED (OR COULD HAVE BEEN ASSERTED) IN A COURT AS CLASS
+REPRESENTATIVE, OR COLLECTIVE ACTIONS IN A COURT.
+</p>
+<p>
+Unless otherwise provided in these Terms of Use or consented to in writing by all parties to the
+arbitration, no party to the arbitration may join, consolidate, or otherwise bring claims for or on
+behalf of two or more individuals or unrelated corporate entities in the same arbitration unless those
+persons are parties to a single transaction. Unless consented to in writing by all parties to the
+arbitration, an award in arbitration shall determine the rights and obligations of the named parties only,
+and only with respect to the claims in arbitration, and shall not (i) determine the rights, obligations,
+or interests of anyone other than a named party, or resolve any Claim of anyone other than a named party,
+or (ii) make an award for the benefit of, or against, anyone other than a named party. No administrator or
+arbitrator shall have the power or authority to waive, modify, or fail to enforce this provision, and any
+attempt to do so, whether by rule, policy, arbitration decision or otherwise, shall be invalid and
+unenforceable. Any challenge to the validity of this provision shall be determined exclusively by a court
+and not by the administrator or any arbitrator.
+</p>
+<p>
+This arbitration provision is made pursuant to a transaction involving interstate commerce and shall be
+governed by and enforceable under the FAA. The arbitrator will apply substantive law consistent with the
+FAA and applicable statutes of limitations. The arbitrator may award damages or other types of relief
+permitted by applicable substantive law, subject to the limitations set forth in this arbitration
+provision. The arbitrator will not be bound by judicial rules of procedure and evidence that would apply
+in a court. The arbitrator shall take steps to reasonably protect confidential information.
+</p>
+<p>
+This arbitration provision shall survive (i) suspension, termination, revocation, closure, or amendments
+to these Terms of Use and the relationship of the parties; (ii) the bankruptcy or insolvency of any party
+hereto or other party; and (iii) any transfer of any securities, to any other party. If any portion of
+this arbitration provision is deemed invalid or unenforceable, the remaining portions of this arbitration
+provision shall nevertheless remain valid and in force. If arbitration is brought on a class,
+representative, or collective basis, and the limitations on such proceedings included herein are finally
+adjudicated to be unenforceable, then no arbitration shall be had. In no event shall any invalidation be
+deemed to authorize an arbitrator to determine Claims or make awards beyond those authorized in this
+arbitration provision.
+</p>
+<p>
+If any provision of these Terms of Use conflicts with a provision contained in any subscription agreement,
+share transfer agreement or similar agreement to which you and Republic are party, the terms of such other
+agreement shall control and shall be deemed to supercede the provisions of these Terms of Use.
+</p>
+<p>
+Notwithstanding anything set forth in these Terms of Use, either Republic or you may apply to any court of
+competent jurisdiction for injunctive relief without breach of the mandatory arbitration provisions set
+forth above.
+</p>
+<p>
+THE PARTIES ACKNOWLEDGE THAT THEY HAVE A RIGHT TO LITIGATE CLAIMS THROUGH A COURT BEFORE A JUDGE, BUT WILL
+NOT HAVE THAT RIGHT IF ANY PARTY ELECTS ARBITRATION PURSUANT TO THIS ARBITRATION PROVISION. THE PARTIES
+HEREBY KNOWINGLY AND VOLUNTARILY WAIVE THEIR RIGHTS TO LITIGATE SUCH CLAIMS IN A COURT UPON ELECTION OF
+ARBITRATION BY ANY PARTY. THE PARTIES HERETO WAIVE A TRIAL BY JURY IN ANY LITIGATION RELATING TO THIS
+AGREEMENT, THE SHARES OR ANY OTHER AGREEMENTS RELATED THERETO. THIS WAIVER OF THE RIGHT TO A JURY TRIAL
+DOES NOT APPLY TO ANY CLAIMS MADE UNDER THE FEDERAL SECURITIES LAWS.
+</p>
+<h3 class='u-fontWeight400'>
+Indemnity
+</h3>
+<p>
+You agree to indemnify and hold Republic, its subsidiaries and affiliates, and each of their directors,
+officers, agents, contractors, members, managers, partners and employees, harmless from and against any
+loss, liability, claim, demand, damages, costs and expenses, including reasonable attorney's fees, arising
+out of or in connection with your User Content, any Third Party Content you post or share on or through
+the Site, your use of the Site, your conduct in connection with the Site or with other Users of the Site,
+or any violation of these Terms of Use or of any law or the rights of any third party. The previous
+sentence shall not apply to any extent to Users while acting as an investor or while registering as an
+investor in connection with their (i) posting of User Content or (ii) use of the Site.
+</p>
+<h3 class='u-fontWeight400'>
+Other
+</h3>
+<p>
+The failure of Republic to exercise or enforce any right or provision of these Terms of Use shall not
+constitute a waiver of such right or provision in that or any other instance. If any provision of these
+Terms of Use is held invalid, the remainder of these Terms of Use shall continue in full force and effect.
+If any provision of these Terms of Use shall be deemed unlawful, void or for any reason unenforceable,
+then that provision shall be deemed severable from these Terms of Use and shall not affect the validity
+and enforceability of any remaining provisions.
+</p>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-full_disclaimer" data-rc="layouts/footer/disclaimers/full_disclaimer"><p class='s-marginBottom1'>
+This site (the "Site") is owned and maintained by OpenDeal Inc., which is not a registered
+broker-dealer. OpenDeal Inc. does not give investment advice, endorsement, analysis or
+recommendations with respect to any securities. All securities listed here are being offered
+by, and all information included on this Site is the responsibility of, the applicable issuer
+of such securities. The intermediary facilitating the offering will be identified in such
+offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+All funding-portal activities are conducted by OpenDeal Portal LLC doing business as Republic,
+a funding portal which is registered with the US Securities and Exchange Commission (SEC) as a
+funding portal (Portal) and is a member of the Financial Industry Regulatory Authority (FINRA).
+OpenDeal Portal LLC is located at 149 E 23rd St #2001, New York, NY 10010, please
+check out background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org/about/funding-portals-we-regulate">Funding Portal page</a>.
+</p>
+<p class='s-marginBottom1'>
+All broker-dealer related securities activity is conducted by OpenDeal Broker LLC, an
+affiliate of OpenDeal Inc. and OpenDeal Portal LLC, and a registered broker-dealer, and member
+of
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org">FINRA</a>
+|
+<a class="c-link c-link--underline" href="https://www.sipc.org/">SiPC</a>,
+located at 1345 Avenue of the Americas, 15th Floor, New York, NY 10105, please check our
+background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://brokercheck.finra.org/firm/summary/291387">BrokerCheck</a>.
+</p>
+<p class='s-marginBottom1'>
+Certain pages discussing the mechanics and providing educational materials regarding
+regulation crowdfunding offerings may refer to OpenDeal Broker LLC and OpenDeal Portal LLC
+collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC make investment
+recommendations and no communication, through this Site or in any other medium should be
+construed as a recommendation for any security offered on or off this investment platform.
+Investment opportunities posted on this Site are private placements of securities that are
+not publicly traded, involve a high degree of risk, may lose value, are subject to holding
+period requirements and are intended for investors who do not need a liquid investment. Past
+performance is not indicative of future results. Investors must be able to afford the loss
+of their entire investment. Only qualified investors, which may be restricted to only
+Accredited Investors or non-U.S. persons, may invest in offerings hosted by OpenDeal Broker.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC, nor any of their
+officers, directors, agents and employees makes any warranty, express or implied, of any
+kind whatsoever related to the adequacy, accuracy or completeness of any information on this
+Site or the use of information on this site. Offers to sell securities can only be made
+through official offering documents that contain important information about the investment
+and the issuers, including risks. Investors should carefully read the offering documents.
+Investors should conduct their own due diligence and are encouraged to consult with their
+tax, legal and financial advisors.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1 s-paddingHoriz1_5 s-paddingVert1 u-text-center u-fontWeight500'>
+Investors should verify any issuer information they consider important before making
+an investment.
+</p>
+<p class='s-marginBottom1'>
+Investments in private companies are particularly risky and may result in total loss of
+invested capital. Past performance of a security or a company does not guarantee future
+results or returns. Only investors who understand the
+<a class="c-link c-link--underline" href="/risks">risks of early stage investment</a>
+and who meet the Republic's
+<a class="c-link c-link--underline" href="/help/can-i-invest">investment criteria</a>
+may invest.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC verify
+information provided by companies on this Site and makes no assurance as to the completeness
+or accuracy of any such information. Additional information about companies fundraising on
+the Site can be found by searching the
+<a target="_blank" rel="noopener" class="c-link c-link--underline" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not require an
+EDGAR filing.
+</p>
+<p class='s-marginBottom1'>
+To help the government fight the funding of terrorism and money laundering activities,
+Federal law requires all financial institutions to obtain, verify, and record information
+that identifies each person who opens an account.
+Therefore, when you use the Services we will ask for your name, address, date of birth,
+and other information that will allow us to identify you.
+We may also ask to see your driver's license, passport or other identifying documents.
+</p>
+<p class='s-marginBottom1'>
+Republic and its affiliates are not and do not operate or act as a bank. Certain banking
+services are provided by BankProv, member FDIC / member DIF. Digital (crypto) assets and
+investment products are not insured by the FDIC, may lose value, and are not deposits or other
+obligations of BankProv and are not guaranteed by BankProv. Terms and conditions apply.
+</p>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="ijUNUkT8fkqQIq51aLiDNQ=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="ijUNUkT8fkqQIq51aLiDNQ=="></script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="ijUNUkT8fkqQIq51aLiDNQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="ijUNUkT8fkqQIq51aLiDNQ==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+
+</body></html>
+
+
+

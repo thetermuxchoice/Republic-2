@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <id>tag:republic.com,2005:/blog/crypto</id>
+  <link rel="alternate" type="text/html" href="https://republic.com"/>
+  <link rel="self" type="application/atom+xml" href="https://republic.com/blog/crypto"/>
+  <title>Republic Journal - Crypto</title>
+  <description>Blockchain technology and startups building on top of it</description>
+  <icon>https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png</icon>
+  <logo>https://assets.republic.com/assets/logo/full/brand/120x30/logo@2x-4a36ec1d9f2383b7dc007e360d6ab193e129e4516ca357deafb4ac00d4abb162.png</logo>
+  <updated>2023-04-26T21:17:31Z</updated>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/984</id>
+    <published>2023-04-26T21:17:31Z</published>
+    <updated>2023-05-01T03:27:03Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/introducing-limewire-the-web3-subscription-platform-for-creators"/>
+    <title>LimeWire Reimagined: A New Era for Artist-Fan Interaction in Web3</title>
+    <category term="Crypto"/>
+    <summary type="html">LimeWire is entering web3 by creating a subscription platform for creators and fans to connect. The team has introduced LMWR — a token that will power the LimeWire ecosystem. </summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/885</id>
+    <published>2022-09-07T15:27:04Z</published>
+    <updated>2023-05-01T12:12:08Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/what-is-humanode-an-overview-of-the-human-powered-blockchain"/>
+    <title>What is Humanode? An Overview of the Human-Powered Blockchain </title>
+    <category term="Crypto"/>
+    <summary type="html">Learn more about Humanode, a cutting-edge crypto network based on human biometrics.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/883</id>
+    <published>2022-08-29T15:37:30Z</published>
+    <updated>2023-04-25T14:12:26Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/oasys-why-republic-capital-led-their-seed-round"/>
+    <title>Oasys: Why Republic Capital led their seed round</title>
+    <category term="Crypto"/>
+    <summary type="html">Oasys is an elegant layer-1 blockchain explicitly designed for gaming. </summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/809</id>
+    <published>2022-07-14T15:32:10Z</published>
+    <updated>2023-03-26T11:58:54Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/astra-protocol-the-future-of-crypto-compliance"/>
+    <title>Astra Protocol: The Future of Crypto Compliance</title>
+    <category term="Crypto"/>
+    <summary type="html"> Editor’s Note: Republic Crypto’s world-class team of strategists helps accelerate the growth of web3 by supporting ambitious projects like Astra. While Astra is not an active investment offering on Republic, this series of overview articles offer an exciti...</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/808</id>
+    <published>2022-07-13T15:48:58Z</published>
+    <updated>2022-07-25T08:29:21Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/this-week-in-crypto"/>
+    <title>This week in crypto </title>
+    <category term="Crypto"/>
+    <summary type="html">While Three Arrows Capital goes missing, the true believers take advantage of a chilly winter.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/802</id>
+    <published>2022-06-28T16:06:41Z</published>
+    <updated>2022-06-28T21:33:26Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/this-week-in-crypto-monday-june-27th"/>
+    <title>This week in crypto </title>
+    <category term="Crypto"/>
+    <summary type="html">Gotham City draws thousands of NFT enthusiasts; old money is looking to vulture new money + a reminder of why Satoshi built this thing in the first place.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/799</id>
+    <published>2022-06-15T16:17:53Z</published>
+    <updated>2022-06-23T19:55:42Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/crypto-clips-week-of-june-13th"/>
+    <title>This week in crypto </title>
+    <category term="Crypto"/>
+    <summary type="html">While the market sells off, a major lender closes the door to customer transactions. Meanwhile, the brightest minds in crypto convene in Austin to discuss the latest and greatest digital asset creations.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/726</id>
+    <published>2022-06-03T19:13:15Z</published>
+    <updated>2022-07-02T07:01:59Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/unlocking-the-potential-of-multi-chain-defi-with-zklink"/>
+    <title>Unlocking the potential of multi-chain DeFi with zkLink</title>
+    <category term="Crypto"/>
+    <summary type="html">From Republic Crypto: This security-focused L2 network secured by zero-knowledge technology aims to unify the world’s blockchains by making multi-chain crypto trading dApps more secure, efficient, and easy to use for developers and users.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/723</id>
+    <published>2022-04-21T22:01:19Z</published>
+    <updated>2023-04-03T22:59:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/how-crypto-will-drive-the-rise-of-greentech"/>
+    <title>How crypto will drive the rise of greentech</title>
+    <category term="Crypto"/>
+    <summary type="html">Happy Earth Day! In this post, we'll debunk the crypto unsustainability myth once and for all. </summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/718</id>
+    <published>2022-04-11T23:22:04Z</published>
+    <updated>2022-06-20T22:32:34Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/blockswap-fixed-rate-savings-for-defi"/>
+    <title>Blockswap: Fixed Rate Savings for DeFi</title>
+    <category term="Crypto"/>
+    <summary type="html"> The largest Blockchain smart contract platform Ethereum is moving towards Proof of Stake consensus from Proof of Work. This period of time is a pivotal point in the decentralized network’s history as the network has processed an excess of $1 trillion USD i...</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/638</id>
+    <published>2022-03-09T22:55:32Z</published>
+    <updated>2022-05-14T02:42:43Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/nested-primer-helping-novices-invest-like-experts-in-the-nft-and-defi-spaces"/>
+    <title>Nested Primer: Helping Novices Invest Like Experts in the NFT and DeFi spaces</title>
+    <category term="Crypto"/>
+    <summary type="html"> Decentralized finance (DeFi) promises to evolve into a revolutionary new industry that empowers the masses to do more with their money and access the opportunities that were previously reserved only for professional investors, banks, corporate giants, gove...</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/643</id>
+    <published>2022-03-02T22:37:55Z</published>
+    <updated>2022-04-15T06:51:42Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/the-rise-of-solana-defi-s-money-legos"/>
+    <title>The Rise of Solana DeFi’s Money Legos</title>
+    <category term="Crypto"/>
+    <summary type="html"> The Rise of Solana DeFi’s Money Legos  Over the past year, decentralized finance (DeFi) has exploded in both value and adoption. The total value locked (TVL) in DeFi has grown by over 500%, from $51 billion to over $207 billion since last March, and multip...</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/548</id>
+    <published>2021-11-24T16:06:02Z</published>
+    <updated>2023-04-07T14:00:06Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/5-common-crypto-scams-and-how-to-avoid-them"/>
+    <title>5 common crypto scams and how to avoid them</title>
+    <category term="Crypto"/>
+    <summary type="html">Learn how to keep your digital assets safe in the ever-changing world of crypto.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/521</id>
+    <published>2021-11-05T15:31:47Z</published>
+    <updated>2022-05-23T22:25:21Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/ink-finance-is-set-to-empower-a-wave-of-financial-daos"/>
+    <title>Ink Finance Is Set to Empower a Wave of Financial DAOs</title>
+    <category term="Crypto"/>
+    <summary type="html"> For businesses, delivering products and services securely over the blockchain can be a challenging endeavor—fraught with security risks, regulatory hurdles, and development roadblocks. The challenge is even more pronounced for an organization acting as a c...</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/512</id>
+    <published>2021-10-15T18:17:34Z</published>
+    <updated>2022-02-18T11:19:32Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/secret-network-primer"/>
+    <title>Secret Network Primer</title>
+    <category term="Crypto"/>
+    <summary type="html"> Blockchain is widely considered as a disruptive technology, with innovative applications in practically every sector. Like any newly adopted technology, it has weaknesses.  Right now, the vast majority of blockchains operate a public ledger, which means th...</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/508</id>
+    <published>2021-10-08T17:31:58Z</published>
+    <updated>2021-12-24T19:52:32Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/an-overview-of-aikon"/>
+    <title>An overview of AIKON</title>
+    <category term="Crypto"/>
+    <summary type="html">Products to help make traditional and crypto businesses more accessible, efficient, and secure</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/503</id>
+    <published>2021-09-30T18:24:28Z</published>
+    <updated>2021-12-24T19:51:57Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/epix-industries-primer"/>
+    <title>Epix Industries primer</title>
+    <category term="Crypto"/>
+    <summary type="html">Solutions, tools, and multiverses for the future of the professional NFT industry</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/500</id>
+    <published>2021-09-21T16:51:47Z</published>
+    <updated>2022-01-14T19:35:57Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/why-we-re-doubling-down-on-the-avalanche-ecosystem"/>
+    <title>Why we’re doubling down on the Avalanche ecosystem</title>
+    <category term="Crypto"/>
+    <summary type="html">How Republic Crypto is building the next crypto proving ground</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/492</id>
+    <published>2021-09-03T01:22:20Z</published>
+    <updated>2022-04-21T21:07:25Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/pocket-network-primer"/>
+    <title>Pocket network primer</title>
+    <category term="Crypto"/>
+    <summary type="html">A look into the decentralized API powering a new generation of DApps</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/489</id>
+    <published>2021-08-26T20:35:34Z</published>
+    <updated>2022-07-08T13:19:02Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/minty-primer"/>
+    <title>Minty primer</title>
+    <category term="Crypto"/>
+    <summary type="html">Learn about the alternative investment DAO platform</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/478</id>
+    <published>2021-08-05T15:48:15Z</published>
+    <updated>2022-04-07T09:23:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/republic-to-take-part-in-solana-hackathon"/>
+    <title>Republic to take part in Solana hackathon</title>
+    <category term="Crypto"/>
+    <summary type="html">Members of Republic Crypto will sit on a panel for Building Out Loud, which aims to bolster blockchain innovation in India</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/467</id>
+    <published>2021-07-13T15:44:48Z</published>
+    <updated>2022-07-08T13:19:02Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/ceek-primer"/>
+    <title>CEEK Primer</title>
+    <category term="Crypto"/>
+    <summary type="html">A VR streaming platform for events and experiences, CEEK is here to empower artists and disrupt the economics of the music industry</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/456</id>
+    <published>2021-06-10T22:49:56Z</published>
+    <updated>2022-04-07T09:31:28Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/creating-community-through-blockchain"/>
+    <title>Creating community through blockchain</title>
+    <category term="Crypto"/>
+    <summary type="html">Podcasting with Adi Sideman, Co-Founder and CEO of Props Project
+</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/445</id>
+    <published>2021-05-25T21:48:36Z</published>
+    <updated>2022-04-07T09:04:49Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/how-to-think-about-defi-part-4-men-in-lack-loans-without-collateral"/>
+    <title>How to think about DeFi? Part 4: Men in Lack—loans without collateral</title>
+    <category term="Crypto"/>
+    <summary type="html">Let's look into one of the potential major links between crypto and the traditional world: crypto-funded lending for business</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/434</id>
+    <published>2021-04-19T16:38:15Z</published>
+    <updated>2022-01-16T21:02:21Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/women-in-investing-blockchain-and-crypto"/>
+    <title>Women in investing: blockchain and crypto</title>
+    <category term="Crypto"/>
+    <summary type="html"> The first two editions of the Women in Investing series brought together a cadre of remarkable female entrepreneurs. Alongside Republic’s own Lisa Carmen Wang, they introduced our users to investing and the importance of building communities.&amp;amp;nbsp;  For th...</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/396</id>
+    <published>2021-04-09T12:54:32Z</published>
+    <updated>2023-01-27T19:07:26Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/cere-network-x-republic"/>
+    <title>CERE Network x Republic</title>
+    <category term="Crypto"/>
+    <summary type="html">All about the CERE token offerings on Republic </summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/418</id>
+    <published>2021-04-05T11:47:22Z</published>
+    <updated>2021-10-29T02:38:24Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/token-sale-basics"/>
+    <title>Token sale 101</title>
+    <category term="Crypto"/>
+    <summary type="html">The whats and whys of token sales on Republic</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/417</id>
+    <published>2021-04-02T12:47:33Z</published>
+    <updated>2021-10-14T21:35:42Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/polkadot-101"/>
+    <title>Polkadot 101</title>
+    <category term="Crypto"/>
+    <summary type="html">Your primer for the blockchain protocol focused on interoperability</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/414</id>
+    <published>2021-03-30T14:57:13Z</published>
+    <updated>2021-05-17T12:24:26Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/cere-network-x-republic-ama"/>
+    <title>CERE Network x Republic AMA</title>
+    <category term="Crypto"/>
+    <summary type="html">The team behind one of this year's most talked-about crypto projects provides insights into their technology and vision for a Decentralized Data Cloud
+</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/408</id>
+    <published>2021-03-19T18:29:01Z</published>
+    <updated>2022-04-07T09:04:49Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/how-to-think-about-defi-part-3-the-digital-dollar-decentralized"/>
+    <title>How to think about DeFi? Part 3: the digital dollar, decentralized</title>
+    <category term="Crypto"/>
+    <summary type="html">The first thing that comes to mind when you think “internet currency” is Bitcoin: decentralized, uncontrollable, unregulated, its monetary policy set in stone. However, BTC’s high volatility is suboptimal for everyday transactions. Enter stablecoins.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/332</id>
+    <published>2020-11-12T18:50:22Z</published>
+    <updated>2022-04-07T09:04:49Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/how-to-think-about-defi-part-2-lend-of-the-free"/>
+    <title>How to think about DeFi, part 2. Lend of the free</title>
+    <category term="Crypto"/>
+    <summary type="html">One of Republic's own crypto experts takes a deep dive into decentralized finance (DeFi). Tokens, lending, collateral, and much more.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/314</id>
+    <published>2020-10-16T15:27:28Z</published>
+    <updated>2021-04-20T15:59:14Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/how-to-think-about-defi-part-1"/>
+    <title>How to think about DeFi? Part 1: Unpacking the terms</title>
+    <category term="Crypto"/>
+    <summary type="html">DeFi continues its march through the crypto world. Republic and Byzantine Solutions open an introductory series to convey everything an investor needs to know about decentralized finance. This is the first in a series of Defi educational pieces.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/303</id>
+    <published>2020-09-23T16:14:23Z</published>
+    <updated>2022-04-07T09:20:21Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/will-defi-realize-a-more-open-financial-system"/>
+    <title>Will DeFi realize a more open financial system?</title>
+    <category term="Crypto"/>
+    <summary type="html">DeFi has taken the crypto world by storm. In this article, Republic provides an overview of the DeFi ecosystem and its potential to create a more open financial system.
+</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/293</id>
+    <published>2020-09-08T12:53:19Z</published>
+    <updated>2021-04-10T01:22:35Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/blockchain-terminology-10-key-terms-you-need-to-know"/>
+    <title>Blockchain terminology: 10 key terms you need to know</title>
+    <category term="Crypto"/>
+    <summary type="html">This blockchain glossary provides 10 key terminologies essential to start understanding the key concept of this revolutionary technology.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/272</id>
+    <published>2020-08-05T19:07:47Z</published>
+    <updated>2022-07-29T06:59:31Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/note-sells-out"/>
+    <title>Republic Note accredited investor offering sells out!</title>
+    <category term="Crypto"/>
+    <summary type="html">We’re excited to announce the Republic Note hit its target thanks to over $11 million in Reg D subscriptions as well as over $5 million in reservations of interest by non-accredited investors. </summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/250</id>
+    <published>2020-07-13T19:18:54Z</published>
+    <updated>2022-04-07T09:04:49Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/adoption-and-interoperability-the-path-to-sto-success"/>
+    <title>Adoption and Interoperability: The Path to STO Success</title>
+    <category term="Crypto"/>
+    <summary type="html">Coinlist Co-Founder and President Andy Bromberg discusses the Republic Note and the future of STOs (security token offerings).</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/248</id>
+    <published>2020-07-08T16:33:29Z</published>
+    <updated>2022-04-07T09:32:04Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/republic-note-ama-1-with-co-founder-kendrick-nguyen"/>
+    <title>Republic Note AMA #1 with Co-Founder Kendrick Nguyen</title>
+    <category term="Crypto"/>
+    <summary type="html">Republic Co-Founder Kendrick Nguyen recently did a Q&amp;A with the community about the Republic Note. Here are the highlights.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/245</id>
+    <published>2020-07-01T15:19:41Z</published>
+    <updated>2022-06-28T04:45:55Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/the-republic-note-is-a-profit-sharing-token-what-does-that-mean"/>
+    <title>The Republic Note is a Profit-Sharing Token. What Does That Mean?</title>
+    <category term="Crypto"/>
+    <summary type="html"> The Republic Note is a first of its kind profit-sharing token that allows holders to share in Republic Core’s profits when startups and private equities in our ecosystem succeed. It will be available for accredited investors to purchase starting July 16 in...</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/238</id>
+    <published>2020-06-24T16:51:24Z</published>
+    <updated>2021-04-10T01:22:35Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/republic-note-sale-launches-july-16th"/>
+    <title>Republic Note sale launches July 16th!</title>
+    <category term="Crypto"/>
+    <summary type="html"> Republic was created with the mission to democratize access to private investing. This mission involves bringing the public the best investment opportunities otherwise limited to a closed network of venture capitalists. Today we are excited to deliver on t...</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/193</id>
+    <published>2020-03-31T18:46:47Z</published>
+    <updated>2021-07-21T23:06:05Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/introducing-the-note-token-a-digital-security"/>
+    <title>Introducing the Republic Note, a digital security</title>
+    <category term="Crypto"/>
+    <summary type="html">Announcing the Republic Note, a new digital security that will pay out dividends to holders if and when parts of the Republic ecosystem earn certain revenue. </summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/144</id>
+    <published>2019-08-01T19:08:41Z</published>
+    <updated>2021-04-10T01:22:35Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/the-first-security-airdrop-now-on-republic"/>
+    <title>The first security airdrop, now on Republic</title>
+    <category term="Crypto"/>
+    <summary type="html">The first ever regulated security airdrop is now live on Republic. Learn how you can be a part of this milestone.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/136</id>
+    <published>2019-06-24T04:42:19Z</published>
+    <updated>2022-07-05T14:35:26Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/intro-to-securities-token-offerings"/>
+    <title>Intro to Securities Token Offerings</title>
+    <category term="Crypto"/>
+    <summary type="html">What is a Securities Token Offering? And when is it a good idea? Republic breaks it down for you in this introduction to STOs. </summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/124</id>
+    <published>2019-02-11T15:41:38Z</published>
+    <updated>2023-02-24T06:37:20Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/introducing-airdrops-by-republic-crypto"/>
+    <title>Introducing Airdrops by Republic</title>
+    <category term="Crypto"/>
+    <summary type="html">Using a crowdfunding framework for Airdrops</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/123</id>
+    <published>2019-02-07T15:05:39Z</published>
+    <updated>2022-04-07T09:31:46Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/get-on-the-radar-of-top-crypto-vcs"/>
+    <title>Get on the Radar of top crypto VCs</title>
+    <category term="Crypto"/>
+    <summary type="html">Announcing Radar, a new product that allows VCs and other institutional investors access to a diverse and global database of blockchain projects.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/122</id>
+    <published>2019-01-17T16:28:05Z</published>
+    <updated>2021-06-14T04:15:08Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/exploring-cryptogoods-nfts"/>
+    <title>Exploring Cryptogoods &amp;amp; NFTs</title>
+    <category term="Crypto"/>
+    <summary type="html">Cryptogoods and Non-Fungible Tokens have stolen the spotlight in 2018 - what are they all about and what are the challenges?</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/121</id>
+    <published>2019-01-09T20:35:48Z</published>
+    <updated>2023-03-19T22:12:09Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/the-6ts-framework-for-evaluating-crypto-companies"/>
+    <title>"The 6Ts Framework" for evaluating crypto companies </title>
+    <category term="Crypto"/>
+    <summary type="html">Finding transparency, visibility, and a product within the blockchain ecosystem.</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/118</id>
+    <published>2018-12-27T22:03:00Z</published>
+    <updated>2022-06-27T19:53:01Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/overview-of-token-curated-registries"/>
+    <title>Overview of Token Curated Registries</title>
+    <category term="Crypto"/>
+    <summary type="html">An explanation of one of crypto's applications: token-curated registries. What are they? What are they used for? What can we do with them?</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/107</id>
+    <published>2018-11-14T21:30:40Z</published>
+    <updated>2021-04-15T08:13:36Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/a-down-market-can-be-a-good-time-to-reflect-on-the-big-issues-facing-crypto-adoption"/>
+    <title>A down market can be a good time to think about long term crypto adoption</title>
+    <category term="Crypto"/>
+    <summary type="html">1</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/102</id>
+    <published>2018-10-16T14:22:48Z</published>
+    <updated>2022-04-07T08:00:12Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/the-state-of-crypto-investment-instruments"/>
+    <title>The state of crypto investment instruments</title>
+    <category term="Crypto"/>
+    <summary type="html">1</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/91</id>
+    <published>2018-08-21T21:21:33Z</published>
+    <updated>2022-04-20T20:44:43Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/breaking-down-blockchain-technology"/>
+    <title>Breaking down blockchain technology</title>
+    <category term="Crypto"/>
+    <summary type="html"> If you have a nodding acquaintance with investing or finance, chances are you&amp;#39;ve heard of blockchain, the technology that powers cryptocurrencies. It&amp;#39;s become somewhat of a buzzword, with blockchain projects popping up all over the place, from small unknow...</summary>
+  </entry>
+  <entry>
+    <id>tag:republic.com,2005:Blog::Post/48</id>
+    <published>2017-12-12T19:05:49Z</published>
+    <updated>2022-04-07T08:06:06Z</updated>
+    <link rel="alternate" type="text/html" href="https://republic.com/blog/crypto/announcing-props-the-first-republic-crypto-offering-and-token-dpa"/>
+    <title>Announcing PROPS: the first Republic Crypto offering, and Token DPA: a new financing instrument</title>
+    <category term="Crypto"/>
+    <summary type="html"> Last month, we announced Republic Crypto. PROPS was launched yesterday,&amp;amp;nbsp;Dec. 11 2017&amp;amp;nbsp;(and fully subscribed within the first hours), as our first Crypto offering, giving unaccredited supporters of the PROPS Project and blockchain enthusiasts every...</summary>
+  </entry>
+</feed>

@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">var _rollbarConfig = {"accessToken":"42d40d19b6b247cd82d60d8a4076ef21","captureUncaught":true,"captureUnhandledRejections":true,"captureIp":"anonymize","payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"","guess_uncaught_frames":true}}},"ignoredMessages":["^Script error.*$","","scpixel is not defined"]};</script>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<title>
+Green Piñata — Republic
+</title>
+<link href='https://republic.com/green-pinata' rel='canonical'>
+<meta content='Green Piñata – Get smart toys for your smart kids – No shopping. No clutter. – is now accepting investments on Republic.' name='description'>
+<meta content='republic, equity crowdfunding platforms, equity crowdfunding newsletter, crowdfunding, investment, startup, title iii, social impact, non accredited investors' name='keywords'>
+<meta content='Green Piñata' itemprop='name'>
+<meta content='Green Piñata – Get smart toys for your smart kids – No shopping. No clutter. – is now accepting investments on Republic.' itemprop='description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/051/51-1526921713-bede3fc587d06d51d1c1b34fecb68cabba730de0.jpg' itemprop='image'>
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@joinrepublic' name='twitter:site'>
+<meta content='Green Piñata' name='twitter:title'>
+<meta content='Green Piñata – Get smart toys for your smart kids – No shopping. No clutter. – is now accepting investments on Republic.' name='twitter:description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/051/51-1526921713-bede3fc587d06d51d1c1b34fecb68cabba730de0.jpg' name='twitter:image'>
+<meta content='https://republic.com/green-pinata' property='og:url'>
+<meta content='Green Piñata' property='og:title'>
+<meta content='Green Piñata – Get smart toys for your smart kids – No shopping. No clutter. – is now accepting investments on Republic.' property='og:description'>
+<meta content='https://uploads.republic.com/p/offerings/seo_images/default/000/000/051/51-1526921713-bede3fc587d06d51d1c1b34fecb68cabba730de0.jpg' property='og:image'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='1333788929968275' property='fb:app_id'>
+<meta content='c7HkWkIit50eeEjD4gcVAXX6ANIaDtO43yauW3fICgI' name='google-site-verification'>
+
+<link rel="stylesheet" media="all" href="https://assets.republic.com/assets/application-11f84783afad6cb7a63221df70951c5efc221b1d595172af393efb5dde43a1a6.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/vendor-node_modules_a-db7c58b4.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Ac-919e95b8.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/ui-client_ui_Table_Table_module_scss-e15798b9-0e96676f.css" />
+<link rel="stylesheet" media="screen" href="https://assets.republic.com/assets/w/css/MediaSliderPage-66fe9f7a.css" />
+<script src="https://cmp.osano.com/AzqSHBT6fzKGV18Hs/9e780d5a-e8d0-4873-932a-02822fc4194d/osano.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+  window.FLIPPER_FEATURES = ["payment_options", "milestone_auto_checker", "salesforce_integration", "city_search", "web_sdk_braze", "segment_analytics_server_side", "portfolio_react", "media_slider_react", "post_feed_react", "tag_preferences", "segment_analytics", "contora_ai_portfolio", "deal_room_react", "react_analytics", "access_tier_one_notification", "autopilot_react", "mobile_tag_notifications", "seedrs_sf_integration", "crypto_assets", "republic_wallet", "action_required_push_notifications", "braze_integration", "react_group_r_column", "r_auth_integration", "note_launch_banner", "privacy_update_popup", "crypto_transfers", "reveal_seedphrase", "global_search", "teaser_pages", "self_serve_tagging", "appsflyer_integration", "validate_investor_age", "index_search_react", "global_secondaries", "onboarding_team_members", "activity_history"];
+</script>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+  (function() {
+    var myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.href = "https://assets.republic.com/assets/application_noncritical-8bb9801d583f8260212ba22bffd1d3c52dc51c6b1dd22593ec4e35cd5933c184.css";
+    document.head.insertBefore(myCSS, document.head.childNodes[document.head.childNodes.length - 1].nextSibling);
+  })();
+</script>
+
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+  window.railsEnv = {
+    COGNITO_API_PUBLISHABLE_KEY: "live_publishable_key_17f6bd8fbeeb1b8662f083339e90187a",
+    COGNITO_FLOW_TEMPLATE_ID: "flwtmp_9bkW6vqP3pC467",
+    WALLABY_BASE_URL: "https://mainnet.wallaby.cash/api/v1",
+    WALLABY_API_KEY: "25fa0db11b4540a48281077247e84333",
+  };
+</script>
+
+
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+  var MTIProjectId='58338167-175f-413c-8324-29e3028f7839';
+  (function() {
+    var mtiTracking = document.createElement('script');
+    mtiTracking.type='text/javascript';
+    mtiTracking.async='true';
+    mtiTracking.src="https://assets.republic.com/assets/mti_font_tracking_code-0de6c0044d4c7ee3c08fc85ee412ffcfe5f77d703b78bcbf263c8c912aad09ce.js";
+    (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+  })();
+</script>
+
+<meta content='Republic' name='apple-mobile-web-app-title'>
+<meta content='Republic' name='application-name'>
+<meta content='https://assets.republic.com/assets/favicons/browserconfig-3bbb89e1165a27da10a48dbb42513a5f894b947963a2adbc9c35665cf3bc2360.xml' name='msapplication-config'>
+<meta content='#ceebff' name='msapplication-TileColor'>
+<meta content='#ceebff' name='theme-color'>
+<link href='https://assets.republic.com/assets/favicons/site-efb520c4078896a35dd8b1e811d786b7591ead80d2f525270dcd329d53bc45dd.webmanifest' rel='manifest'>
+<link color='#0049FF' href='https://assets.republic.com/assets/favicons/safari-pinned-tab-eb367a470901f286da8f5a6a6e290dca05c5c23e73c1880d94c288375a7f2078.svg' rel='mask-icon'>
+<link rel="apple-touch-icon" type="image/png" href="https://assets.republic.com/assets/favicons/apple-touch-icon-a91137b2d9e25836e97d2018718a59e20e0d04bedceb133ff22b2cd62c8fe614.png" sizes="180x180" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-32x32-819c3e40ce3fa6becb87e0deb485e7ca3321fa1568b599730bc78a7e29322c05.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://assets.republic.com/assets/favicons/favicon-16x16-a79b2f2b9525876c2d50ec156f022e589795571f46c7f6c0e7d8d75e050ea49e.png" sizes="16x16" />
+<link rel="shortcut icon" type="image/x-icon" href="https://assets.republic.com/assets/favicons/favicon-2a54991d45c6da9bf8eb934a874dd8441db0174d376fe8bd53f2f1ca0b66b01c.ico" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="WUGo_gkwuwlFEShRtRXJLn_RlqhQzNRNZczOfMEDZrdSV-TWwXInR89V_vW3HBWh_KfG3siKmwWrZ9K9Ruf3nQ" />
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+//<![CDATA[
+window.dataLayer = [];
+//]]>
+</script>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+//<![CDATA[
+window.twitterPixels = [];
+//]]>
+</script>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="42jYTXVtWnbFrLzbDqh57sdUM5TN63vd";analytics.SNIPPET_VERSION="4.15.2";
+    analytics.load("42jYTXVtWnbFrLzbDqh57sdUM5TN63vd");
+  }}();
+</script>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+  analytics.page(
+    "offering",
+    "green-pinata", {
+      url: "https://republic.com/green-pinata"
+    }, {
+      integrations: {
+        'Intercom': {
+          hideDefaultLauncher: true
+        },
+        'Impact Partnership Cloud': true
+      }
+    }
+  );
+</script>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+  _linkedin_partner_id = "521052";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script><script type="text/javascript" nonce="FhwxG2QDe4eaamFEJseI/w==">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+</script>
+<noscript>
+<img alt='' height='1' src='https://dc.ads.linkedin.com/collect/?pid=521052&amp;fmt=gif' style='display:none;' width='1'>
+</noscript>
+
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5486ZDK');
+</script>
+
+
+</head>
+<body class="offerings-show__body preload layouts-application" data-rc="layouts/application"><noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-5486ZDK' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+//<![CDATA[
+!function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){
+(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},
+t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,
+o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),
+p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","pba",{pba: {webAppId: '75a7c0ce-091c-4e9e-add0-01a637e7ca45'}})
+
+
+
+//]]>
+</script>
+
+<div class='layouts-application__content-container '>
+<div class="js-flash layouts-flashes" data-rc="layouts/flashes"></div>
+<div class="layouts-footer layouts-footer--content-wrapper" data-rc="layouts/footer"><div class='layouts-footer__content'>
+<div class="layouts-header_footer" data-rc="layouts/header_footer"><nav class="c-header-nav c-header-nav--default  layouts-header" data-rc="layouts/header"><div class="layouts-header-logo" data-rc="layouts/header/logo"><a class="u-displayInlineBlock" href="/"><img alt="Republic" title="Republic" class="c-header-logo c-header-logo__full" src="https://assets.republic.com/assets/logo/full/black/150x38/logo-211758c2027fc8268186d512a2119520a35358973648789a123d9fb6c3d5a37f.svg" />
+<img alt="Republic" class="u-hidden c-header-logo c-header-logo__brand" src="https://assets.republic.com/assets/logo/icon/brand/36x40/logo-584528d3c0290325573833b80233780cd36a20e325d5b0d173bcf210463b0a3a.svg" />
+</a></div>
+<div class='c-header-nav__navigation-wrapper'>
+<div class='c-header-nav__navigation'>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--left'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_investors" data-rc="layouts/header/for_investors"><div class='u-hiddenSmDown'>
+<div class='c-dropdown c-dropdown--left'>
+<a class="js-analytics_track_link c-header-nav-link c-header-nav-link--with_submenu" id="header-invest" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_invest&quot;}" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper layouts-header-for_investors__dropdown-content-wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width layouts-header-for_investors__dropdown-content'>
+<div class='layouts-header-for_investors__links-grid'>
+<a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-republic-faa149a000d40ad157f84f1df52228fa5a761ef45717593dc4abb3eacd75adf5.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Startups
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in vetted
+<br>
+private companies
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-real-estate-6891670f559197ca53cdeb8bc02c0531f2e15400428327bd235844a7351ff01b.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Real estate
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a global
+<br>
+real estate portfolio
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-culture" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-video-games-57bcefd89f9a079ea46cfd8bd8c930aa037621a223cb24190b31195090d53986.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Culture
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in what
+<br>
+inspires you
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto"><figure class='u-textRight layouts-header-for_investors__logo-wrapper layouts-header-for_investors__logo-wrapper--shift'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-crypto-d4f16d8a4a61f10d7c31204b11dff0f348db54efd6d967a3dbb1c7e7dd9f6309.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Crypto
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Invest in blockchain tech
+<br>
+and digital assets
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-accredited" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/accredited"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img srcset="https://assets.republic.com/assets/layouts/header/logo-accredited@2x-a40a2d029ad101c6f49f6643527e832f5ea6b2d4492356e282d96d0d305f1bbc.png 2x" src="https://assets.republic.com/assets/layouts/header/logo-accredited-e69b5cd8e4e7721840cb17e3254c5ec439f6e68674717724731f37f0565c5eec.png" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Accredited
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Access the deal room
+<br>
+for accredited investors
+</div>
+</div>
+</a><a class="js-analytics_track_link u-displayFlex c-link c-link--unstyled layouts-header-for_investors__box-link" id="header-autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard"><figure class='u-textRight layouts-header-for_investors__logo-wrapper'>
+<img src="https://assets.republic.com/assets/layouts/header/logo-autopilot-ab32ba09139870d82cc60da3a2e62717ed0930f89ae1e915cf358b25e8d8f6f4.svg" />
+</figure>
+<div class='s-marginLeft1'>
+<div class='s-fontSize18 u-lineHeight1 u-fontWeight500 layouts-header-for_investors__caption'>
+Autopilot
+</div>
+<div class='s-fontSize13 u-lineHeight1_4 u-colorGray8'>
+Build a diversified startup
+<br>
+portfolio, hands-free
+</div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__banner'>
+<a class="layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-colorWhite'>
+<div class='u-fontWeight800 u-displayInlineBlock s-paddingRight0_5'>NEW</div>
+Buy & sell assets on the secondary market
+<div class='u-fontWeight500 u-colorWhite u-floatRight'>
+Request access<i class='icon-right-dir s-paddingLeft0_5 layouts-header-for_investors__icon-dir'></i></div>
+</div>
+</a></div>
+<div class='u-displayFlex layouts-header-for_investors__footer'>
+<div class='u-colorGray8 layouts-header-for_investors__footer-caption'>
+And more
+</div>
+<a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-featured-investors" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors"><div class='u-displayFlex s-marginRight0_5'>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Randi Zuckerberg" title="Randi Zuckerberg" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/795/253/795253-1612821220-5505dd19f8244125c9cbcfaf58d5cd1cb1ed7658.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/795/253/795253-1612821220-b7e6b1a887b4235c8ca6f9e7edbd4a9d3b921881.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Chamillionaire" title="Chamillionaire" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/205/034/205034-1555692873-c159f36919729e7d57aaab4e88e908a9477502c7.png 2x" src="https://uploads.republic.com/p/users/avatars/small/000/205/034/205034-1555692873-659ca8cda21d4951d52f9a7727e5f5adb5bf6ca1.png" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Kevin Harrington" title="Kevin Harrington" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/421/748/421748-1593456941-52e87b1a1de81be56f29dfca873baeaa051fd9fc.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/421/748/421748-1593456941-33b907103dcf3ccb3c6943f19f737580c977bf8b.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Jon Najarian" title="Jon Najarian" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/666/484/666484-1593457193-b8c51d609ad94c67c6297b758410b045c6f4374b.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/666/484/666484-1593457193-aca9eeb4facb85e671991183fe5676c10b116697.jpg" /></div>
+<div class="c-avatar c-avatar--small layouts-header-for_investors__influencer-avatar c-avatar--round js-user_avatar"><img alt="Profile picture of Wendell Carter" title="Wendell Carter" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/689/712/689712-1618475190-41c65196f9fc00d3d6821d920c9ac0d261f426ba.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/689/712/689712-1618475190-2d5474483a5edc02ab02052b9278ab1301c77458.jpeg" /></div>
+</div>
+Featured investors
+</a><a class="js-analytics_track_link c-link c-link--no-underline u-colorGray2 layouts-header-for_investors__footer-link u-displayFlex u-alignItemsCenter" id="header-note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note"><img class="s-marginRight0_5" src="https://assets.republic.com/assets/layouts/header/logo-r-note-full-214fdc7df9018ed58c0c0dcee4706075bd0d853b6c4b33da9b0fe36ca335a3f1.svg" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" href="/companies">Invest</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--startups" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_startups&quot;}" href="/companies">Startups</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--real-estate" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_real_estate&quot;}" href="/real-estate">Real estate</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--fig" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_culture&quot;}" href="/culture">Culture</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_crypto&quot;}" href="/crypto">Crypto</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--crypto" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_accredited&quot;}" href="/dealroom">Accredited</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--autopilot" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_autopilot&quot;}" href="/autopilot/dashboard">Autopilot</a>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_republic_note&quot;}" href="/note">Republic Note</a>
+<div class='layouts-header-for_investors__banner-link-md'>
+<a class="js-analytics_track_link u-colorWhite u-displayInlineFlex layouts-header-for_investors__banner-link" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_secondaries_request_access&quot;}" href="/market"><div class='u-fontWeight800 s-paddingRight0_5 u-selfAlignCenter'>NEW</div>
+<div class='u-flexWrap u-displayInlineFlex'>
+Buy & sell assets&nbsp;
+<span>on the&nbsp;</span>
+<span>secondary&nbsp;</span>
+<span>market</span>
+</div>
+</a></div>
+<div class='c-dropdown__divider'></div>
+<a class="js-analytics_track_link layouts-header-for_investors__link-icon layouts-header-for_investors__link-icon--note" data-analytics="{&quot;event_name&quot;:&quot;website_header_button_clicked&quot;,&quot;label&quot;:&quot;header_featured_investors&quot;}" href="/featured-investors">Featured investors</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-learn" data-rc="layouts/header/learn"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--with_submenu js-dropdown_main_link" id="header-learn" href="/learn/investors/how-it-works">Learn</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a id="header-about" href="/about">About</a>
+<a id="header-learn-how-it-works" href="/learn/investors/how-it-works">How it works</a>
+<a id="header-why-invest" href="/investors/why-invest">Why invest</a>
+<a id="header-faq" href="/help/category/investing">FAQ</a>
+<div class="layouts-header-blog" data-rc="layouts/header/blog"><div class='c-dropdown__submenu'>
+<a class="c-dropdown__link c-header-nav-link--with_submenu js-dropdown_main_link" href="/blog">Blog</a>
+<div class='c-dropdown__submenu_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__submenu_content'>
+<a href="/blog/newest">Newest</a>
+<a href="/blog/superheroes">Superheroes</a>
+<a href="/blog/crypto">Crypto</a>
+<a href="/blog/investor-education">Investor education</a>
+<a href="/blog/founder-resources">Founder resources</a>
+<a href="/blog/real-estate">Real estate</a>
+</div>
+</div>
+</div>
+</div>
+<a id="header-events" href="/events">Events</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__search-wrapper s-marginLeft1_5'>
+<div class="c-search  layouts-header-search" data-api-url="https://api.republic.com" data-rc="layouts/header/search"><div class='c-search__content'>
+<div class="c-search-input layouts-header-search-input" data-rc="layouts/header/search/input"><div class='c-search-input__input-wrapper'>
+<div class='c-search-input__status-icon c-search-input__status-icon--magnifier'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M0 7.38437C0 8.40444 0.191898 9.36114 0.575693 10.2545C0.959488 11.1478 1.4936 11.9335 2.17804 12.6114C2.86247 13.2893 3.65245 13.8184 4.54797 14.1985C5.44989 14.5787 6.41578 14.7687 7.44563 14.7687C8.19403 14.7687 8.90405 14.6642 9.57569 14.4551C10.2473 14.246 10.871 13.9546 11.4467 13.5808L15.4957 17.5913C15.6365 17.7307 15.7964 17.8321 15.9755 17.8955C16.161 17.9652 16.3497 18 16.5416 18C16.823 18 17.0725 17.9335 17.29 17.8004C17.5075 17.6737 17.6802 17.4995 17.8081 17.2777C17.936 17.0623 18 16.8184 18 16.5459C18 16.3559 17.9648 16.1721 17.8945 15.9947C17.8241 15.8173 17.7217 15.6589 17.5874 15.5195L13.5768 11.5375C13.9925 10.9483 14.3156 10.302 14.5458 9.59873C14.7825 8.89546 14.9009 8.15734 14.9009 7.38437C14.9009 6.37064 14.7058 5.41711 14.3156 4.52376C13.9318 3.63041 13.3977 2.84794 12.7132 2.17635C12.0352 1.49842 11.2452 0.966209 10.3433 0.579725C9.44136 0.193242 8.47548 0 7.44563 0C6.41578 0 5.44989 0.193242 4.54797 0.579725C3.65245 0.966209 2.86247 1.49842 2.17804 2.17635C1.4936 2.84794 0.959488 3.63041 0.575693 4.52376C0.191898 5.41711 0 6.37064 0 7.38437ZM2.08209 7.38437C2.08209 6.64942 2.21962 5.96199 2.49467 5.32207C2.77612 4.68215 3.16311 4.11827 3.65565 3.63041C4.14819 3.14256 4.71748 2.76241 5.36354 2.48997C6.0096 2.21753 6.70362 2.08131 7.44563 2.08131C8.18763 2.08131 8.88166 2.21753 9.52772 2.48997C10.1738 2.76241 10.7431 3.14256 11.2356 3.63041C11.7281 4.11827 12.1119 4.68215 12.387 5.32207C12.6684 5.96199 12.8092 6.64942 12.8092 7.38437C12.8092 8.11932 12.6684 8.80993 12.387 9.45618C12.1119 10.0961 11.7281 10.66 11.2356 11.1478C10.7431 11.6294 10.1738 12.0095 9.52772 12.2883C8.88166 12.5607 8.18763 12.6969 7.44563 12.6969C6.70362 12.6969 6.0096 12.5607 5.36354 12.2883C4.71748 12.0095 4.14819 11.6294 3.65565 11.1478C3.16311 10.66 2.77612 10.0961 2.49467 9.45618C2.21962 8.80993 2.08209 8.11932 2.08209 7.38437Z" fill="currentColor"></path></svg>
+
+</div>
+<div class='c-search-input__status-icon c-search-input__status-icon--loader'>
+<img class="u-block u-imageFluid" src="https://assets.republic.com/assets/ui/search/loader-62242cf1ddeed701e13538628d675bd36bfd2548f882dca8ed127fb90043bbd1.svg" />
+</div>
+<input autocomplete='off' class='c-search-input__input js-search_input' placeholder='Search'>
+<a class="c-search-input__clear u-hidden js-search_clear_button" title="Clear result" href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class="u-block u-imageFluid"><path d="M9.00463 18C10.2337 18 11.3917 17.7622 12.4786 17.2867C13.5656 16.8173 14.5229 16.1688 15.3505 15.3412C16.1781 14.5136 16.8266 13.5594 17.2959 12.4786C17.7653 11.3917 18 10.2306 18 8.99537C18 7.76634 17.7622 6.60834 17.2867 5.52136C16.8173 4.43438 16.1688 3.4771 15.3412 2.64951C14.5136 1.82192 13.5564 1.17344 12.4694 0.704066C11.3824 0.234689 10.2244 0 8.99537 0C7.76634 0 6.60834 0.234689 5.52136 0.704066C4.44056 1.17344 3.48327 1.82192 2.64951 2.64951C1.82192 3.4771 1.17344 4.43438 0.704066 5.52136C0.234689 6.60834 0 7.76634 0 8.99537C0 10.2306 0.234689 11.3917 0.704066 12.4786C1.17962 13.5594 1.83119 14.5136 2.65878 15.3412C3.48636 16.1688 4.44056 16.8173 5.52136 17.2867C6.60834 17.7622 7.76943 18 9.00463 18ZM6.09573 12.701C5.87957 12.701 5.69429 12.6238 5.53989 12.4694C5.39166 12.3088 5.31755 12.1204 5.31755 11.9043C5.31755 11.7005 5.39475 11.5214 5.54915 11.367L7.91148 9.00463L5.54915 6.65157C5.39475 6.50335 5.31755 6.32115 5.31755 6.10499C5.31755 5.88883 5.39166 5.70664 5.53989 5.55841C5.69429 5.40401 5.87957 5.32681 6.09573 5.32681C6.29954 5.32681 6.48173 5.40401 6.64231 5.55841L9.00463 7.92074L11.3855 5.54915C11.5399 5.39475 11.7221 5.31755 11.9321 5.31755C12.1482 5.31755 12.3304 5.39475 12.4786 5.54915C12.633 5.69738 12.7102 5.87957 12.7102 6.09573C12.7102 6.31189 12.633 6.49408 12.4786 6.64231L10.1071 9.00463L12.4694 11.3577C12.6238 11.4997 12.701 11.6819 12.701 11.9043C12.701 12.1204 12.6238 12.3088 12.4694 12.4694C12.3212 12.6238 12.1359 12.701 11.9135 12.701C11.685 12.701 11.4997 12.6238 11.3577 12.4694L9.00463 10.1163L6.66083 12.4694C6.51261 12.6238 6.32424 12.701 6.09573 12.701Z" fill="currentColor"></path></svg>
+
+</a></div>
+<a class="c-link c-link--unstyled c-search-input__close js-search_close" href="javascript:void(0)"><i class="icon-cancel-slim"></i></a>
+</div>
+<div class='c-search__dropdown c-search-dropdown js-search_dropdown'>
+<div class='c-search-dropdown__stack'>
+<div class='js-search_section js-search_no_result c-search__no-result u-hidden'>
+<div class="c-search-no-result layouts-header-search-no_result" data-rc="layouts/header/search/no_result"><div class='c-search-no-result__title'>
+<img alt="" class="c-search-no-result__sad-icon" src="https://assets.republic.com/assets/ui/search/sad-face-4e0a6424ec40ef8fcdfeafe700612e45fed331a733b7e1eb91db5eb95ed0ab2c.svg" />
+Oops! We couldn’t find any results...
+</div>
+<div class='c-search-no-result__content'>
+Can’t find a deal? Try
+<a href="/companies">advanced search</a>.
+<br>
+Is something missing? Add your suggestion
+<a target="_blank" href="https://republic-co.typeform.com/to/xombuUWi">here</a>.
+</div>
+</div>
+</div>
+<div class='js-search_section js-search_result c-search-dropdown__stack u-hidden'></div>
+<div class='js-search_section js-search_popular_offerings u-hidden'></div>
+<div class='js-search_section js-search_popular_categories u-hidden'></div>
+</div>
+</div>
+</div>
+<div class='c-search__overlay u-hidden js-search_overlay'></div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__navigation-column c-header-nav__navigation-column--right'>
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-for_companies" data-rc="layouts/header/for_companies"><div class='c-dropdown'>
+<a class="c-header-nav-link c-header-nav-link--rounded c-header-nav-link--with_submenu js-dropdown_main_link" href="/raise">Raise capital</a>
+<div class='c-dropdown__content_wrapper js-dropdown_wrapper'>
+<div class='c-dropdown__content c-dropdown__content--min_width'>
+<a href="/raise">Raise capital</a>
+<a href="/crypto/services">Advisory services</a>
+<a href="/sharedrops">Sharedrops™</a>
+<a href="/partnerships">Partner network</a>
+<a href="/blog/founder-resources">Blog</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__item c-header-nav__item--text c-header-nav__item--dot-divider c-header-nav__about'>
+<div class='c-dropdown'>
+<a class="c-header-nav-link" href="/about">About</a>
+</div>
+</div>
+
+<div class="c-header-nav__item c-header-nav__item--text layouts-header-login" data-rc="layouts/header/login"><a class="c-header-nav-link" href="/login">Log in</a>
+</div>
+<div class="c-header-nav__item c-header-nav__item--text c-header-nav__item--margin-divider layouts-header-signup" data-rc="layouts/header/signup"><a class="c-header-nav-link" href="/register">Sign up</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-header-nav__mobile-actions-wrapper'>
+<div class="layouts-header-mobile_navigation_toggle layouts-header-mobile_navigation_toggle--default" data-rc="layouts/header/mobile_navigation_toggle"><a class="js-mobile_navigation_toggle layouts-header-mobile_navigation_toggle__link " href="javascript:void(0)"><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div><div class='layouts-header-mobile_navigation_toggle__line'></div></a>
+</div>
+</div>
+</nav>
+<div>
+<div class="layouts-full_width" data-rc="layouts/full_width"><script nonce="FhwxG2QDe4eaamFEJseI/w==">
+  if (dataLayer) {
+    dataLayer.push({"event":"detail","ecommerce":{"currencyCode":"USD","detail":{"products":[{"name":"Green Piñata","id":"green-pinata","price":25,"category":"Kids, B2C, Companies, Subscription, Reduce, Reuse, Recycle, Women Founders, Crowd SAFE","quantity":1}]}}});
+  }
+</script>
+<div class="js-segment_product_view s-marginBottom3_5 offerings-show" data-sticky-container="true" data-state="finalized" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Green Piñata&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:51,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/000/051/51-1586841672-34d693e742847b4fc47a2a4ed5fe9cee460c28d2.jpg&quot;,&quot;min_investment_amount&quot;:25,&quot;slug&quot;:&quot;green-pinata&quot;,&quot;tags&quot;:&quot;kids,b2c,v-companies,subscription,reduce-reuse,women-founders,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/green-pinata&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" data-rc="offerings/show"><div class='js-router_data' data-root='green-pinata'></div>
+<div class="offerings-show-invest_modal" data-rc="offerings/show/invest_modal"><div class='js-remodal remodal offerings-show-invest_modal__invest_modal' data-remodal-id='invest'>
+<a class='remodal-close' data-remodal-action='close'></a>
+<h1 class='c-secondaryTitle offerings-show-invest_modal__invest_title'>
+Green Piñata isn't accepting new investments
+</h1>
+<p class='s-marginTop2 s-fontSize17 u-colorMuted offerings-show-invest_modal__invest_date'>
+Green Piñata’s deadline was
+<span class='u-blockXsOnly'>
+January 16, 2018
+</span>
+</p>
+<p class='s-marginTop2 s-marginHoriz5 s-fontSize17 offerings-show-invest_modal__invest_message'>
+Follow the company to stay updated on their progress,
+including future investment opportunities
+</p>
+<p class='s-marginTop1'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Invest modal" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link" data-action="follow" data-href="/register?after_sign_in=%2Fgreen-pinata%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5'>
+216
+</span>
+</button>
+</div>
+</p>
+<hr class='s-marginTop2 s-marginPullHoriz2 offerings-show-invest_modal__invest_divider'>
+<div class='u-displayFlex u-alignItemsCenters-marginTop2 offerings-show-invest_modal__invest_footer'>
+<div class='u-flex1'>
+Explore new investment opportunities:
+</div>
+<div class='u-flex1'>
+<a class="c-button c-button--secondary" href="/#offerings">View companies raising now</a>
+</div>
+</div>
+</div>
+</div>
+<header class="s-container s-gridMaxXs24 s-paddingTop5 s-paddingBottom3 offerings-show-header offerings-show-header--green-pinata" data-rc="offerings/show/header"><div class='js-header_content'>
+<div class='s-marginPullTop2'>
+<div class="s-marginBottom2 u-displayFlex u-alignItemsCenter s-fontSize18 u-colorMuted offerings-show-header-message_campaign_ended" data-rc="offerings/show/header/message_campaign_ended"><div class='u-flexGrow s-borderTop0_5 s-marginTop0_5'></div>
+<div class='s-marginHoriz1'>
+<i class='icon-lock'></i>
+Campaign ended
+</div>
+<div class='u-flexGrow s-borderTop0_5 s-marginTop0_5'></div>
+</div>
+</div>
+<div class='s-grid offerings-show-header__top-part'>
+<div class='s-grid-colSm16'>
+<div class="offerings-show-header-title" data-rc="offerings/show/header/title"><div class='u-displayFlex'>
+<div class='u-hiddenPrint offerings-show-header-title__avatar-wrapper'>
+<div class="c-avatar c-avatar--small offerings-show-header-title__avatar c-avatar--border c-avatar--green-pinata"><img alt="Logo of Green Piñata" title="Green Piñata" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/000/051/51-1526918798-7398add07554762ed5ab8df7df870467d55867cf.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/000/051/51-1526918798-8ce1fe1b7d8c917a97b61b3a9cda9b1d2146a986.png" /></div>
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<h1 class='c-primaryTitle offerings-show-header-title__company-name'>
+Green Piñata
+</h1>
+</div>
+</div>
+<div class='c-subtitle s-fontSize20 s-marginTop0_5 offerings-show-header-title__high-concept'>
+Get smart toys for your smart kids – No shopping. No clutter.
+</div>
+<div class='s-marginTop1_5'>
+<div class=''>
+<div class="c-tag-container u-hiddenPrint s-marginTop1 offerings-show-header-title__tags-wrapper offerings-shared-tags" data-rc="offerings/shared/tags"><a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/kids">Kids</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/b2c">B2C</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/subscription">Subscription</a>
+<a class="c-tag c-tag--small c-tag--flat  " style="" href="/tag/reduce-reuse">Reduce, Reuse, Recycle</a>
+<a class="c-tag c-tag--small c-tag--flat c-tag--no_border " style="background-color: #c2f9f4" href="/tag/women-founders">Women Founders</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8 u-hiddenSmDown'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Green Piñata" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Fgreen-pinata%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Fgreen-pinata"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?url=https%3A%2F%2Frepublic.com%2Fgreen-pinata"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Frepublic.com%2Fgreen-pinata"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Fgreen-pinata"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid u-displayFlex u-blockXsOnly offerings-show-header__media-react'>
+<div class='s-grid-colSm16'>
+<div class='offerings-show-header__media-react-content'>
+<div class="offerings-show-header-media_react" data-rc="offerings/show/header/media_react"><div data-react-key="MediaSliderPage" data-react-id="33bddb95-3a66-4b0c-b403-96e5a62bf370"><div class="js-react-component--placeholder"><div class='offerings-show-header-media_react__image-wrap'>
+<div class='offerings-show-header-media_react__image'>
+<img srcset="https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/001/751/1751-1636530874-f29932923439e5b7bcf45e90bcf84f4dff54c203.png 2x" class="u-displayBlock  " alt="Featured image of Green Piñata" title="Green Piñata" src="https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/001/751/1751-1636530874-44aa41d005594ef30bce88c46dfcb583ea415f58.png" />
+</div>
+</div>
+</div><div class="js-react-component--content u-invisible"></div></div><script nonce="FhwxG2QDe4eaamFEJseI/w==" type="application/json" data-react-key="MediaSliderPage" data-react-id="33bddb95-3a66-4b0c-b403-96e5a62bf370">{"media":{"data":[{"id":"1751","type":"offerings_slider_media_item","attributes":{"content_type":"video","order_num":0,"content_file_name":"Green_Piñata_on_Republic.mp4","content_file_size":41214066,"preview_file_name":"51-1526921040-2391e89e301baf42136da6d37dfca714df4990b6.png","preview_file_size":47070,"url":null,"url_preview":null,"content_url":{"original":"https://uploads.republic.com/p/offerings/slider_media_items/contents/original/000/001/751/1751-1636530875-41bd85db2929b474d77c454a88bfd887079a5358.mp4"},"preview_url":{"default":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default/000/001/751/1751-1636530874-44aa41d005594ef30bce88c46dfcb583ea415f58.png","default_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/default_2x/000/001/751/1751-1636530874-f29932923439e5b7bcf45e90bcf84f4dff54c203.png","small":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small/000/001/751/1751-1636530874-6afbf557e1496a469a55fd0c6303e73f30c7c0f8.png","small_2x":"https://uploads.republic.com/p/offerings/slider_media_items/previews/small_2x/000/001/751/1751-1636530874-70d3d4ff421e49638b26a8ea588ccdf35b85522c.png"},"youtube_id":null}}]},"editMode":false,"isIssuer":false,"offeringSlug":"green-pinata","offeringState":"finalized","missingPreviewUrl":"/previews/small/missing.png"}</script></div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid--pushMd1 s-grid-colSm8'>
+<div class="u-displayFlex u-flexDirectionColumn offerings-show-header-sidebar" data-rc="offerings/show/header/sidebar"><div class='u-flexGrow offerings-show-header-sidebar__top-part'>
+<div class="s-grid offerings-show-header-raising_information" data-rc="offerings/show/header/raising_information"><div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 s-borderBottom1 offerings-show-header-raised_amount offerings-show-header-raised_amount--without-divider" data-rc="offerings/show/header/raised_amount"><div class='s-fontSize35 c-condensedTitle offerings-show-header-raised_amount__title u-colorGreen'>
+$31,695
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-raised_amount__subtitle'>
+130% of minimum goal raised
+</div>
+<i class='icon-info-letter icon--frame u-displayInlineBlock js-tooltip_simple offerings-show-header-raised_amount__icon-info' data-tippy-content='Green Piñata is raising up to $1.07M with a minimum goal of $25K'></i>
+</div>
+<div class='c-progress c-progress--large s-marginTop0_5 c-progress--gray'>
+<div class='c-progress__bar' style='width: 126%'></div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm24'>
+<div class="s-marginBottom1_5 offerings-show-header-investors offerings-show-header-investors--closed" data-rc="offerings/show/header/investors"><div class='c-primaryTitle s-fontSize35 offerings-show-header-investors__title u-colorMuted'>
+169
+</div>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class='u-flexGrow s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-investors__subtitle'>
+Investors
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="s-fontSize18 u-fontWeight400 u-colorMuted offerings-show-header-message_successfully_funded" data-rc="offerings/show/header/message_successfully_funded">Successfully funded and closed
+<span class='u-whiteSpaceNowrap'>
+on January 16, 2018.
+</span>
+</div>
+</div>
+<div class='offerings-show-header-sidebar__bottom-part s-marginTop2'>
+<div class="u-bgWhite offerings-show-header-invest_button" data-rc="offerings/show/header/invest_button"><div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button--block c-button--large s-paddingHoriz0_5 c-button--disabled offerings-shared-invest_button__lock_button js-locked_button u-displayFlex u-justifyContentCenter" href="/green-pinata#invest"><i class="icon-lock"></i> Invest in Green Piñata
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class='u-bgGray s-paddingTop3 s-paddingBottom2_5 offerings-show__other-offerings'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-displayFlex u-justifyContentSpaceBetween u-flexWrap u-alignItemsCenter'>
+<h2 class='c-secondaryTitle u-colorGray6'>
+Open for investment
+</h2>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7 s-marginVert0_5'>
+Investors in Green Piñata also invested in these companies.
+<a href="/companies">View more</a>
+</div>
+</div>
+<div class='s-marginTop1 s-marginBottom1_5'>
+<div class="offerings-show-cards_slider" data-rc="offerings/show/cards_slider"><div class='s-grid js-offerings_slider js-segment_product_list offerings-show-cards_slider__slider' data-segment-list-id='promo-offering-other-deals'>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;PÜL&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1984,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/984/1984-1669242389-8e9d2dfe8e55483497847bc2bf2249bb167e8f95.jpg&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;pul-hydration&quot;,&quot;tags&quot;:&quot;b2b,d2c,wellbeing-longevity,reduce-reuse,ai-machine-learning,smart-devices,nutrition,consumer-electronics,v-companies,coming-soon-1,power-founders,crowd-safe&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/pul-hydration&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/pul-hydration"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="PÜL" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fpul-hydration%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/984/1984-1669242389-8e9d2dfe8e55483497847bc2bf2249bb167e8f95.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--pul-hydration"><img alt="Logo of PÜL" title="PÜL" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/984/1984-1667276830-5eeb783af723dbce5039050ac96ea223fda67422.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/984/1984-1667276830-fd21cd6d07cfc6af72c4a5170f56aeb6e6a199c5.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">PÜL
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Track, integrate, and train hydration using cognitiv...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;HelloSubs&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:1992,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/001/992/1992-1669649307-439c62431f9209bd2451c61989bdf0b1f12ebcd8.png&quot;,&quot;min_investment_amount&quot;:100,&quot;slug&quot;:&quot;hellosubs&quot;,&quot;tags&quot;:&quot;marketplace,edtech,apps,crowd-safe,v-companies,venture-backed,1m-revenue,coming-soon-1,b2b&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/hellosubs&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/hellosubs"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="HelloSubs" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fhellosubs%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/001/992/1992-1669649307-439c62431f9209bd2451c61989bdf0b1f12ebcd8.png&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--hellosubs"><img alt="Logo of HelloSubs" title="HelloSubs" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/001/992/1992-1667880537-5890af22e72e61623c1b11aaa8f79be29bb6d3e8.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/001/992/1992-1667880537-ba0502b64ed6fc63569b8e7e7339fa6231215641.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">HelloSubs
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Solving the substitute teacher shortage with our on-...
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colXs6 s-paddingTop0_5 u-verticalAlignTop offerings-show-cards_slider__column u-hiddenSmUp'>
+<div class="offerings-shared-offering_card_small" data-rc="offerings/shared/offering_card_small"><a class="s-padding1 js-segment_product offerings-shared-offering_card_small__link_wrapper" data-segment="{&quot;closing_soon&quot;:false,&quot;company_name&quot;:&quot;Soon&quot;,&quot;days_remaining&quot;:null,&quot;id&quot;:2063,&quot;image_url&quot;:&quot;https://uploads.republic.com/p/offerings/card_images/default/000/002/063/2063-1681822375-c6796430f886c8cb9b0dfcbc33f2f577692aab61.jpg&quot;,&quot;min_investment_amount&quot;:200,&quot;slug&quot;:&quot;soon&quot;,&quot;tags&quot;:&quot;b2c,saas,crypto,fintech,ai-machine-learning,blockchain,v-companies&quot;,&quot;trending&quot;:false,&quot;url&quot;:&quot;https://republic.com/soon&quot;,&quot;vertical&quot;:&quot;companies&quot;,&quot;type&quot;:&quot;offering&quot;}" itemscope="itemscope" itemtype="https://schema.org/Organization" itemprop="itemListElement" href="/soon"><div class='offerings-shared-offering_card_small__follow-wrapper'>
+<div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Soon" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering card - small" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link' data-action='follow' data-href='/register?after_sign_in=%2Fsoon%3Ffollow%3Dtrue'></i>
+</div>
+</div>
+<div class='offerings-shared-offering_card_small__cover' style='background-image: url(&#39;https://uploads.republic.com/p/offerings/card_images/default/000/002/063/2063-1681822375-c6796430f886c8cb9b0dfcbc33f2f577692aab61.jpg&#39;)'>
+</div>
+<div class='offerings-shared-offering_card_small__content'>
+<div class="c-avatar c-avatar--small offerings-shared-offering_card_small__avatar s-marginPullTop2 c-avatar--border c-avatar--soon"><img alt="Logo of Soon" title="Soon" srcset="https://uploads.republic.com/p/offerings/logos/small_2x/000/002/063/2063-1682341681-9fa57ada670d2262f2c5f3bf579d9faff6531879.png 2x" src="https://uploads.republic.com/p/offerings/logos/small/000/002/063/2063-1682341681-92ecb78c78f99b9891853362805db3ac1ef1ea8a.png" /></div>
+<h4 class='c-secondaryTitle s-fontSize25 js-segment_product_heading' itemprop='name'>
+<div class="u-displayFlex u-alignItemsCenter offerings-shared-company_name" data-rc="offerings/shared/company_name">Soon
+</div>
+</h4>
+<p class='s-marginTop0_5 u-fontWeight400 u-colorMuted offerings-shared-offering_card_small__description' itemprop='description'>
+Stress-free, fully-automated crypto investing
+</p>
+<div class='s-marginTop0_5 s-fontSize10 u-colorGrayA'>
+Republic Funding Portal · Reg CF
+</div>
+</div>
+</a></div>
+</div>
+</div>
+<div class='js-offerings_slider_loader u-hiddenXsOnly s-marginTop7'>
+<div class='u-textCenter s-fontSize18 u-fontWeight400 u-colorMuted'>
+<i class='c-spinner'></i>
+Loading...
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="u-hiddenPrint offerings-show-content_navigation" data-rc="offerings/show/content_navigation"><div class='c-content_nav u-hiddenSmDown'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16 s-grid--middle'>
+<div class='c-content_nav__container'>
+<a class="c-content_nav__link js-content-nav-link active" href="#pitch">Pitch</a>
+<a class="c-content_nav__link js-content-nav-link" href="#updates">Updates
+<span class='c-content_nav__booble'>
+8
+</span>
+</a><a class="c-content_nav__link js-content-nav-link" href="#reviews">Reviews
+<span class='c-content_nav__booble'>
+58
+</span>
+</a></div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 s-grid--middle'>
+<div class='offerings-show-content_navigation__contact-wrapper'>
+<div class='u-displayFlex u-justifyContentSpaceBetween'>
+</div>
+</div>
+<div class='offerings-show-content_navigation__cta-wrapper'>
+<div class="offerings-shared-invest_button" data-rc="offerings/shared/invest_button"><a class="c-button c-button c-button--block s-paddingHoriz0_5 offerings-show-content_navigation__cta-button c-button--disabled offerings-shared-invest_button__lock_button js-locked_button u-displayFlex u-justifyContentCenter" href="/green-pinata#invest"><i class="icon-lock"></i> <span class='u-hiddenLgOnly'>
+Invest
+</span>
+<span class='u-hiddenMdDown'>
+Invest in Green Piñata
+</span>
+
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenMdUp u-displayFlex u-alignItemsCenter offerings-show-content_navigation__mobile-navigation'>
+<select class='c-input c-input--select c-input--large js-mobile-nav offerings-show-content_navigation__mobile-select'>
+<option selected value='/green-pinata/pitch'>
+Pitch
+</option>
+<option value='/green-pinata/deal-terms'>
+Deal terms
+</option>
+<option value='/green-pinata/documents'>
+Documents
+</option>
+<option value='/green-pinata/team'>
+Team
+</option>
+<option value='/green-pinata/press'>
+Press
+</option>
+<option value='/green-pinata/updates'>
+Updates
+(8)
+</option>
+<option value='/green-pinata/reviews'>
+Reviews (58)
+</option>
+</select>
+<div class='s-marginLeft1_5'>
+<div class="u-displayFlex u-justifyContentEnd offerings-show-header-follow_share_download" data-rc="offerings/show/header/follow_share_download"><div class="u-lineHeight1 u-colorWhite follows-shared-follow_offering_star" data-followed="false" data-company-name="Green Piñata" data-class-followed="follows-shared-follow_offering_star__icon--followed" data-class-just-followed="follows-shared-follow_offering_star__icon--just-followed" data-analytics-source="Offering page - Header" data-action-follow="follow" data-rc="follows/shared/follow_offering_star"><i class='icon-star u-colorGray7 follows-shared-follow_offering_star__icon js-offering_follows_register_link c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link' data-action='follow' data-href='/register?after_sign_in=%2Fgreen-pinata%3Ffollow%3Dtrue'></i>
+</div>
+<div class='s-marginLeft2 offerings-show-header-follow_share_download__spacer'></div>
+<div class='js-share_dropdown c-dropdown offerings-show-header-follow_share_download__share-dropdown'>
+<a class="c-link c-link--no-underline c-link--muted s-fontSize24 offerings-show-header-follow_share_download__link offerings-show-header-follow_share_download__link--share u-lineHeight1 js-share_link" data-tippy-content="Share" href="javascript:void(0)"><i class="icon-share"></i></a>
+<div class='c-dropdown__content_wrapper'>
+<div class='c-dropdown__content'>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Frepublic.com%2Fgreen-pinata"><i class='icon-facebook u-colorBrandFacebook s-marginRight0_5'></i>
+Facebook
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="telegram" href="https://telegram.me/share/url?url=https%3A%2F%2Frepublic.com%2Fgreen-pinata"><i class='icon-telegram u-colorBrandTelegram s-marginRight0_5'></i>
+Telegram
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Frepublic.com%2Fgreen-pinata"><i class='icon-twitter u-colorBrandTwitter s-marginRight0_5'></i>
+Twitter
+</a>
+<a class="js-social_media_share_link " data-analytics-context="Offering page" data-analytics-social-network="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Frepublic.com%2Fgreen-pinata"><i class='icon-linkedin u-colorBrandLinkedin s-marginRight0_5'></i>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingTop0_5 s-borderBottom0_5 u-textCenter s-fontSize14 offerings-show-content_navigation__disclaimer'>
+<div class='u-colorGray7 u-fontWeight400'>
+<i class='icon-attention u-colorOrange'></i>
+<span class='u-hiddenSmUp'>
+Closed on January 16, 2018.
+Information may not be up-to-date.
+</span>
+<span class='u-hiddenXsOnly'>
+Campaign closed on January 16, 2018.
+Information displayed may not be up-to-date.
+</span>
+</div>
+</div>
+</nav>
+<div class='js-terms u-hidden s-paddingTop6_5'>
+<div class='js-section s-paddingTop2' id='terms'>
+<div class="s-container s-gridMaxXs24 s-paddingTop0_5 offerings-show-terms_section" data-rc="offerings/show/terms_section"><div class='s-grid'>
+<div class='s-grid-colMd17 s-grid-colSm16'>
+<div class='c-offeringTermsContent'>
+
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8'>
+<div class='u-hiddenPrint'>
+<div class='s-spacerXs3 s-spacerSm0_5'></div>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic (OpenDeal Portal LLC, CRD #283874) is hosting this Reg CF securities offering by Green Piñata, LLC. View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001718354&amp;owner=exclude&amp;count=40"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form C
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-update u-hidden s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid'>
+<div class='js-section s-grid-colLg17 s-grid--pushLg4 s-grid-colSm20 s-grid--pushSm3' id='updates'>
+<div class='s-paddingTop2'>
+<div class='js-update_section_placeholder' data-url='/green-pinata/show_updates'>
+<div class='u-textCenter u-colorGray9 s-fontSize20 s-marginVert10'>
+<i class='c-spinner'></i>
+Loading
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-reviews u-hidden s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='js-section' id='reviews'>
+<div class='s-paddingTop2'>
+<div class="s-paddingTop1_5 offerings-show-reviews_section" data-rc="offerings/show/reviews_section"><h3 class='s-marginBottom3 c-secondaryTitle u-colorMuted offerings-show-reviews_section__title'>
+Hear from some of the
+<span class='u-whiteSpaceNowrap'>
+169
+investors
+</span>
+in Green Piñata
+</h3>
+<div class='js-investment_reasons_loader'>
+<div class="investment_reasons-shared-page_loader" data-rc="investment_reasons/shared/page_loader"><div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<hr class='s-marginVert2'>
+<div class="investment_reasons-shared-card_loader" data-rc="investment_reasons/shared/card_loader"><div class='s-grid s-marginBottom1_5'>
+<div class='s-grid-colMd6 s-grid-colSm8 s-grid-colXs19 u-displayFlex'>
+<div class='s-marginRight1'>
+<div class='s-spacerXs3 u-bgLoader u-borderRadius4' style='width: 48px;'></div>
+</div>
+<div class='u-flexGrow'>
+<div class='s-spacerXs1 s-marginRight4 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+<div class='s-grid'>
+<div class='s-grid-colSm15'>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='s-spacerXs1_5 s-marginBottom0_5 u-bgLoader u-borderRadius4'></div>
+<div class='u-displayFlex'>
+<div class='s-spacerXs1_5 u-flexGrow u-bgLoader u-borderRadius4'></div>
+<div class='s-paddingRight6'></div>
+</div>
+</div>
+<div class='s-grid-colSm3 s-grid--pushSm3 u-hiddenXsOnly'>
+<div class='s-spacerXs2_5 u-bgLoader u-borderRadius4'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-investment_reasons_wrapper'></div>
+<div class='js-investment_reasons_show_more_wrapper u-hidden'>
+<div class='s-spacerXs2_5 s-spacerSm4'></div>
+<div class='s-grid'>
+<div class='s-grid-colSm16'>
+<a class="js-investment_reasons_show_more c-button c-button--secondary c-button--large c-button--block" data-url="/green-pinata/reviews/page/1" href="javascript:void(0)">Show more</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-sections offerings-show__sections s-paddingTop6_5'>
+<div class='s-container s-gridMaxXs24'>
+<div class='s-grid js-pitch_grid offerings-show__pitch-grid'>
+<div class='js-section s-grid-colMd17 s-grid-colSm16 s-marginBottom3 offerings-show__pitch' id='pitch'>
+<div class="offerings-show-pitch_section" data-rc="offerings/show/pitch_section"><div class='s-marginRight3 offerings-show-pitch_section__pitch-wrapper'>
+<div class="js-pitch_section s-paddingTop3 offerings-show-pitch_non_modular" data-rc="offerings/show/pitch_non_modular"><div class='js-pitch_content c-offeringPitchContent offerings-show-pitch_non_modular__pitch-content offerings-show-pitch_non_modular__pitch-content--Green Piñata'>
+<h3 class=""></h3><h3>Deal Highlights<br></h3>
+<ul><li><p>High quality, educational, eco-friendly toy rental subscription service with recurring monthly revenue</p></li><li><p>Powerful recommendation engine individually tailors and optimizes toys to engage and develop each child</p></li><li><p>60% monthly growth; over 2000 boxes shipped to date to over 600 unique customers</p></li><li><p>Sharing economy is expected to grow to $335 billion in 8 years</p></li><li><p>Uniquely positioned to earn promotional revenues from organic, eco-friendly baby brands</p></li></ul><hr>
+<h2 class="u-text-center">Problem</h2><p class="u-text-center"><strong>Kids get bored of toys too fast</strong></p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/003/202/3202-1510907343-258de5b90f91d9b66a354f4133ee5464cc547d92.jpg"></p><p class="u-text-center"><strong>Wasted Family budget, time and space</strong><br></p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/203/3203-1510907363-3b5b048a044a34fefcf49000c10a64ee68bb4727.jpg"></figure><h3><b><br></b></h3><h3 class="u-text-center"><b>Green Piñata Toys — Disrupting Early Childhood Learning through Play</b><br></h3><h3 class="u-text-center">Green Piñata Toys gives parents what they want. It is a subscription service that ships curated, educational toys to enhance your child’s learning. Play, learn and return for more.</h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/135/3135-1510841814-c16a171e935ebbf48325a372bc88fe23fb19378e.png"></figure><h3 class="u-text-center"><strong>Capitalizing on the&nbsp;market trend</strong></h3>
+
+<ul><li><p>Sharing economy is booming: Estimated to be at $335 billion by 2025</p></li><li><p>Millennial consumers are re-thinking the value of ownership. They value:</p></li></ul><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/134/3134-1510841801-fd5069198c92a3c84a960a31f0631dda830763ce.png"></figure><h3 class="u-text-center"><strong>Our Product</strong></h3><h3><img src="https://uploads.republic.co/p/images/attachments/original/000/002/896/2896-1510113225-90b737ab17abf5332823b10d1f1fe7c518fbd096.jpg"></h3><p><br></p><ul><li>Rated #1, leading industry experts recommended for learning and brain development</li><li>Curation technology individually tailored for a child</li><li>Eco-friendly, made with sustainably sourced wood<br></li><li>Premium wooden toy brands from Europe and the US</li></ul><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/002/930/2930-1510283684-458cb724103c49de60d5b8afdb1fff0dce058bef."></figure><h3 class="u-text-center"><strong>Curation Technology —&nbsp;Recommendation Engine&nbsp;</strong></h3><p class="u-text-center">Powered by Predictive Analytics</p><ul><li>Recommendation engine individually tailors selection<br></li><li>Analytics gathered over time on child’s preferences and parents purchasing behavior<br></li></ul><figure><br></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/127/3127-1510841441-ca80f4df22e2611865860a23b8a257e3e4395d37.png"></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/129/3129-1510841461-1eb184563403dd346bb65a4de0693ff4baa282d7.png"></figure>
+
+<h2 class="u-text-center">How it Works<br></h2><h3 class="u-text-center">It’s easy! For a monthly fee, families receive up to 4 toys/month. The Toys are shipped right to their door.&nbsp;</h3><p class="u-text-center">The kids enjoy the toys for as long as they like, and parents can buy the ones their kids can’t part with. When done, they pack up the green piñata box, pop on the prepaid label and hand it to the mail man.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/002/885/2885-1510111474-f239d48385b1d746960403645f013da9c29faf5b.png"></figure><h3 class="u-text-center"><strong>Our Hygiene is State-of-the-art</strong></h3>
+
+<p class="u-text-center">We have sanitized and shipped more than 8000 toys and our sanitization process has made sure the toys are 100% germ-free.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/131/3131-1510841636-8c9048838061d5772d655ba60cbc7ea610e4c18b.png"></figure><p><br></p><figure class="u-floatLeft"><img src="https://uploads.republic.co/p/images/attachments/original/000/003/130/3130-1510841589-f8107cc138a387f1fcad05f3b93f7e5f425170bf.jpg"></figure><h3><br>Cleaning process is approved by our Scientific Expert — Hannah Gardener, PHD in Public Health from Harvard, Medical Prof. in University of Miami<br></h3><p><br></p><p><br></p><p><br></p><h3 class="u-text-center"><strong>Strong Trajectory and Market Adoption</strong></h3>
+
+<p class="u-text-center"> Green Piñata is in a high growth phase. &nbsp;With parents clamoring to subscribe, grandparents relieved to have gift options and partners seeking visibility to our subscribers, we are gaining the investment of individuals and accredited angel investors who want to be part of our success.<img src="https://uploads.republic.co/p/images/attachments/original/000/003/150/3150-1510863197-a5d29d1e5d5da67e5344fdc09d649ea83130ba69.png"></p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/151/3151-1510863233-991ad2a577b6150d31bccbec28eb8ea7b40c15cd.png"><br></figure><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/149/3149-1510863185-e20f9b789d8714b608e91e0b6211598649161cad.png"></figure><h3 class="u-text-center"><strong>Parents love us!</strong></h3>
+
+ <iframe src="//www.youtube.com/embed/WOzqG0RYjYc" frameborder="0" allowfullscreen=""></iframe> <figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/132/3132-1510841678-de161868e420fb730f57e2d4d97f69da845ed4fe.png"></figure><p><br></p><p><br></p><h3 class="u-text-center"><strong>Market Size and Opportunity</strong></h3><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/002/891/2891-1510112155-cd2b4985a7e228107d9a70d7b660c8eb51ea8462.png"></figure><h3 class="u-text-center"><strong><br></strong></h3><h3 class="u-text-center"><strong>Lucrative and Expansive Business Model</strong></h3>
+
+<p class="u-text-center">Green Piñata Toys have 3 sources of revenue. </p><ul><li><p>In 2017, we have growing revenues from Rental Subscription </p></li><li><p>Starting 2018, we expect to earn revenues from business partner promotions and and gifts for newborns and special occasions.</p></li></ul><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/133/3133-1510841760-cb01839d3d590cc0eb9d8fa9234a748426268215.png"></figure><hr><p><br></p><h3 class=""><strong><br></strong></h3><h3 class=""><strong>Competitive Advantage</strong></h3>
+
+<p>Crushed competition and now the leading toy rental for ages &lt;5</p><p>Our toy recommendation engine individually tailors and optimizes toys to engage and develop each child. This is a unique differentiator in the industry</p><p><img src="https://uploads.republic.co/p/images/attachments/original/000/003/153/3153-1510863272-1fe929259d97aa5dae9d9ccfd70d97ab891795bb.png"></p><h3 class=""><strong>Our Founding Story</strong></h3>
+
+<figure><img src="https://uploads.republic.co/p/images/attachments/original/000/002/899/2899-1510123079-6d008746e2dd5dcc43a4189468455429d91230f9.jpg"></figure><p>When my daughter was 8 months old, my husband and I were very excited about shopping for toys for her. &nbsp;At the time I had no idea that 85% of our brains develop by the time we are age 5!&nbsp;&nbsp;We were paying several hundred dollars on toys that she only played with for a few days. The clutter from unused toys drove me crazy and we were always running out of storage space. I soon realized I was not alone and bam Green Pinata Toys was born.&nbsp;&nbsp;Play time should be more about having fun together and less about stressing over wastage and clutter.</p><figure><img src="https://uploads.republic.co/p/images/attachments/original/000/003/152/3152-1510863255-87803e064ee8e0122f6c3856ba7ca97c1edc4115.jpg"></figure><p>My team and I are very proud and passionate about building Green Piñata because of two main reasons. 1.&nbsp;We are solving real problem for parents - we help save money, reduce clutter from unused toys, we nurture early learning in children and we offer convenience. 2.&nbsp;we are doing something good for the earth - we help reduce landfill - most plastic toys are not recyclable. The Green Piñata toys are eco friendly, sustainably sourced and we teach the young generation to share and reuse. Most importantly, my team that brings passion and all the right skills necessary to make this business successful and they&nbsp;keep&nbsp;me going!<br></p>
+
+<h3><strong>Our Mission</strong></h3>
+
+<p><b>Fostering learning through play</b></p>
+
+<p>We built our service on a strong foundation of insights from early education and child development specialists to deliver age-appropriate toys geared for learning at every stage.</p>
+
+<p><b>We care for our earth</b></p>
+
+<p>We strive to be as environmentally conscious as possible in order to give our children the best future possible. We have partnered with eco-conscious manufacturers, all of whom use sustainably-sourced wood or recycled plastic to make their products.Together, we help families go green and reduce their addition to the landfill. </p>
+
+
+
+<p><b>We donate toys to children in need</b></p>
+
+<p>Once our toys have been loved by our customers, we donate them to children in need.</p><hr><p><br></p><h2 class=""><b><i>Join Us!</i></b></h2>
+
+<p class="">Green Piñata is WAY ahead of others that are seeking to get an early lead on building a customer base of millennial parents with massive intelligence. We own the ‘play to learn’ market and our power is in the analytics and being able to be the trusted source. Wish you had discovered RentTheRunway? Here is your chance. Come, join us! Thank you for your support!<br>- Shiva</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd7 s-grid-colSm8 js-deal_page_sidebar'>
+<div class='s-spacerXs3'></div>
+<div class='js-section js-mobile_section s-marginBottom3 offerings-show__deal-terms' id='deal-terms'>
+<div class="offerings-show-deal_terms" data-rc="offerings/show/deal_terms"><div class="s-marginBottom1_5 offerings-show-deal_terms-header" data-rc="offerings/show/deal_terms/header"><h2 class='s-fontSize25 u-fontWeight800 u-colorGray6 c-condensedTitle offerings-show-deal_terms-header__title'>
+Deal terms
+</h2>
+<hr class='c-deal-page-title-divider'>
+</div>
+<div class='terms-block'>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-valuation_cap" data-rc="offerings/show/deal_terms/valuation_cap"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Valuation cap
+</div>
+<p class='c-deal-term__content'>
+$4,000,000
+</p>
+<p class='c-deal-term__helper'>
+The maximum valuation at which your investment converts
+into equity shares or cash.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe#terms">Learn more</a>
+</br>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-discount" data-rc="offerings/show/deal_terms/discount"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Discount
+</div>
+<p class='c-deal-term__content'>
+20%
+</p>
+<p class='c-deal-term__helper'>
+If a trigger event for Green Piñata occurs, the discount provision
+gives investors equity shares (or equal value in cash) at a reduced price.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe#terms">Learn more.</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-min_investment" data-rc="offerings/show/deal_terms/min_investment"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Minimum investment
+</div>
+<p class='c-deal-term__content'>
+$25
+</p>
+<p class='c-deal-term__helper'>
+The smallest investment amount
+that Green Piñata is
+accepting.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#minimum-and-maximum-investment">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-raise_amounts" data-rc="offerings/show/deal_terms/raise_amounts"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Funding goal
+</div>
+<p class='c-deal-term__content'>
+$25K &ndash; $1.07M
+</p>
+<p class='c-deal-term__helper'>
+Green Piñata needs to raise
+$25K before the deadline.
+The maximum amount Green Piñata
+is willing to
+raise
+is $25K &ndash; $1.07M.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#funding-goal">Learn more</a>
+</p>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-deadline" data-rc="offerings/show/deal_terms/deadline"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Deadline
+</div>
+<div class='c-deal-term__content'>
+<span class='js-localtime_year' data-time='2018-01-16T03:59:00Z'></span>
+</div>
+<div class='c-deal-term__helper'>
+Green Piñata needs to reach their minimum funding goal before the deadline
+(
+<span class='js-localtime_year_timezone' data-time='2018-01-16T03:59:00Z'></span>).
+If they don’t, all investments will be refunded.
+<br>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/what-the-deal-terms-mean#campaign-timeline">Learn more</a>
+</div>
+</div>
+</div>
+</div>
+<div class='c-deal-term-wrapper'>
+<div class="offerings-show-deal_terms-securities" data-rc="offerings/show/deal_terms/securities"><div class="offerings-show-deal_terms-securities-security" data-rc="offerings/show/deal_terms/securities/security"><div class='c-deal-term c-deal-term--with_icon js-deal_terms_section'>
+<div class='c-deal-term__title'>
+Type of security
+</div>
+<p class='c-deal-term__content'>
+Crowd SAFE
+<span class='s-fontSize16 u-fontWeight400'>
+<p class='c-deal-term__helper'>
+A SAFE allows an investor to make a cash investment in a company, with rights to receive certain company stock at a later date, in connection with a specific event.
+<span class='u-hiddenPrint'>
+&middot;
+</span>
+<a target="_blank" class="u-hiddenPrint" href="/learn/investors/crowdsafe">Learn more</a>
+</p>
+</span>
+</p>
+</div>
+<div class="offerings-show-deal_terms-securities-security_other" data-rc="offerings/show/deal_terms/securities/security_other"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="offerings-show-deal_terms-footer" data-rc="offerings/show/deal_terms/footer"><footer class='s-paddingTop1 js-deal_terms_footer u-hiddenPrint'>
+<a target="_blank" class="c-button c-button--secondary c-button--block" href="/learn/investors/what-the-deal-terms-mean">How it works</a>
+</footer>
+</div>
+</div>
+</div>
+<div class='js-section js-mobile_section s-marginBottom3 u-hiddenPrint offerings-show__documents' id='documents'>
+<h2 class='s-fontSize25 s-marginBottom1 u-fontWeight800 u-colorGray6 c-condensedTitle'>
+Documents
+</h2>
+<div class="offerings-shared-documents_section" data-rc="offerings/shared/documents_section"><div class='offerings-shared-documents_section__document_container'>
+<div class='u-colorGray8 s-fontSize14'>
+Republic (OpenDeal Portal LLC, CRD #283874) is hosting this Reg CF securities offering by Green Piñata, LLC. View the official SEC filing and all updates:
+</div>
+<a target="_blank" rel="noopener" class="u-displayFlex u-alignItemsCenter s-marginTop0_5 offerings-shared-documents_section__document-link" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001718354&amp;owner=exclude&amp;count=40"><img style="height: 40px" alt="Official SEC Logo" title="SEC Logo" src="https://assets.republic.com/assets/sec_logo-d54253528cd94c8c0b42929c0b8af85bee044c658a78a4446cce43336cc52b1f.png" />
+<span class='s-marginLeft0_5'>
+Form C
+</span>
+<span class='s-marginLeft0_5 s-borderLeft0_5 u-colorGrayA'>
+SEC.gov
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-marginTop2 s-marginPullBottom1 s-paddingBottom5 u-bgWhite offerings-show__featured-investment-reasons' id='featured-investment-reasons'>
+<div class='s-container s-gridMaxXs24'>
+<div class="offerings-show-featured_investments_section" data-rc="offerings/show/featured_investments_section"><header class='u-displayFlex s-borderBottom1 s-marginBottom1 u-alignItemsCenter offerings-show-featured_investments_section__header'>
+<h3 class='u-flexGrow c-condensedTitle s-fontSize25 u-fontWeight800 u-colorGray6'>
+Why others invested
+</h3>
+<a class="js-view_reviews_section" href="/green-pinata/reviews"><span class='u-hiddenXsOnly s-fontSize18'>
+See all reviews (0)
+</span>
+<span class='u-hiddenSmUp s-fontSize16'>
+See all (0)
+</span>
+</a>
+</header>
+<div class="u-displayFlex s-paddingVert1 investment_reasons-shared-featured_investments" data-rc="investment_reasons/shared/featured_investments"><div class='u-flex1 investment_reasons-shared-featured_investments__reason-wrapper'>
+<div class="s-fontSize18 u-fontWeight400 investment_reasons-shared-featured_investment" data-rc="investment_reasons/shared/featured_investment"><p class='s-marginBottom1_5 u-colorGray6'>
+It&#39;s a truly great idea! I thought vaguely about this a few years ago while wining about how many things we buy, hardly use, and just throw in the trash, and asked why so many little or even highly used items can&#39;t just be traded or reused by others!
+</p>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Michael Hall" title="Michael Hall" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/037/285/37285-1511240900-386195c8281d1e2cebffe2f134d69e46a7bcf855.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/037/285/37285-1511240900-f6cf53c66459210df923cada35b8352270a7bf1a.jpg" /></div>
+<div class='s-marginLeft1'>
+<div class='c-condensedTitle s-fontSize18'>
+<span class="js-tooltip_ajax c-link c-link--unstyled u-colorBlack " data-type="user" data-slug="michael-hall-1">Michael Hall</span>
+</div>
+<div class="c-tag js-tooltip_simple c-tag--active_investor c-tag--extra_small c-tag--thick badges-shared-list_item" data-tippy-content="<div class='s-padding0_5'>
+Michael is a repeat investor on Republic
+</div>
+" data-tippy-interactive="true" data-rc="badges/shared/list_item">Active investor
+</div>
+<div class='u-colorGray6 s-fontSize12 investment_reasons-shared-featured_investment__date'>
+over 5 years ago
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderLeft2_5 s-marginLeft2_5 investment_reasons-shared-featured_investments__vertical-divider'></div>
+<div class='u-flex1 investment_reasons-shared-featured_investments__reason-wrapper'>
+<div class="s-fontSize18 u-fontWeight400 investment_reasons-shared-featured_investment" data-rc="investment_reasons/shared/featured_investment"><p class='s-marginBottom1_5 u-colorGray6'>
+Cognitive development is crucial in all stages of life; especially as a baby. I love every aspect about this company. Their vision inspires me!
+</p>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Jalem Correia" title="Jalem Correia" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/048/184/48184-1515197128-04f36ff8ed9949a8f903b7a4a0eb4187eaaab406.jpg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/048/184/48184-1515197128-5603d142873b99a4c6b1cbb4d12711c48b41a894.jpg" /></div>
+<div class='s-marginLeft1'>
+<div class='c-condensedTitle s-fontSize18'>
+<span class="js-tooltip_ajax c-link c-link--unstyled u-colorBlack " data-type="user" data-slug="jalem-correia">Jalem Correia</span>
+</div>
+<div class="c-tag js-tooltip_simple c-tag--active_investor c-tag--extra_small c-tag--thick badges-shared-list_item" data-tippy-content="<div class='s-padding0_5'>
+Jalem is a repeat investor on Republic
+</div>
+" data-tippy-interactive="true" data-rc="badges/shared/list_item">Active investor
+</div>
+<div class='u-colorGray6 s-fontSize12 investment_reasons-shared-featured_investment__date'>
+over 5 years ago
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderLeft2_5 s-marginLeft2_5 investment_reasons-shared-featured_investments__vertical-divider'></div>
+<div class='u-flex1 investment_reasons-shared-featured_investments__reason-wrapper'>
+<div class="s-fontSize18 u-fontWeight400 investment_reasons-shared-featured_investment" data-rc="investment_reasons/shared/featured_investment"><p class='s-marginBottom1_5 u-colorGray6'>
+The importance of children stimulating their prefrontal cortex throughout their childhood is important. Toys are a big part of a developing brain.
+</p>
+<div class='u-displayFlex u-alignItemsCenter'>
+<div class="c-avatar c-avatar--small  js-user_avatar"><img alt="Profile picture of Sean DuTremaine" title="Sean DuTremaine" srcset="https://uploads.republic.com/p/users/avatars/small_2x/000/047/525/47525-1519822678-782b42af0bdfee2515f03e81145bd9c0f3cf0c1a.jpeg 2x" src="https://uploads.republic.com/p/users/avatars/small/000/047/525/47525-1519822678-10a8f1204c80b8a91ad4b38808d25def8d66d989.jpeg" /></div>
+<div class='s-marginLeft1'>
+<div class='c-condensedTitle s-fontSize18'>
+<span class="js-tooltip_ajax c-link c-link--unstyled u-colorBlack " data-type="user" data-slug="sean-dutremaine">Sean DuTremaine</span>
+</div>
+<div class="c-tag js-tooltip_simple c-tag--active_investor c-tag--extra_small c-tag--thick badges-shared-list_item" data-tippy-content="<div class='s-padding0_5'>
+Sean is a repeat investor on Republic
+</div>
+" data-tippy-interactive="true" data-rc="badges/shared/list_item">Active investor
+</div>
+<div class='u-colorGray6 s-fontSize12 investment_reasons-shared-featured_investment__date'>
+over 5 years ago
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='about'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+About Green Piñata
+</h2>
+</div>
+<div class="offerings-show-about_section" data-rc="offerings/show/about_section"><div class='s-grid js-display'>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Legal Name
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+Green Piñata, LLC
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Founded
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+Apr 2015
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Form
+</div>
+<div class='s-fontSize18'>
+Massachusetts
+LLC
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 s-marginBottom1 offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Employees
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+4
+</div>
+</div>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Website
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+<a target="_blank" href="http://www.greenpinatatoys.com">greenpinatatoys.com</a>
+</div>
+</div>
+<div class='u-hiddenPrint offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Social Media
+</div>
+<div class='s-marginPullLeft1 s-fontSize18'>
+<a target="_blank" title="Twitter" class="s-marginLeft1 c-link c-link--twitter" href="https://twitter.com/greenpinatatoys"><i class="icon-twitter"></i></a>
+<a target="_blank" title="Facebook" class="s-marginLeft1 c-link c-link--facebook" href="https://www.facebook.com/greenpinatatoys"><i class="icon-facebook"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hiddenPrint'>
+<div class='offerings-show-about_section__row offerings-show-about_section__row--map'>
+<div class='u-fontWeight400 u-colorGray7 s-marginBottom0_5'>
+Headquarters
+</div>
+<div class='s-fontSize18 offerings-show-about_section__address'>
+<img alt="Google Map location of of Green Piñata" title="Google Map location of of Green Piñata" src="https://maps.googleapis.com/maps/api/staticmap?center=2%2BBlue%2BJay%2BCircle%2CWakefield%2CMA&amp;format=png&amp;key=AIzaSyBSAkS8gvhmvxYO9XQOuP1ows6mbvx_jAE&amp;maptype=roadmap&amp;markers=size%3Asmall%7Ccolor%3A0xff0000%7Clabel%3A1%7C2%2BBlue%2BJay%2BCircle%2CWakefield%2CMA&amp;scale=2&amp;size=360x165&amp;visual_refresh=true&amp;zoom=13&amp;signature=uqd2qhRIXpLvn7WKAHuY3AMeNDE=" />
+<div class='s-fontSize12 offerings-show-about_section__address_text'>
+2 Blue Jay Circle
+, Wakefield, MA
+</div>
+</div>
+</div>
+</div>
+<div class='s-grid-colSm8 u-hidden u-blockPrint offerings-show-about_section__column'>
+<div class='offerings-show-about_section__row'>
+<div class='u-fontWeight400 u-colorGray7'>
+Headquarters
+</div>
+<div class='s-fontSize18 s-marginBottom1'>
+2 Blue Jay Circle, Wakefield, MA, United States 01880
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='js-section offerings-show__section' id='team'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='s-marginBottom1 offerings-show__section-title'>
+<div class='c-condensedTitle u-colorGray6'>
+Green Piñata Team
+</div>
+<div class='s-fontSize14 u-colorGray9 s-marginTop1 u-fontWeight400'>
+Everyone helping build Green Piñata, not limited to employees
+</div>
+</h2>
+</div>
+<div class="offerings-show-team_section" data-rc="offerings/show/team_section"><div class='js-sort_data' data-featured-placeholder-klass='offerings-show-team_section__featured_team_member s-marginBottom1 s-border1' data-placeholder-klass='offerings-show-team_section__team_member s-marginBottom1 s-border1'></div>
+<div class='s-grid u-hiddenPrint'>
+<div class='s-grid-colMd24'>
+<div class=' offerings-show-team_section__team_member_container'>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Shiva Kashalkar" title="Shiva Kashalkar" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/277/277-1510116424-ab2ed24a5a3c8983f783cdaf86402fbb40215cd9.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/277/277-1510116424-69ac5dbed446e2e8335013ec8789c402260d7d1a.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Shiva Kashalkar
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Founder and CEO
+</div>
+<div class='s-marginVert1'>
+<div class="s-paddingVert1 s-fontSize14 u-colorGray9 u-textCenter blog-posts-shared-superhero_title" data-rc="blog/posts/shared/superhero_title">Featured in
+<span class='c-superheroTitle c-condensedTitle u-displayInlineBlock u-colorGray2'>
+<a class="c-link c-link--unstyled" href="/blog/superheroes">Superheroes</a>
+</span>
+<strong class='blog-posts-shared-superhero_title__dot'>
+&middot;
+</strong>
+<a class="c-link c-link--with_arrow_slim" href="/blog/superheroes/green-pinata-founder-story-predictive-analytics-is-the-future-of-b2c">Read</a>
+</div>
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Shiva Kashalkar brings more than 13 years of experience in entrepreneurship, marketing and big data. She has an MBA from Babson and undergraduate degree in technology. 
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/shivakashalkar/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Morgan Kelly Burke" title="Morgan Kelly Burke" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/520/520-1510116915-742abe809be9d461e3c175855b88149c70bb72cd.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/520/520-1510116915-dfbe43065a56df8e1ef0a530f7282fab2ab72822.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Morgan Kelly Burke
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Chief Marketing Office
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Morgan brings 9 years of marketing experience and specializes marketing to young parents for consumer brands including Care.com and Fatherly.
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/morgankburke/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Victoria Nessen" title="Victoria Nessen" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/521/521-1510117352-58e6bdb6677d2fe419465e9594d969d424392d03.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/521/521-1510117352-36310ab1e32c447df7e066fc6fe1678601d65d4f.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Victoria Nessen
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Marketing Strategist
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+With over 25 years marketing and sales experience, Victoria advises Green Piñata Toys on marketing strategy, digital and traditional marketing, sales and marketing operations.
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/nessenkohlasch/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Michelle Zayas" title="Michelle Zayas" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/522/522-1510117616-cf5cacdac10321e0f4b39aa5310bd0415ecedc6b.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/522/522-1510117616-96b264f00edad3078fadab15ca01b0f29448f346.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Michelle Zayas
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Educational Expert and Customer Service 
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+11 years of experience in early education and supports our customers and their littles with learning through play. Michelle has masters in early education from UMass Amherst.
+
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/michelle-zayas-84405272/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Michelle Dunn Taylor" title="Michelle Dunn Taylor" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/523/523-1510117778-77d733fa7c7dd130881b8342a272827240b502d5.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/523/523-1510117778-4a040112a166e723372db6721a278ca97b13ca6f.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Michelle Dunn Taylor
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Warehouse and Shipping
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+20 years in real-estate operations small business operations and arts. Michelle is passionate about creating excellent customer experience and ensures every Piñata sent exceeds customer expectations
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Jillian  Johnson" title="Jillian  Johnson" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/524/524-1510117871-78150924adce64f2e7cf5c2efbc339c254b48082.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/524/524-1510117871-270d808203743b87207c356d24a3e08c757820ba.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Jillian  Johnson
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Digital Marketing
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Our "Jill of All Trades" here at Green Piñata Toys, delivering eye-catching email designs, as well as making the content on the Piñata Blog shine with her exceptional writing and editing skills.
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/jillian-johnson-2069b21b/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Cathleen Raffaeli" title="Cathleen Raffaeli" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/525/525-1510118065-62cb9ee157c8fbe28d9ddec895934ad72024aaf0.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/525/525-1510118065-42d6dbf88be6197ca46d51128fb563e227aaabc7.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Cathleen Raffaeli
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Investor, Board of Advisors
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Cathleen brings over 30 years of business management &amp; 17 years of board directorship.  Her focus is on new business growth, sales and marketing and strategic turn-around.
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/c-cathleen-raffaeli-956125/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Barbara Russell" title="Barbara Russell" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/526/526-1510118773-2bad25d735fbfc05967057a50513f6481548296a.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/526/526-1510118773-298c5b2438376dea455c2b64316534dc08e17772.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Barbara Russell
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Board of Advisors
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+Angel Investor, Investment Banker, Techstar Mentor, MIT Lecturer and Startup Mentor. Her focus is on strategic growth, fund raising and future positioning.
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/barbara-russell-7670151/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Kiran Kashalkar" title="Kiran Kashalkar" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/528/528-1510119665-56ee03333d24d803a6612746713c3daaad4e8b63.png 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/528/528-1510119665-a0261dd6584333ed3094707f5a1df93aa4cabc57.png" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Kiran Kashalkar
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Technology Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+New technology, innovation and UX/UI expert for 13 years. Masters in Science from Penn State University and MBA from Babson.
+
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/kirankashalkar/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of Abhishek  Khanna" title="Abhishek  Khanna" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/529/529-1510120269-f4ff26777a2effb76323f0b310d3408944d07572.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/529/529-1510120269-7523fd746317c558f844dca50055eced7632b386.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+Abhishek  Khanna
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Financial Advisor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/abhishek-khanna-34a3192/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+<div class='js-team_member u-text-center u-verticalAlignTop u-displayInlineBlock offerings-show-team_section__featured_team_member u-hiddenXsOnly js-hidden_team_members'>
+<div class='js-display'>
+<div class="c-avatar c-avatar--large offerings-show-team_section__avatar_header"><img alt="Profile picture of John Hennessey" title="John Hennessey" srcset="https://uploads.republic.com/p/roles/team_members/avatars/large_2x/000/000/530/530-1510120485-fa82698fb69aa7ee24b77c8ac9db822fb45a4671.jpg 2x" src="https://uploads.republic.com/p/roles/team_members/avatars/large/000/000/530/530-1510120485-721c305860df9e886ccc0137a4f072ae274b46ed.jpg" /></div>
+<div class='s-marginTop1 s-fontSize20'>
+John Hennessey
+</div>
+<div class='u-fontWeight400 s-fontSize16 u-colorGray7'>
+Mentor and Investor
+</div>
+<div class='s-fontSize14 u-fontWeight400 s-marginTop0_5'>
+
+</div>
+<div class='s-marginTop1'>
+<span class=''>
+<a target="_blank" class="c-link c-link--linkedin" href="https://www.linkedin.com/in/wonkguy/"><i class="icon-linkedin"></i></a>
+
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class='js-hidden_team_members u-hiddenXsOnly'>
+<div class='s-marginTop2_5 offerings-show-team_section__team_member_container'>
+</div>
+</div>
+<div class='u-hiddenSmUp u-text-center'>
+<a class="c-button c-button--secondary js-show_all_team_members" href="#">8 more team members</a>
+</div>
+</div>
+</div>
+<div class='s-grid u-textCenter u-hidden u-blockPrint'>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Shiva Kashalkar
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Founder and CEO
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Morgan Kelly Burke
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Chief Marketing Office
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Victoria Nessen
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Marketing Strategist
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Michelle Zayas
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Educational Expert and Customer Service 
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Michelle Dunn Taylor
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Warehouse and Shipping
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Jillian  Johnson
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Digital Marketing
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Cathleen Raffaeli
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Investor, Board of Advisors
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Barbara Russell
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Board of Advisors
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Kiran Kashalkar
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Technology Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+Abhishek  Khanna
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Financial Advisor
+</div>
+</div>
+<div class='s-grid-colXs6 s-marginBottom1 u-lineHeight1_3 u-textLeft'>
+<div class='u-fontWeight500'>
+John Hennessey
+</div>
+<div class='s-fontSize14 u-fontWeight400'>
+Mentor and Investor
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint js-section offerings-show__section' id='press'>
+<div class='s-container s-gridMaxXs24'>
+<div class='u-textCenter'>
+<h2 class='c-condensedTitle u-colorGray6 offerings-show__section-title'>
+Press
+</h2>
+</div>
+<div class="offerings-show-press_section" data-rc="offerings/show/press_section"><div class='s-grid js-press_container u-text-center'>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://www.bostonherald.com/classifieds/jobfind/2016/05/savvy_moms_find_way_to_achieve_work_life_balance"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/004/587/4587-1518823227-c4578b73509b0339ad65916089ca4eebe0ffcd75.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Toying with Change: Green Pinata Toys
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/004/587/4587-1518834489-7f6918c7bfa3c5d8c29b962db7b42cad93618405. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Bostonherald" title="Bostonherald" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/004/587/4587-1518834489-e81662da8e9047e5c8f176ae23005d5306e0ce5b." />
+Bostonherald
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+May  3, 2016
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Sometimes all it takes is an idea to change your life.For Shiva Kashalkar, that idea took shape shortly after she gave bi...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.americaninno.com/boston/subscription-box-for-toxin-free-toys-green-pinata/"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/004/586/4586-1518823220-542b09c7581960a72fdcbc253857a4301aca8a08.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Subscription Box for Toxin-Free Toys: Green Pińata
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/004/586/4586-1518834488-95fd861a26b08a9111d3d3d77891c8738b5b4a8d. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="AINNO" title="AINNO" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/004/586/4586-1518834488-a5737912b476e756d33a94ca3b7662e23ccd44bd." />
+AINNO
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGrayA'>
+&middot;
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray8'>
+Nov  5, 2015
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Shiva Kashalkar, founder of Green Pińata, with her daughter. (Courtesy of Shiva Kashalkar.) You don&#39;t need to be a parent...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="http://www.crowdability.com/article/your-50-billion-toy-box"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/004/724/4724-1518824243-261df57d269b1d831b0fe4a6bcb9a537f23050c2.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Your $50 Billion Toy Box | Crowdability
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/004/724/4724-1518834521-3b64d065cf33d2f968f45d1b4c1206d42d79bb8c. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Crowdability" title="Crowdability" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/004/724/4724-1518834521-7bc02c8844bf2d2ff972e410c279ba2b884deec0." />
+Crowdability
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Toys are big business: In the U.S. alone, families spend $50 billion a year on them. Unfortunately, more than half of tho...
+</p>
+</div>
+</a></div>
+</div>
+<div class='s-grid-colSm8 u-text-left js-article offerings-show-press_section__article'>
+<div class="press-article" data-rc="press/article"><a target="_blank" rel="nofollow" class="c-link c-link--unstyled js-article s-padding1 press-article__article_link" href="https://www.mother.ly/motherlyloves/eco-friendly-baby-go-green-with-our-top-toy-picks-"><div class='press-article__cover' style='background-image: url(https://uploads.republic.com/p/embedly_extracts/images/cover_small/000/004/588/4588-1518823251-78a107e02159cdf33e08fc240346b8b9a96b162f.);'></div>
+<div class='press-article__content'>
+<div class='s-fontSize18 u-fontWeight500 press-article__title'>
+Eco friendly baby: Go green with our top toy picks :earth...
+</div>
+<div class='s-marginTop0_5 s-fontSize14 press-article__info'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle u-colorGray4'>
+<img srcset="https://uploads.republic.com/p/embedly_extracts/favicons/medium_2x/000/004/588/4588-1518834490-a24f595c54e4a4b9977aa3c958953589363d9a94. 2x" height="16px" class="u-displayInlineBlock u-verticalAlignMiddle" alt="Mother" title="Mother" src="https://uploads.republic.com/p/embedly_extracts/favicons/medium/000/004/588/4588-1518834490-f8f8c15cede9d5d607795cacb1fbd0c714abf6d5." />
+Mother
+</div>
+</div>
+<p class='u-hiddenSmDown s-marginTop0_5 u-fontWeight400 u-colorGray4 s-fontSize14'>
+Toys that are good for your baby and good for the :earth_americas:? ✔ Yes, please! Whether you&#39;re taking a step toward mi...
+</p>
+</div>
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='u-hiddenPrint s-marginTop6 s-borderTop5 offerings-show__footer'>
+<div class='s-container s-gridMaxXs24'>
+<div class="u-textCenter offerings-show-footer" data-rc="offerings/show/footer"><div class='s-marginBottom1'>
+<div class='u-displayInlineBlock u-verticalAlignMiddle'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)"><div class="c-avatar c-avatar--medium offerings-show-footer__avatar c-avatar--border c-avatar--green-pinata"><img alt="Logo of Green Piñata" title="Green Piñata" srcset="https://uploads.republic.com/p/offerings/logos/medium_2x/000/000/051/51-1526918798-a9d72da66c637730af843865e5723cbc4c3ed67e.png 2x" src="https://uploads.republic.com/p/offerings/logos/medium/000/000/051/51-1526918798-2cacdfe448a50b43acfdad40d7f3e4ba86d25ae1.png" /></div></a>
+</div>
+<div class='u-displayInlineBlock u-verticalAlignMiddle s-marginHoriz0_5'>
+<h1 class='c-largeTitle offerings-show-footer__company-name'>
+<a class="js-return_to_pitch c-link c-link--unstyled" href="javascript:void(0)">Green Piñata</a>
+</h1>
+</div>
+<div class='u-displayInlineBlock u-blockXsOnly u-verticalAlignMiddle s-paddingTop0_5'>
+<div data-action-follow="follow" data-action-unfollow="unfollow" data-analytics-source="Offering page - Footer" class="follows-shared-follow_offering" data-rc="follows/shared/follow_offering"><button name="button" type="submit" class="follows-shared-follow_offering__follows-button c-button js-offering_follows_register_link c-button--small c-button--secondary" data-action="follow" data-href="/register?after_sign_in=%2Fgreen-pinata%3Ffollow%3Dtrue"><span class='js-offering_follow_content'>
+Follow
+</span>
+<span class='js-offering_followed_content u-hidden'>
+<i class='icon-ok'></i>
+Following
+</span>
+<span class='js-offering_follows_counter s-marginLeft0_5 u-colorGray2 follows-shared-follow_offering__bubble-counter'>
+216
+</span>
+</button>
+</div>
+</div>
+</div>
+<div class='s-marginTop1_5 s-fontSize18 u-fontWeight500 u-colorGreen'>
+Green Piñata successfully raised
+$31,695
+from 169 investors
+on January 16, 2018
+</div>
+<div class='s-marginTop2'>
+<div class='s-paddingTop1 u-hiddenXsOnly'></div>
+<div class="offerings-show-footer-investors" data-rc="offerings/show/footer/investors"><div class='u-displayFlex u-justifyContentCenter'>
+<span class="js-tooltip_ajax  " data-type="user" data-slug="suraj-shyam"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Suraj Shyam" title="Suraj Shyam" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/037/796/37796-1511800071-52e8461f7422d66fbd01c3010c31d226a41358cc. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/037/796/37796-1511800071-104db4d1a1f7a3ece9c7f36c3bc16d898bb656b6." /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="john-hennessey"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of John Hennessey" title="John Hennessey" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/037/459/37459-1511370645-710fb419b8d614327bbf4e089237b69a95f1bd48. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/037/459/37459-1511370645-e4faf2c1fbd953dc5535e8e4c5ee2874de46b0b3." /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="ali-alhaschemy"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Ali Alhaschemy" title="Ali Alhaschemy" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/038/041/38041-1511972518-6c16707bfc08d7113f43724d7f8494e848d9a894. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/038/041/38041-1511972518-0d51fc7aa6d859c74f56c483be765cf31928bdfa." /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="tom-connolly"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Tom Connolly" title="Tom Connolly" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/037/105/37105-1511114673-589d05fc65e03a0b7002a634884ca21a520afba3. 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/037/105/37105-1511114673-4c646bb9b9254810dfc51329bcf2b73e95d0ffc5." /></div>
+</span><span class="js-tooltip_ajax  " data-type="user" data-slug="vishal-haria"><div class="c-avatar c-avatar--medium s-marginHoriz0_5 offerings-show-footer-investors__avatar js-user_avatar"><img alt="Profile picture of Vishal Haria" title="Vishal Haria" srcset="https://uploads.republic.com/p/users/avatars/medium_2x/000/037/075/37075-1511097309-69935a608903c74be5f95cfad4c4dba41459c89d.JPG 2x" src="https://uploads.republic.com/p/users/avatars/medium/000/037/075/37075-1511097309-81d3dea666e3570fa94c6ea67f296770015faee9.JPG" /></div>
+</span></div>
+<div class='s-marginTop1 s-fontSize18 u-fontWeight400 u-lineHeight1_3'>
+Suraj, John, Ali, Tom, Vishal, and 164 others
+invested.
+<a class="js-scroll_to_section" href="#reviews">58 Reviews</a>
+</div>
+</div>
+</div>
+</div>
+<div class='s-paddingBottom1_5 u-hiddenXsOnly'></div>
+</div>
+</div>
+<div class="offerings-shared-schema_org" data-rc="offerings/shared/schema_org"><script nonce="FhwxG2QDe4eaamFEJseI/w==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "https://republic.com/companies",
+      "name": "Companies",
+      "image": "https://assets.republic.com/assets/logo/icon/brand/36x40/logo@3x-af4ee9995fb90fffc2d2d3acf41e91f9ea98718053f604912115ab3fd6877321.png"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "https://republic.com/green-pinata",
+      "name": "Green Piñata",
+      "image": "https://uploads.republic.com/p/offerings/logos/medium/000/000/051/51-1526918798-2cacdfe448a50b43acfdad40d7f3e4ba86d25ae1.png"
+    }
+  }]
+}
+
+
+//]]>
+</script></div>
+</div>
+</div>
+</div>
+</div>
+<div class="u-hiddenPrint s-container s-gridMaxXs24 s-marginTop4 s-marginBottom5 layouts-app_promo_banner" data-rc="layouts/app_promo_banner"><a class='c-link--unstyled' href='https://apps.apple.com/us/app/republic-private-investing/id1475230022' target='_blank'>
+<div class='u-bgWhite u-borderRadius20 s-padding3_5 u-displayFlex u-alignItemsCenter layouts-app_promo_banner__panel'>
+<img class="s-marginRight4 u-selfAlignCenter u-hiddenXsOnly layouts-app_promo_banner__qr" srcset="https://assets.republic.com/assets/layouts/qr@2x-2320a25e69ac35047a6ad0abb43de092c669c588877e67cf2efc98de0f1b1159.png 2x" src="https://assets.republic.com/assets/layouts/qr-685da4f967a1ffbd6e6ec72ca1b96302f97c1ca52d12f42bb501edc1d807742c.png" />
+<div class='s-mnarginPullTop0_5'>
+<h2 class='c-primaryTitle s-marginBottom1 layouts-app_promo_banner__title'>
+Invest in
+<br class='u-hiddenSmUp'>
+one tap.
+</h2>
+<p class='c-subtitle u-hiddenXsOnly u-colorGray3 layouts-app_promo_banner__subtitle'>
+Scan code to get the new
+<br>
+Republic app for iOS.
+<i class='icon-info-letter icon--frame js-tooltip_simple s-marginBottom0_5' data-tippy-content='Use the camera app on your iPhone to scan this code. Android version coming soon.'></i>
+</p>
+<p class='s-fontSize13 u-fontWeight400 u-hiddenSmUp s-marginBottom1 u-lineHeight1_3 u-colorGray3'>
+Download the
+<br>
+Republic app for iOS
+</p>
+<img class="layouts-app_promo_banner__app-store u-hiddenSmUp" src="https://assets.republic.com/assets/index/header/default/app-store-black-73232df73948e8f56cf2021f897dc2f5de677ba3bf9edab05d8bedf3b7ed167e.svg" />
+</div>
+<img class="layouts-app_promo_banner__hand" srcset="https://assets.republic.com/assets/layouts/hand@2x-aeabe8e08d164838c6ef9de6334a7fcedc0f7d9300ffd4c4a9d0fc0f9421ac40.png 2x" src="https://assets.republic.com/assets/layouts/hand-75d5a0f5a375a4f63329453952f0bfb32158a30e2d5892dbf553da3a5fa30e9e.png" />
+</div>
+</a>
+</div>
+</div>
+</div><div class="layouts-footer-content layouts-footer-content--footer_no_margin" data-rc="layouts/footer/content"><div class='s-container s-gridMaxXs24 s-paddingTop3_5 s-paddingBottom4 layouts-footer-content__container'>
+<div class='s-grid s-marginBottom1_5 u-colorOpaqueWhite4'>
+<div class='s-grid-colMd5'>
+<a href="/"><img alt="Republic" title="Republic" class="layouts-footer-content__logo" src="https://assets.republic.com/assets/logo/full/white/120x30/logo-54659cb6a37ad65e8e65799b0238c6ea0c0c4ed99ce66f7286fd1d175e718e73.svg" />
+</a>
+<div class="layouts-footer-social_links" data-rc="layouts/footer/social_links"><p class='s-marginBottom1_5 u-lineHeight1_3 u-fontWeight400 layouts-footer-social_links__motto s-marginTop1_5'>
+Giving everyone access to early-stage startup investing
+</p>
+<div class='s-marginBottom2 s-fontSize24 u-lineHeight1 layouts-footer-social_links__links_wrapper'>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://facebook.com/joinrepublic"><i class="icon-facebook"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://instagram.com/joinrepublic"><i class="icon-instagram"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="http://twitter.com/joinrepublic"><i class="icon-twitter"></i></a>
+<a target="_blank" class="layouts-footer-social_links__link" href="https://www.linkedin.com/company/republic.co"><i class="icon-linkedin"></i></a>
+<a target="_blank" class="s-fontSize27 discord-link layouts-footer-social_links__link" href="https://discord.gg/AqBrbS7sSt"><i class="icon-discord"></i></a>
+</div>
+</div>
+</div>
+<div class='s-grid-colMd19'>
+<div class="s-grid s-paddingLeft1 layouts-footer-navigation" data-rc="layouts/footer/navigation"><div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For investors
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-invest" href="/investors/why-invest">Why invest</a></li>
+<li><a id="footer-investors-how-it-works" href="/learn/investors/how-it-works">How it works</a></li>
+<li><a id="footer-faq-for-investors" href="/help">FAQ</a></li>
+<li><a id="footer-risks" href="/risks">Risks</a></li>
+<li><a id="footer-privacy-policy" href="/privacy">Privacy policy</a></li>
+<li><a id="footer-accessibility" href="/accessibility">Accessibility</a></li>
+<li>
+<a class='js-footer_cookie-preferences' href='javascript:void(0)'>
+Cookie Preferences
+</a>
+</li>
+<li><a id="footer-form-crs" target="_blank" href="https://files.brokercheck.finra.org/crs_291387.pdf">Form CRS</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+For startups
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-why-raise" href="/raise">Why raise</a></li>
+<li><a id="footer-learn" href="/learn/issuers">Learn</a></li>
+<li><a id="footer-faq-for-startups" href="/help/category/fundraising">FAQ</a></li>
+<li><a id="footer-instruments" href="/startups/fundraising-instruments">Instruments</a></li>
+<li><a id="footer-crowd-safe" href="/crowdsafe">Crowd SAFE</a></li>
+</ul>
+<div class='s-marginBottom1_5 u-hiddenSmUp'></div>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Crypto
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-for-investors" href="/crypto">For investors</a></li>
+<li><a id="footer-for-companies" href="/crypto/services">For companies</a></li>
+<li><a id="footer-crypto-how-it-works" href="/crypto/for-investors/how-it-works">How it works</a></li>
+<li><a id="footer-token-dpa" href="/token-dpa">Token DPA</a></li>
+</ul>
+</div>
+<div class='s-grid-colSm6 s-grid-colXs12'>
+<div class='s-fontSize18 u-fontWeight500 layouts-footer-navigation__caption_wrapper'>
+Company
+</div>
+<ul class='u-listUnstyled s-fontSize18 u-fontWeight500 u-whiteSpaceNowrap layouts-footer-navigation__links'>
+<li><a id="footer-about" href="/about">About</a></li>
+<li><a id="footer-journal" href="/blog">Journal</a></li>
+<li><a id="footer-events" href="/events">Events</a></li>
+<li><a id="footer-contact" href="/contact">Contact</a></li>
+<li><a id="footer-we-are-hiring" href="/jobs">We&#39;re hiring!</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='s-borderTop1_5 s-marginBottom1_5 u-textCenter layouts-footer-content__refer'>
+<div class='c-tag c-tag--info c-tag--heavy s-marginRight0_5 u-hiddenXsOnly'>
+New
+</div>
+<span class='u-verticalAlignMiddle s-fontSize18 u-fontWeight500 u-colorOpaqueWhite8'>
+<a class="layouts-footer-content__refer_link" rel="nofollow" href="/register?after_sign_in=%2Finvite%2Fstartups">Refer a startup, get $2,500
+</a></span>
+<span class='s-paddingRight1 u-hiddenXsOnly'></span>
+</div>
+<div class='s-marginBottom1 s-paddingRight4 s-borderVert1_5 s-fontSize13 layouts-footer-content__text'>
+<div class="layouts-footer-disclaimers" data-rc="layouts/footer/disclaimers"><div class="layouts-footer-disclaimers-full_disclaimer" data-rc="layouts/footer/disclaimers/full_disclaimer"><p class='s-marginBottom1'>
+This site (the "Site") is owned and maintained by OpenDeal Inc., which is not a registered
+broker-dealer. OpenDeal Inc. does not give investment advice, endorsement, analysis or
+recommendations with respect to any securities. All securities listed here are being offered
+by, and all information included on this Site is the responsibility of, the applicable issuer
+of such securities. The intermediary facilitating the offering will be identified in such
+offering’s documentation.
+</p>
+<p class='s-marginBottom1'>
+All funding-portal activities are conducted by OpenDeal Portal LLC doing business as Republic,
+a funding portal which is registered with the US Securities and Exchange Commission (SEC) as a
+funding portal (Portal) and is a member of the Financial Industry Regulatory Authority (FINRA).
+OpenDeal Portal LLC is located at 149 E 23rd St #2001, New York, NY 10010, please
+check out background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org/about/funding-portals-we-regulate">Funding Portal page</a>.
+</p>
+<p class='s-marginBottom1'>
+All broker-dealer related securities activity is conducted by OpenDeal Broker LLC, an
+affiliate of OpenDeal Inc. and OpenDeal Portal LLC, and a registered broker-dealer, and member
+of
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://www.finra.org">FINRA</a>
+|
+<a class="c-link c-link--underline" href="https://www.sipc.org/">SiPC</a>,
+located at 1345 Avenue of the Americas, 15th Floor, New York, NY 10105, please check our
+background on FINRA’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="https://brokercheck.finra.org/firm/summary/291387">BrokerCheck</a>.
+</p>
+<p class='s-marginBottom1'>
+Certain pages discussing the mechanics and providing educational materials regarding
+regulation crowdfunding offerings may refer to OpenDeal Broker LLC and OpenDeal Portal LLC
+collectively as “Republic”, solely for explanatory purposes.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC make investment
+recommendations and no communication, through this Site or in any other medium should be
+construed as a recommendation for any security offered on or off this investment platform.
+Investment opportunities posted on this Site are private placements of securities that are
+not publicly traded, involve a high degree of risk, may lose value, are subject to holding
+period requirements and are intended for investors who do not need a liquid investment. Past
+performance is not indicative of future results. Investors must be able to afford the loss
+of their entire investment. Only qualified investors, which may be restricted to only
+Accredited Investors or non-U.S. persons, may invest in offerings hosted by OpenDeal Broker.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC, nor any of their
+officers, directors, agents and employees makes any warranty, express or implied, of any
+kind whatsoever related to the adequacy, accuracy or completeness of any information on this
+Site or the use of information on this site. Offers to sell securities can only be made
+through official offering documents that contain important information about the investment
+and the issuers, including risks. Investors should carefully read the offering documents.
+Investors should conduct their own due diligence and are encouraged to consult with their
+tax, legal and financial advisors.
+</p>
+<p class='s-marginBottom1'>
+By accessing the Site and any pages thereof, you agree to be bound by the
+<a class="c-link c-link--underline" target="_blank" href="/terms">Terms of Use</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/privacy">Privacy Policy</a>.
+Please also see OpenDeal Broker’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/business_continuity_plan">Business Continuity Plan</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/capital_r/download/additional_risk">Additional Risk Disclosures</a>.
+All issuers offering securities under regulation crowdfunding as hosted by
+OpenDeal Portal LLC are listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/reg-cf-offerings">All Companies Page</a>.
+The inclusion or exclusion of an issuer on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and/or Republic’s
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>,
+which includes offerings conducted under regulation crowdfunding as well as
+other exemptions from registration, is not based upon any endorsement or recommendation
+by OpenDeal Inc, OpenDeal Portal LLC, or OpenDeal Broker LLC, nor any of their affiliates,
+officers, directors, agents, and employees. Rather, issuers of securities may,
+in their sole discretion, opt-out of being listed on the
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/companies">Platform Page</a>
+and
+<a class="c-link c-link--underline" target="_blank" rel="noopener" href="/">Homepage</a>.
+</p>
+<p class='s-marginBottom1 s-paddingHoriz1_5 s-paddingVert1 u-text-center u-fontWeight500'>
+Investors should verify any issuer information they consider important before making
+an investment.
+</p>
+<p class='s-marginBottom1'>
+Investments in private companies are particularly risky and may result in total loss of
+invested capital. Past performance of a security or a company does not guarantee future
+results or returns. Only investors who understand the
+<a class="c-link c-link--underline" href="/risks">risks of early stage investment</a>
+and who meet the Republic's
+<a class="c-link c-link--underline" href="/help/can-i-invest">investment criteria</a>
+may invest.
+</p>
+<p class='s-marginBottom1'>
+Neither OpenDeal Inc., OpenDeal Portal LLC nor OpenDeal Broker LLC verify
+information provided by companies on this Site and makes no assurance as to the completeness
+or accuracy of any such information. Additional information about companies fundraising on
+the Site can be found by searching the
+<a target="_blank" rel="noopener" class="c-link c-link--underline" href="https://www.sec.gov/edgar/searchedgar/companysearch.html">EDGAR database</a>,
+or the offering documentation located on the Site when the offering does not require an
+EDGAR filing.
+</p>
+<p class='s-marginBottom1'>
+To help the government fight the funding of terrorism and money laundering activities,
+Federal law requires all financial institutions to obtain, verify, and record information
+that identifies each person who opens an account.
+Therefore, when you use the Services we will ask for your name, address, date of birth,
+and other information that will allow us to identify you.
+We may also ask to see your driver's license, passport or other identifying documents.
+</p>
+<p class='s-marginBottom1'>
+Republic and its affiliates are not and do not operate or act as a bank. Certain banking
+services are provided by BankProv, member FDIC / member DIF. Digital (crypto) assets and
+investment products are not insured by the FDIC, may lose value, and are not deposits or other
+obligations of BankProv and are not guaranteed by BankProv. Terms and conditions apply.
+</p>
+</div>
+</div>
+</div>
+<div class='s-grid u-colorOpaqueWhite4'>
+<div class='s-grid-colSm12 u-text-right layouts-footer-content__bottom_content_section'>
+<div class='s-marginBottom0_5 s-fontSize13 u-fontWeight400 u-hiddenSmUp'>
+Invest in startups using your credit card
+</div>
+<img alt="You can invest using your credit card" src="https://assets.republic.com/assets/layouts/credit_cards-fb323581910488f0885fc63613e42a2d07ebc908e0af4df4ed139ed8cb3254fc.svg" />
+</div>
+<div class='s-grid-colSm12 u-floatLeftSmUp layouts-footer-content__bottom_content_section'>
+<div class='s-marginTop1_5 u-hiddenSmUp'></div>
+<p class='s-fontSize13'>
+Made in SF/NYC
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='media-sm'></div>
+<div id='media-md'></div>
+<div id='media-lg'></div>
+<div class='js-environment' data-environment='production'></div>
+<script src="https://assets.republic.com/assets/head-ce0f79c2fa398aa3dcb8007c3f47be103e2143018a3191dcda952bc4168f2b6c.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/application-861dc40e0391e6f3030ce2c55f7dee708a0e824b66a30f9d075aac9d22b801d6.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+
+<script src="https://static.zdassets.com/ekr/snippet.js?key=d10adfc1-5afd-478b-b60b-d5f58ec5e520" id="ze-snippet" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==">
+  window.zESettings = {
+    webWidget: {
+      zIndex: 86,
+      offset: {
+        horizontal: '55px',
+        vertical: '2px',
+        mobile: {
+          horizontal: '-4px',
+          vertical: '90px'
+        }
+      },
+      contactForm: {
+        title: {'*': 'How can we help?'},
+        ticketForms: [{ id: 6139814921239 }],
+        fields: [
+          { id: 'subject', prefill: { '*': 'Need help!' } },
+          { id: 'email', prefill: { '*': "" } },
+          { id: 'key:6164328823703', prefill: { '*': "" } },
+        ],
+      },
+      helpCenter: {
+        title: {'*': 'FAQ'},
+        searchPlaceholder: {'*': 'What can we help you with?'},
+        messageButton: {'*': 'Contact Us'},
+        originalArticleButton: false,
+      },
+    },
+  };
+  
+  zE('webWidget', 'setLocale', 'en');
+  zE('webWidget', 'helpCenter:setSuggestions', { search: 'invest' });
+</script>
+
+<div class="layouts-braze_integration" data-rc="layouts/braze_integration"></div>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==" type="application/ld+json">
+//<![CDATA[
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name" : "Republic",
+"url": "https://republic.com/",
+  "sameAs" : [
+    "http://facebook.com/joinrepublic",
+    "http://twitter.com/joinrepublic",
+    "https://www.linkedin.com/company/republic.co",
+    "https://plus.google.com/u/1/114437189753254785722",
+    "http://angel.co/republic"
+  ]
+}
+
+
+//]]>
+</script><script nonce="FhwxG2QDe4eaamFEJseI/w==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Republic",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "about": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "url": "https://republic.com/"
+}
+
+
+//]]>
+</script>
+<script nonce="FhwxG2QDe4eaamFEJseI/w==" type="application/ld+json">
+//<![CDATA[
+{
+  "@context": "http://schema.org",
+  "@type": "LocalBusiness",
+  "name" : "Republic",
+  "foundingDate": "2016",
+  "url": "https://republic.com/",
+  "logo": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "image": "https://assets.republic.com/assets/logo/full/black/120x30/logo@3x-2daa653e47e9c9528fa84406c4d3b18224900ea440185843529e4863325b029a.png",
+  "description": "Republic is a startup investing platform where you can invest as little as $10 in impactful startups",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "streetAddress": "149 E 23rd St",
+    "postalCode": "10010"
+  }
+}
+
+
+//]]>
+</script>
+<script src="https://assets.republic.com/assets/w/runtime~MediaSliderPage-1098888d834bd3762a55.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ae-cda0d3eb09b2571ee24e.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apexcharts_dist_apexcharts_common_js-ba302c83-12acaec747ed98c96c79.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_apollo_client_c-752f32f6a5f08b47aee9.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ap-10286ca6eee77e5cfdbe.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ax-87ca8eab84b534ce51a3.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_braze_web-sdk_sh-082bda95cd1f46db675e.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_br-ded297e3061c09e58176.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ca-0192f74a4e598aec7a52.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_core-js_i-f3d9e78f9f53cf58378d.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_crc-8b8be13627dda03b73d8.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_c-cea66e909f36387f5945.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_da-5b72066967e09ff24edf.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_d-83acda350f41f6abdff3.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_el-ea7a9011bec346028733.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_c-22aa4e04a1fbdd3d6e3f.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethereumjs_common_dist_browser_genesisStates_mainnet_json-97430531-83fe7f595f064e0385b1.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_ethersproject_a-8765651a2f1bdccf9a56.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_et-b31cc9258c2c1d07cac5.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_e-d4fab84d8ab34150ad30.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_fontkit_dist_module_mjs-3528d02d-ecc0f4556eda5102b2d3.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_froala_editor_min_js-b1fc3988-ced20c2300f6c9f40897.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_froala-editor_js_plugins_pkgd_min_js-adc83e4b-33e97225bf9033164d2d.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_grapesjs_dist_grapes_min_js-a826bfc4-cadb07d673643a51118e.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_g-9055b0297f7ac6f017f0.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_i-b77e6ab09fad9dae77d3.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_l-b1a7deddd04fdb5d9a33.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_n-a907fa203947450ef394.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pb-cab37a002985eca657b7.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pd-cf393d506219ee5b112a.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_pl-4c6fabe429fda4071dbb.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_p-27f2b800da9d84d8e2bf.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_rc-o-80e5f70e3d9925c8cdb0.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reach-857404c519977edb5b66.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-l-0c79a438a779449c0b1d.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_react-r-3c1ef064934605ec254d.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_reac-dd43f7d7d874a68c99e5.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_r-b902bc774bc3ff333672.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_sc-0f32c01226134eda1296.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_se-74d4cf204c9d98a015aa.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/vendor-node_modules_s-884ee524820f17ecd6cb.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_A-8cf01848e62c80ff23d7.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/ui-client_ui_I-5990a0d8dde19f6e04bd.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_A-c0356acbaf9d3c64d8d4.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_C-81436052b30a8eba6374.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_F-445b408fa8bf17d5aa78.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_I-662a93905a6a15b4f741.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_P-69d60a2c449dc7cb6600.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_T-e09f8036fafdc3c6afe0.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/components-client_components_ad-a41070ea11aea6a6ef6a.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+<script src="https://assets.republic.com/assets/w/MediaSliderPage-9d07a76fbcff98a1daf3.js" nonce="FhwxG2QDe4eaamFEJseI/w=="></script>
+</body></html>
+
+
+

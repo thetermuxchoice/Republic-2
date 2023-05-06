@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /crowdsafe/download/*
+Disallow: /documents/*
+Disallow: /email/preferences/*
+Disallow: /companies?search=*
+Disallow: /*embed*
+Disallow: /register*
+Disallow: /users/
+Disallow: /login?*
+Sitemap: https://republic.com/sitemaps/sitemap.xml
